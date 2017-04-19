@@ -1,5 +1,5 @@
-_site/
-website/
+_site
+website
 .sass-cache/
 media/
 *.pyc
