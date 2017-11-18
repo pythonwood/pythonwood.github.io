@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>一个Linux迷,Python粉——在Linux中折腾Python的行者。</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2017-11-18T20:20:00+08:00</updated><entry><title>笔迹之始 随想记录</title><link href="/%E7%AC%94%E8%BF%B9%E4%B9%8B%E5%A7%8B.html" rel="alternate"></link><published>2017-11-18T20:20:00+08:00</published><updated>2017-11-18T20:20:00+08:00</updated><author><name>Alexis Metaireau</name></author><id>tag:None,2017-11-18:/笔迹之始.html</id><summary type="html">&lt;p&gt;Short version for index and feeds&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the content of my super blog post.&lt;/p&gt;
+&lt;p&gt;为了解决一个问题，我会先找出所有方法，经过仔细思考对比，最后会认定一个方法。这就是我思路。“只保留一个方法”，这相对主观，并且也会改变的，但多数没有。那些改变也是因为找到更好的。&lt;/p&gt;
+&lt;p&gt;比如我发现linux之后，习惯了，就5年改变操作系统了。&lt;/p&gt;
+&lt;p&gt;2017-11-18 之前&lt;/p&gt;
+&lt;h1&gt;笔迹之始&lt;/h1&gt;
+&lt;p&gt;我大学开始时是个商科，或者说文科的学生。非计算机系的，仅会计算机。&lt;/p&gt;
+&lt;p&gt;后自学多门计算机语言，越觉编程之高明，神奇。&lt;/p&gt;
+&lt;p&gt;如今的世界，是技术革命的世界，如今的中国，是互联网带头的民主，如今的社会，是正在电子虚拟化的社会，正如《黑客帝国》。&lt;/p&gt;
+&lt;p&gt;我亲历大学，觉大学学术之流甚少，同学进取之心微微。&lt;/p&gt;
+&lt;p&gt;然而，举头望明月，我爸非李刚。甚惑，曾迷，思而不得。&lt;/p&gt;
+&lt;p&gt;何以自强？我常常自问。&lt;/p&gt;
+&lt;p&gt;技术。顿觉当时“师夷长技”之风高啊！&lt;/p&gt;
+&lt;p&gt;理性的头脑，只能接受逻辑思维的单神经细胞，这正好叫因地制宜。&lt;/p&gt;
+&lt;p&gt;于是，大学一学期之后，从2012年初始，奋身地转向技术领域，至今1年7个月了。&lt;/p&gt;
+&lt;p&gt;选择这里开博是因为搜索到的好文章，算这里最多。CSDN杂而不精，百度空间，开源中国，网易，新浪，平平无奇。&lt;/p&gt;
+&lt;p&gt;博客究竟为什么？为了有共同爱好的你，朋友，兄弟也好。&lt;/p&gt;
+&lt;p&gt;总之专注于技术的每一人都是我写博客时脑海中的读者。&lt;/p&gt;
+&lt;p&gt;自学所获：&lt;/p&gt;
+&lt;p&gt;1、熟悉C/C++,Linux桌面。java,汇编一般。&lt;/p&gt;
+&lt;p&gt;2、精通Visual Studio C++，犹以VC6突出。&lt;/p&gt;
+&lt;p&gt;3、对操作系统的实现一知半解，曾用NASM+C模仿编写系统，后中断。&lt;/p&gt;
+&lt;p&gt;4、会使用G++，GCC，make，vim，等Linux下的工具编程。&lt;/p&gt;
+&lt;p&gt;5、略懂HTML、CSS、JAVASCRIPT、JSP等网页相关。&lt;/p&gt;
+&lt;p&gt;未来方向：&lt;/p&gt;
+&lt;p&gt;1、移动平台&lt;/p&gt;
+&lt;p&gt;2、Linux&lt;/p&gt;
+&lt;p&gt;3、C++&lt;/p&gt;
+&lt;p&gt;2013-07-06 18:22:37 暨南大学 后天开始期末考了。&lt;/p&gt;</content><category term="pelican"></category><category term="publishing"></category></entry><entry><title>My super title</title><link href="/my-test-post.html" rel="alternate"></link><published>2010-12-03T10:20:00+08:00</published><updated>2010-12-03T10:20:00+08:00</updated><author><name>Alexis Metaireau</name></author><id>tag:None,2010-12-03:/my-test-post.html</id><summary type="html">&lt;p&gt;Short version for index and feeds&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the content of my super blog post.&lt;/p&gt;
+&lt;h1&gt;很多&lt;/h1&gt;
+&lt;p&gt;gimp&lt;/p&gt;
+&lt;p&gt;gthumb&lt;/p&gt;
+&lt;p&gt;smplayer&lt;/p&gt;</content><category term="pelican"></category><category term="publishing"></category></entry></feed>
