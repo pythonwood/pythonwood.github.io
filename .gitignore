@@ -5,3 +5,6 @@ media/
 *.pyc
 *.swp
 *.*~
+*#
+tmp*
+__pycache__/
