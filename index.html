@@ -1,194 +1,131 @@
 <!DOCTYPE html>
-<html lang="zh">
-
-<head>
-        <meta charset="utf-8">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="pythonwood" />
+        <meta name="copyright" content="pythonwood" />
 
-        <title>一个Linux迷,Python粉——在Linux中折腾Python的行者。</title>
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
 
-
-        <!-- Bootstrap Core CSS -->
-        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
-        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
-
-        <!-- Code highlight color scheme -->
-            <link href="/theme/css/code_blocks/monokai.css" rel="stylesheet">
-
-        <!-- Custom Fonts -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-		<meta property="og:locale" content="zh">
-		<meta property="og:site_name" content="一个Linux迷,Python粉——在Linux中折腾Python的行者。">
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">一个Linux迷,Python粉——在Linux中折腾Python的行者。</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-        <header class="intro-header" style="background-image: url('/theme/images/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="page-heading">
-                        <h1>一个Linux迷,Python粉——在Linux中折腾Python的行者。</h1>
-                        <hr class="small">
-                        <span class="subheading"></span>
+<meta property="og:title" content="一个Linux迷,Python粉——在Linux中折腾Python的行者。"/>
+<meta name="twitter:title" content="一个Linux迷,Python粉——在Linux中折腾Python的行者。">
+<meta property="og:url" content="http://blog.pythonwood.com" />
+<meta property="og:site_name" content="一个Linux迷,Python粉——在Linux中折腾Python的行者。" />
+<meta property="og:article:author" content="pythonwood" />
+        <title>一个Linux迷,Python粉——在Linux中折腾Python的行者。
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://blog.pythonwood.com/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://blog.pythonwood.com/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://blog.pythonwood.com/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://blog.pythonwood.com/theme/css/custom.css" media="screen">
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://blog.pythonwood.com/"><span class=site-name>一个Linux迷,Python粉——在Linux中折腾Python的行者。</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li  class="active"><a href="http://blog.pythonwood.com">Home</a></li>
+                            <li ><a href="http://blog.pythonwood.com/categories.html">Categories</a></li>
+                            <li ><a href="http://blog.pythonwood.com/tags.html">Tags</a></li>
+                            <li ><a href="http://blog.pythonwood.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<div class="row-fluid">
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-preview">
-            <a href="/笔迹之始.html" rel="bookmark" title="Permalink to 笔迹之始 随想记录">
-                <h2 class="post-title">
-                    笔迹之始 随想记录
-                </h2>
-            </a>
-                <p>Short version for index and feeds</p>
-            <p class="post-meta">Posted by
-                    <a href="/author/alexis-metaireau.html">Alexis Metaireau</a>
-                 on 11月18, 20:20
-<p>There are <a href="/笔迹之始.html#disqus_thread">comments</a>.</p>            </p>
-        </div>
-        <hr>
-        <div class="post-preview">
-            <a href="/my-test-post.html" rel="bookmark" title="Permalink to My super title">
-                <h2 class="post-title">
-                    My super title
-                </h2>
-            </a>
-                <p>Short version for index and feeds</p>
-            <p class="post-meta">Posted by
-                    <a href="/author/alexis-metaireau.html">Alexis Metaireau</a>
-                 on 12月03, 10:20
-<p>There are <a href="/my-test-post.html#disqus_thread">comments</a>.</p>            </p>
-        </div>
-        <hr>
+    <div class="row-fluid">
 
-    <!-- Pager -->
-    <ul class="pager">
-        <li class="next">
-        </li>
-    </ul>
-    Page 1 / 1
-    <hr>
-            </div>
-        </div>
     </div>
 
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="http://twitter.com/myprofile">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://facebook.com/myprofile">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://github.com/pythonwood">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Blog powered by <a href="http://getpelican.com">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.</p>
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <header>
+            <h1 id="recent-posts">Recent Posts <a id="allposts" href="http://blog.pythonwood.com/archives.html">all posts</a></h1>
+            </header>
+        <div class="recent-posts">
+            <article>
+                <a href="http://blog.pythonwood.com/微信开发python+django两个月的成功经历，django是个好框架！.html">微信开发python+django两个月的成功经历，django是个好框架！  </a>
+                <section>
+                    posted in
+                <a href="http://blog.pythonwood.com/categories.html#ji-zhu-ref">技术</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2014-06-28T20:12:00+08:00">2014年06月28日, 20:12</time>
                 </div>
+                </section>
+            </article>
+            <article>
+                <a href="http://blog.pythonwood.com/腾讯2014实习面经——记一个非计算机学生的首次面试.html">腾讯2014实习面经——记一个非计算机学生的首次面试  </a>
+                <section>
+                    posted in
+                <a href="http://blog.pythonwood.com/categories.html#ji-zhu-ref">技术</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2014-04-30T23:58:00+08:00">2014年04月30日, 23:58</time>
+                </div>
+                </section>
+            </article>
+            <article>
+                <a href="http://blog.pythonwood.com/笔迹之始.html">笔迹之始  </a>
+                <section>
+                    posted in
+                <a href="http://blog.pythonwood.com/categories.html#ji-zhu-ref">技术</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2013-07-06T18:27:00+08:00">2013年07月06日, 18:27</time>
+                </div>
+                </section>
+            </article>
+        </div>
+        </div>
+    </div>
+</div>
+                </div>
+                <div class="span1"></div>
             </div>
         </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="/theme/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/theme/js/bootstrap.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/theme/js/clean-blog.min.js"></script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-109845932-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'pythonwood-github-io';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
-
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
 </html>
