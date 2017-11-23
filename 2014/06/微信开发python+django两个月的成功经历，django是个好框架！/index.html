@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  微信开发python+django两个月的成功经历，django是个好框架！
+ | Linux迷+Python粉</title>
+
+    <meta name="author" content="Pythonwood"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - Category: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - Category: 技术 - RSS Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">生活</a>
+              </li>
+<li >
+                <a href="/关于.html">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-6   col-md-offset-3 ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/" rel="bookmark" title="Permalink to 微信开发python+django两个月的成功经历，django是个好框架！">微信开发python+django两个月的成功经历，django是个好框架！</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-3">
+            
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3784870097299714",
+    enable_page_level_ads: true
+  });
+</script>
+
+          </div>
+
+        <div class=" col-md-6 " id="content" role="main">
+  
+
+  <div>
+    <h2 id="_1">时间：大三<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。</p>
+<p>下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。</p>
+<p>选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。</p>
+<p>亮点1：自带后台管理</p>
+<p>亮点2：后台权限管理</p>
+<p>亮点3：微信回复规则设置去代码化，图形界面。</p>
+<p>亮点4：一平台多网店</p>
+<p>亮点5：图片自动缩略成200*300px大小（使用了七牛空间）</p>
+<p>亮点6：gzip压缩，网络流量为原来33%左右。SAE中Gzip压缩设置</p>
+<p>亮点7：保存接受的所以文本消息，记录永存！</p>
+<p>亮点8：购买者可查看历史订单，购买总额等。</p>
+<p>亮点9：后台可查看用户下单总额，最近下单时间等等。</p>
+<p>亮点10：商店信息，商品信息均在后台直接修改。</p>
+<p>亮点11：平台创始人可强制商店下线。</p>
+<p>技巧：微信规则不匹配时不能回复吗？不是，规则包含空字符总能匹配任意文本，请看下面的微信规则截图。</p>
+<h2 id="_2">后台<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>选择botlle框架，自己写sql，便学边用，很痛苦的换了20天作出来了微信<a href="http://2.aozhouwine.sinaapp.com/buy.html?openid=abcdefgabcdefgabcdefgabcdefg" title="顾客演示入口地址">第一版</a>。这版其实很简陋，但其给我的经验很重要。演示地址：<a href="http://2.aozhouwine.sinaapp.com/buy.html?openid=abcdefgabcdefgabcdefgabcdefg" title="顾客演示入口地址">点击入口</a>。</p>
+<p>抛弃bottle，选择django，后来证明我的选择是对的，虽然学习坡度比较大，但是其框架本身带来的效率和效益却是学习框架本身的好几倍。我喜欢它的自带后台管理，和后台权限管理，更喜欢它的ORM，省去很多sql的事情，比如sql语句编写，sql防注问题，sql迁移方便等等。这次用上了这三大功能，另外还巧用django的模板渲染实现微信回复功能，但这不是django特有。</p>
+<p>微信已经实现了多店功能。这也是当初我为什么坚定选择django，因为django的一project多app的架构刚好契合这个一平台多店铺的想法。后来我学scrapy框架，发现也是一project多app，方便不少。同时说明一project多app是先进的，是趋势之一。</p>
+<h2 id="_3">前台<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>我比较喜欢后端的开发，前端的我就修改已有好的前端代码，参考了微信公众号“果然美”，“微果大爱”，“华农果满堂”，“微盟”，“乐外卖”等前端设计。技术上使用html5+css3。</p>
+<p>现在平台上有果色天香和澳洲红酒两个店铺</p>
+<p><img alt="平台上有果色天香和澳洲红酒两个店铺1.png" height="50%" src="https://blog.pythonwood.com/static/img/平台上有果色天香和澳洲红酒两个店铺1.png" title="1" width="30%">
+<img alt="平台上有果色天香和澳洲红酒两个店铺2.jpg" height="50%" src="https://blog.pythonwood.com/static/img/平台上有果色天香和澳洲红酒两个店铺2.jpg" title="2" width="30%">
+<img alt="平台上有果色天香和澳洲红酒两个店铺3.jpg" height="50%" src="https://blog.pythonwood.com/static/img/平台上有果色天香和澳洲红酒两个店铺3.jpg" title="3" width="30%"></p>
+<h2 id="_4">代码统计<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>使用linux&nbsp;shell统计 </p>
+<p>合理版 cat $(find . -name &ldquo;<em>.py&rdquo; -or -name &ldquo;</em>.yaml&rdquo; -or -name &ldquo;*.rst&rdquo; -or -name &ldquo;sell_detail.html&rdquo;) | wc | sed &ldquo;1i static:\nlines | words |&nbsp;bytes&rdquo;   </p>
+<p><img alt="tu" src="https://blog.pythonwood.com/static/img/代码统计1.png" title="1"></p>
+<p>纯净版 cat $(find . -path &ldquo;./guosetianxiang&rdquo; -prune -or -name &ldquo;<em>.py&rdquo; -or -name &ldquo;</em>.yaml&rdquo; -or -name &ldquo;*.rst&rdquo; -or -name &ldquo;sell_detail.html&rdquo;) | wc | sed &ldquo;1i static:\nlines | words |&nbsp;bytes&rdquo;  </p>
+<p><img alt="tu" src="https://blog.pythonwood.com/static/img/代码统计2.png" title="2"></p>
+<p>完全版 cat $(find . -name &ldquo;<em>.py&rdquo; -or -name &ldquo;</em>.yaml&rdquo; -or -name &ldquo;<em>.rst&rdquo; -or -name &ldquo;</em>.html&rdquo;) | wc | sed &ldquo;1i static:\nlines | words |&nbsp;bytes&rdquo; </p>
+<p><img alt="tu" src="https://blog.pythonwood.com/static/img/代码统计3.png" title="3"></p>
+<h2 id="_5">前端展示：感谢前人成果！<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/前端展示1.png" title="1" width="40%">
+<img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/前端展示2.png" title="2" width="40%"></p>
+<h2 id="_6">=============================后台是亮点=============================<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>后台首页</p>
+<p><img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/后台首页.png" title="1" width="90%"></p>
+<p>微信回复规则，使用模板渲染自定义变量！</p>
+<p><img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/微信回复规则，使用模板渲染自定义变量.png" title="1" width="90%"></p>
+<p>功能代码：</p>
+<p><img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/功能代码.png" title="1" width="90%"></p>
+<p>微信用户</p>
+<p><img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/微信用户.png" title="1" width="90%"></p>
+<p>订单截图</p>
+<p><img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/订单截图.png" title="1" width="90%"></p>
+<h2 id="django">看到这里，你是否也认为django是个好框架呢？<a class="headerlink" href="#django" title="Permanent link">&para;</a></h2>
+<p>在新浪云上运行得还好，不算慢，请那些嫌弃django臃肿庞大，速度慢的人，不要再误导他人，这就好像那些说python慢的人一样，我至今没有实践证明出过慢在哪。</p>
+<p>django是python作者本身都很喜欢的框架，又是那么多商用网站的框架，经得其考验。</p>
+<p>如果可以，当然希望你可以作出一个比django更好的框架，可是至少现在还不大可能。python的django和ruby的rails都得经过时间的考验。我相信 django&nbsp;是经得住考验的，正如我相信python一样。</p>
+<h2 id="_7">附上 增加微店步骤（澳洲红酒为例）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>复制guosetianxiang 改名&nbsp;aozhouwine</p>
+<p>修改setting.py 安装app&nbsp;&lsquo;aozhouwine&rsquo;</p>
+<p>访问/syncdb-online完成数据库同步</p>
+<p>根app的url.py&nbsp;加入两行:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aozhouwine</span>
+
+<span class="o">...</span>
+
+<span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^aozhouwine/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;aozhouwine.urls&#39;</span><span class="p">)),</span>
+</pre></div>
+
+
+<p>admin管理，weixinshop应用商店表中增加一条，并增加账户给商店所有者A，然后授权。</p>
+<p>A在自己的应用商店信息表中增加一条记录，(token在此设置)。</p>
+<p>微信开发者url: /aozhouwine/weixin/&nbsp;token为之前设置的。</p>
+<p>访问/aozhouwine/sync_shopinfo完成商店同步。</p>
+<p>A增加消息，回复规则表中的记录。</p>
+<p>A上架商品。</p>
+<p>依然涉及少量代码操作，以及有一点繁琐。</p>
+  </div>
+
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2014/06/微信开发python+django两个月的成功经历，django是个好框架！/";
+        var disqus_title = "微信开发python+django两个月的成功经历，django是个好框架！";
+        var disqus_url = "https://blog.pythonwood.com/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-06-28T20:12:00+08:00"><i class="fa fa-calendar"></i> 2014年06月28日, 20:12</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="3 articles in this category">技术</a>
+            <a href="/tag/django/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">django</a>
+            <a href="/tag/gong-zhong-hao/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">公众号</a>
+            <a href="/tag/kai-fa/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">开发</a>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">python</a>
+            <a href="/tag/wei-xin/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">微信</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/微信开发python+django两个月的成功经历，django是个好框架！.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/" title="腾讯2014实习面经——记一个非计算机学生的首次面试"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next  disabled ">
+            <a  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2014 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> Category: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> Category: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>
