@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-19T23:58:00+08:00</updated><entry><title>微信开发python+django两个月的成功经历，django是个好框架！</title><link href="https://blog.pythonwood.com/2014/06/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91python+django%E4%B8%A4%E4%B8%AA%E6%9C%88%E7%9A%84%E6%88%90%E5%8A%9F%E7%BB%8F%E5%8E%86%EF%BC%8Cdjango%E6%98%AF%E4%B8%AA%E5%A5%BD%E6%A1%86%E6%9E%B6%EF%BC%81/" rel="alternate"></link><published>2014-06-28T20:12:00+08:00</published><updated>2014-06-28T20:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-06-28:/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/</id><summary type="html">&lt;h2 id="_1"&gt;时间：大三&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-27T22:12:00+08:00</updated><entry><title>ssh命令：隧道代理+本地端口转发+远程端口转发</title><link href="https://blog.pythonwood.com/2016/02/ssh%E5%91%BD%E4%BB%A4%EF%BC%9A%E9%9A%A7%E9%81%93%E4%BB%A3%E7%90%86+%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91+%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="alternate"></link><published>2016-02-15T11:29:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>Pythonwood</name></author><id>tag:blog.pythonwood.com,2016-02-15:/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/</id><summary type="html">&lt;h2 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
+&lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
+&lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP&lt;/span&gt; 端口的网络数据通过 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;链接来转发，并且自动提供了相应的加密及解密服务。&lt;/p&gt;
+&lt;h2 id="1"&gt;1、隧道带理&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;典型应用：翻越高墙&lt;/p&gt;
+&lt;p&gt;需要条件：一个国外vps，一个不需要登录（安全）的帐号，一个命令。&lt;/p&gt;
+&lt;p&gt;vps新建帐号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd -g nobody -s /sbin/nologin  gfw &amp;amp;&amp;amp; echo gfw_Passw0rd | passwd --stdin gfw
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;本地ssh连接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfD …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
+&lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
+&lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP&lt;/span&gt; 端口的网络数据通过 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;链接来转发，并且自动提供了相应的加密及解密服务。&lt;/p&gt;
+&lt;h2 id="1"&gt;1、隧道带理&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;典型应用：翻越高墙&lt;/p&gt;
+&lt;p&gt;需要条件：一个国外vps，一个不需要登录（安全）的帐号，一个命令。&lt;/p&gt;
+&lt;p&gt;vps新建帐号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd -g nobody -s /sbin/nologin  gfw &amp;amp;&amp;amp; echo gfw_Passw0rd | passwd --stdin gfw
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;本地ssh连接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfD 6666 gfw@vps -p 2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可选转换：使用privoxy把socks5代理变成http代理供svn，pip，gem，curl等工具使用。&lt;/p&gt;
+&lt;h2 id="2"&gt;2、本地端口转发&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="tu2" src="https://blog.pythonwood.com/uploads/2016/本地端口转发.jpg" title="2"&gt;&lt;/p&gt;
+&lt;p&gt;我们可以将远程机器（LdapClientHost）上的应用直接配置到本机的 7001 端口上（而不是 &lt;span class="caps"&gt;LDAP&lt;/span&gt; 服务器的 389 端口上）。在 LdapClientHost 上执行如下命令即可建立一个 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;的本地端口转发，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -L 7001:localhost:389 LdapServerHost
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;之后的数据流将会是下面这个样子：&lt;/p&gt;
+&lt;p&gt;我们在 LdapClientHost 上的应用将数据发送到本机的 7001 端口上，
+而本机的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client 会将 7001 端口收到的数据加密并转发到 LdapServertHost 的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 上。
+&lt;span class="caps"&gt;SSH&lt;/span&gt; Server 会解密收到的数据并将之转发到监听的 &lt;span class="caps"&gt;LDAP&lt;/span&gt; 389 端口上，
+最后再将从 &lt;span class="caps"&gt;LDAP&lt;/span&gt;&amp;nbsp;返回的数据原路返回以完成整个流程。&lt;/p&gt;
+&lt;h2 id="3"&gt;3、远程端口转发&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="tu3" src="https://blog.pythonwood.com/uploads/2016/远程端口转发.jpg" title="3"&gt;&lt;/p&gt;
+&lt;p&gt;我们在 LdapClientHost 上的应用将数据发送到本机的 7001 端口上，而本机的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 会将 7001 端口收到的数据加密并转发到 LdapServertHost 的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client&amp;nbsp;上。&lt;/p&gt;
+&lt;p&gt;在 &lt;span class="caps"&gt;LDAP&lt;/span&gt;&amp;nbsp;服务器（LdapServertHost）端执行如下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -R 7001:localhost:389 LdapClientHost
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="_1"&gt;区别：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span class="caps"&gt;SSH&lt;/span&gt; 端口转发自然需要 &lt;span class="caps"&gt;SSH&lt;/span&gt; 连接，而 &lt;span class="caps"&gt;SSH&lt;/span&gt; 连接是有方向的，从 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client 到 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 。而我们的应用也是有方向的，比如需要连接 &lt;span class="caps"&gt;LDAP&lt;/span&gt; Server 时，&lt;span class="caps"&gt;LDAP&lt;/span&gt; Server 自然就是 Server 端，我们应用连接的方向也是从应用的 Client 端连接到应用的 Server&amp;nbsp;端。如果这两个连接的方向一致，那我们就说它是本地转发。而如果两个方向不一致，我们就说它是远程转发。&lt;/p&gt;
+&lt;h2 id="4autosshsupervisior"&gt;4、使用autossh防网络抖动+supervisior进程守护。&lt;a class="headerlink" href="#4autosshsupervisior" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;autossh解决的问题：远程端口转发一旦端口，很难再次建立。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;autossh -M 1932 -NR  1922:localhost:1122 user@vps -p 1122
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ps可以看到实质是这样的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -L 1932:127.0.0.1:1932 -R 1932:127.0.0.1:1933 -NR 1922:localhost:1122 -p 1122 user@vps
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分析：使用回路，将本地1933端口，（远程转发）映射到远端1932，（本地转发）到本机的1932。形成回路。&lt;/p&gt;
+&lt;p&gt;supervisior解决的问题：autossh的进程守护&lt;/p&gt;
+&lt;p&gt;因此，使用supervisior守护autossh，autossh守护ssh。达到自动启动和守护端口转发的目的。&lt;/p&gt;
+&lt;h2 id="5"&gt;5、综合使用&lt;a class="headerlink" href="#5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;案例一、如何2222端口被封，如果绕过封死2222端口的防火墙直接ssh到内网机器。（就是说限某几个端口是有局限的）&lt;/p&gt;
+&lt;p&gt;1、登录最重要的机器把2222端口映射到12222端口：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -gfNL 12222:0.0.0.0:2222 localhost -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、使用该机器做隧道代理访问其他内网机器：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfD 10000 user@host -p12222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、ssh绕道访问其他内网机器：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -o &amp;quot;ProxyCommand=nc -x localhost:10000 %h %p&amp;quot; user@host -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;巧妙结合的ssh和nc，都是linux自带工具，没有依赖。&lt;/p&gt;
+&lt;p&gt;案例二、借助远程vps让两台不能直接相通的机器相互能访问。&lt;/p&gt;
+&lt;p&gt;有主机vps和主机A、B。A、B无法直连，通过“中介”搭桥相连。（两台机器都能主动ssh到vps就能完成。）&lt;/p&gt;
+&lt;p&gt;A要ssh到B（B要ssh到A是同理）：&lt;/p&gt;
+&lt;p&gt;1、主机B用ssh远程转发自己的2222端口到vps的127.0.0.1:12222&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfR 12222:127.0.0.1:2222 user@vps -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、主机A用ssh本地转发vps的127.0.0.1:12222到本地的127.0.0.1:12222&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfL 12222:127.0.0.1:12222 user@vps -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、主机A登录主机B&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh user@localhost -p12222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;实战 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;端口转发&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/"&gt;https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用supervisor托管shadowsocks&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.phpgao.com/supervisor_shadowsocks.html"&gt;https://blog.phpgao.com/supervisor_shadowsocks.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;SSH反向连接及Autossh&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html"&gt;http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html&lt;/a&gt;&lt;/p&gt;</content><category term="ssh"></category><category term="代理"></category><category term="加密隧道"></category><category term="转发"></category><category term="privoxy"></category><category term="autossh"></category><category term="远程访问"></category></entry><entry><title>微信开发python+django两个月的成功经历，django是个好框架！</title><link href="https://blog.pythonwood.com/2014/06/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91python+django%E4%B8%A4%E4%B8%AA%E6%9C%88%E7%9A%84%E6%88%90%E5%8A%9F%E7%BB%8F%E5%8E%86%EF%BC%8Cdjango%E6%98%AF%E4%B8%AA%E5%A5%BD%E6%A1%86%E6%9E%B6%EF%BC%81/" rel="alternate"></link><published>2014-06-28T20:12:00+08:00</published><updated>2014-06-28T20:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-06-28:/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/</id><summary type="html">&lt;h2 id="_1"&gt;时间：大三&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。&lt;/p&gt;
 &lt;p&gt;下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。&lt;/p&gt;
 &lt;p&gt;选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。&lt;/p&gt;
@@ -206,38 +315,402 @@
 &lt;p&gt;程序员面试、算法研究、编程艺术、红黑树、数据挖掘5大系列集锦     &lt;a href="http://blog.csdn.net/v_july_v/article/details/6543438"&gt;http://blog.csdn.net/v_july_v/article/details/6543438&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2014年计算机求职总结&amp;ndash;准备篇    &lt;a href="http://blog.csdn.net/luckyxiaoqiang/article/details/13000431"&gt;http://blog.csdn.net/luckyxiaoqiang/article/details/13000431&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;《程序员编程艺术 — 面试和算法心得》    &lt;a href="https://github.com/julycoding/The-Art-Of-Programming-By-July"&gt;https://github.com/julycoding/The-Art-Of-Programming-By-July&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;《剑指Offer——名企面试官精讲典型编程题》博客    &lt;a href="http://zhedahht.blog.163.com/"&gt;http://zhedahht.blog.163.com/&lt;/a&gt;&lt;/p&gt;</content><category term="面试"></category><category term="腾讯"></category><category term="实习"></category></entry><entry><title>笔迹之始</title><link href="https://blog.pythonwood.com/2013/07/%E7%AC%94%E8%BF%B9%E4%B9%8B%E5%A7%8B/" rel="alternate"></link><published>2013-07-06T18:27:00+08:00</published><updated>2017-11-19T23:58:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2013-07-06:/2013/07/笔迹之始/</id><summary type="html">&lt;h3 id="_1"&gt;笔迹之始&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我大学开始时是个商科，或者说文科的学生。非计算机系的，仅会计算机。&lt;/p&gt;
-&lt;p&gt;后自学多门计算机语言，越觉编程之高明，神奇。&lt;/p&gt;
-&lt;p&gt;如今的世界，是技术革命的世界，如今的中国，是互联网带头的民主，如今的社会，是正在电子虚拟化的社会，正如《黑客帝国》。&lt;/p&gt;
-&lt;p&gt;我亲历大学，觉大学学术之流甚少，同学进取之心微微。&lt;/p&gt;
-&lt;p&gt;然而，举头望明月，我爸非李刚。甚惑，曾迷，思而不得。&lt;/p&gt;
-&lt;p&gt;何以自强？我常常自问。&lt;/p&gt;
-&lt;p&gt;技术。顿觉当时“师夷长技”之风高啊！&lt;/p&gt;
-&lt;p&gt;理性的头脑，只能接受逻辑思维的单神经细胞，这正好叫因地制宜。&lt;/p&gt;
-&lt;p&gt;于是，大学一学期之后，从2012年初始，奋身地转向技术领域，至今1年7个月了。&lt;/p&gt;
-&lt;p&gt;选择这里开博是因为搜索到的好文章，算这里最多。CSDN杂而不精，百度空间，开源中国，网易，新浪，平平无奇。&lt;/p&gt;
-&lt;p&gt;博客究竟为什么？为了有共同爱好的你，朋友 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;笔迹之始&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我大学开始时是个商科，或者说文科的学生。非计算机系的，仅会计算机。&lt;/p&gt;
-&lt;p&gt;后自学多门计算机语言，越觉编程之高明，神奇。&lt;/p&gt;
-&lt;p&gt;如今的世界，是技术革命的世界，如今的中国，是互联网带头的民主，如今的社会，是正在电子虚拟化的社会，正如《黑客帝国》。&lt;/p&gt;
-&lt;p&gt;我亲历大学，觉大学学术之流甚少，同学进取之心微微。&lt;/p&gt;
-&lt;p&gt;然而，举头望明月，我爸非李刚。甚惑，曾迷，思而不得。&lt;/p&gt;
-&lt;p&gt;何以自强？我常常自问。&lt;/p&gt;
-&lt;p&gt;技术。顿觉当时“师夷长技”之风高啊！&lt;/p&gt;
-&lt;p&gt;理性的头脑，只能接受逻辑思维的单神经细胞，这正好叫因地制宜。&lt;/p&gt;
-&lt;p&gt;于是，大学一学期之后，从2012年初始，奋身地转向技术领域，至今1年7个月了。&lt;/p&gt;
-&lt;p&gt;选择这里开博是因为搜索到的好文章，算这里最多。CSDN杂而不精，百度空间，开源中国，网易，新浪，平平无奇。&lt;/p&gt;
-&lt;p&gt;博客究竟为什么？为了有共同爱好的你，朋友，兄弟也好。&lt;/p&gt;
-&lt;p&gt;总之专注于技术的每一人都是我写博客时脑海中的读者。&lt;/p&gt;
-&lt;h3 id="_2"&gt;自学所获：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;1、熟悉C/C++,Linux桌面。java,汇编一般。&lt;/p&gt;
-&lt;p&gt;2、精通Visual Studio&amp;nbsp;C++，犹以VC6突出。&lt;/p&gt;
-&lt;p&gt;3、对操作系统的实现一知半解，曾用NASM+C模仿编写系统，后中断。&lt;/p&gt;
-&lt;p&gt;4、会使用G++，&lt;span class="caps"&gt;GCC&lt;/span&gt;，make，vim，等Linux下的工具编程。&lt;/p&gt;
-&lt;p&gt;5、略懂HTML、&lt;span class="caps"&gt;CSS&lt;/span&gt;、&lt;span class="caps"&gt;JAVASCRIPT&lt;/span&gt;、JSP等网页相关。&lt;/p&gt;
-&lt;h3 id="_3"&gt;未来方向：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;1、移动平台&lt;/p&gt;
-&lt;p&gt;2、Linux&lt;/p&gt;
-&lt;p&gt;3、C++&lt;/p&gt;
-&lt;p&gt;2013-07-06 18:22:37 暨南大学&amp;nbsp;后天开始期末考了。&lt;/p&gt;</content><category term="博客"></category><category term="随想"></category></entry></feed>
+&lt;p&gt;《剑指Offer——名企面试官精讲典型编程题》博客    &lt;a href="http://zhedahht.blog.163.com/"&gt;http://zhedahht.blog.163.com/&lt;/a&gt;&lt;/p&gt;</content><category term="面试"></category><category term="腾讯"></category><category term="实习"></category></entry><entry><title>IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解</title><link href="https://blog.pythonwood.com/2014/04/IPython%EF%BC%8C%E8%AE%A9Python%E6%98%BE%E5%BE%97%E5%8F%8B%E5%A5%BD%E5%8D%81%E5%80%8D%E7%9A%84%E5%A4%96%E5%A5%97%E2%80%94%E2%80%94windowsXP%E3%80%81Win7%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" rel="alternate"></link><published>2014-04-03T15:46:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>Pythonwood</name></author><id>tag:blog.pythonwood.com,2014-04-03:/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/</id><summary type="html">&lt;h2 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。&lt;/p&gt;
+&lt;p&gt;整理了《Python 二三事》：&lt;a href="http://pre-sence.com/archives/python-intro"&gt;http://pre-sence.com/archives/python-intro&lt;/a&gt;   《Python 四五事》：&lt;a href="http://pre-sence.com/archives/python-misc"&gt;http://pre-sence.com/archives/python-misc&lt;/a&gt;&amp;nbsp;并加入安装IPython部分。&lt;/p&gt;
+&lt;p&gt;写这篇随笔的原因是：忽然醒悟之前我安装IPython折腾许久不成功可能是我未能想起pip或easy_install这两个python的上帝工具。参考：Python包管理工具pip与easy_install&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;个人经验总结：IPython，是学习python的利器，是让Python显得友好十倍的外套，是我唯一的强烈推荐。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="ipython"&gt;安装IPython&lt;a class="headerlink" href="#ipython" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;任何Linux发行版对编程者都十分友好：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ubuntu为例:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ipython
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;windows环境:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、下载[ez_setup.py][ez_setup.py] ，右击左边链接，另存为，使用&lt;code&gt;python …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。&lt;/p&gt;
+&lt;p&gt;整理了《Python 二三事》：&lt;a href="http://pre-sence.com/archives/python-intro"&gt;http://pre-sence.com/archives/python-intro&lt;/a&gt;   《Python 四五事》：&lt;a href="http://pre-sence.com/archives/python-misc"&gt;http://pre-sence.com/archives/python-misc&lt;/a&gt;&amp;nbsp;并加入安装IPython部分。&lt;/p&gt;
+&lt;p&gt;写这篇随笔的原因是：忽然醒悟之前我安装IPython折腾许久不成功可能是我未能想起pip或easy_install这两个python的上帝工具。参考：Python包管理工具pip与easy_install&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;个人经验总结：IPython，是学习python的利器，是让Python显得友好十倍的外套，是我唯一的强烈推荐。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="ipython"&gt;安装IPython&lt;a class="headerlink" href="#ipython" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;任何Linux发行版对编程者都十分友好：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ubuntu为例:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ipython
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;windows环境:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、下载[ez_setup.py][ez_setup.py] ，右击左边链接，另存为，使用&lt;code&gt;python ez_setup.py&lt;/code&gt;运行，或直接双击。&lt;/p&gt;
+&lt;p&gt;2、步骤1成功后，cmd下输入命令&lt;code&gt;easy_install -h&lt;/code&gt;可以测试，正常反应说明已经可以使用easy_install了。&lt;/p&gt;
+&lt;p&gt;3、cmd下输入&lt;code&gt;easy_install pip&lt;/code&gt;安装pip，这是因为pip正是easy_install的下一代，比easy_install好用。&lt;/p&gt;
+&lt;p&gt;4、步骤3成功后，&lt;code&gt;pip install ipython&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;5、如果步骤4不行，退一步，使用&lt;code&gt;easy_install ipython&lt;/code&gt;安装。&lt;/p&gt;
+&lt;h2 id="ipython_1"&gt;运行IPython&lt;a class="headerlink" href="#ipython_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;cmd提示符下，输入ipython运行就可以使用除了原python外，IPython多出来的贴心的“I”了。&lt;/p&gt;
+&lt;h2 id="ipython_2"&gt;退出IPython&lt;a class="headerlink" href="#ipython_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;与python一样也是输入&lt;code&gt;exit&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="python"&gt;Python实用技巧：&lt;a class="headerlink" href="#python" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1、关于 &amp;ldquo;_&amp;rdquo;&amp;nbsp;字符使用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 Python shell 下 _&amp;nbsp;总是被赋予之前最后一个表达式的值（注：@pythonwood）。这里看个例子应该就能清楚：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;letters&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
+
+&lt;span class="n"&gt;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;
+
+&lt;span class="mi"&gt;2014&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+
+&lt;span class="mi"&gt;2014&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;举个实际的例子，比如你在调试时读文件的时候直接进行 f.read() ，你看了看发现输出结果很有意思，想要对它进行进一步处理，但发现读的时候忘记赋值了。以往你只能叹叹气重新开文件再读一次，现在你只要执行 result = _，把 _&amp;nbsp;附到另外一个变量就可以了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2、python&amp;nbsp;-m&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;相信很多人应该用过这个东西，Python 很多标准库都提供这样的调用方式来实现一些简单的命令行功能。Python 3 现在自带 pip。比如我们想使用 Python 3 的 pip&amp;nbsp;来安装别的库，我们可以这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;py -3 -m pip install bottle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;跟你预料的一样，这样就可以了。当然你可以用个 .bat 文件来把这些包裹起来并放在 Path 上，一个简单的例子，把下面的内容写到一个叫 pip3.bat&amp;nbsp;的文件里:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@echo off
+py -3 -m pip %*
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;并放到 Path 上，就可以方便调用了。其中 %*&amp;nbsp;负责传递所有的命令行参数。&lt;/p&gt;
+&lt;p&gt;实际上 python -m&amp;nbsp;可以用的东西还真的挺多，这里给出一个不完全的列表：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;######################################################
+# 最强功能
+######################################################
+# 局域网共享，宿舍中任意一台笔记本都可以瞬间变身web资源共享服务器
+# 命令ipconfig可以看到局域网ip地址，一般是192，172这些开头的。
+# 使用本机80端口，可任意设置。只共享当前运行目录。
+# 
+python -m SimpleHTTPServer 80 
+# 
+# 本机任意浏览器输入 http://localhost 或 http://127.0.0.1 可以访问。
+# (80端口浏览器默认的，不需输入)甚至在地址栏直接输入localhost即可。
+# 局域网，（宿舍）任意电脑输入上面所说192或172等开头的IP地址即可访问。
+######################################################
+
+
+# 缩进输出 JSON
+echo {&amp;quot;hey&amp;quot; : &amp;quot;kid&amp;quot;} | python -m json.tool
+# 简单的执行时间测量
+python -m timeit [ix*ix for ix in range(100)]
+# 简单的 Profiling
+python -m cProfile myscript.py
+# 比较两个文件夹的区别
+python -m filecmp path/to/a path/to/b
+# base64 转换
+echo foo bar | python -m base64
+# 调用默认浏览器打开一个新标签页
+python -m webbrowser -t http://google.com
+# 生成程序文档
+python -m pydoc myscript.py
+# 类似 nose 的自动搜索 unittest
+python -m unittest discover
+# 调用 pdb 执行代码
+python -m pdb myscript.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="ipython_3"&gt;IPython实用技巧：&lt;a class="headerlink" href="#ipython_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1、Tab自动补全，一种是简单的关键字补全，另外一种是对象的方法和属性补全。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;作为例子，我们先引入 sys 模块，之后再输入 sys. (注意有个点)，此时按下 tab 键，IPython 会列出所有 sys&amp;nbsp;模块下的方法和属性。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Tab自动补全，一种是简单的关键字补全.png" src="https://blog.pythonwood.com/uploads/2014/Tab自动补全，一种是简单的关键字补全.png" title="Tab自动补全，一种是简单的关键字补全.png"&gt;&lt;/p&gt;
+&lt;p&gt;接着上面的例子，我们输入 sys?，这样会显示出 sys 模块的&amp;nbsp;docstring及相关信息。很多时候这个也是很方便的功能。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sys模块的docstring及相关信息.jpg" src="https://blog.pythonwood.com/uploads/2014/sys模块的docstring及相关信息.jpg" title="sys模块的docstring及相关信息.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2、IPython 还有强大之处很大部分还体现在它的 magic function 中。它是指的在 IPython 环境下执行以 % 开头的一些命令来对 IPython 进行一些设定或者执行某些功能。在 IPython 中输入 %lsmagic 就能列出所有的 magic&amp;nbsp;functions。在这里简单介绍下几个比较有意思的，你也可以自己通过查看文档来找找有哪些你特别用的到得。&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;之前看到能用&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="err"&gt;来查询函数的文档，对于&lt;/span&gt; &lt;span class="n"&gt;magic&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="err"&gt;也是如此。比如&lt;/span&gt; &lt;span class="nf"&gt;%run&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+
+&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="err"&gt;在命令前面加上&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="err"&gt;则它会被作为命令行命令执行，这样你就不用退出&lt;/span&gt; &lt;span class="n"&gt;IPython&lt;/span&gt; &lt;span class="err"&gt;来进行命令行操作。&lt;/span&gt;
+
+&lt;span class="nf"&gt;%run&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="err"&gt;在当前环境下直接执行&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="err"&gt;，效果跟命令行下调用&lt;/span&gt; &lt;span class="n"&gt;ipython&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="err"&gt;相同。&lt;/span&gt;
+
+&lt;span class="nf"&gt;%time&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="err"&gt;跟&lt;/span&gt; &lt;span class="n"&gt;timeit&lt;/span&gt; &lt;span class="n"&gt;decorator&lt;/span&gt; &lt;span class="err"&gt;作用相同，进行简单的&lt;/span&gt; &lt;span class="n"&gt;profile&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+
+&lt;span class="nf"&gt;%hist&lt;/span&gt; &lt;span class="err"&gt;能显示之前输入过的命令的历史，同时你可以用&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;linenumber&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;来访问之前的命令。比如&lt;/span&gt; &lt;span class="nf"&gt;%exec&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;就能执行列表中第十行。&lt;/span&gt;
+
+&lt;span class="nf"&gt;%rep&lt;/span&gt; &lt;span class="err"&gt;类似上面的&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="err"&gt;变量，但是是以字串的形式返回&lt;/span&gt;
+
+&lt;span class="err"&gt;最后，如果&lt;/span&gt; &lt;span class="nf"&gt;%automagic&lt;/span&gt; &lt;span class="err"&gt;是打开的状态的话，所有&lt;/span&gt; &lt;span class="n"&gt;magic&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="err"&gt;不需要在前面加&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="err"&gt;就能正确调用。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在当前 IPython 版本中还有一个由于安全原因没有默认引入的 %autoreload，它的作用是在可以自动重新载入你调用的函数，以及其相关模块。接触过 &lt;a href="http://www.djangoproject.com/" title="django"&gt;django&lt;/a&gt; 的同学对这个应该比较熟悉，在 IPython 中的效果就是，当你在调试一个一直在反复改动的函数时，你可以开启这个功能保证每次调用都会重新读取最新的版本，让你在源码中的改动马上生效。在 IPython&amp;nbsp;中执行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ipy_autoreload&lt;/span&gt;
+&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="n"&gt;autoreload&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样 IPython 会对所有的模块都进行 autoreload。你可以通过执行 %autoreload? 来查询它的文档来进行进一步设定。如果你希望 IPython 每次启动自动载入次功能，那么可以通过配置 ipythonrc (在 Windows 下可以在 C:\Users\&lt;username&gt;_ipython\ipythonrc.ini 找到)&amp;nbsp;来进行相关设置。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3、还有一个很神奇的功能。如果你的程序是由命令行开始执行的，即在命令行下输入 python foo.py（大部分 Python 程序都是），那么你还可以利用 IPython&amp;nbsp;在你的程序任意地方进行断点调试！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在你程序中任意地方，加入如下语句：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.Shell&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IPShellEmbed&lt;/span&gt;
+&lt;span class="n"&gt;IPShellEmbed&lt;/span&gt;&lt;span class="p"&gt;([])()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：最近 IPython 发布了 &lt;a href="http://ipython.org/news.html#ipython-0-11" title="0.11"&gt;0.11&lt;/a&gt; 版本，各方面变化都非常大，&lt;span class="caps"&gt;API&lt;/span&gt; 也经过了重新设计。如果你使用的是 0.11&amp;nbsp;那么上面两行对应的是这样的:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;embed&lt;/span&gt;
+&lt;span class="n"&gt;embed&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;再和平常一样运行你的程序，你会发现在程序运行到插入语句的地方时，会转到 IPython 环境下。你可以试试运行些指令，就会发现此刻 IPython 的环境就是在程序的那个位置。你可以逐个浏览当前状态下的各个变量，调用各种函数，输出你感兴趣的值来帮助调试。之后你可以照常退出 IPython，然后程序会继续运行下去，自然地你在当时 IPython&amp;nbsp;下执行的语句也会对程序接下来的运行造成影响。&lt;/p&gt;
+&lt;p&gt;这个方法我实在&lt;a href="http://lukeplant.me.uk/blog/posts/exploratory-programming-with-ipython/" title="smart"&gt;这里&lt;/a&gt;看到的。想象一下，这样做就像让高速运转的程序暂停下来，你再对运行中的程序进行检查和修改，之后再让他继续运行下去。这里举一个例子，比如编写网页 bot ，你在每取回一个页面后你都得看看它的内容，再尝试如何处理他获得下一个页面的地址。运用这个技巧，你可以在取回页面后让程序中断，再那里实验各种处理方 法，在找到正确的处理方式后写回到你的代码中，再进行下一步。这种工作流程只有像 Python&amp;nbsp;这种动态语言才可以做到。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4、一个实际的例子&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里以一个简单的例子来讲解一下是怎样的一个情况。我们要写一个可以将简单的数据表达式，类似 1 + (2 - 3) * 456 解析成树的 Pratt Parser。首先我们需要一个 lexer 把每个 token&amp;nbsp;解析出来，那么最开始的代码就是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# simple math expression parser
+
+def lexer(s):
+    &amp;#39;&amp;#39;&amp;#39;token generator, yields a list of tokens&amp;#39;&amp;#39;&amp;#39;
+    yield s
+
+if __name__ == &amp;#39;__main__&amp;#39;:
+    for token in lexer(&amp;quot;1 + (2 - 3) * 456&amp;quot;):
+        print token
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;明显这个没有任何意义，但现在程序已经有足够的东西能够跑起来。我们把这个程序存为 expr.py，开启一个命令行窗口，运行 ipython&amp;nbsp;然后像这样执行它：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ipython
+IPython &lt;span class="m"&gt;0&lt;/span&gt;.13.1 -- An enhanced Interactive Python.
+?         -&amp;gt; Introduction and overview of IPython&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s features.
+...
+
+In &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: run expr.py
+&lt;span class="m"&gt;1&lt;/span&gt; + &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; - &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; * &lt;span class="m"&gt;456&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在 IPython 里面用 run 跑的好处有很多，首先是你在程序执行完毕后整个程序的状态，比如最后全局变量的值，你写的函数这些你都是可以随便执行的！同样的你可以在 IPython 里面保存一些用来测试的常量，每次用 run&amp;nbsp;跑的话新的程序会被重新载入，你可以这样方便的测试每个函数，有一个非常动态的环境来调试你的程序：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [2]: print token # 注意这里 token 就是 __main__ 里面的那个 token 的值
+1 + (2 - 3) * 456
+
+In [3]: print list(lexer(&amp;#39;1+2+3&amp;#39;)) # 可以运行你写的函数
+[&amp;#39;1+2+3&amp;#39;]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后按照之前的想法，我们尝试把这个 lexer 写出来。在这个过程中，IPython 可以用来查看函数的文档，测试如何调用某些函数，看看返回值是什么样子等等，还是跟上面的说的一样，我们有一个动态的环境可以真真正正的执行程序，你可以&amp;nbsp;在把代码写到你珍贵的主程序之前就有机会运行它，这样你可以更确认你的代码能正常工作：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [4]: s = &amp;quot;foo&amp;quot; # 忘记判断字符串是数字的函数的名字了，用一个字符串试试看
+
+In [5]: s.is      # 开头大概是 is，这里按下 tab 键 IPython 会帮我们补全
+s.isalnum  s.isalpha  s.isdigit  s.islower  s.isspace  s.istitle
+
+In [6]: s.isdigit?  # 结果是 isdigit，在表达式后加上问号并回车查看文档
+Type:       builtin_function_or_method
+String Form:&amp;lt;built-in method isdigit of str object at 0x1264f08&amp;gt;
+Docstring:
+S.isdigit() -&amp;gt; bool
+
+Return True if all characters in S are digits
+and there is at least one character in S, False otherwise.
+
+In [8]: s.isdigit()      # 调用试试看
+Out[8]: False
+
+In [9]: &amp;#39;f&amp;#39; in &amp;#39;foo&amp;#39;     # 试试字符串能不能用 in 来判断
+Out[9]: True
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;确认了各个步骤以后，我们把 lexer&amp;nbsp;的代码填起来。我们为了节省纵向的空间我们把很多东西写在一行里面：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;simple&lt;/span&gt; &lt;span class="nt"&gt;math&lt;/span&gt; &lt;span class="nt"&gt;expression&lt;/span&gt; &lt;span class="nt"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;broken&lt;/span&gt; &lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="nt"&gt;def&lt;/span&gt; &lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;token generator&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt; 
+    &lt;span class="nt"&gt;while&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nt"&gt;len&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt;
+        &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;isspace&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;
+        &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;+-*/()&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;
+        &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;isdigit&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt;
+            &lt;span class="nt"&gt;jx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt; 
+            &lt;span class="nt"&gt;while&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nt"&gt;len&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;jx&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;isdigit&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;
+            &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;jx&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt;
+        &lt;span class="nt"&gt;else&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="nt"&gt;raise&lt;/span&gt; &lt;span class="nt"&gt;Exception&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;invalid char at %d: &amp;#39;%s&amp;#39;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;ix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;print&lt;/span&gt; &lt;span class="nt"&gt;list&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1 + (2 - 3) * 456&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;看起来不错，我们还是在 IPython&amp;nbsp;里执行试试，结果发现程序抛出了一个异常:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;In&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;run&lt;/span&gt; &lt;span class="nt"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;py&lt;/span&gt;
+&lt;span class="nt"&gt;------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="nt"&gt;Exception&lt;/span&gt;                       &lt;span class="nt"&gt;Traceback&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;most&lt;/span&gt; &lt;span class="nt"&gt;recent&lt;/span&gt; &lt;span class="nt"&gt;call&lt;/span&gt; &lt;span class="nt"&gt;last&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nt"&gt;py&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;py&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt;
+     &lt;span class="nt"&gt;18&lt;/span&gt; 
+     &lt;span class="nt"&gt;19&lt;/span&gt; &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="nt"&gt;---&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;20&lt;/span&gt;     &lt;span class="nt"&gt;print&lt;/span&gt; &lt;span class="nt"&gt;list&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1 + (2 - 3) * 456&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+
+&lt;span class="nt"&gt;py&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;py&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+     &lt;span class="nt"&gt;13&lt;/span&gt;             &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;jx&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt;
+     &lt;span class="nt"&gt;14&lt;/span&gt;         &lt;span class="nt"&gt;else&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="nt"&gt;---&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;15&lt;/span&gt;             &lt;span class="nt"&gt;raise&lt;/span&gt; &lt;span class="nt"&gt;Exception&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;invalid character at ...))&lt;/span&gt;
+&lt;span class="s2"&gt;     16     yield &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;
+     &lt;span class="nt"&gt;17&lt;/span&gt;
+
+&lt;span class="nt"&gt;Exception&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;invalid&lt;/span&gt; &lt;span class="nt"&gt;character&lt;/span&gt; &lt;span class="nt"&gt;at&lt;/span&gt; &lt;span class="nt"&gt;3&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;嗯？好像程序里已经处理了空格的情况。怎么会这样？不知道你碰到异常的时候一般都怎么办。你可能会选择到处添加 print，用 &lt;span class="caps"&gt;IDE&lt;/span&gt; 断点调试。其实这种情况用 pdb 是很明智的选择，在 IPython&amp;nbsp;里我们可以非常轻松的使用它。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [13]: pdb   # 开启 pdb ，这样在异常的时候我们会自动的 break 到异常处
+Automatic pdb calling has been turned ON
+
+In [14]: run expr.py
+-----------------------------------------------------------------
+Exception: invalid character at 3: &amp;#39; &amp;#39;
+&amp;gt; py/expr.py(15)lexer()
+     14         else:
+---&amp;gt; 15             raise Exception(&amp;quot;invalid char at ...))
+     16     yield &amp;quot;&amp;quot;
+
+ipdb&amp;gt; print ix  # 这里我们可以执行任何 Python 的代码
+3
+ipdb&amp;gt; whatis ix # 也可以用 pdb 提供的命令，输入 help 可以查看所有命令
+&amp;lt;type &amp;#39;int&amp;#39;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通过方便的调试和仔细检查代码，我们发现是没有正确的使用 elif 造成了问题！（我知道这个过程不是太符合情理&amp;hellip;）。把代码里的后面的几个 if 都换成 elif&amp;nbsp;以后我们发现结果基本上是对的了。我们可以马上再跑几个类似的例子，确认不同的输入是否都有比较好的结果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [18]: run expr.py   # 这次差不多对了，我们可以试试几个别的例子
+[&amp;#39;1&amp;#39;, &amp;#39;+&amp;#39;, &amp;#39;(&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;-&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;)&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;456&amp;#39;, &amp;#39;&amp;#39;]
+
+In [19]: print list(lexer(&amp;quot;1*123*87-2*5&amp;quot;))
+[&amp;#39;1&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;123&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;87&amp;#39;, &amp;#39;-&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;5&amp;#39;, &amp;#39;&amp;#39;]
+
+# 跟在 shell 里面一样，你可以用上下来选取之前的记录，然后简单的修改再重新执行。
+# 记得每次 run 后你的函数都是最新版本，你可以很简单的用重复的数据来测试你的函数
+# IPython 甚至还实现了 Ctrl+R！自己试试看吧
+In [19]: print list(lexer(&amp;quot;1 + two&amp;quot;))     
+Exception: invalid character at 2: &amp;#39;t&amp;#39;...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在一段痛苦的调试之后，我们最终把程序写&lt;a href="https://gist.github.com/jagt/8493922" title="out"&gt;出来&lt;/a&gt;了。很遗憾程序超出了我预计的长度，就不贴在这里了。后面部分的开发过程跟前面基本还是一样，总结起来就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;保持你的程序是一个可以运行并且有意义的状态，尽可能频繁的运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 IPython&amp;nbsp;里查看文档，尝试小的程序片段，测试些你不确定的做法，确定之后再把东西添加到你的代码里。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用不同的参数在 IPython&amp;nbsp;里测试你正在编写的函数/class。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当遇到问题的时候，先简单的用 pdb 在异常处&amp;nbsp;break，十有八九都能有些头绪。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_2"&gt;额外的注意事项&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这里举的例子是你所有的开发都是在单个 .py 文件里的。现实生活中你很有可能会横跨几个文件一起修改。请务必注意，在 IPython 里你每次 run 的时候只有被 run 的那个文件里的东西会是最后修改的版本，其 import&amp;nbsp;的东西如果在期间被修改是不会反应出来的。&lt;/p&gt;
+&lt;p&gt;这个的原理就跟你在 Python shell 里在修改前修改后重复 import 某个模块不会有作用是一样的，Python 神奇的 import 机制不会去追踪其他模块的修改。你可以手动用 reload 函数来重新载入，你也可以使用 IPython 的 &lt;a href="http://ipython.org/ipython-doc/dev/config/extensions/autoreload.html" title="autoreload"&gt;autoreload&lt;/a&gt; 功能来让你忽略这个问题。个人来说我没怎么用过这个功能，IPython&amp;nbsp;没有默认开启它可能也是有些顾虑，请自己评估看看。&lt;/p&gt;
+&lt;p&gt;另外你应该已经注意到，run 的效果基本上就是把你的代码拷贝进 IPython 里执行一遍。对于没有 &lt;strong&gt;main&lt;/strong&gt; 的文件，你也可以 run，这样里面定义的函数和 class&amp;nbsp;就会反映出你的更改。&lt;/p&gt;</content><category term="ipython"></category><category term="python"></category><category term="安装"></category><category term="教程"></category><category term="win7"></category></entry><entry><title>我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）</title><link href="https://blog.pythonwood.com/2013/12/%E6%88%91%E7%94%A8Emacs%EF%BC%8C%E5%90%8E%E6%9D%A5%E8%BD%AC%E5%90%91Vim%E2%80%94%E2%80%94Vim%E5%AD%A6%E4%B9%A0%E4%B9%8BVim%E9%94%AE%E7%9B%98%E5%9B%BE%EF%BC%88%E7%BB%9D%E5%AF%B9%E5%80%BC%E5%BE%97%E7%8F%8D%E8%97%8F%EF%BC%89/" rel="alternate"></link><published>2013-12-13T23:39:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>Pythonwood</name></author><id>tag:blog.pythonwood.com,2013-12-13:/2013/12/我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Emacs本来就比较臃肿，麻烦。当我发现Vim键盘图时，我就渐渐转向Vim，追随Unix/Linux哲学去了。。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vim键盘图.jpg" src="https://blog.pythonwood.com/uploads/2013/Vim键盘图.jpg" title="本地端口转发.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vim命令图解.jpg" src="https://blog.pythonwood.com/uploads/2013/vim命令图解.jpg" title="本地端口转发.jpg"&gt; &lt;/p&gt;
+&lt;p&gt;我用了Emacs三个月，因为它的学习曲线没Vim陡，这点吸引了，我使用Linux才7、8个月，不明白Vim的简即是美，反而觉得是拒人千里(这点真和人一样)。&lt;/p&gt;
+&lt;p&gt;于是反思自己，后来转向Vim，今天把Emacs卸载了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是慢慢觉得Emacs有以下缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;命令至少双键同按，结果就是必须双手同时使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;真的对末尾指不友好，不是Ctrl就是Alt，有人趣说恨不得配个脚踏板。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;体积大，占资源多，反应相对慢。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;相反，渐渐发现Vim的优点很多：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;简即是美，单键命令，夸张说可以腾出一只手来。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;99.9%的把握，是Linux就有Vim。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对Linux其它命令sed,tr等有天生的相关性，这就好比微软产品之间的连通性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;体积小，反应快。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令行使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;vim的windows版兼容性好。兼容对txt的操作Ctrl+S等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;符合Unix/Linux体系的根本思想，就是它的哲学。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后一点，越学越有趣，自己发现组合 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Emacs本来就比较臃肿，麻烦。当我发现Vim键盘图时，我就渐渐转向Vim，追随Unix/Linux哲学去了。。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vim键盘图.jpg" src="https://blog.pythonwood.com/uploads/2013/Vim键盘图.jpg" title="本地端口转发.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vim命令图解.jpg" src="https://blog.pythonwood.com/uploads/2013/vim命令图解.jpg" title="本地端口转发.jpg"&gt; &lt;/p&gt;
+&lt;p&gt;我用了Emacs三个月，因为它的学习曲线没Vim陡，这点吸引了，我使用Linux才7、8个月，不明白Vim的简即是美，反而觉得是拒人千里(这点真和人一样)。&lt;/p&gt;
+&lt;p&gt;于是反思自己，后来转向Vim，今天把Emacs卸载了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是慢慢觉得Emacs有以下缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;命令至少双键同按，结果就是必须双手同时使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;真的对末尾指不友好，不是Ctrl就是Alt，有人趣说恨不得配个脚踏板。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;体积大，占资源多，反应相对慢。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;相反，渐渐发现Vim的优点很多：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;简即是美，单键命令，夸张说可以腾出一只手来。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;99.9%的把握，是Linux就有Vim。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对Linux其它命令sed,tr等有天生的相关性，这就好比微软产品之间的连通性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;体积小，反应快。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令行使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;vim的windows版兼容性好。兼容对txt的操作Ctrl+S等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;符合Unix/Linux体系的根本思想，就是它的哲学。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后一点，越学越有趣，自己发现组合。这就好像使用HTML标记来写网页一样，设计者将最大的发挥空间给了你。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;再来讨论下：神之编辑器 &lt;span class="caps"&gt;VS&lt;/span&gt;&amp;nbsp;编辑器之神&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编辑器之神，首先强调是编辑器，而且是其中的神！&lt;/p&gt;
+&lt;p&gt;神之编辑器，神在前，编辑器也是其中的功能。(也译：神一样的编辑器，神的编辑器)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unix/Linux的设计哲学：做一件事，并做好一件事。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Emacs虽然强大，但它在Linux多少违反了其它大多Linux软件所遵守的约定，显得例外，特别不一样。&lt;/p&gt;
+&lt;p&gt;Emacs存在并兴盛说明它有价值，我并不是抹黑它。而是对于追求真正的纯正的Linux思想的人，可能容不下一点突兀。&lt;/p&gt;
+&lt;p&gt;我不会吃回头草。&lt;/p&gt;
+&lt;p&gt;相关阅读：Vim vs Emacs &lt;a href="http://blog.sina.com.cn/s/blog_8d1e632101018uyg.html"&gt;http://blog.sina.com.cn/s/blog_8d1e632101018uyg.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;题外话：我写完后google了一下，搜索site:&lt;a href="http://www.cnblogs.com/weishun"&gt;http://www.cnblogs.com/weishun&lt;/a&gt;，本文赫然在最后一页最后一栏！&lt;/p&gt;</content><category term="vim"></category><category term="vi"></category><category term="emacs"></category><category term="编辑器"></category></entry></feed>
