@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - LTS</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/lts/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T22:30:00+08:00</updated><entry><title>虚拟机系统正式转换——从windows到Linux-ubuntu新手</title><link href="https://blog.pythonwood.com/2013/07/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%AD%A3%E5%BC%8F%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94%E4%BB%8Ewindows%E5%88%B0Linux-ubuntu%E6%96%B0%E6%89%8B/" rel="alternate"></link><published>2013-07-10T16:29:00+08:00</published><updated>2017-11-30T22:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2013-07-10:/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/</id><summary type="html">&lt;p&gt;记录大二下学期转换ubuntu10.04的一些系统折腾&lt;/p&gt;
+&lt;h3 id="_1"&gt;版本选择：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;经多次实验，Ubuntu个人认为长期支持（&lt;span class="caps"&gt;LTS&lt;/span&gt;）版才值得装。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ubuntu12.04的桌面切换真麻烦。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我最后选择了VMware9 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;记录大二下学期转换ubuntu10.04的一些系统折腾&lt;/p&gt;
+&lt;h3 id="_1"&gt;版本选择：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;经多次实验，Ubuntu个人认为长期支持（&lt;span class="caps"&gt;LTS&lt;/span&gt;）版才值得装。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ubuntu12.04的桌面切换真麻烦。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我最后选择了VMware9+Ubuntu10.04。&lt;/p&gt;
+&lt;h3 id="linux-ubuntuvmware"&gt;安装Linux-Ubuntu（VMware平台支持下）：&lt;a class="headerlink" href="#linux-ubuntuvmware" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;双系统形式：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;wubi安装：不用分区，直接在某原分区建立文件来代表Ubuntu，应该是虚拟化技术。安全快捷，易卸载。&lt;/p&gt;
+&lt;p&gt;光盘安装：win7原来有4分区，安装Ubuntu后E盘少了7G，无其它变化，推测装在了E盘。&lt;/p&gt;
+&lt;h4 id="_3"&gt;单系统：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;安装后占3.6G左右，其中用于虚拟内存交换的空间2G，系统文件/bin/*等只占1G多。&lt;/p&gt;
+&lt;h5 id="_4"&gt;安装过程的技巧：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;安装过程所增加的用户只是桌面用户，非超级用户。安装后用sudo root&amp;nbsp;passwd修改root密码。&lt;/p&gt;
+&lt;p&gt;计算机名和用户名最好3到6个字符就好了。&lt;/p&gt;
+&lt;p&gt;Ubuntu安装过程下载中文语言包时最好跳过，太慢了，装好后自己设置一个快的源，然后下载。&lt;/p&gt;
+&lt;h3 id="_5"&gt;常用软件安装：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;极点五笔，个人比较钟意。&lt;/p&gt;
+&lt;p&gt;Adobe Flash&amp;nbsp;为了网页（若安装gecko_mediaplayer，则不用）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mplayer&amp;nbsp;相传宇宙最强播放器（然后最好gecko_mediaplayer，SMPlayer一起装）。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;wine 用于运行Windows程序。
+aMule&amp;nbsp;电骡（官方中译），可选，个人测试不好。&lt;/p&gt;
+&lt;p&gt;build-essential&amp;nbsp;程序依赖库。&lt;/p&gt;
+&lt;p&gt;g++,nasm,emacs,open-ssh,vnc……&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;gvim&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;就我而言，我更喜欢gvim，即使用了3个月emacs了，但是还是义无反顾地转成vim党了。&lt;/p&gt;
+&lt;p&gt;gvim是编辑器之神，emacs是神一样的编辑器。前句强调gvim始终是一个编辑器，后句说明emacs可以做远超编辑器的事。&lt;/p&gt;
+&lt;h3 id="-"&gt;使用－习惯：&lt;a class="headerlink" href="#-" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Ubuntu12.04开机都会打开终端（Terminal）,在第二桌面。比较喜欢linux的多虚拟桌面功能。&lt;/p&gt;
+&lt;p&gt;firefox总是在第三桌面打开，影音在第四桌面。&lt;/p&gt;
+&lt;p&gt;将常打开的程序放在面板上。&lt;/p&gt;
+&lt;h3 id="_6"&gt;终端：&lt;a class="headerlink" href="#_6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;输入密码不以星号表示，无显示，惯了就好。桌面窗口环境则由星号表示。&lt;/p&gt;
+&lt;p&gt;最常用的键：Tab；方向上；Ctrl+C；&amp;nbsp;补全，重复历史，强制终止。&lt;/p&gt;
+&lt;p&gt;最常用命令：ls；cat；history&amp;nbsp;；                              &lt;/p&gt;
+&lt;p&gt;最好用的符号：|；&amp;lt;；&amp;gt;；  &lt;/p&gt;
+&lt;p&gt;Ctrl＋A/D/L/R：&amp;nbsp;到行首/行尾/清屏/查找命令历史&lt;/p&gt;
+&lt;h3 id="win7linux"&gt;Win7/Linux字符编码问题：&lt;a class="headerlink" href="#win7linux" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="win7linux_1"&gt;Win7/Linux编码差异：&lt;a class="headerlink" href="#win7linux_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;win7的多字符实现：&lt;span class="caps"&gt;GBK&lt;/span&gt;，2字节；Unicode：unicode16，2字节。Linux的多字符实现：utf8，1-6字节；Unicode：unicode32，4字节。&lt;/p&gt;
+&lt;h3 id="_7"&gt;换行符问题：&lt;a class="headerlink" href="#_7" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;win7换行＝\r\n 而Linux换行＝\n；所以Linux文本在win7下用记事本打开都是一行的。转换很简单用fromdos / todos&amp;nbsp;命令就行。&lt;/p&gt;
+&lt;p&gt;win7下保存的文本文件复制到Linux下后，中文变成乱码。&lt;/p&gt;
+&lt;p&gt;＝＝＝〉win7的字符是GBK，Linux的字符是UTF8，utf8在win7可以正常显示，所以建议用iconv命令转成UTF8，而不是将Linux默认的编码变成GBK来适应。&lt;/p&gt;
+&lt;p&gt;win7下保存的文本文件到Linux下后，双击提示运行。&lt;/p&gt;
+&lt;p&gt;＝＝＝〉方法：chmod a-x &lt;filename&gt;；或者先在win7打包成zip文件，再复制，再解压，就可以彻底解决。这是个目前最好的通用方法。&lt;/p&gt;
+&lt;h3 id="_8"&gt;感受&lt;a class="headerlink" href="#_8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;至今已经输入2000个命令。不知不觉习惯中。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* | more # 分屏显示
+
+iconv -f gbk -t utf8 sample_config.txt | fromdos &amp;gt; ../release/sample_config
+
+cat -n ~/.bash_history | todos &amp;gt; _bash_history2013-07-10.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;span class="caps"&gt;JNU&lt;/span&gt; 2013-07-10 16:41:51&amp;nbsp;今天考完《Linux/Unix使用》。&lt;/p&gt;</content><category term="笔记本"></category><category term="系统"></category><category term="windows"></category><category term="linux"></category><category term="ubuntu"></category><category term="转换"></category><category term="10.04"></category><category term="LTS"></category><category term="vmware"></category><category term="大学"></category><category term="大二"></category></entry></feed>

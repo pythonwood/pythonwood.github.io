@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 算法</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/suan-fa/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T22:12:00+08:00</updated><entry><title>【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题</title><link href="https://blog.pythonwood.com/2014/08/%E3%80%90%E5%AE%9E%E4%B9%A0%E8%AE%B0%E3%80%912014-08-29%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0Boyer-Moore%E5%92%8C%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88LCS%EF%BC%89%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E9%A2%98/" rel="alternate"></link><published>2014-08-29T21:23:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-08-29:/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/</id><summary type="html">&lt;!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+--&gt;
+
+&lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0 …&lt;/p&gt;</summary><content type="html">&lt;!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+--&gt;
+
+&lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;b　　1　　0&amp;nbsp;1&lt;/p&gt;
+&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;我们看矩阵的斜对角线最长的那个就能找出最长公共子串。&lt;/p&gt;
+&lt;p&gt;不过在二维矩阵上找最长的由1组成的斜对角线也是件麻烦费时的事，下面改进：当要在矩阵是填1时让它等于其左上角元素加1。&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;b　　1　　0&amp;nbsp;2&lt;/p&gt;
+&lt;p&gt;a　　0　　2&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;这样矩阵中的最大元素就是&amp;nbsp;最长公共子串的长度。&lt;/p&gt;
+&lt;p&gt;在构造这个二维矩阵的过程中由于得出矩阵的某一行后其上一行就没用了，所以实际上在程序中可以用一维数组来代替这个矩阵。&lt;/p&gt;
+&lt;h3 id="_2"&gt;代码实践&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据以上算法&amp;nbsp;使用C语言实践了一下。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;comfix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;stra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;strb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;malloc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%s,%s: %d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;comfix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;comfix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt;     * 变量第一字符&lt;/span&gt;
+&lt;span class="cm"&gt;     * c:char*, l:len&lt;/span&gt;
+&lt;span class="cm"&gt;     * 变量第二字符&lt;/span&gt;
+&lt;span class="cm"&gt;     * s:small, l:large&lt;/span&gt;
+&lt;span class="cm"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cs&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cl&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;la&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;lb&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;ls&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ll&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="cm"&gt;/* 如果不对，就调换呗 */&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lb&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;cs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="cm"&gt;/* 矩阵，只保存矩阵的一行即可动态之 */&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;memset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pint&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="cm"&gt;/* 生成下一行，同时上一行内容被回收 */&lt;/span&gt;
+       &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+           &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="n"&gt;cs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+               &lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+       &lt;span class="cm"&gt;/* 如果有更大就更新ret */&lt;/span&gt;
+       &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+           &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+               &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这种算法非常巧妙地化繁为简，有时换一个思路，就会扩然开朗！&lt;/p&gt;
+&lt;p&gt;比较喜欢这种锻炼。&lt;/p&gt;
+&lt;h3 id="_3"&gt;参考&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;研究了&amp;nbsp;求最长公共子串问题，顺便研究了字符串匹配&lt;/p&gt;
+&lt;p&gt;字符串匹配的Boyer-Moore算法
+&lt;a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html"&gt;http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;字符串匹配的KMP算法
+&lt;a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html"&gt;http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;动态规划算法之：最长公共子序列 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 最长公共子串（&lt;span class="caps"&gt;LCS&lt;/span&gt;）
+&lt;a href="http://my.oschina.net/leejun2005/blog/117167"&gt;http://my.oschina.net/leejun2005/blog/117167&lt;/a&gt;&lt;/p&gt;</content><category term="阿里"></category><category term="校招"></category><category term="实习"></category><category term="算法"></category><category term="最长公共"></category><category term="子串"></category><category term="字符串"></category></entry><entry><title>寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法</title><link href="https://blog.pythonwood.com/2014/02/%E5%AF%92%E5%81%87%E6%8C%91%E6%88%98PythonTip%EF%BC%88%E4%B8%80%E4%BA%BA%E4%B8%80python%EF%BC%89%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E7%AE%97%E6%B3%95%E6%98%AF%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%81%B5%E9%AD%82%EF%BC%8C%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BF%83%E6%B3%95/" rel="alternate"></link><published>2014-02-16T14:23:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-02-16:/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/</id><summary type="html">&lt;p&gt;2014年2月中旬，我上升到挑战python英雄榜第3名。这是我寒假修炼算法的成果之一。来一下总结吧！&lt;/p&gt;
+&lt;p&gt;Linux的创始人Linus&amp;nbsp;Torvalds在一次演讲中有一段涉及“什么才是优秀程序员”的话：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;“烂程序员关心的是代码。好程序员关心的是数据结构和它们之间的关系。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由这句话的启发开始，加上我越来越觉得自己编程能力不足，码代码经常要重构，逻辑思维不过细腻谨慎。正是过于关注代码，完成率所致。我已经学过C/C++/nasm/java …&lt;/p&gt;</summary><content type="html">&lt;p&gt;2014年2月中旬，我上升到挑战python英雄榜第3名。这是我寒假修炼算法的成果之一。来一下总结吧！&lt;/p&gt;
+&lt;p&gt;Linux的创始人Linus&amp;nbsp;Torvalds在一次演讲中有一段涉及“什么才是优秀程序员”的话：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;“烂程序员关心的是代码。好程序员关心的是数据结构和它们之间的关系。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由这句话的启发开始，加上我越来越觉得自己编程能力不足，码代码经常要重构，逻辑思维不过细腻谨慎。正是过于关注代码，完成率所致。我已经学过C/C++/nasm/java/python/html/js/jq/shell等等语言，对计算机世界的工作原理有比较好的认识，但代码能力一直上不去。我想算法，就是我的瓶颈。于是有了以下故事。&lt;/p&gt;
+&lt;h3 id="_1"&gt;第一阶段&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;寒假开始，我便在项目工作之余扫pythontip上的题。十几天里，有时一天7、8道题，有时2、3题，我的排名慢慢从第N页到第4页到第2页，让后到第1页。&lt;/p&gt;
+&lt;p&gt;当我扫完101题后，我成功了42题，刚好排在第一页最后一名。然后我休息了一下，继续有成功几题。这大概就是我的无算法时代极限了。&lt;/p&gt;
+&lt;h3 id="_2"&gt;第二阶段&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我网搜博客，算法，学习排序。好来买了《编程珠玑》和《编程之美》，边看边攻克pyhtontip上的题目。&lt;/p&gt;
+&lt;p&gt;在PythonTip&amp;nbsp;上的一些水题这博客中学习了很多，尤其是看到问题一句话就解决时，恍然大悟。&lt;/p&gt;
+&lt;p&gt;1、有很多利用lambda, reduce, map, zip, 列表分片/解析, sum, max, min, divmod, round, hex/oct/bin; set,list,dict;&amp;nbsp;一句话解决的。这是我认为python强大原因，非常好用。&lt;/p&gt;
+&lt;p&gt;2、关于二进制‘1’的处理是非常妙的，这些题往往诠释了计算机较人类思维不同的特性，以及如何能让程序员思考得更“计算机”一些。在《编程之美》，上面提到的博客中都有提到。&lt;/p&gt;
+&lt;p&gt;3、独立思考，让后比较，我获得更多。在最大连续子序列，最大非连续子序列，最长回文子字符串中，我收获很经典的算法。同时还想出来与Manacher算法一拼的做法。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;len&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt; &lt;span class="s s-Atom"&gt;odd&lt;/span&gt; &lt;span class="s s-Atom"&gt;now&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="nf"&gt;圆心，半径&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;不计圆心&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="nf"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;
+    &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s s-Atom"&gt;l&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nn"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;移到:最右方便来计算&lt;/span&gt;
+        &lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;
+        &lt;span class="s s-Atom"&gt;while&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s s-Atom"&gt;l&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;
+            &lt;span class="s s-Atom"&gt;r&lt;/span&gt; &lt;span class="s s-Atom"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;print&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nv"&gt;L1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;t1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;t2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;L1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="nv"&gt;L1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="s s-Atom"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;print&lt;/span&gt; &lt;span class="s s-Atom"&gt;t1&lt;/span&gt; &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="nf"&gt;any&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="s s-Atom"&gt;=&amp;#39;#&amp;#39;&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;t1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;else&lt;/span&gt; &lt;span class="s s-Atom"&gt;t2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3月13日的&amp;nbsp;格式优化版：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;L&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="s s-Atom"&gt;+&amp;#39;#&amp;#39;&lt;/span&gt;  &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;因为这句，末尾print语句统一了。&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="nf"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;
+    &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="nn"&gt;l&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="s s-Atom"&gt;break&lt;/span&gt;
+    &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nn"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;
+        &lt;span class="s s-Atom"&gt;o&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt;
+
+        &lt;span class="s s-Atom"&gt;j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;尝试加一&lt;/span&gt;
+        &lt;span class="s s-Atom"&gt;while&lt;/span&gt; &lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s s-Atom"&gt;l&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;
+            &lt;span class="s s-Atom"&gt;j&lt;/span&gt; &lt;span class="s s-Atom"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="s s-Atom"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;print&lt;/span&gt; &lt;span class="nv"&gt;L&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;o&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;r&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="s s-Atom"&gt;:o&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nn"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;又经过10多天，我又扫完一遍题，这次我以72题的成绩排在GodIsCoding和YOSHINO之后第三名。&lt;/p&gt;
+&lt;h3 id="_3"&gt;总结：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;做完之后，我的感觉是，python是很美很简单语言，如其名。&lt;/p&gt;
+&lt;h3 id="_4"&gt;生活题外话：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;没能及时报考C语言二级，非常遗憾，英语六级不知道报呢还是不报好。&lt;/p&gt;</content><category term="寒假"></category><category term="python"></category><category term="算法"></category><category term="挑战"></category><category term="程序"></category><category term="pythontip"></category></entry></feed>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 大二</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/da-er/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T22:30:00+08:00</updated><entry><title>大二C++课程期末作业——一个小工程项目总结</title><link href="https://blog.pythonwood.com/2013/07/%E5%A4%A7%E4%BA%8CC++%E8%AF%BE%E7%A8%8B%E6%9C%9F%E6%9C%AB%E4%BD%9C%E4%B8%9A%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%B7%A5%E7%A8%8B%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" rel="alternate"></link><published>2013-07-31T08:30:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2013-07-31:/2013/07/大二C++课程期末作业——一个小工程项目总结/</id><summary type="html">&lt;p&gt;第一次独立完成的C++小项目，40小时 + 5小时Update +&amp;nbsp;8小时Linux移植。&lt;/p&gt;
+&lt;h3 id="_1"&gt;过程：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;过程非常认真，一个星期主要就是忙这个，为了完成某个部分，有时饭都推迟吃，连续对着电脑10几个小时很累，晚上写到很晚才睡，休息也不够，这让我明白到程序员是不好当的！&lt;/p&gt;
+&lt;h3 id="_2"&gt;成果：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;最终版在Win7+&lt;span class="caps"&gt;VS2005&lt;/span&gt;、Ubuntu+G++环境都成功 …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;第一次独立完成的C++小项目，40小时 + 5小时Update +&amp;nbsp;8小时Linux移植。&lt;/p&gt;
+&lt;h3 id="_1"&gt;过程：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;过程非常认真，一个星期主要就是忙这个，为了完成某个部分，有时饭都推迟吃，连续对着电脑10几个小时很累，晚上写到很晚才睡，休息也不够，这让我明白到程序员是不好当的！&lt;/p&gt;
+&lt;h3 id="_2"&gt;成果：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;最终版在Win7+&lt;span class="caps"&gt;VS2005&lt;/span&gt;、Ubuntu+G++环境都成功。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="_3"&gt;环境工具的选择：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;VS2010随便写个程序在XP原生态下都不能运行！VC6太旧，XP下用得好。VS2008是Vista时代的魂魄。所以最好还是用VS2005。下载地址：Visual Studio&amp;nbsp;各版本下载合集vs2005下载vs2008下载vs2010下载vs2012下载&lt;/p&gt;
+&lt;h3 id="_4"&gt;得益：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;一开始将main分成四个独立子函数，用的是增量式开发，俗称打桩，用得比较好，好处是模块化。这一点非常有益。&lt;/p&gt;
+&lt;p&gt;记得刚开始学C语言的第21天，几天里，20个小时写出个蹩脚的图书馆综合系统。得益于这个经验，才令我相信我能完成。&lt;/p&gt;
+&lt;p&gt;《Accelerate&amp;nbsp;C++》的确是非常适合学习C++的，以前看了不明白它的好，认真看才知妙！完全借用了它的字符图形函数处理类Picture。&lt;/p&gt;
+&lt;h3 id="_5"&gt;改进：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;要善用sprintf和sscanf：atoi、atof、itoa、itow函数是windows平台下实现字符串与数值相互转换的函数。Linux平台下请使用标准库中的sprintf与sscanf函数。&lt;/p&gt;
+&lt;p&gt;调试过程很大部分是在UI用户中，说明UI函数多，且易错。&lt;/p&gt;
+&lt;p&gt;房号设计02 - 23 ，0223&amp;nbsp;，整数怎样表示，这些问题一直缠绕，一开始没解决好，就会影响全局。&lt;/p&gt;
+&lt;h3 id="_6"&gt;备忘：&lt;a class="headerlink" href="#_6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;类的定义和实现在项目推进过程中不断修改，逐渐完善。&lt;/p&gt;
+&lt;p&gt;用户交互模块最大，ui()函数的ui.cpp文件有454行，&lt;span class="caps"&gt;14KB&lt;/span&gt;。有的模块文件只有几十行，这些开始时是没想到的。&lt;/p&gt;
+&lt;p&gt;什么是优雅，注重代码重用，函数最好小而精，一次只做一件事。也是Unix类系统的神髓。&lt;/p&gt;
+&lt;p&gt;老师对我的实验成果~~相当~~比较满意，给分也~~相对地~~高一点。感谢。&lt;/p&gt;</content><category term="大二"></category><category term="C++"></category><category term="作业"></category><category term="工程"></category><category term="项目"></category><category term="总结"></category></entry><entry><title>虚拟机系统正式转换——从windows到Linux-ubuntu新手</title><link href="https://blog.pythonwood.com/2013/07/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%AD%A3%E5%BC%8F%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94%E4%BB%8Ewindows%E5%88%B0Linux-ubuntu%E6%96%B0%E6%89%8B/" rel="alternate"></link><published>2013-07-10T16:29:00+08:00</published><updated>2017-11-30T22:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2013-07-10:/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/</id><summary type="html">&lt;p&gt;记录大二下学期转换ubuntu10.04的一些系统折腾&lt;/p&gt;
+&lt;h3 id="_1"&gt;版本选择：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;经多次实验，Ubuntu个人认为长期支持（&lt;span class="caps"&gt;LTS&lt;/span&gt;）版才值得装。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ubuntu12.04的桌面切换真麻烦。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我最后选择了VMware9 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;记录大二下学期转换ubuntu10.04的一些系统折腾&lt;/p&gt;
+&lt;h3 id="_1"&gt;版本选择：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;经多次实验，Ubuntu个人认为长期支持（&lt;span class="caps"&gt;LTS&lt;/span&gt;）版才值得装。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ubuntu12.04的桌面切换真麻烦。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我最后选择了VMware9+Ubuntu10.04。&lt;/p&gt;
+&lt;h3 id="linux-ubuntuvmware"&gt;安装Linux-Ubuntu（VMware平台支持下）：&lt;a class="headerlink" href="#linux-ubuntuvmware" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;双系统形式：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;wubi安装：不用分区，直接在某原分区建立文件来代表Ubuntu，应该是虚拟化技术。安全快捷，易卸载。&lt;/p&gt;
+&lt;p&gt;光盘安装：win7原来有4分区，安装Ubuntu后E盘少了7G，无其它变化，推测装在了E盘。&lt;/p&gt;
+&lt;h4 id="_3"&gt;单系统：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;安装后占3.6G左右，其中用于虚拟内存交换的空间2G，系统文件/bin/*等只占1G多。&lt;/p&gt;
+&lt;h5 id="_4"&gt;安装过程的技巧：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;安装过程所增加的用户只是桌面用户，非超级用户。安装后用sudo root&amp;nbsp;passwd修改root密码。&lt;/p&gt;
+&lt;p&gt;计算机名和用户名最好3到6个字符就好了。&lt;/p&gt;
+&lt;p&gt;Ubuntu安装过程下载中文语言包时最好跳过，太慢了，装好后自己设置一个快的源，然后下载。&lt;/p&gt;
+&lt;h3 id="_5"&gt;常用软件安装：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;极点五笔，个人比较钟意。&lt;/p&gt;
+&lt;p&gt;Adobe Flash&amp;nbsp;为了网页（若安装gecko_mediaplayer，则不用）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mplayer&amp;nbsp;相传宇宙最强播放器（然后最好gecko_mediaplayer，SMPlayer一起装）。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;wine 用于运行Windows程序。
+aMule&amp;nbsp;电骡（官方中译），可选，个人测试不好。&lt;/p&gt;
+&lt;p&gt;build-essential&amp;nbsp;程序依赖库。&lt;/p&gt;
+&lt;p&gt;g++,nasm,emacs,open-ssh,vnc……&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;gvim&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;就我而言，我更喜欢gvim，即使用了3个月emacs了，但是还是义无反顾地转成vim党了。&lt;/p&gt;
+&lt;p&gt;gvim是编辑器之神，emacs是神一样的编辑器。前句强调gvim始终是一个编辑器，后句说明emacs可以做远超编辑器的事。&lt;/p&gt;
+&lt;h3 id="-"&gt;使用－习惯：&lt;a class="headerlink" href="#-" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Ubuntu12.04开机都会打开终端（Terminal）,在第二桌面。比较喜欢linux的多虚拟桌面功能。&lt;/p&gt;
+&lt;p&gt;firefox总是在第三桌面打开，影音在第四桌面。&lt;/p&gt;
+&lt;p&gt;将常打开的程序放在面板上。&lt;/p&gt;
+&lt;h3 id="_6"&gt;终端：&lt;a class="headerlink" href="#_6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;输入密码不以星号表示，无显示，惯了就好。桌面窗口环境则由星号表示。&lt;/p&gt;
+&lt;p&gt;最常用的键：Tab；方向上；Ctrl+C；&amp;nbsp;补全，重复历史，强制终止。&lt;/p&gt;
+&lt;p&gt;最常用命令：ls；cat；history&amp;nbsp;；                              &lt;/p&gt;
+&lt;p&gt;最好用的符号：|；&amp;lt;；&amp;gt;；  &lt;/p&gt;
+&lt;p&gt;Ctrl＋A/D/L/R：&amp;nbsp;到行首/行尾/清屏/查找命令历史&lt;/p&gt;
+&lt;h3 id="win7linux"&gt;Win7/Linux字符编码问题：&lt;a class="headerlink" href="#win7linux" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="win7linux_1"&gt;Win7/Linux编码差异：&lt;a class="headerlink" href="#win7linux_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;win7的多字符实现：&lt;span class="caps"&gt;GBK&lt;/span&gt;，2字节；Unicode：unicode16，2字节。Linux的多字符实现：utf8，1-6字节；Unicode：unicode32，4字节。&lt;/p&gt;
+&lt;h3 id="_7"&gt;换行符问题：&lt;a class="headerlink" href="#_7" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;win7换行＝\r\n 而Linux换行＝\n；所以Linux文本在win7下用记事本打开都是一行的。转换很简单用fromdos / todos&amp;nbsp;命令就行。&lt;/p&gt;
+&lt;p&gt;win7下保存的文本文件复制到Linux下后，中文变成乱码。&lt;/p&gt;
+&lt;p&gt;＝＝＝〉win7的字符是GBK，Linux的字符是UTF8，utf8在win7可以正常显示，所以建议用iconv命令转成UTF8，而不是将Linux默认的编码变成GBK来适应。&lt;/p&gt;
+&lt;p&gt;win7下保存的文本文件到Linux下后，双击提示运行。&lt;/p&gt;
+&lt;p&gt;＝＝＝〉方法：chmod a-x &lt;filename&gt;；或者先在win7打包成zip文件，再复制，再解压，就可以彻底解决。这是个目前最好的通用方法。&lt;/p&gt;
+&lt;h3 id="_8"&gt;感受&lt;a class="headerlink" href="#_8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;至今已经输入2000个命令。不知不觉习惯中。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* | more # 分屏显示
+
+iconv -f gbk -t utf8 sample_config.txt | fromdos &amp;gt; ../release/sample_config
+
+cat -n ~/.bash_history | todos &amp;gt; _bash_history2013-07-10.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;span class="caps"&gt;JNU&lt;/span&gt; 2013-07-10 16:41:51&amp;nbsp;今天考完《Linux/Unix使用》。&lt;/p&gt;</content><category term="笔记本"></category><category term="系统"></category><category term="windows"></category><category term="linux"></category><category term="ubuntu"></category><category term="转换"></category><category term="10.04"></category><category term="LTS"></category><category term="vmware"></category><category term="大学"></category><category term="大二"></category></entry></feed>

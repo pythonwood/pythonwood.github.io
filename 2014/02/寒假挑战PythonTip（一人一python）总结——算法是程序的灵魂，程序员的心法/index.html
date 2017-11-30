@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="2014年2月中旬，我上升到挑战python英雄榜第3名。这是我寒假修炼算法的成果之一。来一下总结吧！ Linux的创始人Linus Torvalds在一次演讲中有一段涉及“什么才是优秀程序员”的话： “烂程序员关心的是代码。好程序员关心的是数据结构和它们之间的关系。” 由这句话的启发开始，加上我越来越觉得自己编程能力不足，码代码经常要重构，逻辑思维不过细腻谨慎。正是过于关注代码，完成率所致。我已经学过C/C++/nasm/java …"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/"/>
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/关于.html">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-6   col-md-offset-3 ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/" rel="bookmark" title="Permalink to 寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法">寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-3">
+            
+          </div>
+
+        <div class=" col-md-6 " id="content" role="main">
+  
+
+  <div>
+    <p>2014年2月中旬，我上升到挑战python英雄榜第3名。这是我寒假修炼算法的成果之一。来一下总结吧！</p>
+<p>Linux的创始人Linus&nbsp;Torvalds在一次演讲中有一段涉及“什么才是优秀程序员”的话：</p>
+<p><strong>“烂程序员关心的是代码。好程序员关心的是数据结构和它们之间的关系。”</strong></p>
+<p>由这句话的启发开始，加上我越来越觉得自己编程能力不足，码代码经常要重构，逻辑思维不过细腻谨慎。正是过于关注代码，完成率所致。我已经学过C/C++/nasm/java/python/html/js/jq/shell等等语言，对计算机世界的工作原理有比较好的认识，但代码能力一直上不去。我想算法，就是我的瓶颈。于是有了以下故事。</p>
+<h3 id="_1">第一阶段<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>寒假开始，我便在项目工作之余扫pythontip上的题。十几天里，有时一天7、8道题，有时2、3题，我的排名慢慢从第N页到第4页到第2页，让后到第1页。</p>
+<p>当我扫完101题后，我成功了42题，刚好排在第一页最后一名。然后我休息了一下，继续有成功几题。这大概就是我的无算法时代极限了。</p>
+<h3 id="_2">第二阶段<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>我网搜博客，算法，学习排序。好来买了《编程珠玑》和《编程之美》，边看边攻克pyhtontip上的题目。</p>
+<p>在PythonTip&nbsp;上的一些水题这博客中学习了很多，尤其是看到问题一句话就解决时，恍然大悟。</p>
+<p>1、有很多利用lambda, reduce, map, zip, 列表分片/解析, sum, max, min, divmod, round, hex/oct/bin; set,list,dict;&nbsp;一句话解决的。这是我认为python强大原因，非常好用。</p>
+<p>2、关于二进制‘1’的处理是非常妙的，这些题往往诠释了计算机较人类思维不同的特性，以及如何能让程序员思考得更“计算机”一些。在《编程之美》，上面提到的博客中都有提到。</p>
+<p>3、独立思考，让后比较，我获得更多。在最大连续子序列，最大非连续子序列，最长回文子字符串中，我收获很经典的算法。同时还想出来与Manacher算法一拼的做法。</p>
+<div class="highlight"><pre><span></span><span class="nv">L</span> <span class="o">=</span> <span class="s s-Atom">&#39;#&#39;</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="nv">L</span><span class="p">))</span> <span class="s s-Atom">#</span> <span class="s s-Atom">len</span> <span class="o">is</span> <span class="s s-Atom">odd</span> <span class="s s-Atom">now</span><span class="p">!</span>
+<span class="s s-Atom">l</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="nv">L</span><span class="p">)</span>
+
+<span class="s s-Atom">o</span><span class="p">,</span><span class="s s-Atom">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="s s-Atom">#</span> <span class="nf">圆心，半径</span><span class="p">(</span><span class="s s-Atom">不计圆心</span><span class="p">)</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">i</span> <span class="s s-Atom">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s s-Atom">l</span><span class="p">)</span><span class="s s-Atom">:</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">i</span><span class="o">+</span><span class="s s-Atom">r</span><span class="o">&lt;</span><span class="s s-Atom">l</span> <span class="s s-Atom">and</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">i</span><span class="o">-</span><span class="nn">r</span><span class="p">:</span><span class="s s-Atom">i</span><span class="p">]</span> <span class="o">==</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">i</span><span class="o">+</span><span class="nn">r</span><span class="p">:</span><span class="nn">i</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="s s-Atom">:</span> <span class="s s-Atom">#</span> <span class="s s-Atom">移到:最右方便来计算</span>
+        <span class="s s-Atom">o</span><span class="p">,</span><span class="s s-Atom">r</span><span class="o">=</span><span class="s s-Atom">i</span><span class="p">,</span><span class="s s-Atom">r</span>
+        <span class="s s-Atom">while</span> <span class="s s-Atom">i</span><span class="o">+</span><span class="s s-Atom">r</span><span class="o">+</span><span class="mi">1</span><span class="o">&lt;</span><span class="s s-Atom">l</span> <span class="s s-Atom">and</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">i</span><span class="o">-</span><span class="s s-Atom">r</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">i</span><span class="o">+</span><span class="s s-Atom">r</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="s s-Atom">:</span>
+            <span class="s s-Atom">r</span> <span class="s s-Atom">+=</span> <span class="mi">1</span>
+    <span class="s s-Atom">#</span> <span class="s s-Atom">print</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">o</span><span class="o">-</span><span class="nn">r</span><span class="p">:</span><span class="s s-Atom">o</span><span class="o">+</span><span class="s s-Atom">r</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nv">L1</span> <span class="o">=</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">o</span><span class="o">-</span><span class="nn">r</span><span class="p">:</span><span class="s s-Atom">o</span><span class="o">+</span><span class="s s-Atom">r</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+<span class="s s-Atom">t1</span><span class="p">,</span><span class="s s-Atom">t2</span> <span class="o">=</span> <span class="nv">L1</span><span class="p">[</span><span class="s s-Atom">::</span><span class="mi">2</span><span class="p">],</span><span class="nv">L1</span><span class="p">[</span><span class="mi">1</span><span class="s s-Atom">::</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="s s-Atom">print</span> <span class="s s-Atom">t1</span> <span class="s s-Atom">if</span> <span class="nf">any</span><span class="p">(</span><span class="s s-Atom">i</span><span class="p">!</span><span class="s s-Atom">=&#39;#&#39;</span> <span class="s s-Atom">for</span> <span class="s s-Atom">i</span> <span class="s s-Atom">in</span> <span class="s s-Atom">t1</span><span class="p">)</span> <span class="s s-Atom">else</span> <span class="s s-Atom">t2</span>
+</pre></div>
+
+
+<p>3月13日的&nbsp;格式优化版：</p>
+<div class="highlight"><pre><span></span><span class="nv">L</span> <span class="o">=</span> <span class="s s-Atom">&#39;#&#39;</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nv">L</span><span class="p">)</span>
+<span class="nv">L</span> <span class="o">=</span> <span class="s s-Atom">&#39;#&#39;</span><span class="o">+</span><span class="nv">L</span><span class="s s-Atom">+&#39;#&#39;</span>  <span class="s s-Atom">#</span> <span class="s s-Atom">因为这句，末尾print语句统一了。</span>
+
+<span class="s s-Atom">o</span><span class="p">,</span><span class="s s-Atom">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="s s-Atom">l</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="nv">L</span><span class="p">)</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">i</span> <span class="s s-Atom">in</span> <span class="nf">xrange</span><span class="p">(</span><span class="s s-Atom">l</span><span class="p">)</span><span class="s s-Atom">:</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">i</span><span class="o">+</span><span class="s s-Atom">r</span> <span class="o">&gt;=</span> <span class="nn">l</span><span class="p">:</span>
+        <span class="s s-Atom">break</span>
+    <span class="s s-Atom">if</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">i</span><span class="o">-</span><span class="nn">r</span><span class="p">:</span><span class="s s-Atom">i</span><span class="p">]</span><span class="o">==</span><span class="nv">L</span><span class="p">[</span><span class="s s-Atom">i</span><span class="o">+</span><span class="nn">r</span><span class="p">:</span><span class="nn">i</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="s s-Atom">:</span>
+        <span class="s s-Atom">o</span> <span class="o">=</span> <span class="s s-Atom">i</span>
+
+        <span class="s s-Atom">j</span> <span class="o">=</span> <span class="s s-Atom">r</span><span class="o">+</span><span class="mi">1</span> <span class="s s-Atom">#</span> <span class="s s-Atom">尝试加一</span>
+        <span class="s s-Atom">while</span> <span class="s s-Atom">o</span><span class="o">-</span><span class="s s-Atom">j</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="s s-Atom">and</span> <span class="s s-Atom">o</span><span class="o">+</span><span class="s s-Atom">j</span><span class="o">&lt;</span><span class="s s-Atom">l</span> <span class="s s-Atom">and</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">o</span><span class="o">-</span><span class="s s-Atom">j</span><span class="p">]</span> <span class="o">==</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">o</span><span class="o">+</span><span class="s s-Atom">j</span><span class="p">]</span><span class="s s-Atom">:</span>
+            <span class="s s-Atom">j</span> <span class="s s-Atom">+=</span> <span class="mi">1</span>
+        <span class="s s-Atom">r</span> <span class="o">=</span> <span class="s s-Atom">j</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="s s-Atom">print</span> <span class="nv">L</span><span class="p">[</span><span class="s s-Atom">o</span><span class="o">-</span><span class="s s-Atom">r</span><span class="o">+</span><span class="mi">1</span><span class="s s-Atom">:o</span><span class="o">+</span><span class="nn">r</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+
+<p>又经过10多天，我又扫完一遍题，这次我以72题的成绩排在GodIsCoding和YOSHINO之后第三名。</p>
+<h3 id="_3">总结：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>做完之后，我的感觉是，python是很美很简单语言，如其名。</p>
+<h3 id="_4">生活题外话：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>没能及时报考C语言二级，非常遗憾，英语六级不知道报呢还是不报好。</p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/" target="_blank">https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/">IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/">【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（<span class="caps">LCS</span>）问题——阿里校招题</a></li>
+        <li><a href="https://blog.pythonwood.com/2013/10/微信公众平台开发（免费云BAE+高效优雅的Python+网站开放的API）/">微信公众平台开发（免费云BAE+高效优雅的Python+网站开放的API）</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/";
+        var disqus_title = "寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法";
+        var disqus_url = "https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-02-16T14:23:00+08:00"><i class="fa fa-calendar"></i> 2014年02月16日, 14:23</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="17 articles in this category">技术</a>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">python</a>
+            <a href="/tag/suan-fa/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">算法</a>
+            <a href="/tag/han-jia/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">寒假</a>
+            <a href="/tag/tiao-zhan/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">挑战</a>
+            <a href="/tag/pythontip/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">pythontip</a>
+            <a href="/tag/cheng-xu/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">程序</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/" title="谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.pythonwood.com/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/" title="校园选课项目：一个名字叫jumper的chrome插件的诞生记"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,23 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 实习</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/shi-xi/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2014-04-30T23:58:00+08:00</updated><entry><title>腾讯2014实习面经——记一个非计算机学生的首次面试</title><link href="https://blog.pythonwood.com/2014/04/%E8%85%BE%E8%AE%AF2014%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E8%AE%B0%E4%B8%80%E4%B8%AA%E9%9D%9E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%94%9F%E7%9A%84%E9%A6%96%E6%AC%A1%E9%9D%A2%E8%AF%95/" rel="alternate"></link><published>2014-04-30T23:58:00+08:00</published><updated>2014-04-30T23:58:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-04-30:/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/</id><summary type="html">&lt;h3 id="_1"&gt;地点：华南理工大学大学城校区，为广州考点。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="3x-412-415-417-419-425"&gt;流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 + 签约4.25&lt;a class="headerlink" href="#3x-412-415-417-419-425" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h1 id="_2"&gt;前言&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 实习</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/shi-xi/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T22:12:00+08:00</updated><entry><title>【实习记】2014-09-26linux下恢复ntfs分区误删的文件</title><link href="https://blog.pythonwood.com/2014/09/%E3%80%90%E5%AE%9E%E4%B9%A0%E8%AE%B0%E3%80%912014-09-26linux%E4%B8%8B%E6%81%A2%E5%A4%8Dntfs%E5%88%86%E5%8C%BA%E8%AF%AF%E5%88%A0%E7%9A%84%E6%96%87%E4%BB%B6/" rel="alternate"></link><published>2014-09-26T15:07:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-09-26:/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/</id><summary type="html">&lt;h3 id="_1"&gt;忧伤的背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;情景，ubuntu下把NTFS格式的盘中的“实习记”文件夹彻底删除了，追毁莫及，粗心觉不是一件好的事情。&lt;/p&gt;
+&lt;p&gt;linux下回复ntfs盘下的文件不能用ext3grep，而使用debugfs命令实在很原始。&lt;/p&gt;
+&lt;p&gt;万幸所有记录文件的文件名都是：【实习记】2014-0&lt;em&gt;*&lt;/em&gt;*.txt&lt;/p&gt;
+&lt;p&gt;最后使用ntfsundelete + chown + chmod + sed&amp;nbsp;完美恢复刚才删除是所以TXT文件。&lt;/p&gt;
+&lt;h4 id="0"&gt;0、&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;sudo …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;忧伤的背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;情景，ubuntu下把NTFS格式的盘中的“实习记”文件夹彻底删除了，追毁莫及，粗心觉不是一件好的事情。&lt;/p&gt;
+&lt;p&gt;linux下回复ntfs盘下的文件不能用ext3grep，而使用debugfs命令实在很原始。&lt;/p&gt;
+&lt;p&gt;万幸所有记录文件的文件名都是：【实习记】2014-0&lt;em&gt;*&lt;/em&gt;*.txt&lt;/p&gt;
+&lt;p&gt;最后使用ntfsundelete + chown + chmod + sed&amp;nbsp;完美恢复刚才删除是所以TXT文件。&lt;/p&gt;
+&lt;h4 id="0"&gt;0、&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;sudo umount&amp;nbsp;该ntfs盘&lt;/p&gt;
+&lt;h4 id="1"&gt;1、&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ntfs-3g
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;直接安装ntfsundelete是不行的，它被包含于ntfs-3g中，也包含于ntfsprogs(源中已弃用此包)&lt;/p&gt;
+&lt;h4 id="2"&gt;2、&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ntfsundelete /dev/sda3 -f -t 3m | grep 实习记 | awk &amp;#39;{print $1}&amp;#39; &amp;gt; ntfsundelete.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;获取所有要恢复的文件的inode值，然后使用vi编辑使inode组成&amp;rdquo;881,2341,234,&amp;hellip;&amp;rdquo;文本。&lt;/p&gt;
+&lt;p&gt;3m表示3个月以内生成并删除的，而不3个月内删除的意思。&lt;/p&gt;
+&lt;h4 id="3"&gt;3、&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ntfsundelete /dev/sda3 -d /home/wilson/tmp/ -u -i 881,2341,234,....
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;恢复inode为881,2341,234等的文件。&lt;/p&gt;
+&lt;h4 id="5"&gt;5、&lt;a class="headerlink" href="#5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /home/wilson/tmp
+chown wilson:wilson *
+chmod a+r *
+for fn in *.txt; do sed -i &amp;#39;s/\x00//g&amp;#39; $fn; done;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;恢复后文件属主为root，权限为600,&amp;nbsp;需修复。&lt;/p&gt;
+&lt;p&gt;恢复后的文件一般末尾有多余的\x00，使用sed也可以替换，一开始没想到。&lt;/p&gt;
+&lt;h4 id="6"&gt;6、&lt;a class="headerlink" href="#6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#done, enjoy it!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;到恢复文件的位置去吧&lt;/p&gt;
+&lt;h3 id="_2"&gt;参考&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;［教学］在Ubuntu中恢复NTFS分区中被ubuntu误删除的文件（windows软件无法恢复的ubuntu中能恢复！
+&lt;a href="http://forum.ubuntu.org.cn/viewtopic.php?t=158497"&gt;http://forum.ubuntu.org.cn/viewtopic.php?t=158497&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linux下恢复ntfs格式的盘上的误删文件
+&lt;a href="http://nyc1991.blog.51cto.com/6424159/1216592"&gt;http://nyc1991.blog.51cto.com/6424159/1216592&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linux文件误删除恢复操作
+&lt;a href="http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html"&gt;http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html&lt;/a&gt;&lt;/p&gt;</content><category term="实习"></category><category term="linux"></category><category term="ntfs"></category><category term="文件恢复"></category></entry><entry><title>【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题</title><link href="https://blog.pythonwood.com/2014/08/%E3%80%90%E5%AE%9E%E4%B9%A0%E8%AE%B0%E3%80%912014-08-29%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0Boyer-Moore%E5%92%8C%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88LCS%EF%BC%89%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E9%A2%98/" rel="alternate"></link><published>2014-08-29T21:23:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-08-29:/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/</id><summary type="html">&lt;!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+--&gt;
+
+&lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0 …&lt;/p&gt;</summary><content type="html">&lt;!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+--&gt;
+
+&lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;b　　1　　0&amp;nbsp;1&lt;/p&gt;
+&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;我们看矩阵的斜对角线最长的那个就能找出最长公共子串。&lt;/p&gt;
+&lt;p&gt;不过在二维矩阵上找最长的由1组成的斜对角线也是件麻烦费时的事，下面改进：当要在矩阵是填1时让它等于其左上角元素加1。&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;b　　1　　0&amp;nbsp;2&lt;/p&gt;
+&lt;p&gt;a　　0　　2&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;这样矩阵中的最大元素就是&amp;nbsp;最长公共子串的长度。&lt;/p&gt;
+&lt;p&gt;在构造这个二维矩阵的过程中由于得出矩阵的某一行后其上一行就没用了，所以实际上在程序中可以用一维数组来代替这个矩阵。&lt;/p&gt;
+&lt;h3 id="_2"&gt;代码实践&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据以上算法&amp;nbsp;使用C语言实践了一下。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;comfix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;stra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;strb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;malloc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%s,%s: %d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;comfix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;comfix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt;     * 变量第一字符&lt;/span&gt;
+&lt;span class="cm"&gt;     * c:char*, l:len&lt;/span&gt;
+&lt;span class="cm"&gt;     * 变量第二字符&lt;/span&gt;
+&lt;span class="cm"&gt;     * s:small, l:large&lt;/span&gt;
+&lt;span class="cm"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cs&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cl&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;la&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;lb&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;ls&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;ll&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lb&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="cm"&gt;/* 如果不对，就调换呗 */&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lb&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;cs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stra&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;la&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="cm"&gt;/* 矩阵，只保存矩阵的一行即可动态之 */&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;memset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pint&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ll&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="cm"&gt;/* 生成下一行，同时上一行内容被回收 */&lt;/span&gt;
+       &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+           &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="n"&gt;cs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+               &lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+       &lt;span class="cm"&gt;/* 如果有更大就更新ret */&lt;/span&gt;
+       &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+           &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+               &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pint&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这种算法非常巧妙地化繁为简，有时换一个思路，就会扩然开朗！&lt;/p&gt;
+&lt;p&gt;比较喜欢这种锻炼。&lt;/p&gt;
+&lt;h3 id="_3"&gt;参考&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;研究了&amp;nbsp;求最长公共子串问题，顺便研究了字符串匹配&lt;/p&gt;
+&lt;p&gt;字符串匹配的Boyer-Moore算法
+&lt;a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html"&gt;http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;字符串匹配的KMP算法
+&lt;a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html"&gt;http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;动态规划算法之：最长公共子序列 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 最长公共子串（&lt;span class="caps"&gt;LCS&lt;/span&gt;）
+&lt;a href="http://my.oschina.net/leejun2005/blog/117167"&gt;http://my.oschina.net/leejun2005/blog/117167&lt;/a&gt;&lt;/p&gt;</content><category term="阿里"></category><category term="校招"></category><category term="实习"></category><category term="算法"></category><category term="最长公共"></category><category term="子串"></category><category term="字符串"></category></entry><entry><title>腾讯2014实习面经——记一个非计算机学生的首次面试</title><link href="https://blog.pythonwood.com/2014/04/%E8%85%BE%E8%AE%AF2014%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E8%AE%B0%E4%B8%80%E4%B8%AA%E9%9D%9E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%94%9F%E7%9A%84%E9%A6%96%E6%AC%A1%E9%9D%A2%E8%AF%95/" rel="alternate"></link><published>2014-04-30T23:58:00+08:00</published><updated>2014-04-30T23:58:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-04-30:/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/</id><summary type="html">&lt;p&gt;地点：华南理工大学大学城校区，为广州考点。&lt;/p&gt;
+&lt;p&gt;流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 +&amp;nbsp;签约4.25&lt;/p&gt;
+&lt;h3 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;地点：华南理工大学大学城校区，为广州考点。&lt;/p&gt;
+&lt;p&gt;流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 +&amp;nbsp;签约4.25&lt;/p&gt;
+&lt;h3 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期，只算笔试到终面的话则是一星期，效率比阿里要好。&lt;/p&gt;
 &lt;p&gt;腾讯是我的处面，一路过来我没有夸张，只是平实的叙述我的故事，认真谨慎的答问。&lt;/p&gt;
 &lt;p&gt;我容易紧张，但幸好没有太紧张。&lt;/p&gt;
-&lt;h1 id="2014-3-18"&gt;2014-3-18 网申（宣讲会在大学城太远了跳过～呵呵）&lt;a class="headerlink" href="#2014-3-18" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;(&lt;sup&gt;0&lt;/sup&gt;)&lt;/p&gt;
-&lt;p&gt;准备：&lt;/p&gt;
-&lt;p&gt;1、寒假就开始准备，主要是重拾算法，发现没之前开始学编程那么难了。&lt;/p&gt;
-&lt;p&gt;2、寒假期间pythontip有个挑战python，做72题后排第三名。挑战最长回文，最长上升子串等算法题，综合能力提升。&lt;/p&gt;
-&lt;p&gt;3、看完《编程珠玑》和《编程之美》。&lt;/p&gt;
-&lt;p&gt;4 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;地点：华南理工大学大学城校区，为广州考点。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="3x-412-415-417-419-425"&gt;流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 + 签约4.25&lt;a class="headerlink" href="#3x-412-415-417-419-425" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h1 id="_2"&gt;前言&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期，只算笔试到终面的话则是一星期，效率比阿里要好。&lt;/p&gt;
-&lt;p&gt;腾讯是我的处面，一路过来我没有夸张，只是平实的叙述我的故事，认真谨慎的答问。&lt;/p&gt;
-&lt;p&gt;我容易紧张，但幸好没有太紧张。&lt;/p&gt;
-&lt;h1 id="2014-3-18"&gt;2014-3-18 网申（宣讲会在大学城太远了跳过～呵呵）&lt;a class="headerlink" href="#2014-3-18" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2014-3-18"&gt;2014-3-18 网申（宣讲会在大学城太远了跳过～呵呵）&lt;a class="headerlink" href="#2014-3-18" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;(&lt;sup&gt;0&lt;/sup&gt;)&lt;/p&gt;
 &lt;p&gt;准备：&lt;/p&gt;
 &lt;p&gt;1、寒假就开始准备，主要是重拾算法，发现没之前开始学编程那么难了。&lt;/p&gt;
@@ -26,7 +166,7 @@
 &lt;p&gt;4、google面经，做往年题练手。&lt;/p&gt;
 &lt;p&gt;5、Linux下gcc+vim实践7大经典排序算法（这个效用较高）。&lt;/p&gt;
 &lt;p&gt;6、精心准备的简历，3月8号就做了1.0版，后修改不下10次，要求尽量简洁美观。&lt;/p&gt;
-&lt;h1 id="2014-4-12-1430-1600"&gt;2014-4-12 周六 14:30 - 16:00 笔试&lt;a class="headerlink" href="#2014-4-12-1430-1600" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2014-4-12-1430-1600"&gt;2014-4-12 周六 14:30 - 16:00 笔试&lt;a class="headerlink" href="#2014-4-12-1430-1600" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;×—×&lt;/p&gt;
 &lt;p&gt;心情：&lt;/p&gt;
 &lt;p&gt;1、收到信息，知道阿里笔试被鄙视了。&lt;/p&gt;
@@ -40,7 +180,7 @@
 &lt;p&gt;后记：&lt;/p&gt;
 &lt;p&gt;1、打击过后的我只敢保守地估计，谨慎地乐观，默默地独自回校。&lt;/p&gt;
 &lt;p&gt;2、心中感觉一些轻松，一些冷漠，像我本是局外人。&lt;/p&gt;
-&lt;h1 id="2014-4-15-1000-1100"&gt;2014-4-15 周二 10:00 - 11:00 一面 单面&lt;a class="headerlink" href="#2014-4-15-1000-1100" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2014-4-15-1000-1100"&gt;2014-4-15 周二 10:00 - 11:00 一面 单面&lt;a class="headerlink" href="#2014-4-15-1000-1100" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;T_T&lt;/p&gt;
 &lt;p&gt;过程：&lt;/p&gt;
 &lt;p&gt;1、面试官是位大叔，讲话少，自我介绍时“嗯”了很多，有时闭着眼在听。&lt;/p&gt;
@@ -58,7 +198,7 @@
 &lt;p&gt;1、阿里铩羽而归后的又一次打击，本来觉得我应该无后文，继续华为，小米，百度实习关注填表。&lt;/p&gt;
 &lt;p&gt;2、我后来惊喜收到二面短信，可能和我很重实践，Linux，github，操作系统代码有关。&lt;/p&gt;
 &lt;p&gt;3、当时答得不太好的如socket，进程通信，netstat&amp;nbsp;-ptln我都马上复习了，为了别的面试。结果让我在二面表现更好。&lt;/p&gt;
-&lt;h1 id="2014-4-17-830-900"&gt;2014-4-17 周四  8:30 - 9:00 二面 单面&lt;a class="headerlink" href="#2014-4-17-830-900" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2014-4-17-830-900"&gt;2014-4-17 周四  8:30 - 9:00 二面 单面&lt;a class="headerlink" href="#2014-4-17-830-900" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;em&gt;&lt;sup&gt;-&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;过程：&lt;/p&gt;
 &lt;p&gt;1、自我介绍8分钟，以Ubuntu14.04正式版发布这开源新闻开始，还是那篇讲学习经历和项目的自我介绍。最浓缩就是：windows-&amp;gt;Linux-&amp;gt;Python。期间他有打断问我具体细节，我都详细作答了。&lt;/p&gt;
@@ -74,7 +214,7 @@
 &lt;p&gt;1、出来后心情，做番201去星海过程中观赏者大学城。&lt;/p&gt;
 &lt;p&gt;2、回去过程在回想面试，面试官给我感觉挺好的，他当时穿了米黄色衬衫，中等身高有点胖，印象中头发有点蓬松，和脸相搭。&lt;/p&gt;
 &lt;p&gt;3、出来后直到回学校，觉得我是幸运的。&lt;/p&gt;
-&lt;h1 id="2014-04-19-1522-1537"&gt;2014-04-19 周六 15:22 - 15:37 三面 单面&lt;a class="headerlink" href="#2014-04-19-1522-1537" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="2014-04-19-1522-1537"&gt;2014-04-19 周六 15:22 - 15:37 三面 单面&lt;a class="headerlink" href="#2014-04-19-1522-1537" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;(&lt;sup&gt;w&lt;/sup&gt;)&lt;/p&gt;
 &lt;p&gt;感受：&lt;/p&gt;
 &lt;p&gt;1、微信状态变成HR面是很开心，因为有HR不怎么刷技术岗之说。同时感概些许，也许就在前面了，但我告诫自己绝不能倒在这关。&lt;/p&gt;
@@ -86,7 +226,7 @@
 &lt;p&gt;3、最后让问问题，查笔试成绩没成，问可能去向问到了。&lt;/p&gt;
 &lt;p&gt;后记：&lt;/p&gt;
 &lt;p&gt;2014-04-25，offer终签成，一件好事来了。哈哈。&lt;/p&gt;
-&lt;h1 id="_3"&gt;面试经历总记：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="_2"&gt;面试经历总记：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;我是个粗心人!&lt;/p&gt;
 &lt;p&gt;1、14号晚收到一面通知在15好，而我以为当天是13号，睡前发现这个“&lt;span class="caps"&gt;BUG&lt;/span&gt;”，起来准备到2点才睡，第二天7点起床。&lt;/p&gt;
 &lt;p&gt;2、微信查进度jg这两字符总漏了，“修复”后得到第一个回复是处在到HR面中。我的色弱也许占部分原因。&lt;/p&gt;
@@ -99,7 +239,7 @@
 &lt;p&gt;5、不是到用的时候才有，而是到用的时候来总结。所以不会被问到哑口无言。&lt;/p&gt;
 &lt;p&gt;经验总结&lt;/p&gt;
 &lt;p&gt;后来我猜，自学能力，多种语言，C/C++功底，Linux，blog，github，项目，这些是决定我能留下来的组成部分。&lt;/p&gt;
-&lt;h1 id="_4"&gt;其他：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="_3"&gt;其他：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;我是谁？&amp;nbsp;我是大学开始自学技术的商科学生&lt;/p&gt;
 &lt;p&gt;1、技术的我：一个Linux与Python爱好者，关注开源和C/C++，使用Vim编辑器，喜欢Shell下工作。（技术宅？不是的，希望像耗子大叔一样。）&lt;/p&gt;
 &lt;p&gt;2、学生的我：一个商科11届大学生，来自广东文科老二，理科老三的（按高考分数线的话）211暨南大学(&lt;span class="caps"&gt;JNU&lt;/span&gt;)。大学以自学副业为主，暂没获得过奖学金。&lt;/p&gt;
@@ -118,4 +258,4 @@
 &lt;p&gt;程序员面试、算法研究、编程艺术、红黑树、数据挖掘5大系列集锦     &lt;a href="http://blog.csdn.net/v_july_v/article/details/6543438"&gt;http://blog.csdn.net/v_july_v/article/details/6543438&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2014年计算机求职总结&amp;ndash;准备篇    &lt;a href="http://blog.csdn.net/luckyxiaoqiang/article/details/13000431"&gt;http://blog.csdn.net/luckyxiaoqiang/article/details/13000431&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;《程序员编程艺术 — 面试和算法心得》    &lt;a href="https://github.com/julycoding/The-Art-Of-Programming-By-July"&gt;https://github.com/julycoding/The-Art-Of-Programming-By-July&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;《剑指Offer——名企面试官精讲典型编程题》博客    &lt;a href="http://zhedahht.blog.163.com/"&gt;http://zhedahht.blog.163.com/&lt;/a&gt;&lt;/p&gt;</content><category term="面试"></category><category term="腾讯"></category><category term="实习"></category></entry></feed>
+&lt;p&gt;《剑指Offer——名企面试官精讲典型编程题》博客    &lt;a href="http://zhedahht.blog.163.com/"&gt;http://zhedahht.blog.163.com/&lt;/a&gt;&lt;/p&gt;</content><category term="面试"></category><category term="腾讯"></category><category term="实习"></category><category term="校招"></category></entry></feed>

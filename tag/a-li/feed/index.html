@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Linux迷+Python粉 - 阿里</title><link>https://blog.pythonwood.com/</link><description>人生苦短，我用Python</description><lastBuildDate>Thu, 30 Nov 2017 22:12:00 +0800</lastBuildDate><item><title>【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题</title><link>https://blog.pythonwood.com/2014/08/%E3%80%90%E5%AE%9E%E4%B9%A0%E8%AE%B0%E3%80%912014-08-29%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0Boyer-Moore%E5%92%8C%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88LCS%EF%BC%89%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E9%A2%98/</link><description>&lt;!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+--&gt;
+
+&lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
+&lt;p&gt;c　　0　　0&amp;nbsp;0 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">pythonwood</dc:creator><pubDate>Fri, 29 Aug 2014 21:23:00 +0800</pubDate><guid isPermaLink="false">tag:blog.pythonwood.com,2014-08-29:/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/</guid><category>阿里</category><category>校招</category><category>实习</category><category>算法</category><category>最长公共</category><category>子串</category><category>字符串</category></item></channel></rss>

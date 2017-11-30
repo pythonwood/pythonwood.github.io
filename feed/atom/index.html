@@ -1,22 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-27T22:12:00+08:00</updated><entry><title>ssh命令：隧道代理+本地端口转发+远程端口转发</title><link href="https://blog.pythonwood.com/2016/02/ssh%E5%91%BD%E4%BB%A4%EF%BC%9A%E9%9A%A7%E9%81%93%E4%BB%A3%E7%90%86+%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91+%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="alternate"></link><published>2016-02-15T11:29:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>Pythonwood</name></author><id>tag:blog.pythonwood.com,2016-02-15:/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/</id><summary type="html">&lt;h2 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
-&lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
-&lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP&lt;/span&gt; 端口的网络数据通过 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;链接来转发，并且自动提供了相应的加密及解密服务。&lt;/p&gt;
-&lt;h2 id="1"&gt;1、隧道带理&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;典型应用：翻越高墙&lt;/p&gt;
-&lt;p&gt;需要条件：一个国外vps，一个不需要登录（安全）的帐号，一个命令。&lt;/p&gt;
-&lt;p&gt;vps新建帐号：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd -g nobody -s /sbin/nologin  gfw &amp;amp;&amp;amp; echo gfw_Passw0rd | passwd --stdin gfw
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-12-01T00:00:00+08:00</updated><entry><title>第二次开源贡献，为pelican的plumage主题修改被owner接受</title><link href="https://blog.pythonwood.com/2017/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%EF%BC%8C%E4%B8%BApelican%E7%9A%84plumage%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E8%A2%ABowner%E6%8E%A5%E5%8F%97/" rel="alternate"></link><published>2017-12-01T00:00:00+08:00</published><updated>2017-12-01T00:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-12-01:/2017/12/第二次开源贡献，为pelican的plumage主题修改被owner接受/</id><summary type="html">&lt;p&gt;2017年11月，正在折腾静态博客。最后使用了pelican生产+plumage主题并自行汉化。其中发现些许问题。&lt;/p&gt;
+&lt;p&gt;29号时，对plumage主题进行完善，并提交了一个修复不支持PAGINATION_PATTERNS参数问题的fixbug型&lt;a href="https://github.com/kdeldycke/plumage/pull/21/commits/cc887089a365420ec1ed00cc0bcedc3573ab6e8c"&gt;pull request&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;30号时，原作者&lt;a href="https://kevin.deldycke.com/"&gt;Kevin Deldycke&lt;/a&gt;接受合并到了master。&lt;/p&gt;
+&lt;h4 id="pelicanplumgeowner"&gt;纪念一下，这是第二次开源贡献，为pelican的plumge主题修改被owner接受。&lt;a class="headerlink" href="#pelicanplumgeowner" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="第二次开源贡献，为pelican的plumge主题修改被owner接受" src="https://blog.pythonwood.com/uploads/2017/第二次开源贡献，为pelican的plumge主题修改被owner接受.png" title="第二次开源贡献，为pelican的plumge主题修改被owner接受"&gt;&lt;/p&gt;
+&lt;h4 id="201647twisted-intro-cn"&gt;第一次是2016年4月7日对开源书籍的&lt;a href="https://github.com/likebeta/twisted-intro-cn"&gt;twisted-intro-cn …&lt;/a&gt;&lt;/h4&gt;</summary><content type="html">&lt;p&gt;2017年11月，正在折腾静态博客。最后使用了pelican生产+plumage主题并自行汉化。其中发现些许问题。&lt;/p&gt;
+&lt;p&gt;29号时，对plumage主题进行完善，并提交了一个修复不支持PAGINATION_PATTERNS参数问题的fixbug型&lt;a href="https://github.com/kdeldycke/plumage/pull/21/commits/cc887089a365420ec1ed00cc0bcedc3573ab6e8c"&gt;pull request&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;30号时，原作者&lt;a href="https://kevin.deldycke.com/"&gt;Kevin Deldycke&lt;/a&gt;接受合并到了master。&lt;/p&gt;
+&lt;h4 id="pelicanplumgeowner"&gt;纪念一下，这是第二次开源贡献，为pelican的plumge主题修改被owner接受。&lt;a class="headerlink" href="#pelicanplumgeowner" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="第二次开源贡献，为pelican的plumge主题修改被owner接受" src="https://blog.pythonwood.com/uploads/2017/第二次开源贡献，为pelican的plumge主题修改被owner接受.png" title="第二次开源贡献，为pelican的plumge主题修改被owner接受"&gt;&lt;/p&gt;
+&lt;h4 id="201647twisted-intro-cn"&gt;第一次是2016年4月7日对开源书籍的&lt;a href="https://github.com/likebeta/twisted-intro-cn"&gt;twisted-intro-cn&lt;/a&gt;的贡献&lt;a href="https://github.com/likebeta/twisted-intro-cn/commit/93f959edf227769cab4f812038f01bef5cdb8ac1"&gt;修改鸭子模式介绍&lt;/a&gt;&lt;a class="headerlink" href="#201647twisted-intro-cn" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="第一次开源贡献，修改鸭子模式介绍" src="https://blog.pythonwood.com/uploads/2017/第一次开源贡献，修改鸭子模式介绍.png" title="第一次开源贡献，修改鸭子模式介绍"&gt;&lt;/p&gt;</content><category term="pelican"></category><category term="plumage"></category><category term="贡献"></category><category term="pull"></category><category term="request"></category><category term="first"></category><category term="github"></category></entry><entry><title>树莓派SD卡Linux系统盘复制，10分钟克隆新机</title><link href="https://blog.pythonwood.com/2017/11/%E6%A0%91%E8%8E%93%E6%B4%BESD%E5%8D%A1Linux%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%A4%8D%E5%88%B6%EF%BC%8C10%E5%88%86%E9%92%9F%E5%85%8B%E9%9A%86%E6%96%B0%E6%9C%BA/" rel="alternate"></link><published>2017-11-30T15:02:00+08:00</published><updated>2017-11-30T15:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-11-30:/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/</id><summary type="html">&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）&lt;/p&gt;
+&lt;h3 id="_1"&gt;开始折腾尝试&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G …&lt;/p&gt;</summary><content type="html">&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）&lt;/p&gt;
+&lt;h3 id="_1"&gt;开始折腾尝试&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G，很多空间是多余的。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gparted看树莓派分区" src="https://blog.pythonwood.com/uploads/2017/gparted看树莓派分区.jpg" title="gparted看树莓派分区"&gt;&lt;/p&gt;
+&lt;p&gt;用了1天的不断努力尝试终于才成功，囧。&lt;/p&gt;
+&lt;h3 id="1ddddrescue"&gt;失败1:使用DD或ddrescue&lt;a class="headerlink" href="#1ddddrescue" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;不幸的是我是从14.6G卡克隆到14.4G卡，使用dd失败是注定的。使用dd的必要条件是目标卡要更大。&lt;/p&gt;
+&lt;h3 id="2linuxssdetc"&gt;失败2:源自笔记本linux系统迁移SSD的经验——分区一样，复制文件，改etc配置法。&lt;a class="headerlink" href="#2linuxssdetc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;linux磁盘迁移，只需分区格式化，复制文件，修改etc下的fstab和udev目录的网卡信息，chroot+grub安装。就能完成。&lt;/p&gt;
+&lt;p&gt;然而实践得知，不适用树莓派迁移。启动时卡在&amp;rdquo;smsc95xx 1-1.1:1.0: eth0: register &amp;lsquo;smsc95xx&amp;rsquo;&amp;nbsp;&amp;hellip;&amp;rdquo;之后。无法启动。&lt;/p&gt;
+&lt;p&gt;比较发现，复制时，不会有dev/by-partuuid/目录，而本身树莓派是有这个目录的。&lt;/p&gt;
+&lt;h3 id="ddrawresize2fsqemu-imgdiskdd"&gt;成功:dd读取为raw镜像盘、resize2fs缩容分区、qemu-img缩容disk、dd写入成功启动树莓派&lt;a class="headerlink" href="#ddrawresize2fsqemu-imgdiskdd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="ddrawsd"&gt;先dd读取物理盘为raw格式镜像盘。这样就可以方法搞，最坏情况也不影响已有的系统sd卡内容。&lt;a class="headerlink" href="#ddrawsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo dd if=/dev/sdb of=/home/16G.img bs=128K
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;本地ssh连接：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfD …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h4 id="loopgparted"&gt;挂载loop设备以便于gparted能操作&lt;a class="headerlink" href="#loopgparted" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo losetup /dev/loop0 /home/16G.img
+$sudo partprobe /dev/loop0  # 运行后才会出现分区/dev/loop0p1,/dev/loop0p2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="14g6gblock6g"&gt;第二分区从14G缩容到6G（实际是把分散的Block数据集中到前6G位置。非真正改变分区大小）&lt;a class="headerlink" href="#14g6gblock6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo e2fsck -f /dev/loop0p2
+$sudo resize2fs /dev/loop0p2 6G
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="gparted-fdisk-6g"&gt;GParted / Fdisk 更改第二分区为6G&lt;a class="headerlink" href="#gparted-fdisk-6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;GParted&amp;nbsp;/dev/loop0打开，然后选择第二分区右击，选择&amp;rdquo;更改/移动大小&amp;rdquo;。设置。&lt;/p&gt;
+&lt;h4 id="loop"&gt;卸载恢复loop设备:&lt;a class="headerlink" href="#loop" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo partprobe -d /dev/loop0
+$sudo losetup -d /dev/loop0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="raw"&gt;raw虚拟磁盘缩容&lt;a class="headerlink" href="#raw" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo qemu-img resize /home/16G.img -8G
+
+$qemu-img info /home/16G.img
+image: xxx.img
+file format: raw
+virtual size: 5.9G (6380060672 bytes)
+disk size: 5.9G
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="ddsd"&gt;使用DD写入新SD卡，启动成功。&lt;a class="headerlink" href="#ddsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;可选：写入sd后可以用e2resize扩容分区完全用上SD卡空间，参考上面缩容。&lt;/p&gt;
+&lt;h3 id="_2"&gt;参考&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;把一块硬盘上的 Linux 系统整个复制到新硬盘上的方法.  &lt;a href="https://www.v2ex.com/t/183310"&gt;https://www.v2ex.com/t/183310&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;openstack文档 &lt;a href="http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd"&gt;http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用qemu-img改变镜像文件大小  &lt;a href="http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html"&gt;http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;笔记本硬盘更换记（使用LVM进行在线数据迁移） &lt;a href="http://cathay4t.blogspot.hk/2009/05/lvm.html"&gt;http://cathay4t.blogspot.hk/2009/05/lvm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;新电脑+旧系统：教你在不同机器间转移Linux  &lt;a href="http://www.geekfan.net/1860/"&gt;http://www.geekfan.net/1860/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;usb-creator-gtk 方法和&amp;nbsp;clonezilla方法没有深入研究。&lt;/p&gt;</content><category term="树莓派"></category><category term="rpi"></category><category term="raspbain"></category><category term="raspberry"></category><category term="pi"></category><category term="clone"></category><category term="linux"></category><category term="克隆"></category><category term="系统"></category><category term="uuid"></category><category term="resizefs"></category><category term="qemu-img"></category><category term="losetup"></category><category term="dd"></category><category term="智能家庭"></category></entry><entry><title>[译]安卓6款最佳DLNA,UPNP流媒体客户端APP</title><link href="https://blog.pythonwood.com/2017/11/[%E8%AF%91]%E5%AE%89%E5%8D%936%E6%AC%BE%E6%9C%80%E4%BD%B3DLNA,UPNP%E6%B5%81%E5%AA%92%E4%BD%93%E5%AE%A2%E6%88%B7%E7%AB%AFAPP/" rel="alternate"></link><published>2017-11-29T04:12:00+08:00</published><updated>2017-11-29T04:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-11-29:/2017/11/[译]安卓6款最佳DLNA,UPNP流媒体客户端APP/</id><summary type="html">&lt;p&gt;&lt;img alt="0" src="https://www.maketecheasier.com/assets/uploads/2017/06/dlna-streaming-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;DLNA&lt;/span&gt;(数字生活网络联盟)是数码生活中一个非常方便简单实用的技术名字。它做了一件伟大的事情，就是连接到支持DLNA的设备，并通过无线方式无缝传输数据 ——&amp;nbsp;照片，音乐，视频甚至是手机屏幕上的数据。（随时+实时的多屏互动，适合家庭分享）&lt;/p&gt;
+&lt;p&gt;这是一个非常古老而富有活力的格式。曾经，微软和索尼都试图从Xbox&amp;nbsp;One和PS4上分别去掉这功能，但是由于需求的人众多，后来有重新加入去。所以，让我们高呼DLNA万岁吧 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="0" src="https://www.maketecheasier.com/assets/uploads/2017/06/dlna-streaming-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;DLNA&lt;/span&gt;(数字生活网络联盟)是数码生活中一个非常方便简单实用的技术名字。它做了一件伟大的事情，就是连接到支持DLNA的设备，并通过无线方式无缝传输数据 ——&amp;nbsp;照片，音乐，视频甚至是手机屏幕上的数据。（随时+实时的多屏互动，适合家庭分享）&lt;/p&gt;
+&lt;p&gt;这是一个非常古老而富有活力的格式。曾经，微软和索尼都试图从Xbox&amp;nbsp;One和PS4上分别去掉这功能，但是由于需求的人众多，后来有重新加入去。所以，让我们高呼DLNA万岁吧！&lt;/p&gt;
+&lt;p&gt;有部分很好的（也有很多糟糕的）Android应用程序使用DLNA流媒体技术，所以我们选择了6款最好的DLNA客户端APP推荐给你。&lt;/p&gt;
+&lt;h2 id="1-mediamonkey"&gt;1. MediaMonkey&lt;a class="headerlink" href="#1-mediamonkey" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="1" src="https://www.maketecheasier.com/assets/uploads/2017/10/best-dlna-streaming-apps-android-mediamonkey.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;MediaMonkey远不只是DLNA客户端，它还可以让你通过WiFi，UPnP，蓝牙以及DLNA，在多个设备上同步和流媒体。 特点是整洁的界面和丰富的媒体管理小工具，维护多媒体库 ——&amp;nbsp;包括播放列表管理，批量文件编辑和书签管理等等。&lt;/p&gt;
+&lt;p&gt;遗憾的是你需要支付才能使用额外的部分功能，例如无限制的DLNA播放器。然而，花点小钱就能得到一个最完整的流媒体应用之一的APP所有功能，在我们看来还是可接受的。&lt;/p&gt;
+&lt;h2 id="2-airwire"&gt;2. Airwire&lt;a class="headerlink" href="#2-airwire" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="2" src="https://www.maketecheasier.com/assets/uploads/2017/06/airwire-dlna-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;在苹果商店上Airwire是评分最高的DLNA应用程序之一。对大部分挑剔的安卓版本用户来说，安卓版airwire仍是投屏到大屏幕上的不错选择。发现设备速度很快，并且保持很好的同步和质量。尽管已经没有更新，AirWire仍然是最可靠的DLNA流媒体播放选择之一。&lt;/p&gt;
+&lt;p&gt;AirWire兼容多种设备，包括最新的控制台和许多较老的大品牌智能电视。&lt;/p&gt;
+&lt;h2 id="3-bubbleupnp"&gt;3. BubbleUPnP（译者推荐）&lt;a class="headerlink" href="#3-bubbleupnp" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="3" src="https://www.maketecheasier.com/assets/uploads/2017/06/bubbleupnp-android.png"&gt;
+安装BubbleUPnP UPnP/DLNA这款软件，能直接从手机向支持DLNA的设备广播您的内容。 它支持Chromecast，有DLNA功能的电视和最新的游戏控制器。&amp;nbsp;除了基本的流媒体功能外，它还具有播放队列，编辑播放列表，刻录，定时睡眠和随机播放模式等各种功能。更令人满意的是，它还有全屏图像查看器和遥控功能。&lt;/p&gt;
+&lt;p&gt;正如好些极客软件一样，不仅好用，而且还不收费！&lt;/p&gt;
+&lt;p&gt;APK下载地址：&lt;a href="https://www.bubblesoftapps.com/bubbleupnpserver/core/BubbleUPnPServerLauncher.apk" title="offical"&gt;BubbleUPnP&amp;nbsp;Server官网下载&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="4-mediahouse-upnpdlna"&gt;4. MediaHouse UPnP/&lt;span class="caps"&gt;DLNA&lt;/span&gt; 浏览器&lt;a class="headerlink" href="#4-mediahouse-upnpdlna" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="4" src="https://www.maketecheasier.com/assets/uploads/2017/06/mediahouse-dlna-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;如果你喜欢有更多功能的APK，请考察下MediaHouse UPnP/DLNA浏览器。包含多种DLNA流媒体功能，用您想要的方式共享视频和音乐。例如，它会自动扫描您的WiFi网络，查看是否有任何DLNA设备，之后可选连不连接。&amp;nbsp;它将扫描到的DLNA设备分为两类，第一类是可以将内容流式传输的设备，第二类是可以从中读取文件的设备。支持为音乐文件创建播放列表，附带图像查看，并可工作在横向模式。&lt;/p&gt;
+&lt;h2 id="5-imediashare-personal"&gt;5. iMediaShare Personal&lt;a class="headerlink" href="#5-imediashare-personal" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="5" src="https://www.maketecheasier.com/assets/uploads/2017/06/imediashare-personal-dlna-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;如果你想要一个界面炫酷的DLNA应用程序，那iMediaShare个人版很适合你。 这个APP可以将数字媒体直接从Android设备（手机/平板）传输到电视机而无需使用任何电缆。 在您的电视上播放媒体时，该APP还作为您控制媒体的遥控器。&amp;nbsp;支持使用手势来控制播放过程，比如暂停，继续等等。&lt;/p&gt;
+&lt;h2 id="6-allcast"&gt;6. AllCast&lt;a class="headerlink" href="#6-allcast" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="6" src="https://www.maketecheasier.com/assets/uploads/2017/06/allcast-dlna-android.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;尽管上面列出的APP都能将内容流式共享到任何DLNA设备，但AllCast是其中兼容性最好的。 它可以将媒体流式传输到Chromecast，Amazon Fire &lt;span class="caps"&gt;TV&lt;/span&gt;，Apple &lt;span class="caps"&gt;TV&lt;/span&gt;，Xbox 360和Xbox One，PS4以及其他所有支持DLNA的设备。&amp;nbsp;它也可以让你从你的Dropbox输入，直接读取视频流内容，无需先下载。&lt;/p&gt;
+&lt;h2 id="_1"&gt;结论&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;只需让老旧硬盘通过无线你就可以做这么美好的事情。设置DLNA可能听起来有点复杂，只是因为它是一个长的复杂的技术术语，但它其实真的很容易。&amp;nbsp;以上应用程序都非常好，挑选最适合您的那个DLNA客户端APP，然后按照屏幕指示操作，你就向无线媒体中心型的数码生活更进一步了。&lt;/p&gt;</content><category term="翻译"></category><category term="DLNA"></category><category term="UPNP"></category><category term="APP"></category><category term="安卓"></category><category term="播放器"></category><category term="软件"></category><category term="推荐"></category><category term="共享"></category><category term="智能家庭"></category></entry><entry><title>ssh命令：隧道代理+本地端口转发+远程端口转发</title><link href="https://blog.pythonwood.com/2016/02/ssh%E5%91%BD%E4%BB%A4%EF%BC%9A%E9%9A%A7%E9%81%93%E4%BB%A3%E7%90%86+%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91+%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="alternate"></link><published>2016-02-15T11:29:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2016-02-15:/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/</id><summary type="html">&lt;h3 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
+&lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
+&lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;h3 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
 &lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
 &lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP&lt;/span&gt; 端口的网络数据通过 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;链接来转发，并且自动提供了相应的加密及解密服务。&lt;/p&gt;
-&lt;h2 id="1"&gt;1、隧道带理&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="1"&gt;1、隧道带理&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;典型应用：翻越高墙&lt;/p&gt;
 &lt;p&gt;需要条件：一个国外vps，一个不需要登录（安全）的帐号，一个命令。&lt;/p&gt;
 &lt;p&gt;vps新建帐号：&lt;/p&gt;
@@ -30,7 +122,7 @@
 
 
 &lt;p&gt;可选转换：使用privoxy把socks5代理变成http代理供svn，pip，gem，curl等工具使用。&lt;/p&gt;
-&lt;h2 id="2"&gt;2、本地端口转发&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="2"&gt;2、本地端口转发&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="tu2" src="https://blog.pythonwood.com/uploads/2016/本地端口转发.jpg" title="2"&gt;&lt;/p&gt;
 &lt;p&gt;我们可以将远程机器（LdapClientHost）上的应用直接配置到本机的 7001 端口上（而不是 &lt;span class="caps"&gt;LDAP&lt;/span&gt; 服务器的 389 端口上）。在 LdapClientHost 上执行如下命令即可建立一个 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;的本地端口转发，例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -L 7001:localhost:389 LdapServerHost
@@ -42,7 +134,7 @@
 而本机的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client 会将 7001 端口收到的数据加密并转发到 LdapServertHost 的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 上。
 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 会解密收到的数据并将之转发到监听的 &lt;span class="caps"&gt;LDAP&lt;/span&gt; 389 端口上，
 最后再将从 &lt;span class="caps"&gt;LDAP&lt;/span&gt;&amp;nbsp;返回的数据原路返回以完成整个流程。&lt;/p&gt;
-&lt;h2 id="3"&gt;3、远程端口转发&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="3"&gt;3、远程端口转发&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="tu3" src="https://blog.pythonwood.com/uploads/2016/远程端口转发.jpg" title="3"&gt;&lt;/p&gt;
 &lt;p&gt;我们在 LdapClientHost 上的应用将数据发送到本机的 7001 端口上，而本机的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 会将 7001 端口收到的数据加密并转发到 LdapServertHost 的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client&amp;nbsp;上。&lt;/p&gt;
 &lt;p&gt;在 &lt;span class="caps"&gt;LDAP&lt;/span&gt;&amp;nbsp;服务器（LdapServertHost）端执行如下命令：&lt;/p&gt;
@@ -52,7 +144,7 @@
 
 &lt;h4 id="_1"&gt;区别：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class="caps"&gt;SSH&lt;/span&gt; 端口转发自然需要 &lt;span class="caps"&gt;SSH&lt;/span&gt; 连接，而 &lt;span class="caps"&gt;SSH&lt;/span&gt; 连接是有方向的，从 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client 到 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 。而我们的应用也是有方向的，比如需要连接 &lt;span class="caps"&gt;LDAP&lt;/span&gt; Server 时，&lt;span class="caps"&gt;LDAP&lt;/span&gt; Server 自然就是 Server 端，我们应用连接的方向也是从应用的 Client 端连接到应用的 Server&amp;nbsp;端。如果这两个连接的方向一致，那我们就说它是本地转发。而如果两个方向不一致，我们就说它是远程转发。&lt;/p&gt;
-&lt;h2 id="4autosshsupervisior"&gt;4、使用autossh防网络抖动+supervisior进程守护。&lt;a class="headerlink" href="#4autosshsupervisior" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="4autosshsupervisior"&gt;4、使用autossh防网络抖动+supervisior进程守护。&lt;a class="headerlink" href="#4autosshsupervisior" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;autossh解决的问题：远程端口转发一旦端口，很难再次建立。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;autossh -M 1932 -NR  1922:localhost:1122 user@vps -p 1122
 &lt;/pre&gt;&lt;/div&gt;
@@ -66,7 +158,7 @@
 &lt;p&gt;分析：使用回路，将本地1933端口，（远程转发）映射到远端1932，（本地转发）到本机的1932。形成回路。&lt;/p&gt;
 &lt;p&gt;supervisior解决的问题：autossh的进程守护&lt;/p&gt;
 &lt;p&gt;因此，使用supervisior守护autossh，autossh守护ssh。达到自动启动和守护端口转发的目的。&lt;/p&gt;
-&lt;h2 id="5"&gt;5、综合使用&lt;a class="headerlink" href="#5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="5"&gt;5、综合使用&lt;a class="headerlink" href="#5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;案例一、如何2222端口被封，如果绕过封死2222端口的防火墙直接ssh到内网机器。（就是说限某几个端口是有局限的）&lt;/p&gt;
 &lt;p&gt;1、登录最重要的机器把2222端口映射到12222端口：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -gfNL 12222:0.0.0.0:2222 localhost -p2222
@@ -108,609 +200,72 @@
 &lt;p&gt;使用supervisor托管shadowsocks&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://blog.phpgao.com/supervisor_shadowsocks.html"&gt;https://blog.phpgao.com/supervisor_shadowsocks.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;SSH反向连接及Autossh&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html"&gt;http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html&lt;/a&gt;&lt;/p&gt;</content><category term="ssh"></category><category term="代理"></category><category term="加密隧道"></category><category term="转发"></category><category term="privoxy"></category><category term="autossh"></category><category term="远程访问"></category></entry><entry><title>微信开发python+django两个月的成功经历，django是个好框架！</title><link href="https://blog.pythonwood.com/2014/06/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91python+django%E4%B8%A4%E4%B8%AA%E6%9C%88%E7%9A%84%E6%88%90%E5%8A%9F%E7%BB%8F%E5%8E%86%EF%BC%8Cdjango%E6%98%AF%E4%B8%AA%E5%A5%BD%E6%A1%86%E6%9E%B6%EF%BC%81/" rel="alternate"></link><published>2014-06-28T20:12:00+08:00</published><updated>2014-06-28T20:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-06-28:/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/</id><summary type="html">&lt;h2 id="_1"&gt;时间：大三&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。&lt;/p&gt;
-&lt;p&gt;下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。&lt;/p&gt;
-&lt;p&gt;选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。&lt;/p&gt;
-&lt;p&gt;亮点1：自带后台管理&lt;/p&gt;
-&lt;p&gt;亮点2：后台权限管理&lt;/p&gt;
-&lt;p&gt;亮点3：微信回复规则设置去代码化，图形界面。&lt;/p&gt;
-&lt;p&gt;亮点4：一平台多网店&lt;/p&gt;
-&lt;p&gt;亮点5：图片自动缩略成200*300px大小（使用了七牛空间）&lt;/p&gt;
-&lt;p&gt;亮点6：gzip压缩，网络流量为原来33%左右。SAE中Gzip压缩设置&lt;/p&gt;
-&lt;p&gt;亮点7：保存接受的所以文本消息，记录永存！&lt;/p&gt;
-&lt;p&gt;亮点8：购买者可查看历史订单，购买总额等。&lt;/p&gt;
-&lt;p&gt;亮点9：后台可查看用户下单总额，最近下单时间等等。&lt;/p&gt;
-&lt;p&gt;亮点10：商店信息，商品信息均在后台直接修改。&lt;/p&gt;
-&lt;p&gt;亮点11：平台创始人可强制商店下线。&lt;/p&gt;
-&lt;p&gt;技巧：微信规则不匹配时不能回复吗？不是，规则包含空字符总能匹配任意文本，请看下面的微信规则截图。&lt;/p&gt;
-&lt;h2 id="_2"&gt;后台&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;选择botlle框架 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="_1"&gt;时间：大三&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。&lt;/p&gt;
-&lt;p&gt;下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。&lt;/p&gt;
-&lt;p&gt;选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。&lt;/p&gt;
-&lt;p&gt;亮点1：自带后台管理&lt;/p&gt;
-&lt;p&gt;亮点2：后台权限管理&lt;/p&gt;
-&lt;p&gt;亮点3：微信回复规则设置去代码化，图形界面。&lt;/p&gt;
-&lt;p&gt;亮点4：一平台多网店&lt;/p&gt;
-&lt;p&gt;亮点5：图片自动缩略成200*300px大小（使用了七牛空间）&lt;/p&gt;
-&lt;p&gt;亮点6：gzip压缩，网络流量为原来33%左右。SAE中Gzip压缩设置&lt;/p&gt;
-&lt;p&gt;亮点7：保存接受的所以文本消息，记录永存！&lt;/p&gt;
-&lt;p&gt;亮点8：购买者可查看历史订单，购买总额等。&lt;/p&gt;
-&lt;p&gt;亮点9：后台可查看用户下单总额，最近下单时间等等。&lt;/p&gt;
-&lt;p&gt;亮点10：商店信息，商品信息均在后台直接修改。&lt;/p&gt;
-&lt;p&gt;亮点11：平台创始人可强制商店下线。&lt;/p&gt;
-&lt;p&gt;技巧：微信规则不匹配时不能回复吗？不是，规则包含空字符总能匹配任意文本，请看下面的微信规则截图。&lt;/p&gt;
-&lt;h2 id="_2"&gt;后台&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;选择botlle框架，自己写sql，便学边用，很痛苦的换了20天作出来了微信&lt;a href="http://2.aozhouwine.sinaapp.com/buy.html?openid=abcdefgabcdefgabcdefgabcdefg" title="顾客演示入口地址"&gt;第一版&lt;/a&gt;。这版其实很简陋，但其给我的经验很重要。演示地址：&lt;a href="http://2.aozhouwine.sinaapp.com/buy.html?openid=abcdefgabcdefgabcdefgabcdefg" title="顾客演示入口地址"&gt;点击入口&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;抛弃bottle，选择django，后来证明我的选择是对的，虽然学习坡度比较大，但是其框架本身带来的效率和效益却是学习框架本身的好几倍。我喜欢它的自带后台管理，和后台权限管理，更喜欢它的ORM，省去很多sql的事情，比如sql语句编写，sql防注问题，sql迁移方便等等。这次用上了这三大功能，另外还巧用django的模板渲染实现微信回复功能，但这不是django特有。&lt;/p&gt;
-&lt;p&gt;微信已经实现了多店功能。这也是当初我为什么坚定选择django，因为django的一project多app的架构刚好契合这个一平台多店铺的想法。后来我学scrapy框架，发现也是一project多app，方便不少。同时说明一project多app是先进的，是趋势之一。&lt;/p&gt;
-&lt;h2 id="_3"&gt;前台&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;我比较喜欢后端的开发，前端的我就修改已有好的前端代码，参考了微信公众号“果然美”，“微果大爱”，“华农果满堂”，“微盟”，“乐外卖”等前端设计。技术上使用html5+css3。&lt;/p&gt;
-&lt;p&gt;现在平台上有果色天香和澳洲红酒两个店铺&lt;/p&gt;
-&lt;p&gt;&lt;img alt="平台上有果色天香和澳洲红酒两个店铺1.png" height="50%" src="https://blog.pythonwood.com/static/img/平台上有果色天香和澳洲红酒两个店铺1.png" title="1" width="30%"&gt;
-&lt;img alt="平台上有果色天香和澳洲红酒两个店铺2.jpg" height="50%" src="https://blog.pythonwood.com/static/img/平台上有果色天香和澳洲红酒两个店铺2.jpg" title="2" width="30%"&gt;
-&lt;img alt="平台上有果色天香和澳洲红酒两个店铺3.jpg" height="50%" src="https://blog.pythonwood.com/static/img/平台上有果色天香和澳洲红酒两个店铺3.jpg" title="3" width="30%"&gt;&lt;/p&gt;
-&lt;h2 id="_4"&gt;代码统计&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;使用linux&amp;nbsp;shell统计 &lt;/p&gt;
-&lt;p&gt;合理版 cat $(find . -name &amp;ldquo;&lt;em&gt;.py&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.yaml&amp;rdquo; -or -name &amp;ldquo;*.rst&amp;rdquo; -or -name &amp;ldquo;sell_detail.html&amp;rdquo;) | wc | sed &amp;ldquo;1i static:\nlines | words |&amp;nbsp;bytes&amp;rdquo;   &lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" src="https://blog.pythonwood.com/static/img/代码统计1.png" title="1"&gt;&lt;/p&gt;
-&lt;p&gt;纯净版 cat $(find . -path &amp;ldquo;./guosetianxiang&amp;rdquo; -prune -or -name &amp;ldquo;&lt;em&gt;.py&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.yaml&amp;rdquo; -or -name &amp;ldquo;*.rst&amp;rdquo; -or -name &amp;ldquo;sell_detail.html&amp;rdquo;) | wc | sed &amp;ldquo;1i static:\nlines | words |&amp;nbsp;bytes&amp;rdquo;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" src="https://blog.pythonwood.com/static/img/代码统计2.png" title="2"&gt;&lt;/p&gt;
-&lt;p&gt;完全版 cat $(find . -name &amp;ldquo;&lt;em&gt;.py&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.yaml&amp;rdquo; -or -name &amp;ldquo;&lt;em&gt;.rst&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.html&amp;rdquo;) | wc | sed &amp;ldquo;1i static:\nlines | words |&amp;nbsp;bytes&amp;rdquo; &lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" src="https://blog.pythonwood.com/static/img/代码统计3.png" title="3"&gt;&lt;/p&gt;
-&lt;h2 id="_5"&gt;前端展示：感谢前人成果！&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/前端展示1.png" title="1" width="40%"&gt;
-&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/前端展示2.png" title="2" width="40%"&gt;&lt;/p&gt;
-&lt;h2 id="_6"&gt;=============================后台是亮点=============================&lt;a class="headerlink" href="#_6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;后台首页&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/后台首页.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;微信回复规则，使用模板渲染自定义变量！&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/微信回复规则，使用模板渲染自定义变量.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;功能代码：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/功能代码.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;微信用户&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/微信用户.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;订单截图&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://blog.pythonwood.com/static/img/订单截图.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;h2 id="django"&gt;看到这里，你是否也认为django是个好框架呢？&lt;a class="headerlink" href="#django" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;在新浪云上运行得还好，不算慢，请那些嫌弃django臃肿庞大，速度慢的人，不要再误导他人，这就好像那些说python慢的人一样，我至今没有实践证明出过慢在哪。&lt;/p&gt;
-&lt;p&gt;django是python作者本身都很喜欢的框架，又是那么多商用网站的框架，经得其考验。&lt;/p&gt;
-&lt;p&gt;如果可以，当然希望你可以作出一个比django更好的框架，可是至少现在还不大可能。python的django和ruby的rails都得经过时间的考验。我相信 django&amp;nbsp;是经得住考验的，正如我相信python一样。&lt;/p&gt;
-&lt;h2 id="_7"&gt;附上 增加微店步骤（澳洲红酒为例）&lt;a class="headerlink" href="#_7" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;复制guosetianxiang 改名&amp;nbsp;aozhouwine&lt;/p&gt;
-&lt;p&gt;修改setting.py 安装app&amp;nbsp;&amp;lsquo;aozhouwine&amp;rsquo;&lt;/p&gt;
-&lt;p&gt;访问/syncdb-online完成数据库同步&lt;/p&gt;
-&lt;p&gt;根app的url.py&amp;nbsp;加入两行:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;aozhouwine&lt;/span&gt;
+&lt;p&gt;&lt;a href="http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html"&gt;http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html&lt;/a&gt;&lt;/p&gt;</content><category term="ssh"></category><category term="代理"></category><category term="加密隧道"></category><category term="转发"></category><category term="privoxy"></category><category term="autossh"></category><category term="远程访问"></category></entry><entry><title>不能小看的nc——实践TCP协议第四层的软件（传输层）</title><link href="https://blog.pythonwood.com/2015/12/%E4%B8%8D%E8%83%BD%E5%B0%8F%E7%9C%8B%E7%9A%84nc%E2%80%94%E2%80%94%E5%AE%9E%E8%B7%B5TCP%E5%8D%8F%E8%AE%AE%E7%AC%AC%E5%9B%9B%E5%B1%82%E7%9A%84%E8%BD%AF%E4%BB%B6%EF%BC%88%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%89/" rel="alternate"></link><published>2015-12-20T21:20:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2015-12-20:/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/</id><summary type="html">&lt;p&gt;nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。&lt;/p&gt;
+&lt;p&gt;很多事情不一定非得抓包，nc也能发挥巨大作用。&lt;/p&gt;
+&lt;h3 id="1"&gt;1、传输文件&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_1"&gt;使用&amp;lt;&amp;gt;重定向符（只适用单文件，不推荐、失败时 &amp;ldquo;&amp;gt;&amp;rdquo; 产生空文件）&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -l 8888 &amp;lt; demo.txt        # 在本机8888端口侦听TCP连接，将收到的数据写入文件
 
-&lt;span class="o"&gt;...&lt;/span&gt;
+nc …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。&lt;/p&gt;
+&lt;p&gt;很多事情不一定非得抓包，nc也能发挥巨大作用。&lt;/p&gt;
+&lt;h3 id="1"&gt;1、传输文件&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_1"&gt;使用&amp;lt;&amp;gt;重定向符（只适用单文件，不推荐、失败时 &amp;ldquo;&amp;gt;&amp;rdquo; 产生空文件）&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -l 8888 &amp;lt; demo.txt        # 在本机8888端口侦听TCP连接，将收到的数据写入文件
 
-&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^aozhouwine/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;aozhouwine.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+nc ip 8888 &amp;gt; demo.txt       # 文件接收端：将文件内容通过网络&amp;quot;cat&amp;quot;到远端
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;admin管理，weixinshop应用商店表中增加一条，并增加账户给商店所有者A，然后授权。&lt;/p&gt;
-&lt;p&gt;A在自己的应用商店信息表中增加一条记录，(token在此设置)。&lt;/p&gt;
-&lt;p&gt;微信开发者url: /aozhouwine/weixin/&amp;nbsp;token为之前设置的。&lt;/p&gt;
-&lt;p&gt;访问/aozhouwine/sync_shopinfo完成商店同步。&lt;/p&gt;
-&lt;p&gt;A增加消息，回复规则表中的记录。&lt;/p&gt;
-&lt;p&gt;A上架商品。&lt;/p&gt;
-&lt;p&gt;依然涉及少量代码操作，以及有一点繁琐。&lt;/p&gt;</content><category term="微信"></category><category term="开发"></category><category term="python"></category><category term="django"></category><category term="公众号"></category></entry><entry><title>腾讯2014实习面经——记一个非计算机学生的首次面试</title><link href="https://blog.pythonwood.com/2014/04/%E8%85%BE%E8%AE%AF2014%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E8%AE%B0%E4%B8%80%E4%B8%AA%E9%9D%9E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%94%9F%E7%9A%84%E9%A6%96%E6%AC%A1%E9%9D%A2%E8%AF%95/" rel="alternate"></link><published>2014-04-30T23:58:00+08:00</published><updated>2014-04-30T23:58:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-04-30:/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/</id><summary type="html">&lt;h3 id="_1"&gt;地点：华南理工大学大学城校区，为广州考点。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="3x-412-415-417-419-425"&gt;流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 + 签约4.25&lt;a class="headerlink" href="#3x-412-415-417-419-425" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h1 id="_2"&gt;前言&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期，只算笔试到终面的话则是一星期，效率比阿里要好。&lt;/p&gt;
-&lt;p&gt;腾讯是我的处面，一路过来我没有夸张，只是平实的叙述我的故事，认真谨慎的答问。&lt;/p&gt;
-&lt;p&gt;我容易紧张，但幸好没有太紧张。&lt;/p&gt;
-&lt;h1 id="2014-3-18"&gt;2014-3-18 网申（宣讲会在大学城太远了跳过～呵呵）&lt;a class="headerlink" href="#2014-3-18" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;(&lt;sup&gt;0&lt;/sup&gt;)&lt;/p&gt;
-&lt;p&gt;准备：&lt;/p&gt;
-&lt;p&gt;1、寒假就开始准备，主要是重拾算法，发现没之前开始学编程那么难了。&lt;/p&gt;
-&lt;p&gt;2、寒假期间pythontip有个挑战python，做72题后排第三名。挑战最长回文，最长上升子串等算法题，综合能力提升。&lt;/p&gt;
-&lt;p&gt;3、看完《编程珠玑》和《编程之美》。&lt;/p&gt;
-&lt;p&gt;4 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;地点：华南理工大学大学城校区，为广州考点。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="3x-412-415-417-419-425"&gt;流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 + 签约4.25&lt;a class="headerlink" href="#3x-412-415-417-419-425" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h1 id="_2"&gt;前言&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期，只算笔试到终面的话则是一星期，效率比阿里要好。&lt;/p&gt;
-&lt;p&gt;腾讯是我的处面，一路过来我没有夸张，只是平实的叙述我的故事，认真谨慎的答问。&lt;/p&gt;
-&lt;p&gt;我容易紧张，但幸好没有太紧张。&lt;/p&gt;
-&lt;h1 id="2014-3-18"&gt;2014-3-18 网申（宣讲会在大学城太远了跳过～呵呵）&lt;a class="headerlink" href="#2014-3-18" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;(&lt;sup&gt;0&lt;/sup&gt;)&lt;/p&gt;
-&lt;p&gt;准备：&lt;/p&gt;
-&lt;p&gt;1、寒假就开始准备，主要是重拾算法，发现没之前开始学编程那么难了。&lt;/p&gt;
-&lt;p&gt;2、寒假期间pythontip有个挑战python，做72题后排第三名。挑战最长回文，最长上升子串等算法题，综合能力提升。&lt;/p&gt;
-&lt;p&gt;3、看完《编程珠玑》和《编程之美》。&lt;/p&gt;
-&lt;p&gt;4、google面经，做往年题练手。&lt;/p&gt;
-&lt;p&gt;5、Linux下gcc+vim实践7大经典排序算法（这个效用较高）。&lt;/p&gt;
-&lt;p&gt;6、精心准备的简历，3月8号就做了1.0版，后修改不下10次，要求尽量简洁美观。&lt;/p&gt;
-&lt;h1 id="2014-4-12-1430-1600"&gt;2014-4-12 周六 14:30 - 16:00 笔试&lt;a class="headerlink" href="#2014-4-12-1430-1600" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;×—×&lt;/p&gt;
-&lt;p&gt;心情：&lt;/p&gt;
-&lt;p&gt;1、收到信息，知道阿里笔试被鄙视了。&lt;/p&gt;
-&lt;p&gt;2、三个项目在手（都是不感冒的web项目-_-）。&lt;/p&gt;
-&lt;p&gt;3、报大创，课程作业，等等等等……，一个字，累！&lt;/p&gt;
-&lt;p&gt;内容：&lt;/p&gt;
-&lt;p&gt;1、20不定选择（一半把握）填空5题（4题把握）附加2题（会后一题）。&lt;/p&gt;
-&lt;p&gt;2、C语言C++，操作系统，网络，数据库，经典算法，数学IQ题加起来占80%以上吧。&lt;/p&gt;
-&lt;p&gt;感受：&lt;/p&gt;
-&lt;p&gt;做的不上不下，做得快，但修改得多。交卷到了，还把一题对的改错了，囧。&lt;/p&gt;
-&lt;p&gt;后记：&lt;/p&gt;
-&lt;p&gt;1、打击过后的我只敢保守地估计，谨慎地乐观，默默地独自回校。&lt;/p&gt;
-&lt;p&gt;2、心中感觉一些轻松，一些冷漠，像我本是局外人。&lt;/p&gt;
-&lt;h1 id="2014-4-15-1000-1100"&gt;2014-4-15 周二 10:00 - 11:00 一面 单面&lt;a class="headerlink" href="#2014-4-15-1000-1100" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;T_T&lt;/p&gt;
-&lt;p&gt;过程：&lt;/p&gt;
-&lt;p&gt;1、面试官是位大叔，讲话少，自我介绍时“嗯”了很多，有时闭着眼在听。&lt;/p&gt;
-&lt;p&gt;2、以C语言的宏的作用是什么开头，问了我很多广泛问题。&lt;/p&gt;
-&lt;p&gt;3、幸好C语言，C++我都记得，答取结构偏移址，宏用途，宏在C与C++之间重要性的区别还答得上。&lt;/p&gt;
-&lt;p&gt;4、但是问到数据库时瘪了，索引什么的更是一知半解（本来至少应该摆个二分法），大数据找重也不好的。最记得让我描述http协议，我不知从何说起，各点都提一提。&lt;/p&gt;
-&lt;p&gt;5、我尝试过避开这些，引导到Linux上，无效。越到后面我就越觉得机会小。&lt;/p&gt;
-&lt;p&gt;6、最后让我一边去写strcpy，我用了assert，并加上测试，还应此知道缺const。&lt;/p&gt;
-&lt;p&gt;感受：&lt;/p&gt;
-&lt;p&gt;1、没玩过游戏，但我觉得一个初出茅庐的0级玩家被40级玩家虐的时候也是这样吧。&lt;/p&gt;
-&lt;p&gt;2、我知道简单问题考细节，幸好这时刻这点我做得不错。&lt;/p&gt;
-&lt;p&gt;3、从专业名看到话面试官还是以为我技术出身，幸好后来我答题时明确说明了。&lt;/p&gt;
-&lt;p&gt;4、答题是不坚定，没自信，这是我的弱点。&lt;/p&gt;
-&lt;p&gt;后记：&lt;/p&gt;
-&lt;p&gt;1、阿里铩羽而归后的又一次打击，本来觉得我应该无后文，继续华为，小米，百度实习关注填表。&lt;/p&gt;
-&lt;p&gt;2、我后来惊喜收到二面短信，可能和我很重实践，Linux，github，操作系统代码有关。&lt;/p&gt;
-&lt;p&gt;3、当时答得不太好的如socket，进程通信，netstat&amp;nbsp;-ptln我都马上复习了，为了别的面试。结果让我在二面表现更好。&lt;/p&gt;
-&lt;h1 id="2014-4-17-830-900"&gt;2014-4-17 周四  8:30 - 9:00 二面 单面&lt;a class="headerlink" href="#2014-4-17-830-900" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;em&gt;&lt;sup&gt;-&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;过程：&lt;/p&gt;
-&lt;p&gt;1、自我介绍8分钟，以Ubuntu14.04正式版发布这开源新闻开始，还是那篇讲学习经历和项目的自我介绍。最浓缩就是：windows-&amp;gt;Linux-&amp;gt;Python。期间他有打断问我具体细节，我都详细作答了。&lt;/p&gt;
-&lt;p&gt;2、他问我有没有纸，我说8太早了工作人员让我直接去房间。面试官有些失望的样子，我在暗想，草稿纸算法题目必需的，这是对我故意的眷顾，会不会是上个面试官的特意安排吗？不知道，也许就是偶然的幸运。&lt;/p&gt;
-&lt;p&gt;3、面试问题问细节比较多，问的深度和一面挺像，所以感觉没什么压力。&lt;/p&gt;
-&lt;p&gt;4、面试官过程中礼貌而中肯地多次说&amp;rdquo;&lt;span class="caps"&gt;OK&lt;/span&gt;&amp;rdquo;，最后说“&lt;span class="caps"&gt;OK&lt;/span&gt;，现在你有几分钟时间问我问题。”。&lt;/p&gt;
-&lt;p&gt;5、我问了腾讯与开源的一个烟雾弹问题，还问微信未来是否会像易迅一样开微店，——干脆利三个字“有可能”——意料之中，然后我们最后握手告别。&lt;/p&gt;
-&lt;p&gt;感受：&lt;/p&gt;
-&lt;p&gt;1、一开始面试官就看出我的紧张，他笑着指出了。还好之后整个过程都比较轻松。&lt;/p&gt;
-&lt;p&gt;3、能到这里其实我是满足的，不管怎样。&lt;/p&gt;
-&lt;p&gt;4、我在最后的一瞬间感觉到了一种肯定，那握手和神情。但我依然很保守地乐观。&lt;/p&gt;
-&lt;p&gt;后记：&lt;/p&gt;
-&lt;p&gt;1、出来后心情，做番201去星海过程中观赏者大学城。&lt;/p&gt;
-&lt;p&gt;2、回去过程在回想面试，面试官给我感觉挺好的，他当时穿了米黄色衬衫，中等身高有点胖，印象中头发有点蓬松，和脸相搭。&lt;/p&gt;
-&lt;p&gt;3、出来后直到回学校，觉得我是幸运的。&lt;/p&gt;
-&lt;h1 id="2014-04-19-1522-1537"&gt;2014-04-19 周六 15:22 - 15:37 三面 单面&lt;a class="headerlink" href="#2014-04-19-1522-1537" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;(&lt;sup&gt;w&lt;/sup&gt;)&lt;/p&gt;
-&lt;p&gt;感受：&lt;/p&gt;
-&lt;p&gt;1、微信状态变成HR面是很开心，因为有HR不怎么刷技术岗之说。同时感概些许，也许就在前面了，但我告诫自己绝不能倒在这关。&lt;/p&gt;
-&lt;p&gt;2、告诉舍友我到HR时，他们都为我高兴了，我们笔试时几乎全宿舍都去了（光说动员，6人中5人去了-_-）。&lt;/p&gt;
-&lt;p&gt;3、紧张而兴奋，期待而舒畅的等待着。&lt;/p&gt;
-&lt;p&gt;过程：&lt;/p&gt;
-&lt;p&gt;1、面试官还是男性，还是那份简历，还是华工大学城中心酒店。&lt;/p&gt;
-&lt;p&gt;2、15分钟，自我介绍，和HR聊天，我不太健谈，不过还算一个愉快的过程。&lt;/p&gt;
-&lt;p&gt;3、最后让问问题，查笔试成绩没成，问可能去向问到了。&lt;/p&gt;
-&lt;p&gt;后记：&lt;/p&gt;
-&lt;p&gt;2014-04-25，offer终签成，一件好事来了。哈哈。&lt;/p&gt;
-&lt;h1 id="_3"&gt;面试经历总记：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;我是个粗心人!&lt;/p&gt;
-&lt;p&gt;1、14号晚收到一面通知在15好，而我以为当天是13号，睡前发现这个“&lt;span class="caps"&gt;BUG&lt;/span&gt;”，起来准备到2点才睡，第二天7点起床。&lt;/p&gt;
-&lt;p&gt;2、微信查进度jg这两字符总漏了，“修复”后得到第一个回复是处在到HR面中。我的色弱也许占部分原因。&lt;/p&gt;
-&lt;p&gt;3、我是个不懂得察言观色，后知后觉型小傻呆。所以无法把握自己的面试，最近有看《Lie To&amp;nbsp;Me》，对没能运用这知识有点遗憾。&lt;/p&gt;
-&lt;p&gt;我是个认真务实好学的人！&lt;/p&gt;
-&lt;p&gt;1、自学C/C++，java，html/css/js，kenerl，Linux，Shell，Python等等。&lt;/p&gt;
-&lt;p&gt;2、为应聘做了很多的准备，寒假就开始，有针对性的练习算法，多次锤炼简历，2小时准备的自我介绍586字。&lt;/p&gt;
-&lt;p&gt;3、不懂时就问，敢问，问得很多，感觉有时被鄙视了（我想懂得范畴以外，我都是白痴）。&lt;/p&gt;
-&lt;p&gt;4、边学边实践，边看书籍，边写敲键盘。因此记得还算牢固，学习速度还可以。&lt;/p&gt;
-&lt;p&gt;5、不是到用的时候才有，而是到用的时候来总结。所以不会被问到哑口无言。&lt;/p&gt;
-&lt;p&gt;经验总结&lt;/p&gt;
-&lt;p&gt;后来我猜，自学能力，多种语言，C/C++功底，Linux，blog，github，项目，这些是决定我能留下来的组成部分。&lt;/p&gt;
-&lt;h1 id="_4"&gt;其他：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;我是谁？&amp;nbsp;我是大学开始自学技术的商科学生&lt;/p&gt;
-&lt;p&gt;1、技术的我：一个Linux与Python爱好者，关注开源和C/C++，使用Vim编辑器，喜欢Shell下工作。（技术宅？不是的，希望像耗子大叔一样。）&lt;/p&gt;
-&lt;p&gt;2、学生的我：一个商科11届大学生，来自广东文科老二，理科老三的（按高考分数线的话）211暨南大学(&lt;span class="caps"&gt;JNU&lt;/span&gt;)。大学以自学副业为主，暂没获得过奖学金。&lt;/p&gt;
-&lt;p&gt;3、生活的我：爱好比较广泛（童心OR好奇心……随便吧-_-）；历史(春秋迷)，登山(户外迷)，排球还不错，听电台，LoveQ。听电台的90后不多了，我就是其中之一，嘻！&lt;/p&gt;
-&lt;p&gt;关于&lt;/p&gt;
-&lt;p&gt;关于简历。word是彩版，但印的是黑白，怕面试官认为华而不实。（-_-,也许心疼成本才是真，囧）。&lt;/p&gt;
-&lt;p&gt;关于招聘。搜“算法+数据结构”可能还不如你搜“笔试面经”获得的结果好，强，全。&lt;/p&gt;
-&lt;p&gt;关于经验。腾讯2013暑期实习生招聘经历分享对我很有帮助，作者是同校同乡的上一届师兄。这后来成为我写本文的原因一部分。&lt;/p&gt;
-&lt;p&gt;关于暨大。个人认为腾讯与暨大之间存在信息不对称问题，结果导致暨大实习生比例过低。前几年均如此。当然也不排除暨大自身问题啦。&lt;/p&gt;
-&lt;p&gt;关于腾讯。我明白获得实习offer只是开始，但是腾讯给出的资薪待遇挺不错的，至少对于我，呵呵。&lt;/p&gt;
-&lt;p&gt;关于自学。图书馆 -&amp;gt; google -&amp;gt; 独立博客 -&amp;gt; rss鲜果 -&amp;gt;&amp;nbsp;开源。遇见Linux是转哲点。&lt;/p&gt;
-&lt;p&gt;我用到过的好资源共享：&lt;/p&gt;
-&lt;p&gt;别的程序员是怎么读你的简历的    &lt;a href="http://coolshell.cn/articles/1695.html"&gt;http://coolshell.cn/articles/1695.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;找工作笔试面试那些事儿（系列）    &lt;a href="http://blog.csdn.net/han_xiaoyang/article/category/1664765"&gt;http://blog.csdn.net/han_xiaoyang/article/category/1664765&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;白话经典算法    &lt;a href="http://blog.csdn.net/morewindows/article/details/17488865"&gt;http://blog.csdn.net/morewindows/article/details/17488865&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;程序员面试、算法研究、编程艺术、红黑树、数据挖掘5大系列集锦     &lt;a href="http://blog.csdn.net/v_july_v/article/details/6543438"&gt;http://blog.csdn.net/v_july_v/article/details/6543438&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;2014年计算机求职总结&amp;ndash;准备篇    &lt;a href="http://blog.csdn.net/luckyxiaoqiang/article/details/13000431"&gt;http://blog.csdn.net/luckyxiaoqiang/article/details/13000431&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;《程序员编程艺术 — 面试和算法心得》    &lt;a href="https://github.com/julycoding/The-Art-Of-Programming-By-July"&gt;https://github.com/julycoding/The-Art-Of-Programming-By-July&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;《剑指Offer——名企面试官精讲典型编程题》博客    &lt;a href="http://zhedahht.blog.163.com/"&gt;http://zhedahht.blog.163.com/&lt;/a&gt;&lt;/p&gt;</content><category term="面试"></category><category term="腾讯"></category><category term="实习"></category></entry><entry><title>IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解</title><link href="https://blog.pythonwood.com/2014/04/IPython%EF%BC%8C%E8%AE%A9Python%E6%98%BE%E5%BE%97%E5%8F%8B%E5%A5%BD%E5%8D%81%E5%80%8D%E7%9A%84%E5%A4%96%E5%A5%97%E2%80%94%E2%80%94windowsXP%E3%80%81Win7%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" rel="alternate"></link><published>2014-04-03T15:46:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>Pythonwood</name></author><id>tag:blog.pythonwood.com,2014-04-03:/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/</id><summary type="html">&lt;h2 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。&lt;/p&gt;
-&lt;p&gt;整理了《Python 二三事》：&lt;a href="http://pre-sence.com/archives/python-intro"&gt;http://pre-sence.com/archives/python-intro&lt;/a&gt;   《Python 四五事》：&lt;a href="http://pre-sence.com/archives/python-misc"&gt;http://pre-sence.com/archives/python-misc&lt;/a&gt;&amp;nbsp;并加入安装IPython部分。&lt;/p&gt;
-&lt;p&gt;写这篇随笔的原因是：忽然醒悟之前我安装IPython折腾许久不成功可能是我未能想起pip或easy_install这两个python的上帝工具。参考：Python包管理工具pip与easy_install&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;个人经验总结：IPython，是学习python的利器，是让Python显得友好十倍的外套，是我唯一的强烈推荐。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="ipython"&gt;安装IPython&lt;a class="headerlink" href="#ipython" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;任何Linux发行版对编程者都十分友好：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Ubuntu为例:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ipython
+&lt;h4 id="tar"&gt;使用tar传输文件（推荐，好处是保留了原目录结构和权限）&lt;a class="headerlink" href="#tar" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tar cz demo1.txt demo_dir/ | nc -l 8888  # 监听8888端口，有连接时开始tar打包并&amp;quot;cat&amp;quot;到远端
+
+nc ip 8888 | tar zx                                 # 连接、接收数据、解压一步到位。
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;windows环境:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1、下载[ez_setup.py][ez_setup.py] ，右击左边链接，另存为，使用&lt;code&gt;python …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。&lt;/p&gt;
-&lt;p&gt;整理了《Python 二三事》：&lt;a href="http://pre-sence.com/archives/python-intro"&gt;http://pre-sence.com/archives/python-intro&lt;/a&gt;   《Python 四五事》：&lt;a href="http://pre-sence.com/archives/python-misc"&gt;http://pre-sence.com/archives/python-misc&lt;/a&gt;&amp;nbsp;并加入安装IPython部分。&lt;/p&gt;
-&lt;p&gt;写这篇随笔的原因是：忽然醒悟之前我安装IPython折腾许久不成功可能是我未能想起pip或easy_install这两个python的上帝工具。参考：Python包管理工具pip与easy_install&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;个人经验总结：IPython，是学习python的利器，是让Python显得友好十倍的外套，是我唯一的强烈推荐。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="ipython"&gt;安装IPython&lt;a class="headerlink" href="#ipython" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;任何Linux发行版对编程者都十分友好：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Ubuntu为例:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ipython
+&lt;h3 id="2"&gt;2、建立网络管道&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -l 8888                            # 接收消息
+
+echo msg | nc ip 8888           # 发送消息
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;windows环境:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1、下载[ez_setup.py][ez_setup.py] ，右击左边链接，另存为，使用&lt;code&gt;python ez_setup.py&lt;/code&gt;运行，或直接双击。&lt;/p&gt;
-&lt;p&gt;2、步骤1成功后，cmd下输入命令&lt;code&gt;easy_install -h&lt;/code&gt;可以测试，正常反应说明已经可以使用easy_install了。&lt;/p&gt;
-&lt;p&gt;3、cmd下输入&lt;code&gt;easy_install pip&lt;/code&gt;安装pip，这是因为pip正是easy_install的下一代，比easy_install好用。&lt;/p&gt;
-&lt;p&gt;4、步骤3成功后，&lt;code&gt;pip install ipython&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;5、如果步骤4不行，退一步，使用&lt;code&gt;easy_install ipython&lt;/code&gt;安装。&lt;/p&gt;
-&lt;h2 id="ipython_1"&gt;运行IPython&lt;a class="headerlink" href="#ipython_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;cmd提示符下，输入ipython运行就可以使用除了原python外，IPython多出来的贴心的“I”了。&lt;/p&gt;
-&lt;h2 id="ipython_2"&gt;退出IPython&lt;a class="headerlink" href="#ipython_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;与python一样也是输入&lt;code&gt;exit&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id="python"&gt;Python实用技巧：&lt;a class="headerlink" href="#python" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;1、关于 &amp;ldquo;_&amp;rdquo;&amp;nbsp;字符使用&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在 Python shell 下 _&amp;nbsp;总是被赋予之前最后一个表达式的值（注：@pythonwood）。这里看个例子应该就能清楚：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;letters&lt;/span&gt;
-&lt;span class="s1"&gt;&amp;#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#39;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
+&lt;h3 id="3"&gt;3、迁移生产机房数据到测试机房（运维电脑建管道）&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tar cz demo1.txt demo_dir/ | nc -l 8888  # 生产机房ipA
 
-&lt;span class="n"&gt;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;/span&gt;
+nc -l 8888 | tar zx                                 # 测试机房ipB
 
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;
-
-&lt;span class="mi"&gt;2014&lt;/span&gt;
-
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
-
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
-
-&lt;span class="mi"&gt;2014&lt;/span&gt;
+nc ipA 8888 | nc ipB 8888                      # 运维个人电脑，连通两台机器的8888端口。
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;举个实际的例子，比如你在调试时读文件的时候直接进行 f.read() ，你看了看发现输出结果很有意思，想要对它进行进一步处理，但发现读的时候忘记赋值了。以往你只能叹叹气重新开文件再读一次，现在你只要执行 result = _，把 _&amp;nbsp;附到另外一个变量就可以了。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2、python&amp;nbsp;-m&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;相信很多人应该用过这个东西，Python 很多标准库都提供这样的调用方式来实现一些简单的命令行功能。Python 3 现在自带 pip。比如我们想使用 Python 3 的 pip&amp;nbsp;来安装别的库，我们可以这样：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;py -3 -m pip install bottle
+&lt;h3 id="4-lbgudp"&gt;4、测试网络连通 （排查测试机房的lbg转发udp问题）&lt;a class="headerlink" href="#4-lbgudp" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl 调试http，即7层非常高效。但如何调试4层网络呢？答案就是nc
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;跟你预料的一样，这样就可以了。当然你可以用个 .bat 文件来把这些包裹起来并放在 Path 上，一个简单的例子，把下面的内容写到一个叫 pip3.bat&amp;nbsp;的文件里:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@echo off
-py -3 -m pip %*
+&lt;p&gt;测试机房lbg做了公网udp服务的映射，但测试同学发现程序出错，怀疑网络问题，找运维同学排查。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -ul 9999                   # 服务ipS 监听9999端口 该端口映射到公网 ipVS:portVS
+
+nc -zuv ipS 9999           # 内网udp连通成功   显示Connection to ipS 9999 port [udp/*] succeeded!
+
+nc -zuv ipVS portVS       # 公网udp连通失败   显示Connection to ipVS portVS port [udp/*] fail!
+
+一、上如何检查tcp？以上的参数u去掉，默认就是tcp。
+
+二、进一步写出nagios插件，检查udp服务端口（以部署在PP的udp消息推送监控中）
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;并放到 Path 上，就可以方便调用了。其中 %*&amp;nbsp;负责传递所有的命令行参数。&lt;/p&gt;
-&lt;p&gt;实际上 python -m&amp;nbsp;可以用的东西还真的挺多，这里给出一个不完全的列表：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;######################################################
-# 最强功能
-######################################################
-# 局域网共享，宿舍中任意一台笔记本都可以瞬间变身web资源共享服务器
-# 命令ipconfig可以看到局域网ip地址，一般是192，172这些开头的。
-# 使用本机80端口，可任意设置。只共享当前运行目录。
-# 
-python -m SimpleHTTPServer 80 
-# 
-# 本机任意浏览器输入 http://localhost 或 http://127.0.0.1 可以访问。
-# (80端口浏览器默认的，不需输入)甚至在地址栏直接输入localhost即可。
-# 局域网，（宿舍）任意电脑输入上面所说192或172等开头的IP地址即可访问。
-######################################################
+&lt;h3 id="5telnetmc"&gt;5、代替telnet，测试mc，浮云等等。&lt;a class="headerlink" href="#5telnetmc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo -e &amp;quot;stats\r\n&amp;quot; | nc ipS portMC        # 非交换式查看mc的状态。
 
-
-# 缩进输出 JSON
-echo {&amp;quot;hey&amp;quot; : &amp;quot;kid&amp;quot;} | python -m json.tool
-# 简单的执行时间测量
-python -m timeit [ix*ix for ix in range(100)]
-# 简单的 Profiling
-python -m cProfile myscript.py
-# 比较两个文件夹的区别
-python -m filecmp path/to/a path/to/b
-# base64 转换
-echo foo bar | python -m base64
-# 调用默认浏览器打开一个新标签页
-python -m webbrowser -t http://google.com
-# 生成程序文档
-python -m pydoc myscript.py
-# 类似 nose 的自动搜索 unittest
-python -m unittest discover
-# 调用 pdb 执行代码
-python -m pdb myscript.py
+echo -e &amp;quot;INFO\r\n&amp;quot; | nc ipS portREDIS   # 非交换式查看redis的状态。
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2 id="ipython_3"&gt;IPython实用技巧：&lt;a class="headerlink" href="#ipython_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;1、Tab自动补全，一种是简单的关键字补全，另外一种是对象的方法和属性补全。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;作为例子，我们先引入 sys 模块，之后再输入 sys. (注意有个点)，此时按下 tab 键，IPython 会列出所有 sys&amp;nbsp;模块下的方法和属性。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Tab自动补全，一种是简单的关键字补全.png" src="https://blog.pythonwood.com/uploads/2014/Tab自动补全，一种是简单的关键字补全.png" title="Tab自动补全，一种是简单的关键字补全.png"&gt;&lt;/p&gt;
-&lt;p&gt;接着上面的例子，我们输入 sys?，这样会显示出 sys 模块的&amp;nbsp;docstring及相关信息。很多时候这个也是很方便的功能。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="sys模块的docstring及相关信息.jpg" src="https://blog.pythonwood.com/uploads/2014/sys模块的docstring及相关信息.jpg" title="sys模块的docstring及相关信息.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2、IPython 还有强大之处很大部分还体现在它的 magic function 中。它是指的在 IPython 环境下执行以 % 开头的一些命令来对 IPython 进行一些设定或者执行某些功能。在 IPython 中输入 %lsmagic 就能列出所有的 magic&amp;nbsp;functions。在这里简单介绍下几个比较有意思的，你也可以自己通过查看文档来找找有哪些你特别用的到得。&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;之前看到能用&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="err"&gt;来查询函数的文档，对于&lt;/span&gt; &lt;span class="n"&gt;magic&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="err"&gt;也是如此。比如&lt;/span&gt; &lt;span class="nf"&gt;%run&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+&lt;!--非交换的set、get检查浮云ds        # 已部署到PP的浮云监控。--&gt;
 
-&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="err"&gt;在命令前面加上&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="err"&gt;则它会被作为命令行命令执行，这样你就不用退出&lt;/span&gt; &lt;span class="n"&gt;IPython&lt;/span&gt; &lt;span class="err"&gt;来进行命令行操作。&lt;/span&gt;
-
-&lt;span class="nf"&gt;%run&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="err"&gt;在当前环境下直接执行&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="err"&gt;，效果跟命令行下调用&lt;/span&gt; &lt;span class="n"&gt;ipython&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="err"&gt;相同。&lt;/span&gt;
-
-&lt;span class="nf"&gt;%time&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="err"&gt;跟&lt;/span&gt; &lt;span class="n"&gt;timeit&lt;/span&gt; &lt;span class="n"&gt;decorator&lt;/span&gt; &lt;span class="err"&gt;作用相同，进行简单的&lt;/span&gt; &lt;span class="n"&gt;profile&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-
-&lt;span class="nf"&gt;%hist&lt;/span&gt; &lt;span class="err"&gt;能显示之前输入过的命令的历史，同时你可以用&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;linenumber&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;来访问之前的命令。比如&lt;/span&gt; &lt;span class="nf"&gt;%exec&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;就能执行列表中第十行。&lt;/span&gt;
-
-&lt;span class="nf"&gt;%rep&lt;/span&gt; &lt;span class="err"&gt;类似上面的&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="err"&gt;变量，但是是以字串的形式返回&lt;/span&gt;
-
-&lt;span class="err"&gt;最后，如果&lt;/span&gt; &lt;span class="nf"&gt;%automagic&lt;/span&gt; &lt;span class="err"&gt;是打开的状态的话，所有&lt;/span&gt; &lt;span class="n"&gt;magic&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="err"&gt;不需要在前面加&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="err"&gt;就能正确调用。&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;在当前 IPython 版本中还有一个由于安全原因没有默认引入的 %autoreload，它的作用是在可以自动重新载入你调用的函数，以及其相关模块。接触过 &lt;a href="http://www.djangoproject.com/" title="django"&gt;django&lt;/a&gt; 的同学对这个应该比较熟悉，在 IPython 中的效果就是，当你在调试一个一直在反复改动的函数时，你可以开启这个功能保证每次调用都会重新读取最新的版本，让你在源码中的改动马上生效。在 IPython&amp;nbsp;中执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ipy_autoreload&lt;/span&gt;
-&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="n"&gt;autoreload&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;这样 IPython 会对所有的模块都进行 autoreload。你可以通过执行 %autoreload? 来查询它的文档来进行进一步设定。如果你希望 IPython 每次启动自动载入次功能，那么可以通过配置 ipythonrc (在 Windows 下可以在 C:\Users\&lt;username&gt;_ipython\ipythonrc.ini 找到)&amp;nbsp;来进行相关设置。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3、还有一个很神奇的功能。如果你的程序是由命令行开始执行的，即在命令行下输入 python foo.py（大部分 Python 程序都是），那么你还可以利用 IPython&amp;nbsp;在你的程序任意地方进行断点调试！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在你程序中任意地方，加入如下语句：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.Shell&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IPShellEmbed&lt;/span&gt;
-&lt;span class="n"&gt;IPShellEmbed&lt;/span&gt;&lt;span class="p"&gt;([])()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;注意：最近 IPython 发布了 &lt;a href="http://ipython.org/news.html#ipython-0-11" title="0.11"&gt;0.11&lt;/a&gt; 版本，各方面变化都非常大，&lt;span class="caps"&gt;API&lt;/span&gt; 也经过了重新设计。如果你使用的是 0.11&amp;nbsp;那么上面两行对应的是这样的:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;embed&lt;/span&gt;
-&lt;span class="n"&gt;embed&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;再和平常一样运行你的程序，你会发现在程序运行到插入语句的地方时，会转到 IPython 环境下。你可以试试运行些指令，就会发现此刻 IPython 的环境就是在程序的那个位置。你可以逐个浏览当前状态下的各个变量，调用各种函数，输出你感兴趣的值来帮助调试。之后你可以照常退出 IPython，然后程序会继续运行下去，自然地你在当时 IPython&amp;nbsp;下执行的语句也会对程序接下来的运行造成影响。&lt;/p&gt;
-&lt;p&gt;这个方法我实在&lt;a href="http://lukeplant.me.uk/blog/posts/exploratory-programming-with-ipython/" title="smart"&gt;这里&lt;/a&gt;看到的。想象一下，这样做就像让高速运转的程序暂停下来，你再对运行中的程序进行检查和修改，之后再让他继续运行下去。这里举一个例子，比如编写网页 bot ，你在每取回一个页面后你都得看看它的内容，再尝试如何处理他获得下一个页面的地址。运用这个技巧，你可以在取回页面后让程序中断，再那里实验各种处理方 法，在找到正确的处理方式后写回到你的代码中，再进行下一步。这种工作流程只有像 Python&amp;nbsp;这种动态语言才可以做到。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4、一个实际的例子&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这里以一个简单的例子来讲解一下是怎样的一个情况。我们要写一个可以将简单的数据表达式，类似 1 + (2 - 3) * 456 解析成树的 Pratt Parser。首先我们需要一个 lexer 把每个 token&amp;nbsp;解析出来，那么最开始的代码就是：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# simple math expression parser
-
-def lexer(s):
-    &amp;#39;&amp;#39;&amp;#39;token generator, yields a list of tokens&amp;#39;&amp;#39;&amp;#39;
-    yield s
-
-if __name__ == &amp;#39;__main__&amp;#39;:
-    for token in lexer(&amp;quot;1 + (2 - 3) * 456&amp;quot;):
-        print token
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;明显这个没有任何意义，但现在程序已经有足够的东西能够跑起来。我们把这个程序存为 expr.py，开启一个命令行窗口，运行 ipython&amp;nbsp;然后像这样执行它：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ipython
-IPython &lt;span class="m"&gt;0&lt;/span&gt;.13.1 -- An enhanced Interactive Python.
-?         -&amp;gt; Introduction and overview of IPython&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s features.
-...
-
-In &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: run expr.py
-&lt;span class="m"&gt;1&lt;/span&gt; + &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; - &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; * &lt;span class="m"&gt;456&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;在 IPython 里面用 run 跑的好处有很多，首先是你在程序执行完毕后整个程序的状态，比如最后全局变量的值，你写的函数这些你都是可以随便执行的！同样的你可以在 IPython 里面保存一些用来测试的常量，每次用 run&amp;nbsp;跑的话新的程序会被重新载入，你可以这样方便的测试每个函数，有一个非常动态的环境来调试你的程序：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [2]: print token # 注意这里 token 就是 __main__ 里面的那个 token 的值
-1 + (2 - 3) * 456
-
-In [3]: print list(lexer(&amp;#39;1+2+3&amp;#39;)) # 可以运行你写的函数
-[&amp;#39;1+2+3&amp;#39;]
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;然后按照之前的想法，我们尝试把这个 lexer 写出来。在这个过程中，IPython 可以用来查看函数的文档，测试如何调用某些函数，看看返回值是什么样子等等，还是跟上面的说的一样，我们有一个动态的环境可以真真正正的执行程序，你可以&amp;nbsp;在把代码写到你珍贵的主程序之前就有机会运行它，这样你可以更确认你的代码能正常工作：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [4]: s = &amp;quot;foo&amp;quot; # 忘记判断字符串是数字的函数的名字了，用一个字符串试试看
-
-In [5]: s.is      # 开头大概是 is，这里按下 tab 键 IPython 会帮我们补全
-s.isalnum  s.isalpha  s.isdigit  s.islower  s.isspace  s.istitle
-
-In [6]: s.isdigit?  # 结果是 isdigit，在表达式后加上问号并回车查看文档
-Type:       builtin_function_or_method
-String Form:&amp;lt;built-in method isdigit of str object at 0x1264f08&amp;gt;
-Docstring:
-S.isdigit() -&amp;gt; bool
-
-Return True if all characters in S are digits
-and there is at least one character in S, False otherwise.
-
-In [8]: s.isdigit()      # 调用试试看
-Out[8]: False
-
-In [9]: &amp;#39;f&amp;#39; in &amp;#39;foo&amp;#39;     # 试试字符串能不能用 in 来判断
-Out[9]: True
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;确认了各个步骤以后，我们把 lexer&amp;nbsp;的代码填起来。我们为了节省纵向的空间我们把很多东西写在一行里面：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;simple&lt;/span&gt; &lt;span class="nt"&gt;math&lt;/span&gt; &lt;span class="nt"&gt;expression&lt;/span&gt; &lt;span class="nt"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;broken&lt;/span&gt; &lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-
-&lt;span class="nt"&gt;def&lt;/span&gt; &lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;token generator&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
-    &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt; 
-    &lt;span class="nt"&gt;while&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nt"&gt;len&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt;
-        &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;isspace&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;
-        &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;+-*/()&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-            &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;
-        &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;isdigit&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt;
-            &lt;span class="nt"&gt;jx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt; 
-            &lt;span class="nt"&gt;while&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nt"&gt;len&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;jx&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;isdigit&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;
-            &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;jx&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt;
-        &lt;span class="nt"&gt;else&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-            &lt;span class="nt"&gt;raise&lt;/span&gt; &lt;span class="nt"&gt;Exception&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;invalid char at %d: &amp;#39;%s&amp;#39;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;ix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
-    &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-
-&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;print&lt;/span&gt; &lt;span class="nt"&gt;list&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1 + (2 - 3) * 456&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;看起来不错，我们还是在 IPython&amp;nbsp;里执行试试，结果发现程序抛出了一个异常:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;In&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;run&lt;/span&gt; &lt;span class="nt"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;py&lt;/span&gt;
-&lt;span class="nt"&gt;------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="nt"&gt;Exception&lt;/span&gt;                       &lt;span class="nt"&gt;Traceback&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;most&lt;/span&gt; &lt;span class="nt"&gt;recent&lt;/span&gt; &lt;span class="nt"&gt;call&lt;/span&gt; &lt;span class="nt"&gt;last&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="nt"&gt;py&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;py&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt;
-     &lt;span class="nt"&gt;18&lt;/span&gt; 
-     &lt;span class="nt"&gt;19&lt;/span&gt; &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="nt"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;span class="nt"&gt;---&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;20&lt;/span&gt;     &lt;span class="nt"&gt;print&lt;/span&gt; &lt;span class="nt"&gt;list&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1 + (2 - 3) * 456&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
-
-&lt;span class="nt"&gt;py&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;py&lt;/span&gt; &lt;span class="nt"&gt;in&lt;/span&gt; &lt;span class="nt"&gt;lexer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-     &lt;span class="nt"&gt;13&lt;/span&gt;             &lt;span class="nt"&gt;yield&lt;/span&gt; &lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;jx&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;ix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;jx&lt;/span&gt;
-     &lt;span class="nt"&gt;14&lt;/span&gt;         &lt;span class="nt"&gt;else&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;span class="nt"&gt;---&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;15&lt;/span&gt;             &lt;span class="nt"&gt;raise&lt;/span&gt; &lt;span class="nt"&gt;Exception&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;invalid character at ...))&lt;/span&gt;
-&lt;span class="s2"&gt;     16     yield &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;
-     &lt;span class="nt"&gt;17&lt;/span&gt;
-
-&lt;span class="nt"&gt;Exception&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;invalid&lt;/span&gt; &lt;span class="nt"&gt;character&lt;/span&gt; &lt;span class="nt"&gt;at&lt;/span&gt; &lt;span class="nt"&gt;3&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;嗯？好像程序里已经处理了空格的情况。怎么会这样？不知道你碰到异常的时候一般都怎么办。你可能会选择到处添加 print，用 &lt;span class="caps"&gt;IDE&lt;/span&gt; 断点调试。其实这种情况用 pdb 是很明智的选择，在 IPython&amp;nbsp;里我们可以非常轻松的使用它。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [13]: pdb   # 开启 pdb ，这样在异常的时候我们会自动的 break 到异常处
-Automatic pdb calling has been turned ON
-
-In [14]: run expr.py
------------------------------------------------------------------
-Exception: invalid character at 3: &amp;#39; &amp;#39;
-&amp;gt; py/expr.py(15)lexer()
-     14         else:
----&amp;gt; 15             raise Exception(&amp;quot;invalid char at ...))
-     16     yield &amp;quot;&amp;quot;
-
-ipdb&amp;gt; print ix  # 这里我们可以执行任何 Python 的代码
-3
-ipdb&amp;gt; whatis ix # 也可以用 pdb 提供的命令，输入 help 可以查看所有命令
-&amp;lt;type &amp;#39;int&amp;#39;&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;通过方便的调试和仔细检查代码，我们发现是没有正确的使用 elif 造成了问题！（我知道这个过程不是太符合情理&amp;hellip;）。把代码里的后面的几个 if 都换成 elif&amp;nbsp;以后我们发现结果基本上是对的了。我们可以马上再跑几个类似的例子，确认不同的输入是否都有比较好的结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;In [18]: run expr.py   # 这次差不多对了，我们可以试试几个别的例子
-[&amp;#39;1&amp;#39;, &amp;#39;+&amp;#39;, &amp;#39;(&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;-&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;)&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;456&amp;#39;, &amp;#39;&amp;#39;]
-
-In [19]: print list(lexer(&amp;quot;1*123*87-2*5&amp;quot;))
-[&amp;#39;1&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;123&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;87&amp;#39;, &amp;#39;-&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;*&amp;#39;, &amp;#39;5&amp;#39;, &amp;#39;&amp;#39;]
-
-# 跟在 shell 里面一样，你可以用上下来选取之前的记录，然后简单的修改再重新执行。
-# 记得每次 run 后你的函数都是最新版本，你可以很简单的用重复的数据来测试你的函数
-# IPython 甚至还实现了 Ctrl+R！自己试试看吧
-In [19]: print list(lexer(&amp;quot;1 + two&amp;quot;))     
-Exception: invalid character at 2: &amp;#39;t&amp;#39;...
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;在一段痛苦的调试之后，我们最终把程序写&lt;a href="https://gist.github.com/jagt/8493922" title="out"&gt;出来&lt;/a&gt;了。很遗憾程序超出了我预计的长度，就不贴在这里了。后面部分的开发过程跟前面基本还是一样，总结起来就是：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;保持你的程序是一个可以运行并且有意义的状态，尽可能频繁的运行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在 IPython&amp;nbsp;里查看文档，尝试小的程序片段，测试些你不确定的做法，确定之后再把东西添加到你的代码里。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;用不同的参数在 IPython&amp;nbsp;里测试你正在编写的函数/class。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;当遇到问题的时候，先简单的用 pdb 在异常处&amp;nbsp;break，十有八九都能有些头绪。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id="_2"&gt;额外的注意事项&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;这里举的例子是你所有的开发都是在单个 .py 文件里的。现实生活中你很有可能会横跨几个文件一起修改。请务必注意，在 IPython 里你每次 run 的时候只有被 run 的那个文件里的东西会是最后修改的版本，其 import&amp;nbsp;的东西如果在期间被修改是不会反应出来的。&lt;/p&gt;
-&lt;p&gt;这个的原理就跟你在 Python shell 里在修改前修改后重复 import 某个模块不会有作用是一样的，Python 神奇的 import 机制不会去追踪其他模块的修改。你可以手动用 reload 函数来重新载入，你也可以使用 IPython 的 &lt;a href="http://ipython.org/ipython-doc/dev/config/extensions/autoreload.html" title="autoreload"&gt;autoreload&lt;/a&gt; 功能来让你忽略这个问题。个人来说我没怎么用过这个功能，IPython&amp;nbsp;没有默认开启它可能也是有些顾虑，请自己评估看看。&lt;/p&gt;
-&lt;p&gt;另外你应该已经注意到，run 的效果基本上就是把你的代码拷贝进 IPython 里执行一遍。对于没有 &lt;strong&gt;main&lt;/strong&gt; 的文件，你也可以 run，这样里面定义的函数和 class&amp;nbsp;就会反映出你的更改。&lt;/p&gt;</content><category term="ipython"></category><category term="python"></category><category term="安装"></category><category term="教程"></category><category term="win7"></category></entry><entry><title>我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）</title><link href="https://blog.pythonwood.com/2013/12/%E6%88%91%E7%94%A8Emacs%EF%BC%8C%E5%90%8E%E6%9D%A5%E8%BD%AC%E5%90%91Vim%E2%80%94%E2%80%94Vim%E5%AD%A6%E4%B9%A0%E4%B9%8BVim%E9%94%AE%E7%9B%98%E5%9B%BE%EF%BC%88%E7%BB%9D%E5%AF%B9%E5%80%BC%E5%BE%97%E7%8F%8D%E8%97%8F%EF%BC%89/" rel="alternate"></link><published>2013-12-13T23:39:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>Pythonwood</name></author><id>tag:blog.pythonwood.com,2013-12-13:/2013/12/我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Emacs本来就比较臃肿，麻烦。当我发现Vim键盘图时，我就渐渐转向Vim，追随Unix/Linux哲学去了。。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Vim键盘图.jpg" src="https://blog.pythonwood.com/uploads/2013/Vim键盘图.jpg" title="本地端口转发.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="vim命令图解.jpg" src="https://blog.pythonwood.com/uploads/2013/vim命令图解.jpg" title="本地端口转发.jpg"&gt; &lt;/p&gt;
-&lt;p&gt;我用了Emacs三个月，因为它的学习曲线没Vim陡，这点吸引了，我使用Linux才7、8个月，不明白Vim的简即是美，反而觉得是拒人千里(这点真和人一样)。&lt;/p&gt;
-&lt;p&gt;于是反思自己，后来转向Vim，今天把Emacs卸载了。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;但是慢慢觉得Emacs有以下缺点：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;命令至少双键同按，结果就是必须双手同时使用。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;真的对末尾指不友好，不是Ctrl就是Alt，有人趣说恨不得配个脚踏板。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;体积大，占资源多，反应相对慢。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;相反，渐渐发现Vim的优点很多：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;简即是美，单键命令，夸张说可以腾出一只手来。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;99.9%的把握，是Linux就有Vim。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;对Linux其它命令sed,tr等有天生的相关性，这就好比微软产品之间的连通性。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;体积小，反应快。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;命令行使用。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;vim的windows版兼容性好。兼容对txt的操作Ctrl+S等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;符合Unix/Linux体系的根本思想，就是它的哲学。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;最后一点，越学越有趣，自己发现组合 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Emacs本来就比较臃肿，麻烦。当我发现Vim键盘图时，我就渐渐转向Vim，追随Unix/Linux哲学去了。。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Vim键盘图.jpg" src="https://blog.pythonwood.com/uploads/2013/Vim键盘图.jpg" title="本地端口转发.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="vim命令图解.jpg" src="https://blog.pythonwood.com/uploads/2013/vim命令图解.jpg" title="本地端口转发.jpg"&gt; &lt;/p&gt;
-&lt;p&gt;我用了Emacs三个月，因为它的学习曲线没Vim陡，这点吸引了，我使用Linux才7、8个月，不明白Vim的简即是美，反而觉得是拒人千里(这点真和人一样)。&lt;/p&gt;
-&lt;p&gt;于是反思自己，后来转向Vim，今天把Emacs卸载了。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;但是慢慢觉得Emacs有以下缺点：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;命令至少双键同按，结果就是必须双手同时使用。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;真的对末尾指不友好，不是Ctrl就是Alt，有人趣说恨不得配个脚踏板。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;体积大，占资源多，反应相对慢。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;相反，渐渐发现Vim的优点很多：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;简即是美，单键命令，夸张说可以腾出一只手来。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;99.9%的把握，是Linux就有Vim。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;对Linux其它命令sed,tr等有天生的相关性，这就好比微软产品之间的连通性。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;体积小，反应快。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;命令行使用。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;vim的windows版兼容性好。兼容对txt的操作Ctrl+S等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;符合Unix/Linux体系的根本思想，就是它的哲学。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;最后一点，越学越有趣，自己发现组合。这就好像使用HTML标记来写网页一样，设计者将最大的发挥空间给了你。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;再来讨论下：神之编辑器 &lt;span class="caps"&gt;VS&lt;/span&gt;&amp;nbsp;编辑器之神&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;编辑器之神，首先强调是编辑器，而且是其中的神！&lt;/p&gt;
-&lt;p&gt;神之编辑器，神在前，编辑器也是其中的功能。(也译：神一样的编辑器，神的编辑器)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Unix/Linux的设计哲学：做一件事，并做好一件事。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Emacs虽然强大，但它在Linux多少违反了其它大多Linux软件所遵守的约定，显得例外，特别不一样。&lt;/p&gt;
-&lt;p&gt;Emacs存在并兴盛说明它有价值，我并不是抹黑它。而是对于追求真正的纯正的Linux思想的人，可能容不下一点突兀。&lt;/p&gt;
-&lt;p&gt;我不会吃回头草。&lt;/p&gt;
-&lt;p&gt;相关阅读：Vim vs Emacs &lt;a href="http://blog.sina.com.cn/s/blog_8d1e632101018uyg.html"&gt;http://blog.sina.com.cn/s/blog_8d1e632101018uyg.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;题外话：我写完后google了一下，搜索site:&lt;a href="http://www.cnblogs.com/weishun"&gt;http://www.cnblogs.com/weishun&lt;/a&gt;，本文赫然在最后一页最后一栏！&lt;/p&gt;</content><category term="vim"></category><category term="vi"></category><category term="emacs"></category><category term="编辑器"></category></entry></feed>
+&lt;h3 id="6nchttpshellman-nc"&gt;6、使用nc发邮件，发送http请求，反弹shell，端口转发等等，请man nc&lt;a class="headerlink" href="#6nchttpshellman-nc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo -e &amp;quot;GET / HTTP/1.0\r\n&amp;quot; | nc uc.cn 80
+&lt;/pre&gt;&lt;/div&gt;</content><category term="nc"></category><category term="tcp"></category><category term="第四蹭"></category><category term="传输层"></category><category term="介绍"></category><category term="netcat"></category><category term="网络"></category></entry></feed>

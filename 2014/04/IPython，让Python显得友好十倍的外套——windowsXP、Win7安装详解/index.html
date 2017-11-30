@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
   <head>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-3784870097299714",
-    enable_page_level_ads: true
-  });
-</script>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>  IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解
- | Linux迷+Python粉</title>
+ | 人生苦短，我用Python</title>
 
     <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="前言¶ 学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。 整理了《Python 二三事》：http://pre-sence.com/archives/python-intro 《Python 四五事》：http://pre-sence.com …"/>
+  
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
     <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
     <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
     <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
-      <link href='https://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
 
 
     <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
@@ -38,9 +33,19 @@
     <!-- Feeds -->
       <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
       <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
-      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - Category: 技术 - Atom Feed"/>
-      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - Category: 技术 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/"/>
 
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
 
   </head>
 
@@ -82,7 +87,7 @@
                 <a href="/category/ji-zhu/">技术</a>
               </li>
 <li >
-                <a href="/category/ji-zhu/">生活</a>
+                <a href="/category/sheng-huo/">生活</a>
               </li>
 <li >
                 <a href="/关于.html">关于</a>
@@ -93,7 +98,7 @@
             <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="fa
                         fa-search fa-fw"></i></button>
@@ -130,12 +135,12 @@
   
 
   <div>
-    <h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+    <h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。</p>
 <p>整理了《Python 二三事》：<a href="http://pre-sence.com/archives/python-intro">http://pre-sence.com/archives/python-intro</a>   《Python 四五事》：<a href="http://pre-sence.com/archives/python-misc">http://pre-sence.com/archives/python-misc</a>&nbsp;并加入安装IPython部分。</p>
 <p>写这篇随笔的原因是：忽然醒悟之前我安装IPython折腾许久不成功可能是我未能想起pip或easy_install这两个python的上帝工具。参考：Python包管理工具pip与easy_install</p>
 <p><strong>个人经验总结：IPython，是学习python的利器，是让Python显得友好十倍的外套，是我唯一的强烈推荐。</strong></p>
-<h2 id="ipython">安装IPython<a class="headerlink" href="#ipython" title="Permanent link">&para;</a></h2>
+<h3 id="ipython">安装IPython<a class="headerlink" href="#ipython" title="Permanent link">&para;</a></h3>
 <p>任何Linux发行版对编程者都十分友好：</p>
 <p><strong>Ubuntu为例:</strong></p>
 <div class="highlight"><pre><span></span>sudo apt-get install ipython
@@ -148,11 +153,11 @@
 <p>3、cmd下输入<code>easy_install pip</code>安装pip，这是因为pip正是easy_install的下一代，比easy_install好用。</p>
 <p>4、步骤3成功后，<code>pip install ipython</code>。</p>
 <p>5、如果步骤4不行，退一步，使用<code>easy_install ipython</code>安装。</p>
-<h2 id="ipython_1">运行IPython<a class="headerlink" href="#ipython_1" title="Permanent link">&para;</a></h2>
+<h3 id="ipython_1">运行IPython<a class="headerlink" href="#ipython_1" title="Permanent link">&para;</a></h3>
 <p>cmd提示符下，输入ipython运行就可以使用除了原python外，IPython多出来的贴心的“I”了。</p>
-<h2 id="ipython_2">退出IPython<a class="headerlink" href="#ipython_2" title="Permanent link">&para;</a></h2>
+<h3 id="ipython_2">退出IPython<a class="headerlink" href="#ipython_2" title="Permanent link">&para;</a></h3>
 <p>与python一样也是输入<code>exit</code></p>
-<h2 id="python">Python实用技巧：<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<h3 id="python">Python实用技巧：<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <p><strong>1、关于 &ldquo;_&rdquo;&nbsp;字符使用</strong></p>
 <p>在 Python shell 下 _&nbsp;总是被赋予之前最后一个表达式的值（注：@pythonwood）。这里看个例子应该就能清楚：</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
@@ -225,7 +230,7 @@ python -m pdb myscript.py
 </pre></div>
 
 
-<h2 id="ipython_3">IPython实用技巧：<a class="headerlink" href="#ipython_3" title="Permanent link">&para;</a></h2>
+<h3 id="ipython_3">IPython实用技巧：<a class="headerlink" href="#ipython_3" title="Permanent link">&para;</a></h3>
 <p><strong>1、Tab自动补全，一种是简单的关键字补全，另外一种是对象的方法和属性补全。</strong></p>
 <p>作为例子，我们先引入 sys 模块，之后再输入 sys. (注意有个点)，此时按下 tab 键，IPython 会列出所有 sys&nbsp;模块下的方法和属性。</p>
 <p><img alt="Tab自动补全，一种是简单的关键字补全.png" src="https://blog.pythonwood.com/uploads/2014/Tab自动补全，一种是简单的关键字补全.png" title="Tab自动补全，一种是简单的关键字补全.png"></p>
@@ -419,15 +424,19 @@ Exception: invalid character at 2: &#39;t&#39;...
 <p>当遇到问题的时候，先简单的用 pdb 在异常处&nbsp;break，十有八九都能有些头绪。</p>
 </li>
 </ol>
-<h2 id="_2">额外的注意事项<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_2">额外的注意事项<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>这里举的例子是你所有的开发都是在单个 .py 文件里的。现实生活中你很有可能会横跨几个文件一起修改。请务必注意，在 IPython 里你每次 run 的时候只有被 run 的那个文件里的东西会是最后修改的版本，其 import&nbsp;的东西如果在期间被修改是不会反应出来的。</p>
 <p>这个的原理就跟你在 Python shell 里在修改前修改后重复 import 某个模块不会有作用是一样的，Python 神奇的 import 机制不会去追踪其他模块的修改。你可以手动用 reload 函数来重新载入，你也可以使用 IPython 的 <a href="http://ipython.org/ipython-doc/dev/config/extensions/autoreload.html" title="autoreload">autoreload</a> 功能来让你忽略这个问题。个人来说我没怎么用过这个功能，IPython&nbsp;没有默认开启它可能也是有些顾虑，请自己评估看看。</p>
 <p>另外你应该已经注意到，run 的效果基本上就是把你的代码拷贝进 IPython 里执行一遍。对于没有 <strong>main</strong> 的文件，你也可以 run，这样里面定义的函数和 class&nbsp;就会反映出你的更改。</p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/" target="_blank">https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/</a>
+    </b></p> <br/><br/>
   </div>
 
-    <h3>Related content</h3>
+    <h3>扩展阅读</h3>
     <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
     <ul>
+        <li><a href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/">寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法</a></li>
         <li><a href="https://blog.pythonwood.com/2013/10/微信公众平台开发（免费云BAE+高效优雅的Python+网站开放的API）/">微信公众平台开发（免费云BAE+高效优雅的Python+网站开放的API）</a></li>
         <li><a href="https://blog.pythonwood.com/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/">微信开发python+django两个月的成功经历，django是个好框架！</a></li>
       </ul>
@@ -457,7 +466,7 @@ Exception: invalid character at 2: &#39;t&#39;...
 
       <p><address>
         <i class="fa fa-user"></i> By
-          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">Pythonwood</a>
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
       </address></p>
 
     <hr/>
@@ -465,22 +474,22 @@ Exception: invalid character at 2: &#39;t&#39;...
       <p>
               <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
                   data-toggle="tooltip" class="label label-info"
-                  title="7 articles in this category">技术</a>
+                  title="17 articles in this category">技术</a>
             <a href="/tag/python/" data-toggle="tooltip"
       class="label label-default"
-      title="3 articles with this tag">python</a>
-            <a href="/tag/ipython/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">ipython</a>
+      title="4 articles with this tag">python</a>
             <a href="/tag/an-zhuang/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">安装</a>
-            <a href="/tag/win7/" data-toggle="tooltip"
+            <a href="/tag/ipython/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">win7</a>
+      title="1 article with this tag">ipython</a>
             <a href="/tag/jiao-cheng/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">教程</a>
+            <a href="/tag/win7/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">win7</a>
       </p>
       <hr/>
 
@@ -491,7 +500,7 @@ Exception: invalid character at 2: &#39;t&#39;...
       <nav>
         <ul class="pager">
           <li class="previous ">
-            <a  href="https://blog.pythonwood.com/2013/12/我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）/" title="我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）"  rel="prev">
+            <a  href="https://blog.pythonwood.com/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/" title="校园选课项目：一个名字叫jumper的chrome插件的诞生记"  rel="prev">
               <span aria-hidden="true">←</span> 前一篇
             </a>
           </li>
@@ -554,7 +563,7 @@ Exception: invalid character at 2: &#39;t&#39;...
 
           <div class="col-md-2 text-muted">
             <h5>Copyright信息</h5>
-            <p>© Copyright 2013-2016 Pythonwood.</p>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
               <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
 href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
@@ -570,8 +579,8 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
               <ul class="list-unstyled">
                   <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
                   <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
-                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> Category: 技术 (Atom)</a></small></li>
-                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> Category: 技术 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
               </ul>
           </div>
 
@@ -589,27 +598,17 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
 
     </footer>
 
-    <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-109845932-1', 'auto');
-    ga('send', 'pageview');
-    </script>
 
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
-    gtag('config', 'UA-109845932-1');
-    </script>
-
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>

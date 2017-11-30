@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="最长公共子串问题分析¶ 其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：”bab”和”caba”(当然我们现在一眼就可以看出来最长公共子串是”ba”或”ab”) b a b c 0 0 0 …"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/"/>
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/关于.html">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-6   col-md-offset-3 ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/" rel="bookmark" title="Permalink to 【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题">【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（<span class="caps">LCS</span>）问题——阿里校招题</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-3">
+            
+          </div>
+
+        <div class=" col-md-6 " id="content" role="main">
+  
+
+  <div>
+    <!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+-->
+
+<h3 id="_1">最长公共子串问题分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&rdquo;bab&rdquo;和&rdquo;caba&rdquo;(当然我们现在一眼就可以看出来最长公共子串是&rdquo;ba&rdquo;或&rdquo;ab&rdquo;)</p>
+<p>b　　a&nbsp;b</p>
+<p>c　　0　　0&nbsp;0</p>
+<p>a　　0　　1&nbsp;0</p>
+<p>b　　1　　0&nbsp;1</p>
+<p>a　　0　　1&nbsp;0</p>
+<p>我们看矩阵的斜对角线最长的那个就能找出最长公共子串。</p>
+<p>不过在二维矩阵上找最长的由1组成的斜对角线也是件麻烦费时的事，下面改进：当要在矩阵是填1时让它等于其左上角元素加1。</p>
+<p>b　　a&nbsp;b</p>
+<p>c　　0　　0&nbsp;0</p>
+<p>a　　0　　1&nbsp;0</p>
+<p>b　　1　　0&nbsp;2</p>
+<p>a　　0　　2&nbsp;0</p>
+<p>这样矩阵中的最大元素就是&nbsp;最长公共子串的长度。</p>
+<p>在构造这个二维矩阵的过程中由于得出矩阵的某一行后其上一行就没用了，所以实际上在程序中可以用一维数组来代替这个矩阵。</p>
+<h3 id="_2">代码实践<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>根据以上算法&nbsp;使用C语言实践了一下。</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">comfix</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">stra</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">strb</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+    <span class="k">const</span> <span class="kt">char</span>
+        <span class="o">*</span><span class="n">stra</span> <span class="o">=</span> <span class="s">&quot;hello world&quot;</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">strb</span> <span class="o">=</span> <span class="s">&quot;malloc&quot;</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s,%s: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">stra</span><span class="p">,</span> <span class="n">strb</span><span class="p">,</span> <span class="n">comfix</span><span class="p">(</span><span class="n">stra</span><span class="p">,</span> <span class="n">strb</span><span class="p">));</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">comfix</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">stra</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">strb</span><span class="p">){</span>
+    <span class="cm">/*</span>
+<span class="cm">     * 变量第一字符</span>
+<span class="cm">     * c:char*, l:len</span>
+<span class="cm">     * 变量第二字符</span>
+<span class="cm">     * s:small, l:large</span>
+<span class="cm">     */</span>
+    <span class="k">const</span> <span class="kt">char</span>
+        <span class="o">*</span><span class="n">cs</span>  <span class="o">=</span> <span class="n">stra</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">cl</span>  <span class="o">=</span> <span class="n">strb</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">la</span>  <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">stra</span><span class="p">),</span>
+        <span class="n">lb</span>  <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">strb</span><span class="p">),</span>
+        <span class="n">ls</span>  <span class="o">=</span> <span class="n">la</span><span class="p">,</span>
+        <span class="n">ll</span>  <span class="o">=</span> <span class="n">lb</span><span class="p">;</span>
+    <span class="cm">/* 如果不对，就调换呗 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lb</span><span class="o">&lt;</span><span class="n">la</span><span class="p">)</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">strb</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">lb</span><span class="p">,</span> <span class="n">cl</span> <span class="o">=</span> <span class="n">stra</span><span class="p">,</span> <span class="n">ll</span> <span class="o">=</span> <span class="n">la</span><span class="p">;</span>
+    <span class="cm">/* 矩阵，只保存矩阵的一行即可动态之 */</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">pint</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">ls</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">pint</span> <span class="p">,</span><span class="mi">0</span> <span class="p">,</span> <span class="p">(</span><span class="n">ls</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="cm">/* 生成下一行，同时上一行内容被回收 */</span>
+       <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">ls</span><span class="p">;</span> <span class="n">j</span><span class="o">&gt;</span><span class="n">ret</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">cl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">cs</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+               <span class="n">pint</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pint</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+       <span class="cm">/* 如果有更大就更新ret */</span>
+       <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">ls</span><span class="p">;</span> <span class="n">j</span><span class="o">&gt;</span><span class="n">ret</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">pint</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="n">ret</span><span class="p">)</span>
+               <span class="n">ret</span> <span class="o">=</span> <span class="n">pint</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>这种算法非常巧妙地化繁为简，有时换一个思路，就会扩然开朗！</p>
+<p>比较喜欢这种锻炼。</p>
+<h3 id="_3">参考<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>研究了&nbsp;求最长公共子串问题，顺便研究了字符串匹配</p>
+<p>字符串匹配的Boyer-Moore算法
+<a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html</a></p>
+<p>字符串匹配的KMP算法
+<a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a></p>
+<p>动态规划算法之：最长公共子序列 <span class="amp">&amp;</span> 最长公共子串（<span class="caps">LCS</span>）
+<a href="http://my.oschina.net/leejun2005/blog/117167">http://my.oschina.net/leejun2005/blog/117167</a></p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/" target="_blank">https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/">腾讯2014实习面经——记一个非计算机学生的首次面试</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/">【实习记】2014-09-26linux下恢复ntfs分区误删的文件</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/">寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/";
+        var disqus_title = "【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题";
+        var disqus_url = "https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-08-29T21:23:00+08:00"><i class="fa fa-calendar"></i> 2014年08月29日, 21:23</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="17 articles in this category">技术</a>
+            <a href="/tag/shi-xi/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">实习</a>
+            <a href="/tag/suan-fa/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">算法</a>
+            <a href="/tag/xiao-zhao/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">校招</a>
+            <a href="/tag/zi-chuan/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">子串</a>
+            <a href="/tag/zi-fu-chuan/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">字符串</a>
+            <a href="/tag/zui-chang-gong-gong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">最长公共</a>
+            <a href="/tag/a-li/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">阿里</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/" title="笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.pythonwood.com/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/" title="【实习记】2014-09-26linux下恢复ntfs分区误删的文件"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>

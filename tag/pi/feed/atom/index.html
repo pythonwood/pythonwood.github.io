@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - pi</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/pi/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T15:12:00+08:00</updated><entry><title>树莓派SD卡Linux系统盘复制，10分钟克隆新机</title><link href="https://blog.pythonwood.com/2017/11/%E6%A0%91%E8%8E%93%E6%B4%BESD%E5%8D%A1Linux%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%A4%8D%E5%88%B6%EF%BC%8C10%E5%88%86%E9%92%9F%E5%85%8B%E9%9A%86%E6%96%B0%E6%9C%BA/" rel="alternate"></link><published>2017-11-30T15:02:00+08:00</published><updated>2017-11-30T15:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-11-30:/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/</id><summary type="html">&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）&lt;/p&gt;
+&lt;h3 id="_1"&gt;开始折腾尝试&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G …&lt;/p&gt;</summary><content type="html">&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）&lt;/p&gt;
+&lt;h3 id="_1"&gt;开始折腾尝试&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G，很多空间是多余的。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gparted看树莓派分区" src="https://blog.pythonwood.com/uploads/2017/gparted看树莓派分区.jpg" title="gparted看树莓派分区"&gt;&lt;/p&gt;
+&lt;p&gt;用了1天的不断努力尝试终于才成功，囧。&lt;/p&gt;
+&lt;h3 id="1ddddrescue"&gt;失败1:使用DD或ddrescue&lt;a class="headerlink" href="#1ddddrescue" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;不幸的是我是从14.6G卡克隆到14.4G卡，使用dd失败是注定的。使用dd的必要条件是目标卡要更大。&lt;/p&gt;
+&lt;h3 id="2linuxssdetc"&gt;失败2:源自笔记本linux系统迁移SSD的经验——分区一样，复制文件，改etc配置法。&lt;a class="headerlink" href="#2linuxssdetc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;linux磁盘迁移，只需分区格式化，复制文件，修改etc下的fstab和udev目录的网卡信息，chroot+grub安装。就能完成。&lt;/p&gt;
+&lt;p&gt;然而实践得知，不适用树莓派迁移。启动时卡在&amp;rdquo;smsc95xx 1-1.1:1.0: eth0: register &amp;lsquo;smsc95xx&amp;rsquo;&amp;nbsp;&amp;hellip;&amp;rdquo;之后。无法启动。&lt;/p&gt;
+&lt;p&gt;比较发现，复制时，不会有dev/by-partuuid/目录，而本身树莓派是有这个目录的。&lt;/p&gt;
+&lt;h3 id="ddrawresize2fsqemu-imgdiskdd"&gt;成功:dd读取为raw镜像盘、resize2fs缩容分区、qemu-img缩容disk、dd写入成功启动树莓派&lt;a class="headerlink" href="#ddrawresize2fsqemu-imgdiskdd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="ddrawsd"&gt;先dd读取物理盘为raw格式镜像盘。这样就可以方法搞，最坏情况也不影响已有的系统sd卡内容。&lt;a class="headerlink" href="#ddrawsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo dd if=/dev/sdb of=/home/16G.img bs=128K
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="loopgparted"&gt;挂载loop设备以便于gparted能操作&lt;a class="headerlink" href="#loopgparted" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo losetup /dev/loop0 /home/16G.img
+$sudo partprobe /dev/loop0  # 运行后才会出现分区/dev/loop0p1,/dev/loop0p2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="14g6gblock6g"&gt;第二分区从14G缩容到6G（实际是把分散的Block数据集中到前6G位置。非真正改变分区大小）&lt;a class="headerlink" href="#14g6gblock6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo e2fsck -f /dev/loop0p2
+$sudo resize2fs /dev/loop0p2 6G
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="gparted-fdisk-6g"&gt;GParted / Fdisk 更改第二分区为6G&lt;a class="headerlink" href="#gparted-fdisk-6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;GParted&amp;nbsp;/dev/loop0打开，然后选择第二分区右击，选择&amp;rdquo;更改/移动大小&amp;rdquo;。设置。&lt;/p&gt;
+&lt;h4 id="loop"&gt;卸载恢复loop设备:&lt;a class="headerlink" href="#loop" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo partprobe -d /dev/loop0
+$sudo losetup -d /dev/loop0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="raw"&gt;raw虚拟磁盘缩容&lt;a class="headerlink" href="#raw" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo qemu-img resize /home/16G.img -8G
+
+$qemu-img info /home/16G.img
+image: xxx.img
+file format: raw
+virtual size: 5.9G (6380060672 bytes)
+disk size: 5.9G
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="ddsd"&gt;使用DD写入新SD卡，启动成功。&lt;a class="headerlink" href="#ddsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;可选：写入sd后可以用e2resize扩容分区完全用上SD卡空间，参考上面缩容。&lt;/p&gt;
+&lt;h3 id="_2"&gt;参考&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;把一块硬盘上的 Linux 系统整个复制到新硬盘上的方法.  &lt;a href="https://www.v2ex.com/t/183310"&gt;https://www.v2ex.com/t/183310&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;openstack文档 &lt;a href="http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd"&gt;http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用qemu-img改变镜像文件大小  &lt;a href="http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html"&gt;http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;笔记本硬盘更换记（使用LVM进行在线数据迁移） &lt;a href="http://cathay4t.blogspot.hk/2009/05/lvm.html"&gt;http://cathay4t.blogspot.hk/2009/05/lvm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;新电脑+旧系统：教你在不同机器间转移Linux  &lt;a href="http://www.geekfan.net/1860/"&gt;http://www.geekfan.net/1860/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;usb-creator-gtk 方法和&amp;nbsp;clonezilla方法没有深入研究。&lt;/p&gt;</content><category term="树莓派"></category><category term="rpi"></category><category term="raspbain"></category><category term="raspberry"></category><category term="pi"></category><category term="clone"></category><category term="linux"></category><category term="克隆"></category><category term="系统"></category><category term="uuid"></category><category term="resizefs"></category><category term="qemu-img"></category><category term="losetup"></category><category term="dd"></category><category term="智能家庭"></category></entry></feed>

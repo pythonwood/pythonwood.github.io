@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="问题：¶ chrome 升级到高版本，切换标签后点击，滚轮都没反应，假死不动。F12呼出控制台来开发时更让人揪心。(大概chrome 25更高) 原因：¶ 我的电脑是:集显+512M独显，可切换的。这种配置完全是高不成，底不就！一点都不好，chrome 调用底层显卡驱动会出错。Firefox原因一样 …"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/"/>
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/关于.html">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-6   col-md-offset-3 ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/" rel="bookmark" title="Permalink to 谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）">谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+          <div class="col-md-3">
+            
+          </div>
+
+        <div class=" col-md-6 " id="content" role="main">
+  
+
+  <div>
+    <h3 id="_1">问题：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>chrome 升级到高版本，切换标签后点击，滚轮都没反应，假死不动。F12呼出控制台来开发时更让人揪心。(大概chrome&nbsp;25更高)</p>
+<h3 id="_2">原因：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>我的电脑是:集显+512M独显，可切换的。这种配置完全是高不成，底不就！一点都不好，chrome&nbsp;调用底层显卡驱动会出错。Firefox原因一样。如果只有一张显卡，无论集显独显，应该都无上述问题。</p>
+<h4 id="_3">问题原因的关键字：硬件，兼容，显卡，驱动。<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h3 id="_4">解决：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">一、调整窗口大小(小白都会招)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>触发窗口重绘，必唤醒显卡/驱动再工作。缺点是每次假死都要做。</p>
+<h4 id="_6">二、设置参数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>1、输入栏输入：chrome://flags，确定，找GPU加速（在前几项中），停用之。</p>
+<p>2、输入栏输入：chrome://plugins，确定，如果flash插件有两个（显示详细），禁用第二个。</p>
+<h4 id="firefoxfirefox-">三、换Firefox，Firefox菜单-&gt;选项-&gt;高级，取消“硬件加速”的勾选。<a class="headerlink" href="#firefoxfirefox-" title="Permanent link">&para;</a></h4>
+<p>这个是最好的方法，如果你和我一样已经忍无可忍。</p>
+<p>忍受chrome问题1年半，最终导致我尝试Firefox，从此一发不可收拾。(纯粹的)开源软件就是强，开源社区总有惊喜！</p>
+<p>试过才知，firefox的web控制台更美更好看，可比chrome。</p>
+<p><img alt="firefox-chrome3.jpg" src="https://blog.pythonwood.com/uploads/2014/firefox-chrome3.jpg" title="3">
+<img alt="firefox-chrome4.jpg" src="https://blog.pythonwood.com/uploads/2014/firefox-chrome4.jpg" title="4"></p>
+<h3 id="_7">题外话：<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>我还发现了<a href="http://www.clementine-player.org/zh_CN/screenshots" title="Clementine">Clementine</a>这开源音乐播放器。播放功能很强。</p>
+<p>推荐的开源软件列表：firefox,smplayer,clementine,gimp,gvim,gcc,filezilla,nasm,python,git</p>
+<p>最近在学linux脚本，jQuery,Pyhon。如gred,sed,awk文本处理，wget,curl,lynx(tcpdump,ngrep)网络工具。jQuery写前端。python做微信开发，爬微博。</p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/" target="_blank">https://blog.pythonwood.com/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/">校园选课项目：一个名字叫jumper的chrome插件的诞生记</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/";
+        var disqus_title = "谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）";
+        var disqus_url = "https://blog.pythonwood.com/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-02-15T22:50:00+08:00"><i class="fa fa-calendar"></i> 2014年02月15日, 22:50</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="17 articles in this category">技术</a>
+            <a href="/tag/chrome/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">chrome</a>
+            <a href="/tag/jie-jue-wen-ti/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">解决问题</a>
+            <a href="/tag/liu-lan-qi/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">浏览器</a>
+            <a href="/tag/firefox/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">firefox</a>
+            <a href="/tag/jian-rong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">兼容</a>
+            <a href="/tag/jia-si/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">假死</a>
+            <a href="/tag/qu-dong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">驱动</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2013/12/我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）/" title="我用Emacs，后来转向Vim——Vim学习之Vim键盘图（绝对值得珍藏）"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/" title="寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>
