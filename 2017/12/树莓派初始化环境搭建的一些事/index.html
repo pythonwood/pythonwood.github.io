@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  树莓派初始化环境搭建的一些事
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。 <h3…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/sheng-huo/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 生活 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/sheng-huo/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 生活 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/" rel="bookmark" title="Permalink to 树莓派初始化环境搭建的一些事">树莓派初始化环境搭建的一些事</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。</p>
+<h3 id="_1">一、奔着遥控式家庭影音的购买方案<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接">树莓派</a>可以了。我没买SD卡，将旧的class10的16G的SD利用上(class10意思是写入速度约10MB/s)。</p>
+<ol>
+<li>
+<p><strong>我购买并用上的：</strong> 
+<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DjB5CtrQXlAccQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67rCnyOxJms%2BVtTN3K9waqqis9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTBN3oW5I7sw9oXcuyoAGSVzy%2Flc8YI1OgQvABqsOAyUlBEellxPfI1OiZ%2BQMlGz6FQ%3D%3D&amp;pvid=10_120.239.178.0_533_1512539397311" title="公牛usb插座天猫链接">公牛usb魔方插座</a>，<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接">树莓派</a>，<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电">HDMI转VGA带供电</a>，带开关按钮线的电源，杜邦线。</p>
+</li>
+<li>
+<p><strong>不用购买就用上的配件：</strong>&nbsp;红外接收仪(从坏的遥控玩具拆下可用)，旧电视遥控器一个，老VGA显示屏，旧音箱。</p>
+</li>
+<li>
+<p><strong>我购买而还没用的可选配件：</strong>
+七彩RGB的LED元件，面包板，<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DfV%2BZ61WfxfkcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67lKP%2BmjvssA7r8hK%2FDw%2Bbm2s9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA0KFaRH2Tl0r%2BlUnyCWbT92Wt8ptzziuVx4DebA4okkCqN5EGMnCL1bGJe8N%2FwNpGw%3D%3D&amp;pvid=10_120.239.178.0_378_1512536718652" title="HDMI转DVI天猫链接">HDMI转DVI</a>，光敏电阻。</p>
+</li>
+<li>
+<p><strong>我认为不用买的：</strong>&nbsp;小屏幕（退货了），温度感应，五向摇杆，蜂鸣器，触摸感应器等。</p>
+</li>
+</ol>
+<p><img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"></p>
+<h3 id="raspbian">二、树莓派安装官方的raspbian系统并初始化<a class="headerlink" href="#raspbian" title="Permanent link">&para;</a></h3>
+<h4 id="_2">基础部分教程：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>包括修改Pi密码,修改国内源,显示中文，设置时区为Asia/Shanghai，安装开源中文字体<strong>文泉驿</strong>，安装fcitx谷歌拼音，开启ssh服务，设置wifi连接密码</p>
+<ol>
+<li>
+<p><strong>树莓派上手配置</strong>
+<a href="https://yaogangli.gitbooks.io/raspberry-pi-learning/content/Raspbian.html">https://yaogangli.gitbooks.io/raspberry-pi-learning/content/Raspbian.html</a></p>
+</li>
+<li>
+<p><strong>新手入门树莓派必做的四件事</strong>
+<a href="http://blog.csdn.net/A_lPha/article/details/53116767">http://blog.csdn.net/A_lPha/article/details/53116767</a></p>
+</li>
+<li>
+<p><strong>How to setup multiple WiFi networks?</strong>
+<a href="https://raspberrypi.stackexchange.com/questions/11631/how-to-setup-multiple-wifi-networks/11674">https://raspberrypi.stackexchange.com/questions/11631/how-to-setup-multiple-wifi-networks/11674</a></p>
+</li>
+<li>
+<p><strong>ssh服务配置</strong>
+<a href="https://www.raspberrypi.org/documentation/remote-access/ssh/">https://www.raspberrypi.org/documentation/remote-access/ssh/</a></p>
+</li>
+</ol>
+<h4 id="_3">优化部分教程：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>包括添加u盘自动挂载功能，VNC服务，优化无网络下树莓派开机时间等</p>
+<ol>
+<li>
+<p><strong>树莓派USB存储设备自动挂载</strong>
+<a href="http://www.jianshu.com/p/188828d9777a">http://www.jianshu.com/p/188828d9777a</a></p>
+</li>
+<li>
+<p><strong>How to change timeout in systemctl</strong>
+<a href="https://unix.stackexchange.com/questions/186162/how-to-change-timeout-in-systemctl">https://unix.stackexchange.com/questions/186162/how-to-change-timeout-in-systemctl</a></p>
+</li>
+<li>
+<p><strong>安装VNC服务(tightvncserver)</strong>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-14-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-14-04</a></p>
+</li>
+<li>
+<p><strong>配置与学习树莓派config.txt配置文件</strong>
+<a href="https://www.zybuluo.com/SiberiaBear/note/328982">https://www.zybuluo.com/SiberiaBear/note/328982</a></p>
+</li>
+</ol>
+<h3 id="_4">三、重要提醒：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>经验证，我安装一大堆东西后，SD卡使用才4G，其中几百兆是音乐，&nbsp;所以8G卡也是够用的。</p>
+<p>熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
+<a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机</a></p>
+<h3 id="_5">四、参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>开始 Raspberry Pi 项目前需要知道的 10 件事 <a href="https://www.digikey.com.cn/zh/articles/techzone/2017/feb/10-things-to-know-before-starting-a-raspberry-pi-project">https://www.digikey.com.cn/zh/articles/techzone/2017/feb/10-things-to-know-before-starting-a-raspberry-pi-project</a></p>
+</li>
+<li>
+<p>树莓派启动那些事 <a href="http://elmagnificogi.github.io/tags/#RaspberryPi">http://elmagnificogi.github.io/tags/#RaspberryPi</a></p>
+</li>
+</ol>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/" target="_blank">https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></li>
+        <li><a href="https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/">虚拟机系统正式转换——从windows到Linux-ubuntu新手</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2017/12/树莓派初始化环境搭建的一些事/";
+        var disqus_title = "树莓派初始化环境搭建的一些事";
+        var disqus_url = "https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-05T13:46:00+08:00"><i class="fa fa-calendar"></i> 2017年12月05日, 13:46</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/sheng-huo/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="4 articles in this category">生活</a>
+            <a href="/tag/xi-tong/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">系统</a>
+            <a href="/tag/shu-mei-pai/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">树莓派</a>
+            <a href="/tag/chu-shi-hua/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">初始化</a>
+            <a href="/tag/huan-jing-da-jian/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">环境搭建</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/树莓派初始化环境搭建的一些事.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2017/12/第二次开源贡献，为pelican的plumage主题修改被owner接受/" title="第二次开源贡献，为pelican的plumage主题修改被owner接受"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.pythonwood.com/2017/12/我的Linux下的图像软件使用记录/" title="我的Linux下的图像软件使用记录"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/sheng-huo/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 生活 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/sheng-huo/feed/index.html"><i class="fa fa-rss"></i> 分类: 生活 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>

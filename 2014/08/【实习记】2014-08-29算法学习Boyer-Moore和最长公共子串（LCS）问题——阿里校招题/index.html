@@ -9,7 +9,7 @@
  | 人生苦短，我用Python</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="最长公共子串问题分析¶ 其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：”bab”和”caba”(当然我们现在一眼就可以看出来最长公共子串是”ba”或”ab”) b a b c 0 0 0 …"/>
+    <meta name="description" content="<!-- 昨天的问题 方案一：寻找hash函数，可行性极低。 方案二：载入内存，维护成一个守护进程的服务。难度比较大。 方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。 …"/>
   
 
     <!-- Bootstrap -->
@@ -39,6 +39,15 @@
     <link rel="canonical" href="https://blog.pythonwood.com/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/"/>
 
 
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -56,7 +65,7 @@
       <div class="page-header">
           <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
             <div class="avatar  animate ">
-              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
                 <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
             </div>
           </a>
@@ -96,7 +105,7 @@
                 <a href="/code/">代码</a>
               </li>
 <li >
-                <a href="/关于.html">关于</a>
+                <a href="/about/">关于</a>
               </li>
           </ul>
 
@@ -273,24 +282,24 @@
             <a href="/tag/shi-xi/" data-toggle="tooltip"
       class="label label-default"
       title="3 articles with this tag">实习</a>
-            <a href="/tag/suan-fa/" data-toggle="tooltip"
-      class="label label-default"
-      title="2 articles with this tag">算法</a>
             <a href="/tag/xiao-zhao/" data-toggle="tooltip"
       class="label label-default"
       title="2 articles with this tag">校招</a>
-            <a href="/tag/a-li/" data-toggle="tooltip"
+            <a href="/tag/suan-fa/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">阿里</a>
-            <a href="/tag/zui-chang-gong-gong/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">最长公共</a>
-            <a href="/tag/zi-chuan/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">子串</a>
+      title="2 articles with this tag">算法</a>
             <a href="/tag/zi-fu-chuan/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">字符串</a>
+            <a href="/tag/zui-chang-gong-gong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">最长公共</a>
+            <a href="/tag/a-li/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">阿里</a>
+            <a href="/tag/zi-chuan/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">子串</a>
       </p>
       <hr/>
 
@@ -399,6 +408,15 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
 
     </footer>
 
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
 
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>

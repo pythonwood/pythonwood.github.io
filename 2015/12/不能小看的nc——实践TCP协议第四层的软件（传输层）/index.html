@@ -9,7 +9,7 @@
  | 人生苦短，我用Python</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。 很多事情不一定非得抓包，nc也能发挥巨大作用。 1、传输文件¶ 使用<>重定向符（只适用单文件，不推荐、失败时 “>” 产生空文件）¶ nc -l 8888 < demo.txt # 在本机8888端口侦听TCP连接，将收到的数据写入文件 nc …"/>
+    <meta name="description" content="nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。 很多事情不一定非得抓包，nc也能发挥巨大作用。 1、传输文件<a class="headerlink"…"/>
   
 
     <!-- Bootstrap -->
@@ -39,6 +39,15 @@
     <link rel="canonical" href="https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/"/>
 
 
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -56,7 +65,7 @@
       <div class="page-header">
           <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
             <div class="avatar  animate ">
-              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
                 <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
             </div>
           </a>
@@ -96,7 +105,7 @@
                 <a href="/code/">代码</a>
               </li>
 <li >
-                <a href="/关于.html">关于</a>
+                <a href="/about/">关于</a>
               </li>
           </ul>
 
@@ -206,6 +215,11 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
     </b></p> <br/><br/>
   </div>
 
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/">ssh命令：隧道代理+本地端口转发+远程端口转发</a></li>
+      </ul>
 
     <div class="comments">
       <div id="disqus_thread"></div>
@@ -241,27 +255,18 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
               <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
                   data-toggle="tooltip" class="label label-info"
                   title="17 articles in this category">技术</a>
-            <a href="/tag/jie-shao/" data-toggle="tooltip"
+            <a href="/tag/wang-luo/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">介绍</a>
-            <a href="/tag/nc/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">nc</a>
-            <a href="/tag/di-si-ceng/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">第四蹭</a>
-            <a href="/tag/netcat/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">netcat</a>
+      title="2 articles with this tag">网络</a>
             <a href="/tag/tcp/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">tcp</a>
-            <a href="/tag/chuan-shu-ceng/" data-toggle="tooltip"
+            <a href="/tag/nc/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">传输层</a>
-            <a href="/tag/wang-luo/" data-toggle="tooltip"
+      title="1 article with this tag">nc</a>
+            <a href="/tag/netcat/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">网络</a>
+      title="1 article with this tag">netcat</a>
       </p>
       <hr/>
 
@@ -370,6 +375,15 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
 
     </footer>
 
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
 
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>

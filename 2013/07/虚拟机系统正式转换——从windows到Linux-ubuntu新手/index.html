@@ -9,7 +9,7 @@
  | 人生苦短，我用Python</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="记录大二下学期转换ubuntu10.04的一些系统折腾 版本选择：¶ 经多次实验，Ubuntu个人认为长期支持（LTS）版才值得装。 VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。 个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。 Ubuntu12.04的桌面切换真麻烦。 我最后选择了VMware9 …"/>
+    <meta name="description" content="记录大二下学期转换ubuntu10.04的一些系统折腾 版本选择：<a class="headerlink" href="#_1" title="Permanent…"/>
   
 
     <!-- Bootstrap -->
@@ -39,6 +39,15 @@
     <link rel="canonical" href="https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/"/>
 
 
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -56,7 +65,7 @@
       <div class="page-header">
           <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
             <div class="avatar  animate ">
-              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
                 <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
             </div>
           </a>
@@ -96,7 +105,7 @@
                 <a href="/code/">代码</a>
               </li>
 <li >
-                <a href="/关于.html">关于</a>
+                <a href="/about/">关于</a>
               </li>
           </ul>
 
@@ -215,8 +224,8 @@ cat -n ~/.bash_history | todos &gt; _bash_history2013-07-10.txt
     <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
     <ul>
         <li><a href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></li>
-        <li><a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机</a></li>
-        <li><a href="https://blog.pythonwood.com/2013/07/大二C++课程期末作业——一个小工程项目总结/">大二C++课程期末作业——一个小工程项目总结</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/12/我的Linux下的图像软件使用记录/">我的Linux下的图像软件使用记录</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
       </ul>
 
     <div class="comments">
@@ -255,28 +264,28 @@ cat -n ~/.bash_history | todos &gt; _bash_history2013-07-10.txt
                   title="17 articles in this category">技术</a>
             <a href="/tag/linux/" data-toggle="tooltip"
       class="label label-default"
-      title="4 articles with this tag">linux</a>
+      title="5 articles with this tag">Linux</a>
+            <a href="/tag/da-xue/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">大学</a>
             <a href="/tag/xi-tong/" data-toggle="tooltip"
       class="label label-default"
-      title="3 articles with this tag">系统</a>
+      title="4 articles with this tag">系统</a>
             <a href="/tag/ubuntu/" data-toggle="tooltip"
       class="label label-default"
-      title="2 articles with this tag">ubuntu</a>
-            <a href="/tag/zhuan-huan/" data-toggle="tooltip"
-      class="label label-default"
-      title="2 articles with this tag">转换</a>
-            <a href="/tag/da-er/" data-toggle="tooltip"
-      class="label label-default"
-      title="2 articles with this tag">大二</a>
-            <a href="/tag/bi-ji-ben/" data-toggle="tooltip"
-      class="label label-default"
-      title="2 articles with this tag">笔记本</a>
+      title="3 articles with this tag">ubuntu</a>
             <a href="/tag/windows/" data-toggle="tooltip"
       class="label label-default"
       title="2 articles with this tag">windows</a>
-            <a href="/tag/da-xue/" data-toggle="tooltip"
+            <a href="/tag/bi-ji-ben/" data-toggle="tooltip"
       class="label label-default"
-      title="2 articles with this tag">大学</a>
+      title="1 article with this tag">笔记本</a>
+            <a href="/tag/da-er/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">大二</a>
+            <a href="/tag/zhuan-huan/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">转换</a>
             <a href="/tag/lts/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">LTS</a>
@@ -394,6 +403,15 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
 
     </footer>
 
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
 
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>

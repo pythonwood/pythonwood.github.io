@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>  树莓派SD卡Linux系统盘复制，10分钟克隆新机
+    <title>  树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复
  | 人生苦短，我用Python</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="在家里，用了一周时间，将新买的树莓派3，HDMI转VGA带供电(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。 在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做） 开始折腾尝试¶ 借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G …"/>
+    <meta name="description" content="有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。 学通树莓派系统克隆，兼备安装、备份与恢复能力。<a class="headerlink" href="#_1"…"/>
   
 
     <!-- Bootstrap -->
@@ -39,6 +39,15 @@
     <link rel="canonical" href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/"/>
 
 
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -56,7 +65,7 @@
       <div class="page-header">
           <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
             <div class="avatar  animate ">
-              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
                 <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
             </div>
           </a>
@@ -96,7 +105,7 @@
                 <a href="/code/">代码</a>
               </li>
 <li >
-                <a href="/关于.html">关于</a>
+                <a href="/about/">关于</a>
               </li>
           </ul>
 
@@ -126,7 +135,7 @@
       <div class="row">
         <div class=" col-md-9  ">
   <h1>
-    <a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/" rel="bookmark" title="Permalink to 树莓派SD卡Linux系统盘复制，10分钟克隆新机">树莓派SD卡Linux系统盘复制，10分钟克隆新机</a>
+    <a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/" rel="bookmark" title="Permalink to 树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a>
   </h1>
         </div>
       </div>
@@ -138,10 +147,12 @@
   
 
   <div>
-    <p>在家里，用了一周时间，将新买的树莓派3，<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电">HDMI转VGA带供电</a>(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。</p>
+    <p>有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。</p>
+<h3 id="_1">学通树莓派系统克隆，兼备安装、备份与恢复能力。<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>在家里，用了一周时间，将新买的树莓派3，<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电">HDMI转VGA带供电</a>(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。</p>
 <p><img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"></p>
 <p>在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）</p>
-<h3 id="_1">开始折腾尝试<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="_2">开始折腾尝试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G，很多空间是多余的。</p>
 <p><img alt="gparted看树莓派分区" src="https://blog.pythonwood.com/uploads/2017/gparted看树莓派分区.jpg" title="gparted看树莓派分区"></p>
 <p>用了1天的不断努力尝试终于才成功，囧。</p>
@@ -189,8 +200,14 @@ disk size: 5.9G
 
 
 <h4 id="ddsd">使用DD写入新SD卡，启动成功。<a class="headerlink" href="#ddsd" title="Permanent link">&para;</a></h4>
-<p>可选：写入sd后可以用e2resize扩容分区完全用上SD卡空间，参考上面缩容。</p>
-<h3 id="_2">参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>可选：写入sd后可以用resize2fs扩容分区完全用上SD卡空间，参考上面缩容。</p>
+<h3 id="_3">总结提升<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>linux下安装树莓派系统到SD卡，使用dd刻录后还有剩余空间，用resize2fs可让最后分区来占满。</li>
+<li>使用dd来备份整个硬盘太慢，可以用resize2fs将数据块移动到前面，parted缩小分区，然后刻录硬盘前面有数据部分即可。这样备份文件就不会臃肿。</li>
+<li>备份镜像恢复时，过程类似初次安装系统。</li>
+</ol>
+<h3 id="_4">参考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>把一块硬盘上的 Linux 系统整个复制到新硬盘上的方法.  <a href="https://www.v2ex.com/t/183310">https://www.v2ex.com/t/183310</a></p>
 <p>openstack文档 <a href="http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd">http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd</a></p>
 <p>使用qemu-img改变镜像文件大小  <a href="http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html">http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html</a></p>
@@ -205,9 +222,9 @@ disk size: 5.9G
     <h3>扩展阅读</h3>
     <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
     <ul>
-        <li><a href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/">树莓派初始化环境搭建的一些事</a></li>
         <li><a href="https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/">虚拟机系统正式转换——从windows到Linux-ubuntu新手</a></li>
-        <li><a href="https://blog.pythonwood.com/2017/11/[译]安卓6款最佳DLNA,UPNP流媒体客户端APP/">[译]安卓6款最佳DLNA,UPNP流媒体客户端APP</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></li>
       </ul>
 
     <div class="comments">
@@ -215,7 +232,7 @@ disk size: 5.9G
       <script type="text/javascript">
         var disqus_shortname = 'pythonwooodblog';
         var disqus_identifier = "2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/";
-        var disqus_title = "树莓派SD卡Linux系统盘复制，10分钟克隆新机";
+        var disqus_title = "树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复";
         var disqus_url = "https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/";
         (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -246,49 +263,40 @@ disk size: 5.9G
                   title="17 articles in this category">技术</a>
             <a href="/tag/linux/" data-toggle="tooltip"
       class="label label-default"
-      title="4 articles with this tag">linux</a>
+      title="5 articles with this tag">Linux</a>
             <a href="/tag/xi-tong/" data-toggle="tooltip"
       class="label label-default"
-      title="3 articles with this tag">系统</a>
+      title="4 articles with this tag">系统</a>
+            <a href="/tag/shu-mei-pai/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">树莓派</a>
             <a href="/tag/zhi-neng-jia-ting/" data-toggle="tooltip"
       class="label label-default"
       title="2 articles with this tag">智能家庭</a>
-            <a href="/tag/uuid/" data-toggle="tooltip"
+            <a href="/tag/hui-fu/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">uuid</a>
-            <a href="/tag/clone/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">clone</a>
-            <a href="/tag/ke-long/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">克隆</a>
-            <a href="/tag/resizefs/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">resizefs</a>
-            <a href="/tag/shu-mei-pai/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">树莓派</a>
-            <a href="/tag/dd/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">dd</a>
+      title="1 article with this tag">恢复</a>
             <a href="/tag/qemu-img/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">qemu-img</a>
-            <a href="/tag/raspbain/" data-toggle="tooltip"
+            <a href="/tag/dd/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">raspbain</a>
-            <a href="/tag/rpi/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">rpi</a>
-            <a href="/tag/raspberry/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">raspberry</a>
+      title="1 article with this tag">dd</a>
             <a href="/tag/losetup/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">losetup</a>
-            <a href="/tag/pi/" data-toggle="tooltip"
+            <a href="/tag/ke-long/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">pi</a>
+      title="1 article with this tag">克隆</a>
+            <a href="/tag/bei-fen/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">备份</a>
+            <a href="/tag/resize2fs/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">resize2fs</a>
+            <a href="/tag/raspbain/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">raspbain</a>
       </p>
       <hr/>
 
@@ -397,6 +405,15 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
 
     </footer>
 
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
 
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>

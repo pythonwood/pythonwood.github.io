@@ -9,7 +9,7 @@
  | 人生苦短，我用Python</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="Linux迷+Python粉。人生苦短，我用Python"/>
+    <meta name="description" content="Linux迷+Python粉 人生苦短，我用Python"/>
   
 
     <!-- Bootstrap -->
@@ -35,6 +35,15 @@
       <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
 
 
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -52,7 +61,7 @@
       <div class="page-header">
           <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
             <div class="avatar  animate ">
-              <div class="side"><img src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
                 <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
             </div>
           </a>
@@ -92,7 +101,7 @@
                 <a href="/code/">代码</a>
               </li>
 <li >
-                <a href="/关于.html">关于</a>
+                <a href="/about/">关于</a>
               </li>
           </ul>
 
@@ -136,6 +145,31 @@
 
     <article>
       <header>
+        <h2><a href="https://blog.pythonwood.com/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/" rel="bookmark" title="Permalink to ssh命令：隧道代理+本地端口转发+远程端口转发">ssh命令：隧道代理+本地端口转发+远程端口转发</a></h2>
+      </header>
+      <div><h3 id="0">0、前言<a class="headerlink" href="#0" title="Permanent link">&para;</a></h3>
+<p>nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）</p>
+<p>ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。</p>
+<p>我们知道，<span class="caps">SSH</span> 会自动加密和解密所有 <span class="caps">SSH</span> 客户端与服务端之间的网络数据。但是，<span class="caps">SSH</span> 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 <span class="caps">TCP …</span></p></div>
+      <div><a class="btn btn-primary" href="https://blog.pythonwood.com/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
+        <h2><a href="https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/" rel="bookmark" title="Permalink to 不能小看的nc——实践TCP协议第四层的软件（传输层）">不能小看的nc——实践TCP协议第四层的软件（传输层）</a></h2>
+      </header>
+      <div><p>nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。</p>
+<p>很多事情不一定非得抓包，nc也能发挥巨大作用。</p>
+<h3 id="1">1、传输文件<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<h4 id="_1">使用&lt;&gt;重定向符（只适用单文件，不推荐、失败时 &ldquo;&gt;&rdquo; 产生空文件）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span>nc -l 8888 &lt; demo.txt        # 在本机8888端口侦听TCP连接，将收到的数据写入文件
+
+nc …</pre></div></div>
+      <div><a class="btn btn-primary" href="https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
         <h2><a href="https://blog.pythonwood.com/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/" rel="bookmark" title="Permalink to 【实习记】2014-09-26linux下恢复ntfs分区误删的文件">【实习记】2014-09-26linux下恢复ntfs分区误删的文件</a></h2>
       </header>
       <div><h3 id="_1">忧伤的背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
@@ -176,32 +210,6 @@
 <h3 id="_2">操作<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>2014-04-17，ubuntu14.04(trusty)，长期支持版(<span class="caps">LTS</span>=long term support)，还记得那天也是我腾讯实行的2面。我知道等到时机了，果断装双系统 …</p></div>
       <div><a class="btn btn-primary" href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/"><strong>➟ 阅读全文</strong></a></div>
-    </article>
-    <hr/>
-    <article>
-      <header>
-        <h2><a href="https://blog.pythonwood.com/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/" rel="bookmark" title="Permalink to 微信开发python+django两个月的成功经历，django是个好框架！">微信开发python+django两个月的成功经历，django是个好框架！</a></h2>
-      </header>
-      <div><h3 id="_1">时间：大三<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。</p>
-<p>下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。</p>
-<p>选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。</p>
-<p>亮点1：自带后台管理</p>
-<p>亮点2：后台权限管理</p>
-<p>亮点3：微信回复规则设置去代码化，图形界面。</p>
-<p>亮点4：一平台多网店 …</p></div>
-      <div><a class="btn btn-primary" href="https://blog.pythonwood.com/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/"><strong>➟ 阅读全文</strong></a></div>
-    </article>
-    <hr/>
-    <article>
-      <header>
-        <h2><a href="https://blog.pythonwood.com/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/" rel="bookmark" title="Permalink to 腾讯2014实习面经——记一个非计算机学生的首次面试">腾讯2014实习面经——记一个非计算机学生的首次面试</a></h2>
-      </header>
-      <div><p>地点：华南理工大学大学城校区，为广州考点。</p>
-<p>流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 +&nbsp;签约4.25</p>
-<h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期 …</p></div>
-      <div><a class="btn btn-primary" href="https://blog.pythonwood.com/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/"><strong>➟ 阅读全文</strong></a></div>
     </article>
     <hr/>
 
@@ -336,6 +344,15 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
 
     </footer>
 
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
 
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 远程连接</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/yuan-cheng-lian-jie/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-27T22:12:00+08:00</updated><entry><title>ssh命令：隧道代理+本地端口转发+远程端口转发</title><link href="https://blog.pythonwood.com/2016/02/ssh%E5%91%BD%E4%BB%A4%EF%BC%9A%E9%9A%A7%E9%81%93%E4%BB%A3%E7%90%86+%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91+%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="alternate"></link><published>2016-02-15T11:29:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2016-02-15:/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/</id><summary type="html">&lt;h3 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
+&lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
+&lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;h3 id="0"&gt;0、前言&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;nc是一个在网络连接两端的好工具，同时也是也个临时的端口转发的好工具。（永久的端口转发用什么？用iptables）&lt;/p&gt;
+&lt;p&gt;ssh也是这方面的好工具，好处是加密可靠可复用在一端操作即可，代价是要有登录帐号。&lt;/p&gt;
+&lt;p&gt;我们知道，&lt;span class="caps"&gt;SSH&lt;/span&gt; 会自动加密和解密所有 &lt;span class="caps"&gt;SSH&lt;/span&gt; 客户端与服务端之间的网络数据。但是，&lt;span class="caps"&gt;SSH&lt;/span&gt; 还同时提供了一个非常有用的功能，这就是端口转发。它能够将其他 &lt;span class="caps"&gt;TCP&lt;/span&gt; 端口的网络数据通过 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;链接来转发，并且自动提供了相应的加密及解密服务。&lt;/p&gt;
+&lt;h3 id="1"&gt;1、隧道带理&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;典型应用：翻越高墙&lt;/p&gt;
+&lt;p&gt;需要条件：一个国外vps，一个不需要登录（安全）的帐号，一个命令。&lt;/p&gt;
+&lt;p&gt;vps新建帐号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd -g nobody -s /sbin/nologin  gfw &amp;amp;&amp;amp; echo gfw_Passw0rd | passwd --stdin gfw
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;本地ssh连接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfD 6666 gfw@vps -p 2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可选转换：使用privoxy把socks5代理变成http代理供svn，pip，gem，curl等工具使用。&lt;/p&gt;
+&lt;h3 id="2"&gt;2、本地端口转发&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="tu2" src="https://blog.pythonwood.com/uploads/2016/本地端口转发.jpg" title="2"&gt;&lt;/p&gt;
+&lt;p&gt;我们可以将远程机器（LdapClientHost）上的应用直接配置到本机的 7001 端口上（而不是 &lt;span class="caps"&gt;LDAP&lt;/span&gt; 服务器的 389 端口上）。在 LdapClientHost 上执行如下命令即可建立一个 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;的本地端口转发，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -L 7001:localhost:389 LdapServerHost
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;之后的数据流将会是下面这个样子：&lt;/p&gt;
+&lt;p&gt;我们在 LdapClientHost 上的应用将数据发送到本机的 7001 端口上，
+而本机的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client 会将 7001 端口收到的数据加密并转发到 LdapServertHost 的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 上。
+&lt;span class="caps"&gt;SSH&lt;/span&gt; Server 会解密收到的数据并将之转发到监听的 &lt;span class="caps"&gt;LDAP&lt;/span&gt; 389 端口上，
+最后再将从 &lt;span class="caps"&gt;LDAP&lt;/span&gt;&amp;nbsp;返回的数据原路返回以完成整个流程。&lt;/p&gt;
+&lt;h3 id="3"&gt;3、远程端口转发&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="tu3" src="https://blog.pythonwood.com/uploads/2016/远程端口转发.jpg" title="3"&gt;&lt;/p&gt;
+&lt;p&gt;我们在 LdapClientHost 上的应用将数据发送到本机的 7001 端口上，而本机的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 会将 7001 端口收到的数据加密并转发到 LdapServertHost 的 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client&amp;nbsp;上。&lt;/p&gt;
+&lt;p&gt;在 &lt;span class="caps"&gt;LDAP&lt;/span&gt;&amp;nbsp;服务器（LdapServertHost）端执行如下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -R 7001:localhost:389 LdapClientHost
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="_1"&gt;区别：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span class="caps"&gt;SSH&lt;/span&gt; 端口转发自然需要 &lt;span class="caps"&gt;SSH&lt;/span&gt; 连接，而 &lt;span class="caps"&gt;SSH&lt;/span&gt; 连接是有方向的，从 &lt;span class="caps"&gt;SSH&lt;/span&gt; Client 到 &lt;span class="caps"&gt;SSH&lt;/span&gt; Server 。而我们的应用也是有方向的，比如需要连接 &lt;span class="caps"&gt;LDAP&lt;/span&gt; Server 时，&lt;span class="caps"&gt;LDAP&lt;/span&gt; Server 自然就是 Server 端，我们应用连接的方向也是从应用的 Client 端连接到应用的 Server&amp;nbsp;端。如果这两个连接的方向一致，那我们就说它是本地转发。而如果两个方向不一致，我们就说它是远程转发。&lt;/p&gt;
+&lt;h3 id="4autosshsupervisior"&gt;4、使用autossh防网络抖动+supervisior进程守护。&lt;a class="headerlink" href="#4autosshsupervisior" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;autossh解决的问题：远程端口转发一旦端口，很难再次建立。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;autossh -M 1932 -NR  1922:localhost:1122 user@vps -p 1122
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ps可以看到实质是这样的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -L 1932:127.0.0.1:1932 -R 1932:127.0.0.1:1933 -NR 1922:localhost:1122 -p 1122 user@vps
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分析：使用回路，将本地1933端口，（远程转发）映射到远端1932，（本地转发）到本机的1932。形成回路。&lt;/p&gt;
+&lt;p&gt;supervisior解决的问题：autossh的进程守护&lt;/p&gt;
+&lt;p&gt;因此，使用supervisior守护autossh，autossh守护ssh。达到自动启动和守护端口转发的目的。&lt;/p&gt;
+&lt;h3 id="5"&gt;5、综合使用&lt;a class="headerlink" href="#5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;案例一、如何2222端口被封，如果绕过封死2222端口的防火墙直接ssh到内网机器。（就是说限某几个端口是有局限的）&lt;/p&gt;
+&lt;p&gt;1、登录最重要的机器把2222端口映射到12222端口：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -gfNL 12222:0.0.0.0:2222 localhost -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、使用该机器做隧道代理访问其他内网机器：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfD 10000 user@host -p12222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、ssh绕道访问其他内网机器：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -o &amp;quot;ProxyCommand=nc -x localhost:10000 %h %p&amp;quot; user@host -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;巧妙结合的ssh和nc，都是linux自带工具，没有依赖。&lt;/p&gt;
+&lt;p&gt;案例二、借助远程vps让两台不能直接相通的机器相互能访问。&lt;/p&gt;
+&lt;p&gt;有主机vps和主机A、B。A、B无法直连，通过“中介”搭桥相连。（两台机器都能主动ssh到vps就能完成。）&lt;/p&gt;
+&lt;p&gt;A要ssh到B（B要ssh到A是同理）：&lt;/p&gt;
+&lt;p&gt;1、主机B用ssh远程转发自己的2222端口到vps的127.0.0.1:12222&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfR 12222:127.0.0.1:2222 user@vps -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、主机A用ssh本地转发vps的127.0.0.1:12222到本地的127.0.0.1:12222&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -NfL 12222:127.0.0.1:12222 user@vps -p2222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、主机A登录主机B&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh user@localhost -p12222
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;实战 &lt;span class="caps"&gt;SSH&lt;/span&gt;&amp;nbsp;端口转发&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/"&gt;https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用supervisor托管shadowsocks&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.phpgao.com/supervisor_shadowsocks.html"&gt;https://blog.phpgao.com/supervisor_shadowsocks.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;SSH反向连接及Autossh&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html"&gt;http://www.cnblogs.com/eshizhan/archive/2012/07/16/2592902.html&lt;/a&gt;&lt;/p&gt;</content><category term="ssh"></category><category term="加密隧道"></category><category term="privoxy"></category><category term="代理"></category><category term="远程连接"></category><category term="网络"></category></entry></feed>
