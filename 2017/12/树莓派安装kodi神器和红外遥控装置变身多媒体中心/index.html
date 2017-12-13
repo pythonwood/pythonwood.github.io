@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  树莓派安装kodi神器和红外遥控装置变身多媒体中心
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="总述<a class="headerlink" href="#_1" title="Permanent…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/sheng-huo/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 生活 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/sheng-huo/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 生活 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/" rel="bookmark" title="Permalink to 树莓派安装kodi神器和红外遥控装置变身多媒体中心">树莓派安装kodi神器和红外遥控装置变身多媒体中心</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <h3 id="_1">总述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>在大学里通过IPV6看过IPTV，最近一两年直播非常火，电视盒子也火了一把。于是想用kodi看直播电视。</p>
+<p>kodi的低耗，无噪音，便宜的优点我觉得很适合做家庭多媒体服务中心。</p>
+<p>第二次用树莓派安装kodi，没有上一次那么迷茫了。把一些有价值的东西记录下来。</p>
+<p><img alt="遥控树莓派kodi.gif" src="https://blog.pythonwood.com/uploads/2017/遥控树莓派kodi.gif" title="遥控树莓派kodi"></p>
+<h3 id="kodikodi-pvr-iptvsimple">一、安装Kodi（请务必一同安装kodi-pvr-iptvsimple）<a class="headerlink" href="#kodikodi-pvr-iptvsimple" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span>sudo apt-get install kodi kodi-pvr-iptvsimple
+</pre></div>
+
+
+<p>并不是raspbian安装kodi后就能看直播/电视了。如果没有安装kodi-pvr-iptvsimple，kodi侧栏的电视功能无响应，直播/TV的相关插件也会有问题。我花了不少时间才找到了原因。</p>
+<p>如果出现kodi的插件里没有&rdquo;PVR客户端&rdquo;选项可设置，或者搜索不到PVR <span class="caps">IPTV</span> Simple&nbsp;Client相关插件，或者设置时出现错误提示信息Error，通过安装kodi-pvr-iptvsimple可解决。</p>
+<h3 id="kodi">二、设置kodi在无需桌面环境下随机自动运行<a class="headerlink" href="#kodi" title="Permanent link">&para;</a></h3>
+<p>kodi可以通过非GUI的命令行启动，无需先启动桌面环境，非常省资源。</p>
+<p>我做过实测树莓派3启动到命令行只需50MB内存，启动kodi播放则再增加100MB内存。总共只需150MB。如果启动桌面环境，桌面环境单独占用70MB内存。</p>
+<p>先用<code>sudo raspi-config</code>命令设置boot选项，启动后自动登录到命令行模式（auto boot to&nbsp;cli）。</p>
+<p>然后在pi用户的.bashrc命令中追加一行</p>
+<div class="highlight"><pre><span></span>( cd /tmp; ps -ef | grep -v grep | grep kodi || DISPLAY=:0.0 nohup kodi ) 2&gt;&amp;1 &gt;/dev/null &amp;
+</pre></div>
+
+
+<p>这样树莓派每次都会启动到kodi，但不会多次运行kodi。</p>
+<h3 id="kodi_1">三、树莓派添加红外模块后实现电视遥控器控制kodi<a class="headerlink" href="#kodi_1" title="Permanent link">&para;</a></h3>
+<p>虽然安装快控（kodi remote control）App或者yaste&nbsp;App可以在wifi环境下通过App远程控制树莓派运行的kodi。</p>
+<p>然而我觉得每次先解锁手机，打开软件，然后只为点几下键体验不是很好。</p>
+<p>所以，在老旧已坏的遥控飞机上拆下红外模块（对讲机，其他遥控玩具都会有这个模块，支持废物利用），结合家里旧的遥控器实现红外遥控树莓派。</p>
+<p><img alt="遥控飞机红外接受模块" src="http://www.dgpufei.com/Public/Uploads/Article/20170115/587b2a331b16a.jpg" title="遥控飞机红外接受模块"></p>
+<p><strong>我跟着这个教程<a href="https://blog.newnius.com/raspberry-3b-setup-lirc.html" title="树莓派---红外遥控设置">树莓派&mdash;红外遥控设置</a>设置成功</strong>。</p>
+<h4 id="kodi_2">树莓派能识别红外遥控器后，就是树莓派kodi学习（映射）按键与指令对应关系的过程。<a class="headerlink" href="#kodi_2" title="Permanent link">&para;</a></h4>
+<p>kodi配置键名（比如KEY_OK）和kodi动作的映射关系文件路径是/usr/share/kodi/system/Lircmap.xml。</p>
+<p>以下面mediacenter类型的遥控设备为例，按下该设备某个键，对应lircd接受到ok指令，那么kodi执行select动作。</p>
+<p>为了省事，我把其中键名最简洁<remote device="mediacenter">的xml段复制后</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;remote</span> <span class="na">device=</span><span class="s">&quot;mediacenter&quot;</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;up&gt;</span>up<span class="nt">&lt;/up&gt;</span>
+    <span class="nt">&lt;down&gt;</span>down<span class="nt">&lt;/down&gt;</span>
+    <span class="nt">&lt;select&gt;</span>ok<span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;one&gt;</span>1<span class="nt">&lt;/one&gt;</span>
+    <span class="nt">&lt;two&gt;</span>2<span class="nt">&lt;/two&gt;</span>
+    ...
+<span class="nt">&lt;/remote&gt;</span>
+</pre></div>
+
+
+<p>粘贴并修改device值</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;remote</span> <span class="na">device=</span><span class="s">&quot;guangdianyaokong&quot;</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;up&gt;</span>up<span class="nt">&lt;/up&gt;</span>
+    <span class="nt">&lt;down&gt;</span>down<span class="nt">&lt;/down&gt;</span>
+    <span class="nt">&lt;select&gt;</span>ok<span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;one&gt;</span>1<span class="nt">&lt;/one&gt;</span>
+    <span class="nt">&lt;two&gt;</span>2<span class="nt">&lt;/two&gt;</span>
+    ...
+<span class="nt">&lt;/remote&gt;</span>
+</pre></div>
+
+
+<p>guangdianyaokong是我在/etc/lirc/lircd.conf文件的name字段名字，可自由修改。只要保持对应一致就可以了。</p>
+<p>我录制irrecord命令如下，省事的原因是录键名的时候对应取up，down，1，ok等简单词。</p>
+<div class="highlight"><pre><span></span>irrecord -d /dev/lirc0 guangdianyaokong --disable-namespace
+</pre></div>
+
+
+<h3 id="kodi_3">四、接下来自由发挥，对kodi自行研究，安装各种插件。<a class="headerlink" href="#kodi_3" title="Permanent link">&para;</a></h3>
+<p>按照插件库然后从插件库安装插件，或者直接按照目标插件的zip包。</p>
+<p><img alt="树莓派插件库列表截图" src="https://blog.pythonwood.com/uploads/2017/树莓派插件库列表截图.jpg" title="树莓派插件库列表截图"></p>
+<p>搜集m3u8直播列表，灌给PVR IPTV客户端使用。也可以使用<a href="http://blog.sina.com.cn/s/blog_4ae08cc00102wz42.html" title="用Kodi观看网络直播电视：新插件IPTV Tool "><span class="caps">IPTV</span> Tool</a>插件来托管PVR&nbsp;IPTV客户端</p>
+<h3 id="m3u8url">五、直播m3u8列表的url存活测试<a class="headerlink" href="#m3u8url" title="Permanent link">&para;</a></h3>
+<h4 id="_2">导入播放器中手动测试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>smplayer或者vlc都能打开m3u8文件进行网络播放。所以也能来测试是否存活。只是方法简单直接容易累。</p>
+<p>可打开播放器界面中打开m3u8文件；命令行则可用smplayer <m3u8_list>， 或者 vlc <m3u8_list>打开。</p>
+<h4 id="_3">脚本批量快速检测<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>（todo&hellip;）</p>
+<h3 id="_4">提醒<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
+<a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机</a></p>
+<h3 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Kodi 开源多媒体播放器 - 神器 <a href="http://www.cnblogs.com/XieSir/articles/6287387.html">http://www.cnblogs.com/XieSir/articles/6287387.html</a></p>
+</li>
+<li>
+<p>6款树莓派kodi插件推荐 <a href="https://www.htpcbeginner.com/raspberry-pi-kodi-addons/">https://www.htpcbeginner.com/raspberry-pi-kodi-addons/</a></p>
+</li>
+<li>
+<p>移动网络电视和IPTV的区别在哪里？ <a href="http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html">http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html</a></p>
+</li>
+</ol>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/" target="_blank">https://blog.pythonwood.com/2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/">校园选课项目：一个名字叫jumper的chrome插件的诞生记</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/12/树莓派初始化环境搭建的一些事/">树莓派初始化环境搭建的一些事</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/";
+        var disqus_title = "树莓派安装kodi神器和红外遥控装置变身多媒体中心";
+        var disqus_url = "https://blog.pythonwood.com/2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-13T22:20:00+08:00"><i class="fa fa-calendar"></i> 2017年12月13日, 22:20</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/sheng-huo/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="5 articles in this category">生活</a>
+            <a href="/tag/shu-mei-pai/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">树莓派</a>
+            <a href="/tag/cha-jian/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">插件</a>
+            <a href="/tag/iptv/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">IPTV</a>
+            <a href="/tag/wang-luo-dian-shi/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">网络电视</a>
+            <a href="/tag/zhi-bo/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">直播</a>
+            <a href="/tag/kodi/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">kodi</a>
+            <a href="/tag/yao-kong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">遥控</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/树莓派安装kodi神器和红外遥控装置变身多媒体中心.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2017/12/我的Linux下的图像软件使用记录/" title="我的Linux下的图像软件使用记录"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next  disabled ">
+            <a  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/sheng-huo/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 生活 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/sheng-huo/feed/index.html"><i class="fa fa-rss"></i> 分类: 生活 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <!-- Baidu Analytics-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?485d19a1d6970625620ed76e6b7ccf4b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <!-- CNZZ Analytics-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!-- 谷歌网站翻译工具 -->
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>
