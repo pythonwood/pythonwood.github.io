@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="PythonTip 里未攻克的题目，如<a…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/" rel="bookmark" title="Permalink to RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip">RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p><a href="http://www.pythontip.com" title="PythonTip">PythonTip</a> 里未攻克的题目，如<a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程">RSA密码方程</a>，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。</p>
+<h3 id="_1">描述:<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>在RSA密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
+其中，x,a,n皆为正整数。现在给你a和n的值(1 &lt; a,n &lt; 140000000)，请你求出最小的满足方程的正整数解x（保证有解）.
+如：a = 1001, n =&nbsp;3837，则输出23。</p>
+<h3 id="_2">分析：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>没头绪，在讨论里看时恍然，用到小学奥术内容辗转相除法（求最大公约数）了。如果 <code>(x*a) % n = 1</code> 变成 <code>(x*a) % n = 0</code> ， 那x*a就是a和n公倍数了。如果这是小学奥数题，就先用辗转相除法得最大公约数，而最小公倍数用两数积除以最大公约数得出来。&nbsp;rsa的原理数学基础欧几里得算法和小学奥数有着这样的联系，发现这点让我觉得不可思议又略有惊叹。看来学小学奥数有用，至少是可以为算法编程做准备的，学到了最朴素的数论。</p>
+<h4 id="_3">辗转相除法（朴素欧几里得算法，中国余数定理，韩信点兵）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>（引用自 <a href="https://xuanwo.org/2015/03/11/number-theory-gcd/," title="数论——欧几里得算法">数论——欧几里得算法</a>）</p>
+<p>欧几里得算法，又名辗转相除法，是求最大公约数的算法。两个整数的最大公约数是能够同时整除它们的最大的正整数。辗转相除法基于如下原理：两个整数的最大公约数等于其中较小的数和两数的差的最大公约数。例如，252和105的最大公约数是21（252 = 21 × 12；105 = 21 × 5）；因为252 − 105 =&nbsp;147，所以147和105的最大公约数也是21。在这个过程中，较大的数缩小了，所以继续进行同样的计算可以不断缩小这两个数直至其中一个变成零。这时，所剩下的还没有变成零的数就是两数的最大公约数。 </p>
+<p><img alt="辗转相除法演示图.gif" src="https://blog.pythonwood.com/uploads/2017/挑战PythonTip，辗转相除法演示图.gif"></p>
+<h4 id="_4">题目语义转化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>求这样一个数x*a，能被a整除，被n整除余1。 </p>
+<p>这就很形似 <em>有一个数除以3余2，除以5余3，除以7余4，除以9余5．这个数至少是?</em> 被称为<a href="https://zh.wikipedia.org/wiki/中国余数定理," title="中国余数定理">中国余数定理</a></p>
+<h4 id="_5">扩展欧几里德算法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>基本算法：对于不完全为 0 的非负整数 a，b，gcd（a，b）表示 a，b 的最大公约数，必然存在整数对 x，y ，使得&nbsp;gcd（a，b）=ax+by。</p>
+<p>证明：设&nbsp;a&gt;b。</p>
+<p>1，显然当 b=0，gcd（a，b）=a。此时&nbsp;x=1，y=0；</p>
+<p>2，ab!=0&nbsp;时</p>
+<p>设&nbsp;ax1+by1=gcd(a,b);</p>
+<p>bx2+(a mod b)y2=gcd(b,a mod&nbsp;b);</p>
+<p>根据朴素的欧几里德原理有 gcd(a,b)=gcd(b,a mod&nbsp;b);</p>
+<p>则:ax1+by1=bx2+(a mod&nbsp;b)y2;</p>
+<p>即:ax1+by1=bx2+(a-(a/b)<em>b)y2=ay2+bx2-(a/b)</em>by2;</p>
+<p>根据恒等定理得：x1=y2;&nbsp;y1=x2-(a/b)*y2;</p>
+<p>这样我们就得到了求解 x1,y1 的方法：x1，y1 的值基于&nbsp;x2，y2.</p>
+<p>上面的思想是以递归定义的，因为 gcd 不断的递归求解一定会有个时候&nbsp;b=0，所以递归可以结束。</p>
+<p>&hellip;</p>
+<p>同余方程 ax≡b (mod n)对于未知数 x 有解，当且仅当 gcd(a,n) | b。且方程有解时，方程有 gcd(a,n)&nbsp;个解。</p>
+<p>求解方程 ax≡b (mod n) 相当于求解方程 ax+ ny= b, (x,&nbsp;y为整数)</p>
+<h3 id="_6">我的一个另类编程解法（融合了辗转相除法思想）。<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">算法描述<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>(x*a) % n = 1 对应 方程 ax - ny = 1&nbsp;的整数解 </p>
+<p>（a,n必定互质。如不互质可提取公因子，公因子*X=1，与X为整数矛盾）</p>
+<p>化简降解方程分两情况：</p>
+<ol>
+<li>a&gt;=n 时 变形为方程 (a mod n)x - n(y-[a/n]x) = 1&nbsp;有整数解 </li>
+<li>a&lt;n  时 变形为方程 a(x-[n/a]a) - (n mod a)y = 1&nbsp;有整数解</li>
+</ol>
+<p>无论那一种都变回 ax - ny = 1&nbsp;的形式。所以重复化简，因a,n互质，最后会到达a,n其一是1的情况。</p>
+<h4 id="971">例子说明： 求能被9整除，被7除余1的最小数<a class="headerlink" href="#971" title="Permanent link">&para;</a></h4>
+<ol>
+<li>9x=1(mod7) 对应方程 9x - 7y = 1&nbsp;的整数解</li>
+<li>变形有2x - 7(y-x) = 1 然后令 x_1=x, y_1=y-x 得方程 2x_1 - 7y_1 =&nbsp;1 </li>
+<li>变形有2(x_1-3y_1) - y_1 = 1 然后令 x_2=x_1-3y_1, y_2=y_1 得方程 2x_2 - y_2 = 1  显然有解 x_2=1&nbsp;y_2=1 </li>
+<li>好了，往上一步一步回溯得最初的x,y值 (x_2,y_2), (x_1,y_1), (x,y)&nbsp;分别为(1,1),(4,1),(4,5)</li>
+<li>9x = (9<em>4 mod 9</em>7) = 36&nbsp;答：求能被9整除，被7除余1的数是36</li>
+</ol>
+<p>python语言是弱递归化语言，&nbsp;python之父说递归都可以转成循环。所以我用递归后，转循环了。</p>
+<h3 id="python">Python代码:<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
+<span class="c1"># print &quot;F: 答案错误 循环解法&quot;</span>
+<span class="c1">################################################################################</span>
+<span class="s s-Atom">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">)</span><span class="s s-Atom">:</span> <span class="s s-Atom">#</span> <span class="s s-Atom">辗转相除求最大公约数</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">a</span> <span class="o">&lt;</span> <span class="nn">n</span><span class="p">:</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span> <span class="o">=</span> <span class="s s-Atom">n</span><span class="p">,</span><span class="s s-Atom">a</span>
+    <span class="s s-Atom">while</span> <span class="s s-Atom">n</span> <span class="p">!</span><span class="o">=</span> <span class="mi">0</span><span class="s s-Atom">:</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span> <span class="o">=</span> <span class="s s-Atom">n</span><span class="p">,</span><span class="s s-Atom">a</span><span class="c1">%n</span>
+    <span class="s s-Atom">return</span> <span class="s s-Atom">a</span>
+
+<span class="s s-Atom">def</span> <span class="nf">exgcd</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span> <span class="s s-Atom">n</span><span class="p">)</span><span class="s s-Atom">:</span> <span class="s s-Atom">#</span> <span class="s s-Atom">ax</span><span class="o">=</span><span class="mi">1</span><span class="p">(</span><span class="o">mod</span> <span class="s s-Atom">n</span><span class="p">)</span> <span class="s s-Atom">即</span> <span class="s s-Atom">ax</span><span class="o">-</span><span class="s s-Atom">ny</span><span class="o">=</span><span class="mi">1</span> <span class="s s-Atom">求x</span><span class="p">,</span><span class="s s-Atom">y</span>     
+    <span class="s s-Atom">#</span> <span class="s s-Atom">print</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span>
+    <span class="s s-Atom">if</span> <span class="nf">gcd</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">)</span> <span class="p">!</span><span class="o">=</span> <span class="mi">1</span><span class="s s-Atom">:</span>   <span class="s s-Atom">raise</span> <span class="nv">Exception</span><span class="p">(</span><span class="s s-Atom">&#39;fei hu zhi&#39;</span><span class="p">)</span> <span class="s s-Atom">#</span> <span class="s s-Atom">先检查是否互质</span>
+    <span class="s s-Atom">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="s s-Atom">while</span> <span class="s s-Atom">a</span><span class="p">!</span><span class="o">=</span><span class="mi">1</span> <span class="s s-Atom">and</span> <span class="s s-Atom">n</span><span class="p">!</span><span class="o">=</span><span class="mi">1</span><span class="s s-Atom">:</span> <span class="s s-Atom">#</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n总会有个先到1，触底条件就是1</span>
+        <span class="s s-Atom">l</span><span class="p">.</span><span class="nf">append</span><span class="p">((</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">))</span>
+        <span class="s s-Atom">if</span> <span class="s s-Atom">a</span><span class="o">&gt;</span><span class="nn">n</span><span class="p">:</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span> <span class="o">=</span> <span class="s s-Atom">a</span><span class="c1">%n,n</span>
+        <span class="nn">else</span><span class="p">:</span>   <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span> <span class="o">=</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="c1">%a</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">a</span><span class="o">==</span><span class="mi">1</span><span class="s s-Atom">:</span>    <span class="s s-Atom">p</span> <span class="o">=</span> <span class="p">(</span><span class="s s-Atom">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="s s-Atom">elif</span> <span class="s s-Atom">n</span><span class="o">==</span><span class="mi">1</span><span class="s s-Atom">:</span>  <span class="s s-Atom">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">a</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="s s-Atom">for</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span> <span class="s s-Atom">in</span> <span class="s s-Atom">l</span><span class="p">[</span><span class="s s-Atom">::-</span><span class="mi">1</span><span class="p">]</span><span class="s s-Atom">:</span>
+        <span class="s s-Atom">if</span> <span class="s s-Atom">a</span><span class="o">&gt;</span><span class="nn">n</span><span class="p">:</span> <span class="s s-Atom">p</span> <span class="o">=</span> <span class="p">(</span><span class="s s-Atom">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">% n, (a//n*p[0]+p[1]) % a) # 这个值也是解，但没有最简：return (p[0], a//n*p[0]+p[1])</span>
+        <span class="nn">else</span><span class="p">:</span>   <span class="s s-Atom">p</span> <span class="o">=</span> <span class="p">((</span><span class="s s-Atom">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s s-Atom">n</span><span class="o">//</span><span class="s s-Atom">a</span><span class="o">*</span><span class="s s-Atom">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">% n, p[1] % a) # 这个值也是解，但没有最简：return (p[0]+n//a*p[1], p[1])</span>
+    <span class="s s-Atom">return</span> <span class="s s-Atom">p</span>
+
+<span class="s s-Atom">print</span> <span class="nf">exgcd</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">)</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># print &quot;F: 答案错误 递归解法&quot;</span>
+<span class="c1">################################################################################</span>
+<span class="s s-Atom">def</span> <span class="nf">gcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">)</span><span class="s s-Atom">:</span> <span class="s s-Atom">#</span> <span class="s s-Atom">辗转相除求最大公约数</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">a</span> <span class="o">*</span> <span class="s s-Atom">n</span> <span class="o">==</span> <span class="mi">0</span><span class="s s-Atom">:</span> <span class="s s-Atom">return</span> <span class="s s-Atom">a</span><span class="o">+</span><span class="s s-Atom">n</span>
+    <span class="s s-Atom">return</span> <span class="nf">gcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="c1">%n,n) if a&gt;=n else gcd_r(a,n%a)</span>
+<span class="c1"># print gcd(a,n)</span>
+
+<span class="s s-Atom">def</span> <span class="nf">exgcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span> <span class="s s-Atom">n</span><span class="p">)</span><span class="s s-Atom">:</span> <span class="s s-Atom">#</span> <span class="s s-Atom">ax</span><span class="o">=</span><span class="mi">1</span><span class="p">(</span><span class="o">mod</span> <span class="s s-Atom">n</span><span class="p">)</span> <span class="s s-Atom">即</span> <span class="s s-Atom">ax</span><span class="o">-</span><span class="s s-Atom">ny</span><span class="o">=</span><span class="mi">1</span> <span class="s s-Atom">求x</span><span class="p">,</span><span class="s s-Atom">y</span>     <span class="s s-Atom">#</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n总会有个先到1，触底条件就是1</span>
+    <span class="s s-Atom">#</span> <span class="s s-Atom">print</span> <span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span>
+    <span class="s s-Atom">if</span> <span class="nf">gcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">)</span> <span class="p">!</span><span class="o">=</span> <span class="mi">1</span><span class="s s-Atom">:</span>   <span class="s s-Atom">raise</span> <span class="nv">Exception</span><span class="p">(</span><span class="s s-Atom">&#39;fei hu zhi&#39;</span><span class="p">)</span> <span class="s s-Atom">#</span> <span class="s s-Atom">先检查是否互质</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">a</span><span class="o">==</span><span class="mi">1</span><span class="s s-Atom">:</span> <span class="nf">return</span> <span class="p">(</span><span class="s s-Atom">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">n</span><span class="o">==</span><span class="mi">1</span><span class="s s-Atom">:</span> <span class="nf">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">a</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">a</span><span class="o">&gt;</span><span class="nn">n</span><span class="p">:</span>     
+        <span class="s s-Atom">p</span> <span class="o">=</span> <span class="nf">exgcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="c1">%n, n)</span>
+        <span class="nf">return</span> <span class="p">(</span><span class="s s-Atom">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">% n, (a//n*p[0]+p[1]) % a) # 这个值也是解，但没有最简：return (p[0], a//n*p[0]+p[1])</span>
+    <span class="nn">else</span><span class="p">:</span>
+        <span class="s s-Atom">p</span> <span class="o">=</span> <span class="nf">exgcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span> <span class="s s-Atom">n</span><span class="c1">%a) </span>
+        <span class="nf">return</span> <span class="p">((</span><span class="s s-Atom">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s s-Atom">n</span><span class="o">//</span><span class="s s-Atom">a</span><span class="o">*</span><span class="s s-Atom">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">% n, p[1] % a) # 这个值也是解，但没有最简：return (p[0]+n//a*p[1], p[1])</span>
+
+<span class="s s-Atom">print</span> <span class="nf">exgcd_r</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">,</span><span class="s s-Atom">n</span><span class="p">)</span>
+</pre></div>
+
+
+<p>小学初中就知道数论，数论真有魅力，非常漂亮。</p>
+<h3 id="_8">参考<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>数论——欧几里得算法 <a href="https://xuanwo.org/2015/03/11/number-theory-gcd/">https://xuanwo.org/2015/03/11/number-theory-gcd/</a></p>
+<p>欧几里德与扩展欧几里德算法 <a href="http://www.cnblogs.com/frog112111/archive/2012/08/19/2646012.html">http://www.cnblogs.com/frog112111/archive/2012/08/19/2646012.html</a></p>
+<p>欧几里得算法（辗转相除法） <a href="https://my.oschina.net/u/1780798/blog/646739">https://my.oschina.net/u/1780798/blog/646739</a></p>
+<p><a href="https://zhidao.baidu.com/question/406531667.html?qbl=relate_question_3">https://zhidao.baidu.com/question/406531667.html?qbl=relate_question_3</a></p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/" target="_blank">https://blog.pythonwood.com/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/">威佐夫博弈：取石子游戏算法——挑战PythonTip</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/12/Python解无穷大数除法算法——挑战PythonTip/">Python解无穷大数除法算法——挑战PythonTip</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/">寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/";
+        var disqus_title = "RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip";
+        var disqus_url = "https://blog.pythonwood.com/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-17T23:00:00+08:00"><i class="fa fa-calendar"></i> 2017年12月17日, 23:00</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="21 articles in this category">技术</a>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="8 articles with this tag">python</a>
+            <a href="/tag/suan-fa/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">算法</a>
+            <a href="/tag/pythontip/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">pythontip</a>
+            <a href="/tag/ao-shu/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">奥数</a>
+            <a href="/tag/shu-lun/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">数论</a>
+            <a href="/tag/ou-ji-li-de/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">欧几里得</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/" title="威佐夫博弈：取石子游戏算法——挑战PythonTip"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next  disabled ">
+            <a  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <!-- Baidu Analytics-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?485d19a1d6970625620ed76e6b7ccf4b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <!-- CNZZ Analytics-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!-- 谷歌网站翻译工具 -->
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>
