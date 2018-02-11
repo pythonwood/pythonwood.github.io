@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 假死</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/jia-si/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-28T15:12:00+08:00</updated><entry><title>谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）</title><link href="https://blog.pythonwood.com/2014/02/%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8chrome%E5%81%87%E6%AD%BB%E5%8D%A1%E6%AD%BB%E6%97%A0%E5%8F%8D%E5%BA%94,%E7%81%AB%E7%8B%90firefox%E9%97%AA%E9%BB%91%E6%A0%BC%E5%AD%90%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%EF%BC%88%E6%98%BE%E5%8D%A1%E3%80%81%E9%A9%B1%E5%8A%A8%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%89/" rel="alternate"></link><published>2014-02-15T22:50:00+08:00</published><updated>2017-11-28T15:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-02-15:/2014/02/谷歌浏览器chrome假死卡死无反应,火狐firefox闪黑格子的解决办法（显卡、驱动兼容问题）/</id><summary type="html">&lt;h3 id="_1"&gt;问题：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;chrome 升级到高版本，切换标签后点击，滚轮都没反应，假死不动。F12呼出控制台来开发时更让人揪心。(大概chrome&amp;nbsp;25更高)&lt;/p&gt;
+&lt;h3 id="_2"&gt;原因：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我的电脑是:集显+512M独显，可切换的。这种配置完全是高不成，底不就！一点都不好，chrome&amp;nbsp;调用底层显卡驱动会出错。Firefox原因一样 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;问题：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;chrome 升级到高版本，切换标签后点击，滚轮都没反应，假死不动。F12呼出控制台来开发时更让人揪心。(大概chrome&amp;nbsp;25更高)&lt;/p&gt;
+&lt;h3 id="_2"&gt;原因：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我的电脑是:集显+512M独显，可切换的。这种配置完全是高不成，底不就！一点都不好，chrome&amp;nbsp;调用底层显卡驱动会出错。Firefox原因一样。如果只有一张显卡，无论集显独显，应该都无上述问题。&lt;/p&gt;
+&lt;h4 id="_3"&gt;问题原因的关键字：硬件，兼容，显卡，驱动。&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id="_4"&gt;解决：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_5"&gt;一、调整窗口大小(小白都会招)&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;触发窗口重绘，必唤醒显卡/驱动再工作。缺点是每次假死都要做。&lt;/p&gt;
+&lt;h4 id="_6"&gt;二、设置参数&lt;a class="headerlink" href="#_6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;1、输入栏输入：chrome://flags，确定，找GPU加速（在前几项中），停用之。&lt;/p&gt;
+&lt;p&gt;2、输入栏输入：chrome://plugins，确定，如果flash插件有两个（显示详细），禁用第二个。&lt;/p&gt;
+&lt;h4 id="firefoxfirefox-"&gt;三、换Firefox，Firefox菜单-&amp;gt;选项-&amp;gt;高级，取消“硬件加速”的勾选。&lt;a class="headerlink" href="#firefoxfirefox-" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;这个是最好的方法，如果你和我一样已经忍无可忍。&lt;/p&gt;
+&lt;p&gt;忍受chrome问题1年半，最终导致我尝试Firefox，从此一发不可收拾。(纯粹的)开源软件就是强，开源社区总有惊喜！&lt;/p&gt;
+&lt;p&gt;试过才知，firefox的web控制台更美更好看，可比chrome。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="firefox-chrome3.jpg" src="https://blog.pythonwood.com/uploads/2014/firefox-chrome3.jpg" title="3"&gt;
+&lt;img alt="firefox-chrome4.jpg" src="https://blog.pythonwood.com/uploads/2014/firefox-chrome4.jpg" title="4"&gt;&lt;/p&gt;
+&lt;h3 id="_7"&gt;题外话：&lt;a class="headerlink" href="#_7" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我还发现了&lt;a href="http://www.clementine-player.org/zh_CN/screenshots" title="Clementine"&gt;Clementine&lt;/a&gt;这开源音乐播放器。播放功能很强。&lt;/p&gt;
+&lt;p&gt;推荐的开源软件列表：firefox,smplayer,clementine,gimp,gvim,gcc,filezilla,nasm,python,git&lt;/p&gt;
+&lt;p&gt;最近在学linux脚本，jQuery,Pyhon。如gred,sed,awk文本处理，wget,curl,lynx(tcpdump,ngrep)网络工具。jQuery写前端。python做微信开发，爬微博。&lt;/p&gt;</content><category term="chrome"></category><category term="firefox"></category><category term="浏览器"></category><category term="假死"></category><category term="显卡驱动"></category></entry></feed>

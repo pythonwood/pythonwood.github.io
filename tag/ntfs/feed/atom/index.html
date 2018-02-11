@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - ntfs</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/ntfs/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T22:12:00+08:00</updated><entry><title>【实习记】2014-09-26linux下恢复ntfs分区误删的文件</title><link href="https://blog.pythonwood.com/2014/09/%E3%80%90%E5%AE%9E%E4%B9%A0%E8%AE%B0%E3%80%912014-09-26linux%E4%B8%8B%E6%81%A2%E5%A4%8Dntfs%E5%88%86%E5%8C%BA%E8%AF%AF%E5%88%A0%E7%9A%84%E6%96%87%E4%BB%B6/" rel="alternate"></link><published>2014-09-26T15:07:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2014-09-26:/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/</id><summary type="html">&lt;h3 id="_1"&gt;忧伤的背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;情景，ubuntu下把NTFS格式的盘中的“实习记”文件夹彻底删除了，追毁莫及，粗心觉不是一件好的事情。&lt;/p&gt;
+&lt;p&gt;linux下回复ntfs盘下的文件不能用ext3grep，而使用debugfs命令实在很原始。&lt;/p&gt;
+&lt;p&gt;万幸所有记录文件的文件名都是：【实习记】2014-0&lt;em&gt;*&lt;/em&gt;*.txt&lt;/p&gt;
+&lt;p&gt;最后使用ntfsundelete + chown + chmod + sed&amp;nbsp;完美恢复刚才删除是所以TXT文件。&lt;/p&gt;
+&lt;h4 id="0"&gt;0、&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;sudo …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;忧伤的背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;情景，ubuntu下把NTFS格式的盘中的“实习记”文件夹彻底删除了，追毁莫及，粗心觉不是一件好的事情。&lt;/p&gt;
+&lt;p&gt;linux下回复ntfs盘下的文件不能用ext3grep，而使用debugfs命令实在很原始。&lt;/p&gt;
+&lt;p&gt;万幸所有记录文件的文件名都是：【实习记】2014-0&lt;em&gt;*&lt;/em&gt;*.txt&lt;/p&gt;
+&lt;p&gt;最后使用ntfsundelete + chown + chmod + sed&amp;nbsp;完美恢复刚才删除是所以TXT文件。&lt;/p&gt;
+&lt;h4 id="0"&gt;0、&lt;a class="headerlink" href="#0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;sudo umount&amp;nbsp;该ntfs盘&lt;/p&gt;
+&lt;h4 id="1"&gt;1、&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ntfs-3g
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;直接安装ntfsundelete是不行的，它被包含于ntfs-3g中，也包含于ntfsprogs(源中已弃用此包)&lt;/p&gt;
+&lt;h4 id="2"&gt;2、&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ntfsundelete /dev/sda3 -f -t 3m | grep 实习记 | awk &amp;#39;{print $1}&amp;#39; &amp;gt; ntfsundelete.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;获取所有要恢复的文件的inode值，然后使用vi编辑使inode组成&amp;rdquo;881,2341,234,&amp;hellip;&amp;rdquo;文本。&lt;/p&gt;
+&lt;p&gt;3m表示3个月以内生成并删除的，而不3个月内删除的意思。&lt;/p&gt;
+&lt;h4 id="3"&gt;3、&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ntfsundelete /dev/sda3 -d /home/wilson/tmp/ -u -i 881,2341,234,....
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;恢复inode为881,2341,234等的文件。&lt;/p&gt;
+&lt;h4 id="5"&gt;5、&lt;a class="headerlink" href="#5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /home/wilson/tmp
+chown wilson:wilson *
+chmod a+r *
+for fn in *.txt; do sed -i &amp;#39;s/\x00//g&amp;#39; $fn; done;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;恢复后文件属主为root，权限为600,&amp;nbsp;需修复。&lt;/p&gt;
+&lt;p&gt;恢复后的文件一般末尾有多余的\x00，使用sed也可以替换，一开始没想到。&lt;/p&gt;
+&lt;h4 id="6"&gt;6、&lt;a class="headerlink" href="#6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#done, enjoy it!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;到恢复文件的位置去吧&lt;/p&gt;
+&lt;h3 id="_2"&gt;参考&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;［教学］在Ubuntu中恢复NTFS分区中被ubuntu误删除的文件（windows软件无法恢复的ubuntu中能恢复！
+&lt;a href="http://forum.ubuntu.org.cn/viewtopic.php?t=158497"&gt;http://forum.ubuntu.org.cn/viewtopic.php?t=158497&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linux下恢复ntfs格式的盘上的误删文件
+&lt;a href="http://nyc1991.blog.51cto.com/6424159/1216592"&gt;http://nyc1991.blog.51cto.com/6424159/1216592&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linux文件误删除恢复操作
+&lt;a href="http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html"&gt;http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html&lt;/a&gt;&lt;/p&gt;</content><category term="实习"></category><category term="linux"></category><category term="ntfs"></category><category term="文件恢复"></category></entry></feed>

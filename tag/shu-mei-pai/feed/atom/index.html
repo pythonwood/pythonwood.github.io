@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 树莓派</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/shu-mei-pai/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-12-13T22:20:00+08:00</updated><entry><title>树莓派安装kodi神器和红外遥控装置变身多媒体中心</title><link href="https://blog.pythonwood.com/2017/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85kodi%E7%A5%9E%E5%99%A8%E5%92%8C%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7%E8%A3%85%E7%BD%AE%E5%8F%98%E8%BA%AB%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%AD%E5%BF%83/" rel="alternate"></link><published>2017-12-13T22:20:00+08:00</published><updated>2017-12-13T22:20:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-12-13:/2017/12/树莓派安装kodi神器和红外遥控装置变身多媒体中心/</id><summary type="html">&lt;h3 id="_1"&gt;总述&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在大学里通过IPV6看过IPTV，最近一两年直播非常火，电视盒子也火了一把。于是想用kodi看直播电视。&lt;/p&gt;
+&lt;p&gt;kodi的低耗，无噪音，便宜的优点我觉得很适合做家庭多媒体服务中心。&lt;/p&gt;
+&lt;p&gt;第二次用树莓派安装kodi，没有上一次那么迷茫了。把一些有价值的东西记录下来。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="遥控树莓派kodi.gif" src="https://blog.pythonwood.com/uploads/2017/遥控树莓派kodi.gif" title="遥控树莓派kodi"&gt;&lt;/p&gt;
+&lt;h3 id="kodikodi-pvr-iptvsimple"&gt;一、安装Kodi（请务必一同安装kodi-pvr-iptvsimple）&lt;a class="headerlink" href="#kodikodi-pvr-iptvsimple" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install kodi kodi-pvr-iptvsimple
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;并不是raspbian安装kodi后就能看直播 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;总述&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在大学里通过IPV6看过IPTV，最近一两年直播非常火，电视盒子也火了一把。于是想用kodi看直播电视。&lt;/p&gt;
+&lt;p&gt;kodi的低耗，无噪音，便宜的优点我觉得很适合做家庭多媒体服务中心。&lt;/p&gt;
+&lt;p&gt;第二次用树莓派安装kodi，没有上一次那么迷茫了。把一些有价值的东西记录下来。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="遥控树莓派kodi.gif" src="https://blog.pythonwood.com/uploads/2017/遥控树莓派kodi.gif" title="遥控树莓派kodi"&gt;&lt;/p&gt;
+&lt;h3 id="kodikodi-pvr-iptvsimple"&gt;一、安装Kodi（请务必一同安装kodi-pvr-iptvsimple）&lt;a class="headerlink" href="#kodikodi-pvr-iptvsimple" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install kodi kodi-pvr-iptvsimple
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;并不是raspbian安装kodi后就能看直播/电视了。如果没有安装kodi-pvr-iptvsimple，kodi侧栏的电视功能无响应，直播/TV的相关插件也会有问题。我花了不少时间才找到了原因。&lt;/p&gt;
+&lt;p&gt;如果出现kodi的插件里没有&amp;rdquo;PVR客户端&amp;rdquo;选项可设置，或者搜索不到PVR &lt;span class="caps"&gt;IPTV&lt;/span&gt; Simple&amp;nbsp;Client相关插件，或者设置时出现错误提示信息Error，通过安装kodi-pvr-iptvsimple可解决。&lt;/p&gt;
+&lt;h3 id="kodi"&gt;二、设置kodi在无需桌面环境下随机自动运行&lt;a class="headerlink" href="#kodi" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;kodi可以通过非GUI的命令行启动，无需先启动桌面环境，非常省资源。&lt;/p&gt;
+&lt;p&gt;我做过实测树莓派3启动到命令行只需50MB内存，启动kodi播放则再增加100MB内存。总共只需150MB。如果启动桌面环境，桌面环境单独占用70MB内存。&lt;/p&gt;
+&lt;p&gt;先用&lt;code&gt;sudo raspi-config&lt;/code&gt;命令设置boot选项，启动后自动登录到命令行模式（auto boot to&amp;nbsp;cli）。&lt;/p&gt;
+&lt;p&gt;然后在pi用户的.bashrc命令中追加一行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;( cd /tmp; ps -ef | grep -v grep | grep kodi || DISPLAY=:0.0 nohup kodi ) 2&amp;gt;&amp;amp;1 &amp;gt;/dev/null &amp;amp;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样树莓派每次都会启动到kodi，但不会多次运行kodi。&lt;/p&gt;
+&lt;h3 id="kodi_1"&gt;三、树莓派添加红外模块后实现电视遥控器控制kodi&lt;a class="headerlink" href="#kodi_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;虽然安装快控（kodi remote control）App或者yaste&amp;nbsp;App可以在wifi环境下通过App远程控制树莓派运行的kodi。&lt;/p&gt;
+&lt;p&gt;然而我觉得每次先解锁手机，打开软件，然后只为点几下键体验不是很好。&lt;/p&gt;
+&lt;p&gt;所以，在老旧已坏的遥控飞机上拆下红外模块（对讲机，其他遥控玩具都会有这个模块，支持废物利用），结合家里旧的遥控器实现红外遥控树莓派。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="遥控飞机红外接受模块" src="http://www.dgpufei.com/Public/Uploads/Article/20170115/587b2a331b16a.jpg" title="遥控飞机红外接受模块"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我跟着这个教程&lt;a href="https://blog.newnius.com/raspberry-3b-setup-lirc.html" title="树莓派---红外遥控设置"&gt;树莓派&amp;mdash;红外遥控设置&lt;/a&gt;设置成功&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id="kodi_2"&gt;树莓派能识别红外遥控器后，就是树莓派kodi学习（映射）按键与指令对应关系的过程。&lt;a class="headerlink" href="#kodi_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;kodi配置键名（比如KEY_OK）和kodi动作的映射关系文件路径是/usr/share/kodi/system/Lircmap.xml。&lt;/p&gt;
+&lt;p&gt;以下面mediacenter类型的遥控设备为例，按下该设备某个键，对应lircd接受到ok指令，那么kodi执行select动作。&lt;/p&gt;
+&lt;p&gt;为了省事，我把其中键名最简洁&lt;remote device="mediacenter"&gt;的xml段复制后&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;remote&lt;/span&gt; &lt;span class="na"&gt;device=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;mediacenter&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    ...
+    &lt;span class="nt"&gt;&amp;lt;up&amp;gt;&lt;/span&gt;up&lt;span class="nt"&gt;&amp;lt;/up&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;down&amp;gt;&lt;/span&gt;down&lt;span class="nt"&gt;&amp;lt;/down&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;select&amp;gt;&lt;/span&gt;ok&lt;span class="nt"&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;one&amp;gt;&lt;/span&gt;1&lt;span class="nt"&gt;&amp;lt;/one&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;two&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/two&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class="nt"&gt;&amp;lt;/remote&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;粘贴并修改device值&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;remote&lt;/span&gt; &lt;span class="na"&gt;device=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;guangdianyaokong&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    ...
+    &lt;span class="nt"&gt;&amp;lt;up&amp;gt;&lt;/span&gt;up&lt;span class="nt"&gt;&amp;lt;/up&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;down&amp;gt;&lt;/span&gt;down&lt;span class="nt"&gt;&amp;lt;/down&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;select&amp;gt;&lt;/span&gt;ok&lt;span class="nt"&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;one&amp;gt;&lt;/span&gt;1&lt;span class="nt"&gt;&amp;lt;/one&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;two&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/two&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class="nt"&gt;&amp;lt;/remote&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;guangdianyaokong是我在/etc/lirc/lircd.conf文件的name字段名字，可自由修改。只要保持对应一致就可以了。&lt;/p&gt;
+&lt;p&gt;我录制irrecord命令如下，省事的原因是录键名的时候对应取up，down，1，ok等简单词。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;irrecord -d /dev/lirc0 guangdianyaokong --disable-namespace
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="kodi_3"&gt;四、接下来自由发挥，对kodi自行研究，安装各种插件。&lt;a class="headerlink" href="#kodi_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;按照插件库然后从插件库安装插件，或者直接按照目标插件的zip包。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="树莓派插件库列表截图" src="https://blog.pythonwood.com/uploads/2017/树莓派插件库列表截图.jpg" title="树莓派插件库列表截图"&gt;&lt;/p&gt;
+&lt;p&gt;搜集m3u8直播列表，灌给PVR IPTV客户端使用。也可以使用&lt;a href="http://blog.sina.com.cn/s/blog_4ae08cc00102wz42.html" title="用Kodi观看网络直播电视：新插件IPTV Tool "&gt;&lt;span class="caps"&gt;IPTV&lt;/span&gt; Tool&lt;/a&gt;插件来托管PVR&amp;nbsp;IPTV客户端&lt;/p&gt;
+&lt;h3 id="m3u8url"&gt;五、直播m3u8列表的url存活测试&lt;a class="headerlink" href="#m3u8url" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;导入播放器中手动测试&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;smplayer或者vlc都能打开m3u8文件进行网络播放。所以也能来测试是否存活。只是方法简单直接容易累。&lt;/p&gt;
+&lt;p&gt;可打开播放器界面中打开m3u8文件；命令行则可用smplayer &lt;m3u8_list&gt;， 或者 vlc &lt;m3u8_list&gt;打开。&lt;/p&gt;
+&lt;h4 id="_3"&gt;脚本批量快速检测&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;（todo&amp;hellip;）&lt;/p&gt;
+&lt;h3 id="_4"&gt;提醒&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
+&lt;a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/"&gt;树莓派SD卡Linux系统盘复制，10分钟克隆新机&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_5"&gt;参考&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Kodi 开源多媒体播放器 - 神器 &lt;a href="http://www.cnblogs.com/XieSir/articles/6287387.html"&gt;http://www.cnblogs.com/XieSir/articles/6287387.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;6款树莓派kodi插件推荐 &lt;a href="https://www.htpcbeginner.com/raspberry-pi-kodi-addons/"&gt;https://www.htpcbeginner.com/raspberry-pi-kodi-addons/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;移动网络电视和IPTV的区别在哪里？ &lt;a href="http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html"&gt;http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="树莓派"></category><category term="kodi"></category><category term="插件"></category><category term="IPTV"></category><category term="直播"></category><category term="网络电视"></category><category term="遥控"></category></entry><entry><title>树莓派初始化环境搭建的一些事</title><link href="https://blog.pythonwood.com/2017/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" rel="alternate"></link><published>2017-12-05T13:46:00+08:00</published><updated>2017-12-05T13:46:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-12-05:/2017/12/树莓派初始化环境搭建的一些事/</id><summary type="html">&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
+&lt;h3 id="_1"&gt;一、奔着遥控式家庭影音的购买方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;可以了。我没买SD卡，将旧的class10的16G的SD利用上(class10意思是写入速度约10MB/s)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;我购买并用上的 …&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
+&lt;h3 id="_1"&gt;一、奔着遥控式家庭影音的购买方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;可以了。我没买SD卡，将旧的class10的16G的SD利用上(class10意思是写入速度约10MB/s)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;我购买并用上的：&lt;/strong&gt; 
+&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DjB5CtrQXlAccQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67rCnyOxJms%2BVtTN3K9waqqis9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTBN3oW5I7sw9oXcuyoAGSVzy%2Flc8YI1OgQvABqsOAyUlBEellxPfI1OiZ%2BQMlGz6FQ%3D%3D&amp;amp;pvid=10_120.239.178.0_533_1512539397311" title="公牛usb插座天猫链接"&gt;公牛usb魔方插座&lt;/a&gt;，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;，带开关按钮线的电源，杜邦线。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;不用购买就用上的配件：&lt;/strong&gt;&amp;nbsp;红外接收仪(从坏的遥控玩具拆下可用)，旧电视遥控器一个，老VGA显示屏，旧音箱。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;我购买而还没用的可选配件：&lt;/strong&gt;
+七彩RGB的LED元件，面包板，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DfV%2BZ61WfxfkcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67lKP%2BmjvssA7r8hK%2FDw%2Bbm2s9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA0KFaRH2Tl0r%2BlUnyCWbT92Wt8ptzziuVx4DebA4okkCqN5EGMnCL1bGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_378_1512536718652" title="HDMI转DVI天猫链接"&gt;HDMI转DVI&lt;/a&gt;，光敏电阻。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;我认为不用买的：&lt;/strong&gt;&amp;nbsp;小屏幕（退货了），温度感应，五向摇杆，蜂鸣器，触摸感应器等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;h3 id="raspbian"&gt;二、树莓派安装官方的raspbian系统并初始化&lt;a class="headerlink" href="#raspbian" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;基础部分教程：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;包括修改Pi密码,修改国内源,显示中文，设置时区为Asia/Shanghai，安装开源中文字体&lt;strong&gt;文泉驿&lt;/strong&gt;，安装fcitx谷歌拼音，开启ssh服务，设置wifi连接密码&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;树莓派上手配置&lt;/strong&gt;
+&lt;a href="https://yaogangli.gitbooks.io/raspberry-pi-learning/content/Raspbian.html"&gt;https://yaogangli.gitbooks.io/raspberry-pi-learning/content/Raspbian.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;新手入门树莓派必做的四件事&lt;/strong&gt;
+&lt;a href="http://blog.csdn.net/A_lPha/article/details/53116767"&gt;http://blog.csdn.net/A_lPha/article/details/53116767&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;How to setup multiple WiFi networks?&lt;/strong&gt;
+&lt;a href="https://raspberrypi.stackexchange.com/questions/11631/how-to-setup-multiple-wifi-networks/11674"&gt;https://raspberrypi.stackexchange.com/questions/11631/how-to-setup-multiple-wifi-networks/11674&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ssh服务配置&lt;/strong&gt;
+&lt;a href="https://www.raspberrypi.org/documentation/remote-access/ssh/"&gt;https://www.raspberrypi.org/documentation/remote-access/ssh/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="_3"&gt;优化部分教程：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;包括添加u盘自动挂载功能，VNC服务，优化无网络下树莓派开机时间等&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;树莓派USB存储设备自动挂载&lt;/strong&gt;
+&lt;a href="http://www.jianshu.com/p/188828d9777a"&gt;http://www.jianshu.com/p/188828d9777a&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;How to change timeout in systemctl&lt;/strong&gt;
+&lt;a href="https://unix.stackexchange.com/questions/186162/how-to-change-timeout-in-systemctl"&gt;https://unix.stackexchange.com/questions/186162/how-to-change-timeout-in-systemctl&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;安装VNC服务(tightvncserver)&lt;/strong&gt;
+&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-14-04"&gt;https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-14-04&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;配置与学习树莓派config.txt配置文件&lt;/strong&gt;
+&lt;a href="https://www.zybuluo.com/SiberiaBear/note/328982"&gt;https://www.zybuluo.com/SiberiaBear/note/328982&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="_4"&gt;三、重要提醒：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;经验证，我安装一大堆东西后，SD卡使用才4G，其中几百兆是音乐，&amp;nbsp;所以8G卡也是够用的。&lt;/p&gt;
+&lt;p&gt;熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
+&lt;a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/"&gt;树莓派SD卡Linux系统盘复制，10分钟克隆新机&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_5"&gt;四、参考&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;开始 Raspberry Pi 项目前需要知道的 10 件事 &lt;a href="https://www.digikey.com.cn/zh/articles/techzone/2017/feb/10-things-to-know-before-starting-a-raspberry-pi-project"&gt;https://www.digikey.com.cn/zh/articles/techzone/2017/feb/10-things-to-know-before-starting-a-raspberry-pi-project&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;树莓派启动那些事 &lt;a href="http://elmagnificogi.github.io/tags/#RaspberryPi"&gt;http://elmagnificogi.github.io/tags/#RaspberryPi&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="树莓派"></category><category term="初始化"></category><category term="系统"></category><category term="环境搭建"></category></entry><entry><title>树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</title><link href="https://blog.pythonwood.com/2017/11/%E6%A0%91%E8%8E%93%E6%B4%BESD%E5%8D%A1Linux%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%A4%8D%E5%88%B6%EF%BC%8C10%E5%88%86%E9%92%9F%E5%85%8B%E9%9A%86%E6%96%B0%E6%9C%BA/" rel="alternate"></link><published>2017-11-30T15:02:00+08:00</published><updated>2017-12-05T10:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-11-30:/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/</id><summary type="html">&lt;p&gt;有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。&lt;/p&gt;
+&lt;h3 id="_1"&gt;学通树莓派系统克隆，兼备安装、备份与恢复能力。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。&lt;/p&gt;
+&lt;h3 id="_1"&gt;学通树莓派系统克隆，兼备安装、备份与恢复能力。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）&lt;/p&gt;
+&lt;h3 id="_2"&gt;开始折腾尝试&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G，很多空间是多余的。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gparted看树莓派分区" src="https://blog.pythonwood.com/uploads/2017/gparted看树莓派分区.jpg" title="gparted看树莓派分区"&gt;&lt;/p&gt;
+&lt;p&gt;用了1天的不断努力尝试终于才成功，囧。&lt;/p&gt;
+&lt;h3 id="1ddddrescue"&gt;失败1:使用DD或ddrescue&lt;a class="headerlink" href="#1ddddrescue" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;不幸的是我是从14.6G卡克隆到14.4G卡，使用dd失败是注定的。使用dd的必要条件是目标卡要更大。&lt;/p&gt;
+&lt;h3 id="2linuxssdetc"&gt;失败2:源自笔记本linux系统迁移SSD的经验——分区一样，复制文件，改etc配置法。&lt;a class="headerlink" href="#2linuxssdetc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;linux磁盘迁移，只需分区格式化，复制文件，修改etc下的fstab和udev目录的网卡信息，chroot+grub安装。就能完成。&lt;/p&gt;
+&lt;p&gt;然而实践得知，不适用树莓派迁移。启动时卡在&amp;rdquo;smsc95xx 1-1.1:1.0: eth0: register &amp;lsquo;smsc95xx&amp;rsquo;&amp;nbsp;&amp;hellip;&amp;rdquo;之后。无法启动。&lt;/p&gt;
+&lt;p&gt;比较发现，复制时，不会有dev/by-partuuid/目录，而本身树莓派是有这个目录的。&lt;/p&gt;
+&lt;h3 id="ddrawresize2fsqemu-imgdiskdd"&gt;成功:dd读取为raw镜像盘、resize2fs缩容分区、qemu-img缩容disk、dd写入成功启动树莓派&lt;a class="headerlink" href="#ddrawresize2fsqemu-imgdiskdd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="ddrawsd"&gt;先dd读取物理盘为raw格式镜像盘。这样就可以方法搞，最坏情况也不影响已有的系统sd卡内容。&lt;a class="headerlink" href="#ddrawsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo dd if=/dev/sdb of=/home/16G.img bs=128K
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="loopgparted"&gt;挂载loop设备以便于gparted能操作&lt;a class="headerlink" href="#loopgparted" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo losetup /dev/loop0 /home/16G.img
+$sudo partprobe /dev/loop0  # 运行后才会出现分区/dev/loop0p1,/dev/loop0p2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="14g6gblock6g"&gt;第二分区从14G缩容到6G（实际是把分散的Block数据集中到前6G位置。非真正改变分区大小）&lt;a class="headerlink" href="#14g6gblock6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo e2fsck -f /dev/loop0p2
+$sudo resize2fs /dev/loop0p2 6G
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="gparted-fdisk-6g"&gt;GParted / Fdisk 更改第二分区为6G&lt;a class="headerlink" href="#gparted-fdisk-6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;GParted&amp;nbsp;/dev/loop0打开，然后选择第二分区右击，选择&amp;rdquo;更改/移动大小&amp;rdquo;。设置。&lt;/p&gt;
+&lt;h4 id="loop"&gt;卸载恢复loop设备:&lt;a class="headerlink" href="#loop" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo partprobe -d /dev/loop0
+$sudo losetup -d /dev/loop0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="raw"&gt;raw虚拟磁盘缩容&lt;a class="headerlink" href="#raw" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo qemu-img resize /home/16G.img -8G
+
+$qemu-img info /home/16G.img
+image: xxx.img
+file format: raw
+virtual size: 5.9G (6380060672 bytes)
+disk size: 5.9G
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="ddsd"&gt;使用DD写入新SD卡，启动成功。&lt;a class="headerlink" href="#ddsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;可选：写入sd后可以用resize2fs扩容分区完全用上SD卡空间，参考上面缩容。&lt;/p&gt;
+&lt;h3 id="_3"&gt;总结提升&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;linux下安装树莓派系统到SD卡，使用dd刻录后还有剩余空间，用resize2fs可让最后分区来占满。&lt;/li&gt;
+&lt;li&gt;使用dd来备份整个硬盘太慢，可以用resize2fs将数据块移动到前面，parted缩小分区，然后刻录硬盘前面有数据部分即可。这样备份文件就不会臃肿。&lt;/li&gt;
+&lt;li&gt;备份镜像恢复时，过程类似初次安装系统。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="_4"&gt;参考&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;把一块硬盘上的 Linux 系统整个复制到新硬盘上的方法.  &lt;a href="https://www.v2ex.com/t/183310"&gt;https://www.v2ex.com/t/183310&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;openstack文档 &lt;a href="http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd"&gt;http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用qemu-img改变镜像文件大小  &lt;a href="http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html"&gt;http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;笔记本硬盘更换记（使用LVM进行在线数据迁移） &lt;a href="http://cathay4t.blogspot.hk/2009/05/lvm.html"&gt;http://cathay4t.blogspot.hk/2009/05/lvm.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;新电脑+旧系统：教你在不同机器间转移Linux  &lt;a href="http://www.geekfan.net/1860/"&gt;http://www.geekfan.net/1860/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;usb-creator-gtk 方法和&amp;nbsp;clonezilla方法没有深入研究。&lt;/p&gt;</content><category term="树莓派"></category><category term="raspbain"></category><category term="linux"></category><category term="克隆"></category><category term="系统"></category><category term="备份"></category><category term="恢复"></category><category term="resize2fs"></category><category term="qemu-img"></category><category term="losetup"></category><category term="dd"></category><category term="智能家庭"></category></entry></feed>

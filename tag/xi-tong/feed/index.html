@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Linux迷+Python粉 - 系统</title><link>https://blog.pythonwood.com/</link><description>人生苦短，我用Python</description><lastBuildDate>Tue, 05 Dec 2017 13:46:00 +0800</lastBuildDate><item><title>树莓派初始化环境搭建的一些事</title><link>https://blog.pythonwood.com/2017/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</link><description>&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
+&lt;h3 id="_1"&gt;一、奔着遥控式家庭影音的购买方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;可以了。我没买SD卡，将旧的class10的16G的SD利用上(class10意思是写入速度约10MB/s)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;我购买并用上的 …&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">pythonwood</dc:creator><pubDate>Tue, 05 Dec 2017 13:46:00 +0800</pubDate><guid isPermaLink="false">tag:blog.pythonwood.com,2017-12-05:/2017/12/树莓派初始化环境搭建的一些事/</guid><category>树莓派</category><category>初始化</category><category>系统</category><category>环境搭建</category></item><item><title>树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</title><link>https://blog.pythonwood.com/2017/11/%E6%A0%91%E8%8E%93%E6%B4%BESD%E5%8D%A1Linux%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%A4%8D%E5%88%B6%EF%BC%8C10%E5%88%86%E9%92%9F%E5%85%8B%E9%9A%86%E6%96%B0%E6%9C%BA/</link><description>&lt;p&gt;有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。&lt;/p&gt;
+&lt;h3 id="_1"&gt;学通树莓派系统克隆，兼备安装、备份与恢复能力。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">pythonwood</dc:creator><pubDate>Thu, 30 Nov 2017 15:02:00 +0800</pubDate><guid isPermaLink="false">tag:blog.pythonwood.com,2017-11-30:/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/</guid><category>树莓派</category><category>raspbain</category><category>linux</category><category>克隆</category><category>系统</category><category>备份</category><category>恢复</category><category>resize2fs</category><category>qemu-img</category><category>losetup</category><category>dd</category><category>智能家庭</category></item><item><title>笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</title><link>https://blog.pythonwood.com/2014/07/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%B3%BB%E7%BB%9F%E8%BD%AC%E6%8D%A2Linux%E4%B8%80%E4%B8%AA%E5%8D%8A%E6%9C%88%E2%80%94%E2%80%94xubuntu14.04%E6%88%AA%E5%9B%BE%E7%BA%AA%E5%BF%B5%E9%87%8C%E7%A8%8B%E7%A2%91/</link><description>&lt;h3 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;自学计算机技术，越到后面，越依赖ubuntu，以致于很多时候都是一开机就打开虚拟机上的ubuntu10.04，Linux已经变得越来越重要了。&lt;/p&gt;
+&lt;h3 id="_2"&gt;操作&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2014-04-17，ubuntu14.04(trusty)，长期支持版(&lt;span class="caps"&gt;LTS&lt;/span&gt;=long term support)，还记得那天也是我腾讯实行的2面。我知道等到时机了，果断装双系统 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">pythonwood</dc:creator><pubDate>Sat, 05 Jul 2014 23:30:00 +0800</pubDate><guid isPermaLink="false">tag:blog.pythonwood.com,2014-07-05:/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/</guid><category>系统</category><category>windows</category><category>linux</category><category>ubuntu</category><category>大学</category></item><item><title>虚拟机系统正式转换——从windows到Linux-ubuntu新手</title><link>https://blog.pythonwood.com/2013/07/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%AD%A3%E5%BC%8F%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94%E4%BB%8Ewindows%E5%88%B0Linux-ubuntu%E6%96%B0%E6%89%8B/</link><description>&lt;p&gt;记录大二下学期转换ubuntu10.04的一些系统折腾&lt;/p&gt;
+&lt;h3 id="_1"&gt;版本选择：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;经多次实验，Ubuntu个人认为长期支持（&lt;span class="caps"&gt;LTS&lt;/span&gt;）版才值得装。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ubuntu12.04的桌面切换真麻烦。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我最后选择了VMware9 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">pythonwood</dc:creator><pubDate>Wed, 10 Jul 2013 16:29:00 +0800</pubDate><guid isPermaLink="false">tag:blog.pythonwood.com,2013-07-10:/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/</guid><category>笔记本</category><category>系统</category><category>windows</category><category>linux</category><category>ubuntu</category><category>转换</category><category>10.04</category><category>LTS</category><category>vmware</category><category>大学</category><category>大二</category></item></channel></rss>

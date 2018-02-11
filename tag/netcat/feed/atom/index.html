@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - netcat</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/netcat/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-11-30T22:12:00+08:00</updated><entry><title>不能小看的nc——实践TCP协议第四层的软件（传输层）</title><link href="https://blog.pythonwood.com/2015/12/%E4%B8%8D%E8%83%BD%E5%B0%8F%E7%9C%8B%E7%9A%84nc%E2%80%94%E2%80%94%E5%AE%9E%E8%B7%B5TCP%E5%8D%8F%E8%AE%AE%E7%AC%AC%E5%9B%9B%E5%B1%82%E7%9A%84%E8%BD%AF%E4%BB%B6%EF%BC%88%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%89/" rel="alternate"></link><published>2015-12-20T21:20:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2015-12-20:/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/</id><summary type="html">&lt;p&gt;nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。&lt;/p&gt;
+&lt;p&gt;很多事情不一定非得抓包，nc也能发挥巨大作用。&lt;/p&gt;
+&lt;h3 id="1"&gt;1、传输文件&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_1"&gt;使用&amp;lt;&amp;gt;重定向符（只适用单文件，不推荐、失败时 &amp;ldquo;&amp;gt;&amp;rdquo; 产生空文件）&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -l 8888 &amp;lt; demo.txt        # 在本机8888端口侦听TCP连接，将收到的数据写入文件
+
+nc …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。&lt;/p&gt;
+&lt;p&gt;很多事情不一定非得抓包，nc也能发挥巨大作用。&lt;/p&gt;
+&lt;h3 id="1"&gt;1、传输文件&lt;a class="headerlink" href="#1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_1"&gt;使用&amp;lt;&amp;gt;重定向符（只适用单文件，不推荐、失败时 &amp;ldquo;&amp;gt;&amp;rdquo; 产生空文件）&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -l 8888 &amp;lt; demo.txt        # 在本机8888端口侦听TCP连接，将收到的数据写入文件
+
+nc ip 8888 &amp;gt; demo.txt       # 文件接收端：将文件内容通过网络&amp;quot;cat&amp;quot;到远端
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="tar"&gt;使用tar传输文件（推荐，好处是保留了原目录结构和权限）&lt;a class="headerlink" href="#tar" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tar cz demo1.txt demo_dir/ | nc -l 8888  # 监听8888端口，有连接时开始tar打包并&amp;quot;cat&amp;quot;到远端
+
+nc ip 8888 | tar zx                                 # 连接、接收数据、解压一步到位。
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="2"&gt;2、建立网络管道&lt;a class="headerlink" href="#2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -l 8888                            # 接收消息
+
+echo msg | nc ip 8888           # 发送消息
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="3"&gt;3、迁移生产机房数据到测试机房（运维电脑建管道）&lt;a class="headerlink" href="#3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tar cz demo1.txt demo_dir/ | nc -l 8888  # 生产机房ipA
+
+nc -l 8888 | tar zx                                 # 测试机房ipB
+
+nc ipA 8888 | nc ipB 8888                      # 运维个人电脑，连通两台机器的8888端口。
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="4-lbgudp"&gt;4、测试网络连通 （排查测试机房的lbg转发udp问题）&lt;a class="headerlink" href="#4-lbgudp" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl 调试http，即7层非常高效。但如何调试4层网络呢？答案就是nc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;测试机房lbg做了公网udp服务的映射，但测试同学发现程序出错，怀疑网络问题，找运维同学排查。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nc -ul 9999                   # 服务ipS 监听9999端口 该端口映射到公网 ipVS:portVS
+
+nc -zuv ipS 9999           # 内网udp连通成功   显示Connection to ipS 9999 port [udp/*] succeeded!
+
+nc -zuv ipVS portVS       # 公网udp连通失败   显示Connection to ipVS portVS port [udp/*] fail!
+
+一、上如何检查tcp？以上的参数u去掉，默认就是tcp。
+
+二、进一步写出nagios插件，检查udp服务端口（以部署在PP的udp消息推送监控中）
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="5telnetmc"&gt;5、代替telnet，测试mc，浮云等等。&lt;a class="headerlink" href="#5telnetmc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo -e &amp;quot;stats\r\n&amp;quot; | nc ipS portMC        # 非交换式查看mc的状态。
+
+echo -e &amp;quot;INFO\r\n&amp;quot; | nc ipS portREDIS   # 非交换式查看redis的状态。
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--非交换的set、get检查浮云ds        # 已部署到PP的浮云监控。--&gt;
+
+&lt;h3 id="6nchttpshellman-nc"&gt;6、使用nc发邮件，发送http请求，反弹shell，端口转发等等，请man nc&lt;a class="headerlink" href="#6nchttpshellman-nc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo -e &amp;quot;GET / HTTP/1.0\r\n&amp;quot; | nc uc.cn 80
+&lt;/pre&gt;&lt;/div&gt;</content><category term="nc"></category><category term="tcp"></category><category term="netcat"></category><category term="网络"></category></entry></feed>

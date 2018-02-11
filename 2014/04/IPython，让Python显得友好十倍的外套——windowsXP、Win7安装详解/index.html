@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="前言<a class="headerlink" href="#_1" title="Permanent…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/" rel="bookmark" title="Permalink to IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解">IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。</p>
+<p>整理了《Python 二三事》：<a href="http://pre-sence.com/archives/python-intro">http://pre-sence.com/archives/python-intro</a>   《Python 四五事》：<a href="http://pre-sence.com/archives/python-misc">http://pre-sence.com/archives/python-misc</a>&nbsp;并加入安装IPython部分。</p>
+<p>写这篇随笔的原因是：忽然醒悟之前我安装IPython折腾许久不成功可能是我未能想起pip或easy_install这两个python的上帝工具。参考：Python包管理工具pip与easy_install</p>
+<p><strong>个人经验总结：IPython，是学习python的利器，是让Python显得友好十倍的外套，是我唯一的强烈推荐。</strong></p>
+<h3 id="ipython">安装IPython<a class="headerlink" href="#ipython" title="Permanent link">&para;</a></h3>
+<p>任何Linux发行版对编程者都十分友好：</p>
+<p><strong>Ubuntu为例:</strong></p>
+<div class="highlight"><pre><span></span>sudo apt-get install ipython
+</pre></div>
+
+
+<p><strong>windows环境:</strong></p>
+<p>1、下载[ez_setup.py][ez_setup.py] ，右击左边链接，另存为，使用<code>python ez_setup.py</code>运行，或直接双击。</p>
+<p>2、步骤1成功后，cmd下输入命令<code>easy_install -h</code>可以测试，正常反应说明已经可以使用easy_install了。</p>
+<p>3、cmd下输入<code>easy_install pip</code>安装pip，这是因为pip正是easy_install的下一代，比easy_install好用。</p>
+<p>4、步骤3成功后，<code>pip install ipython</code>。</p>
+<p>5、如果步骤4不行，退一步，使用<code>easy_install ipython</code>安装。</p>
+<h3 id="ipython_1">运行IPython<a class="headerlink" href="#ipython_1" title="Permanent link">&para;</a></h3>
+<p>cmd提示符下，输入ipython运行就可以使用除了原python外，IPython多出来的贴心的“I”了。</p>
+<h3 id="ipython_2">退出IPython<a class="headerlink" href="#ipython_2" title="Permanent link">&para;</a></h3>
+<p>与python一样也是输入<code>exit</code></p>
+<h3 id="python">Python实用技巧：<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<p><strong>1、关于 &ldquo;_&rdquo;&nbsp;字符使用</strong></p>
+<p>在 Python shell 下 _&nbsp;总是被赋予之前最后一个表达式的值（注：@pythonwood）。这里看个例子应该就能清楚：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">letters</span>
+<span class="s1">&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">_</span>
+
+<span class="n">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="mi">2014</span>
+
+<span class="mi">2014</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">_</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span>
+
+<span class="mi">2014</span>
+</pre></div>
+
+
+<p>举个实际的例子，比如你在调试时读文件的时候直接进行 f.read() ，你看了看发现输出结果很有意思，想要对它进行进一步处理，但发现读的时候忘记赋值了。以往你只能叹叹气重新开文件再读一次，现在你只要执行 result = _，把 _&nbsp;附到另外一个变量就可以了。</p>
+<p><strong>2、python&nbsp;-m</strong></p>
+<p>相信很多人应该用过这个东西，Python 很多标准库都提供这样的调用方式来实现一些简单的命令行功能。Python 3 现在自带 pip。比如我们想使用 Python 3 的 pip&nbsp;来安装别的库，我们可以这样：</p>
+<div class="highlight"><pre><span></span>py -3 -m pip install bottle
+</pre></div>
+
+
+<p>跟你预料的一样，这样就可以了。当然你可以用个 .bat 文件来把这些包裹起来并放在 Path 上，一个简单的例子，把下面的内容写到一个叫 pip3.bat&nbsp;的文件里:</p>
+<div class="highlight"><pre><span></span>@echo off
+py -3 -m pip %*
+</pre></div>
+
+
+<p>并放到 Path 上，就可以方便调用了。其中 %*&nbsp;负责传递所有的命令行参数。</p>
+<p>实际上 python -m&nbsp;可以用的东西还真的挺多，这里给出一个不完全的列表：</p>
+<div class="highlight"><pre><span></span>######################################################
+# 最强功能
+######################################################
+# 局域网共享，宿舍中任意一台笔记本都可以瞬间变身web资源共享服务器
+# 命令ipconfig可以看到局域网ip地址，一般是192，172这些开头的。
+# 使用本机80端口，可任意设置。只共享当前运行目录。
+# 
+python -m SimpleHTTPServer 80 
+# 
+# 本机任意浏览器输入 http://localhost 或 http://127.0.0.1 可以访问。
+# (80端口浏览器默认的，不需输入)甚至在地址栏直接输入localhost即可。
+# 局域网，（宿舍）任意电脑输入上面所说192或172等开头的IP地址即可访问。
+######################################################
+
+
+# 缩进输出 JSON
+echo {&quot;hey&quot; : &quot;kid&quot;} | python -m json.tool
+# 简单的执行时间测量
+python -m timeit [ix*ix for ix in range(100)]
+# 简单的 Profiling
+python -m cProfile myscript.py
+# 比较两个文件夹的区别
+python -m filecmp path/to/a path/to/b
+# base64 转换
+echo foo bar | python -m base64
+# 调用默认浏览器打开一个新标签页
+python -m webbrowser -t http://google.com
+# 生成程序文档
+python -m pydoc myscript.py
+# 类似 nose 的自动搜索 unittest
+python -m unittest discover
+# 调用 pdb 执行代码
+python -m pdb myscript.py
+</pre></div>
+
+
+<h3 id="ipython_3">IPython实用技巧：<a class="headerlink" href="#ipython_3" title="Permanent link">&para;</a></h3>
+<p><strong>1、Tab自动补全，一种是简单的关键字补全，另外一种是对象的方法和属性补全。</strong></p>
+<p>作为例子，我们先引入 sys 模块，之后再输入 sys. (注意有个点)，此时按下 tab 键，IPython 会列出所有 sys&nbsp;模块下的方法和属性。</p>
+<p><img alt="Tab自动补全，一种是简单的关键字补全.png" src="https://blog.pythonwood.com/uploads/2014/Tab自动补全，一种是简单的关键字补全.png" title="Tab自动补全，一种是简单的关键字补全.png"></p>
+<p>接着上面的例子，我们输入 sys?，这样会显示出 sys 模块的&nbsp;docstring及相关信息。很多时候这个也是很方便的功能。</p>
+<p><img alt="sys模块的docstring及相关信息.jpg" src="https://blog.pythonwood.com/uploads/2014/sys模块的docstring及相关信息.jpg" title="sys模块的docstring及相关信息.jpg"></p>
+<p><strong>2、IPython 还有强大之处很大部分还体现在它的 magic function 中。它是指的在 IPython 环境下执行以 % 开头的一些命令来对 IPython 进行一些设定或者执行某些功能。在 IPython 中输入 %lsmagic 就能列出所有的 magic&nbsp;functions。在这里简单介绍下几个比较有意思的，你也可以自己通过查看文档来找找有哪些你特别用的到得。</strong></p>
+<div class="highlight"><pre><span></span><span class="err">之前看到能用</span> <span class="o">?</span> <span class="err">来查询函数的文档，对于</span> <span class="n">magic</span> <span class="n">function</span> <span class="err">也是如此。比如</span> <span class="nf">%run</span><span class="o">?</span><span class="err">。</span>
+
+<span class="o">!</span><span class="n">cd</span> <span class="p">..</span> <span class="err">在命令前面加上</span> <span class="o">!</span> <span class="err">则它会被作为命令行命令执行，这样你就不用退出</span> <span class="n">IPython</span> <span class="err">来进行命令行操作。</span>
+
+<span class="nf">%run</span> <span class="n">foo</span><span class="p">.</span><span class="n">py</span> <span class="err">在当前环境下直接执行</span> <span class="n">foo</span><span class="p">.</span><span class="n">py</span><span class="err">，效果跟命令行下调用</span> <span class="n">ipython</span> <span class="n">foo</span><span class="p">.</span><span class="n">py</span> <span class="err">相同。</span>
+
+<span class="nf">%time</span> <span class="n">foo</span><span class="p">.</span><span class="n">bar</span><span class="p">()</span> <span class="err">跟</span> <span class="n">timeit</span> <span class="n">decorator</span> <span class="err">作用相同，进行简单的</span> <span class="n">profile</span><span class="err">。</span>
+
+<span class="nf">%hist</span> <span class="err">能显示之前输入过的命令的历史，同时你可以用</span> <span class="n">In</span><span class="p">[</span><span class="o">&lt;</span><span class="n">linenumber</span><span class="o">&gt;</span><span class="p">]</span> <span class="err">来访问之前的命令。比如</span> <span class="nf">%exec</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="err">就能执行列表中第十行。</span>
+
+<span class="nf">%rep</span> <span class="err">类似上面的</span> <span class="n">_</span> <span class="err">变量，但是是以字串的形式返回</span>
+
+<span class="err">最后，如果</span> <span class="nf">%automagic</span> <span class="err">是打开的状态的话，所有</span> <span class="n">magic</span> <span class="n">function</span> <span class="err">不需要在前面加</span> <span class="o">%</span> <span class="err">就能正确调用。</span>
+</pre></div>
+
+
+<p>在当前 IPython 版本中还有一个由于安全原因没有默认引入的 %autoreload，它的作用是在可以自动重新载入你调用的函数，以及其相关模块。接触过 <a href="http://www.djangoproject.com/" title="django">django</a> 的同学对这个应该比较熟悉，在 IPython 中的效果就是，当你在调试一个一直在反复改动的函数时，你可以开启这个功能保证每次调用都会重新读取最新的版本，让你在源码中的改动马上生效。在 IPython&nbsp;中执行</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipy_autoreload</span>
+<span class="o">%%</span><span class="n">autoreload</span> <span class="mi">2</span>
+</pre></div>
+
+
+<p>这样 IPython 会对所有的模块都进行 autoreload。你可以通过执行 %autoreload? 来查询它的文档来进行进一步设定。如果你希望 IPython 每次启动自动载入次功能，那么可以通过配置 ipythonrc (在 Windows 下可以在 C:\Users\<username>_ipython\ipythonrc.ini 找到)&nbsp;来进行相关设置。</p>
+<p><strong>3、还有一个很神奇的功能。如果你的程序是由命令行开始执行的，即在命令行下输入 python foo.py（大部分 Python 程序都是），那么你还可以利用 IPython&nbsp;在你的程序任意地方进行断点调试！</strong></p>
+<p>在你程序中任意地方，加入如下语句：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.Shell</span> <span class="kn">import</span> <span class="n">IPShellEmbed</span>
+<span class="n">IPShellEmbed</span><span class="p">([])()</span>
+</pre></div>
+
+
+<p>注意：最近 IPython 发布了 <a href="http://ipython.org/news.html#ipython-0-11" title="0.11">0.11</a> 版本，各方面变化都非常大，<span class="caps">API</span> 也经过了重新设计。如果你使用的是 0.11&nbsp;那么上面两行对应的是这样的:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">embed</span>
+<span class="n">embed</span><span class="p">()</span>
+</pre></div>
+
+
+<p>再和平常一样运行你的程序，你会发现在程序运行到插入语句的地方时，会转到 IPython 环境下。你可以试试运行些指令，就会发现此刻 IPython 的环境就是在程序的那个位置。你可以逐个浏览当前状态下的各个变量，调用各种函数，输出你感兴趣的值来帮助调试。之后你可以照常退出 IPython，然后程序会继续运行下去，自然地你在当时 IPython&nbsp;下执行的语句也会对程序接下来的运行造成影响。</p>
+<p>这个方法我实在<a href="http://lukeplant.me.uk/blog/posts/exploratory-programming-with-ipython/" title="smart">这里</a>看到的。想象一下，这样做就像让高速运转的程序暂停下来，你再对运行中的程序进行检查和修改，之后再让他继续运行下去。这里举一个例子，比如编写网页 bot ，你在每取回一个页面后你都得看看它的内容，再尝试如何处理他获得下一个页面的地址。运用这个技巧，你可以在取回页面后让程序中断，再那里实验各种处理方 法，在找到正确的处理方式后写回到你的代码中，再进行下一步。这种工作流程只有像 Python&nbsp;这种动态语言才可以做到。</p>
+<p><strong>4、一个实际的例子</strong></p>
+<p>这里以一个简单的例子来讲解一下是怎样的一个情况。我们要写一个可以将简单的数据表达式，类似 1 + (2 - 3) * 456 解析成树的 Pratt Parser。首先我们需要一个 lexer 把每个 token&nbsp;解析出来，那么最开始的代码就是：</p>
+<div class="highlight"><pre><span></span># simple math expression parser
+
+def lexer(s):
+    &#39;&#39;&#39;token generator, yields a list of tokens&#39;&#39;&#39;
+    yield s
+
+if __name__ == &#39;__main__&#39;:
+    for token in lexer(&quot;1 + (2 - 3) * 456&quot;):
+        print token
+</pre></div>
+
+
+<p>明显这个没有任何意义，但现在程序已经有足够的东西能够跑起来。我们把这个程序存为 expr.py，开启一个命令行窗口，运行 ipython&nbsp;然后像这样执行它：</p>
+<div class="highlight"><pre><span></span>$ ipython
+IPython <span class="m">0</span>.13.1 -- An enhanced Interactive Python.
+?         -&gt; Introduction and overview of IPython<span class="err">&#39;</span>s features.
+...
+
+In <span class="o">[</span><span class="m">1</span><span class="o">]</span>: run expr.py
+<span class="m">1</span> + <span class="o">(</span><span class="m">2</span> - <span class="m">3</span><span class="o">)</span> * <span class="m">456</span>
+</pre></div>
+
+
+<p>在 IPython 里面用 run 跑的好处有很多，首先是你在程序执行完毕后整个程序的状态，比如最后全局变量的值，你写的函数这些你都是可以随便执行的！同样的你可以在 IPython 里面保存一些用来测试的常量，每次用 run&nbsp;跑的话新的程序会被重新载入，你可以这样方便的测试每个函数，有一个非常动态的环境来调试你的程序：</p>
+<div class="highlight"><pre><span></span>In [2]: print token # 注意这里 token 就是 __main__ 里面的那个 token 的值
+1 + (2 - 3) * 456
+
+In [3]: print list(lexer(&#39;1+2+3&#39;)) # 可以运行你写的函数
+[&#39;1+2+3&#39;]
+</pre></div>
+
+
+<p>然后按照之前的想法，我们尝试把这个 lexer 写出来。在这个过程中，IPython 可以用来查看函数的文档，测试如何调用某些函数，看看返回值是什么样子等等，还是跟上面的说的一样，我们有一个动态的环境可以真真正正的执行程序，你可以&nbsp;在把代码写到你珍贵的主程序之前就有机会运行它，这样你可以更确认你的代码能正常工作：</p>
+<div class="highlight"><pre><span></span>In [4]: s = &quot;foo&quot; # 忘记判断字符串是数字的函数的名字了，用一个字符串试试看
+
+In [5]: s.is      # 开头大概是 is，这里按下 tab 键 IPython 会帮我们补全
+s.isalnum  s.isalpha  s.isdigit  s.islower  s.isspace  s.istitle
+
+In [6]: s.isdigit?  # 结果是 isdigit，在表达式后加上问号并回车查看文档
+Type:       builtin_function_or_method
+String Form:&lt;built-in method isdigit of str object at 0x1264f08&gt;
+Docstring:
+S.isdigit() -&gt; bool
+
+Return True if all characters in S are digits
+and there is at least one character in S, False otherwise.
+
+In [8]: s.isdigit()      # 调用试试看
+Out[8]: False
+
+In [9]: &#39;f&#39; in &#39;foo&#39;     # 试试字符串能不能用 in 来判断
+Out[9]: True
+</pre></div>
+
+
+<p>确认了各个步骤以后，我们把 lexer&nbsp;的代码填起来。我们为了节省纵向的空间我们把很多东西写在一行里面：</p>
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="nt">simple</span> <span class="nt">math</span> <span class="nt">expression</span> <span class="nt">parser</span> <span class="o">(</span><span class="nt">broken</span> <span class="nt">lexer</span><span class="o">)</span>
+
+<span class="nt">def</span> <span class="nt">lexer</span><span class="o">(</span><span class="nt">s</span><span class="o">):</span>
+    <span class="s1">&#39;&#39;&#39;token generator&#39;&#39;&#39;</span>
+    <span class="nt">ix</span> <span class="o">=</span> <span class="nt">0</span> 
+    <span class="nt">while</span> <span class="nt">ix</span> <span class="o">&lt;</span> <span class="nt">len</span><span class="o">(</span><span class="nt">s</span><span class="o">):</span>
+        <span class="nt">if</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="cp">]</span><span class="p">.</span><span class="nc">isspace</span><span class="o">():</span> <span class="nt">ix</span> <span class="o">+=</span> <span class="nt">1</span>
+        <span class="nt">if</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="cp">]</span> <span class="nt">in</span> <span class="s2">&quot;+-*/()&quot;</span><span class="o">:</span>
+            <span class="nt">yield</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="cp">]</span><span class="o">;</span> <span class="nt">ix</span> <span class="o">+=</span> <span class="nt">1</span>
+        <span class="nt">if</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="cp">]</span><span class="p">.</span><span class="nc">isdigit</span><span class="o">():</span>
+            <span class="nt">jx</span> <span class="o">=</span> <span class="nt">ix</span> <span class="o">+</span> <span class="nt">1</span> 
+            <span class="nt">while</span> <span class="nt">jx</span> <span class="o">&lt;</span> <span class="nt">len</span><span class="o">(</span><span class="nt">s</span><span class="o">)</span> <span class="nt">and</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">jx</span><span class="cp">]</span><span class="p">.</span><span class="nc">isdigit</span><span class="o">():</span> <span class="nt">jx</span> <span class="o">+=</span> <span class="nt">1</span>
+            <span class="nt">yield</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="p">:</span><span class="nx">jx</span><span class="cp">]</span><span class="o">;</span> <span class="nt">ix</span> <span class="o">=</span> <span class="nt">jx</span>
+        <span class="nt">else</span><span class="o">:</span>
+            <span class="nt">raise</span> <span class="nt">Exception</span><span class="o">(</span><span class="s2">&quot;invalid char at %d: &#39;%s&#39;&quot;</span> <span class="o">%</span> <span class="o">(</span><span class="nt">ix</span><span class="o">,</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="cp">]</span><span class="o">))</span>
+    <span class="nt">yield</span> <span class="s2">&quot;&quot;</span>
+
+<span class="nt">if</span> <span class="nt">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
+    <span class="nt">print</span> <span class="nt">list</span><span class="o">(</span><span class="nt">lexer</span><span class="o">(</span><span class="s2">&quot;1 + (2 - 3) * 456&quot;</span><span class="o">))</span>
+</pre></div>
+
+
+<p>看起来不错，我们还是在 IPython&nbsp;里执行试试，结果发现程序抛出了一个异常:</p>
+<div class="highlight"><pre><span></span><span class="nt">In</span> <span class="cp">[</span><span class="mi">6</span><span class="cp">]</span><span class="o">:</span> <span class="nt">run</span> <span class="nt">expr</span><span class="p">.</span><span class="nc">py</span>
+<span class="nt">------------------------------------------------------------------</span>
+<span class="nt">Exception</span>                       <span class="nt">Traceback</span> <span class="o">(</span><span class="nt">most</span> <span class="nt">recent</span> <span class="nt">call</span> <span class="nt">last</span><span class="o">)</span>
+<span class="nt">py</span><span class="o">/</span><span class="nt">expr</span><span class="p">.</span><span class="nc">py</span> <span class="nt">in</span> <span class="o">&lt;</span><span class="nt">module</span><span class="o">&gt;()</span>
+     <span class="nt">18</span> 
+     <span class="nt">19</span> <span class="nt">if</span> <span class="nt">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
+<span class="nt">---</span><span class="o">&gt;</span> <span class="nt">20</span>     <span class="nt">print</span> <span class="nt">list</span><span class="o">(</span><span class="nt">lexer</span><span class="o">(</span><span class="s2">&quot;1 + (2 - 3) * 456&quot;</span><span class="o">))</span>
+
+<span class="nt">py</span><span class="o">/</span><span class="nt">expr</span><span class="p">.</span><span class="nc">py</span> <span class="nt">in</span> <span class="nt">lexer</span><span class="o">(</span><span class="nt">s</span><span class="o">)</span>
+     <span class="nt">13</span>             <span class="nt">yield</span> <span class="nt">s</span><span class="cp">[</span><span class="nx">ix</span><span class="p">:</span><span class="nx">jx</span><span class="cp">]</span><span class="o">;</span> <span class="nt">ix</span> <span class="o">=</span> <span class="nt">jx</span>
+     <span class="nt">14</span>         <span class="nt">else</span><span class="o">:</span>
+<span class="nt">---</span><span class="o">&gt;</span> <span class="nt">15</span>             <span class="nt">raise</span> <span class="nt">Exception</span><span class="o">(</span><span class="s2">&quot;invalid character at ...))</span>
+<span class="s2">     16     yield &quot;</span><span class="err">&quot;</span>
+     <span class="nt">17</span>
+
+<span class="nt">Exception</span><span class="o">:</span> <span class="nt">invalid</span> <span class="nt">character</span> <span class="nt">at</span> <span class="nt">3</span><span class="o">:</span> <span class="s1">&#39; &#39;</span>
+</pre></div>
+
+
+<p>嗯？好像程序里已经处理了空格的情况。怎么会这样？不知道你碰到异常的时候一般都怎么办。你可能会选择到处添加 print，用 <span class="caps">IDE</span> 断点调试。其实这种情况用 pdb 是很明智的选择，在 IPython&nbsp;里我们可以非常轻松的使用它。</p>
+<div class="highlight"><pre><span></span>In [13]: pdb   # 开启 pdb ，这样在异常的时候我们会自动的 break 到异常处
+Automatic pdb calling has been turned ON
+
+In [14]: run expr.py
+-----------------------------------------------------------------
+Exception: invalid character at 3: &#39; &#39;
+&gt; py/expr.py(15)lexer()
+     14         else:
+---&gt; 15             raise Exception(&quot;invalid char at ...))
+     16     yield &quot;&quot;
+
+ipdb&gt; print ix  # 这里我们可以执行任何 Python 的代码
+3
+ipdb&gt; whatis ix # 也可以用 pdb 提供的命令，输入 help 可以查看所有命令
+&lt;type &#39;int&#39;&gt;
+</pre></div>
+
+
+<p>通过方便的调试和仔细检查代码，我们发现是没有正确的使用 elif 造成了问题！（我知道这个过程不是太符合情理&hellip;）。把代码里的后面的几个 if 都换成 elif&nbsp;以后我们发现结果基本上是对的了。我们可以马上再跑几个类似的例子，确认不同的输入是否都有比较好的结果：</p>
+<div class="highlight"><pre><span></span>In [18]: run expr.py   # 这次差不多对了，我们可以试试几个别的例子
+[&#39;1&#39;, &#39;+&#39;, &#39;(&#39;, &#39;2&#39;, &#39;-&#39;, &#39;3&#39;, &#39;)&#39;, &#39;*&#39;, &#39;456&#39;, &#39;&#39;]
+
+In [19]: print list(lexer(&quot;1*123*87-2*5&quot;))
+[&#39;1&#39;, &#39;*&#39;, &#39;123&#39;, &#39;*&#39;, &#39;87&#39;, &#39;-&#39;, &#39;2&#39;, &#39;*&#39;, &#39;5&#39;, &#39;&#39;]
+
+# 跟在 shell 里面一样，你可以用上下来选取之前的记录，然后简单的修改再重新执行。
+# 记得每次 run 后你的函数都是最新版本，你可以很简单的用重复的数据来测试你的函数
+# IPython 甚至还实现了 Ctrl+R！自己试试看吧
+In [19]: print list(lexer(&quot;1 + two&quot;))     
+Exception: invalid character at 2: &#39;t&#39;...
+</pre></div>
+
+
+<p>在一段痛苦的调试之后，我们最终把程序写<a href="https://gist.github.com/jagt/8493922" title="out">出来</a>了。很遗憾程序超出了我预计的长度，就不贴在这里了。后面部分的开发过程跟前面基本还是一样，总结起来就是：</p>
+<ol>
+<li>
+<p>保持你的程序是一个可以运行并且有意义的状态，尽可能频繁的运行。</p>
+</li>
+<li>
+<p>在 IPython&nbsp;里查看文档，尝试小的程序片段，测试些你不确定的做法，确定之后再把东西添加到你的代码里。</p>
+</li>
+<li>
+<p>用不同的参数在 IPython&nbsp;里测试你正在编写的函数/class。</p>
+</li>
+<li>
+<p>当遇到问题的时候，先简单的用 pdb 在异常处&nbsp;break，十有八九都能有些头绪。</p>
+</li>
+</ol>
+<h3 id="_2">额外的注意事项<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>这里举的例子是你所有的开发都是在单个 .py 文件里的。现实生活中你很有可能会横跨几个文件一起修改。请务必注意，在 IPython 里你每次 run 的时候只有被 run 的那个文件里的东西会是最后修改的版本，其 import&nbsp;的东西如果在期间被修改是不会反应出来的。</p>
+<p>这个的原理就跟你在 Python shell 里在修改前修改后重复 import 某个模块不会有作用是一样的，Python 神奇的 import 机制不会去追踪其他模块的修改。你可以手动用 reload 函数来重新载入，你也可以使用 IPython 的 <a href="http://ipython.org/ipython-doc/dev/config/extensions/autoreload.html" title="autoreload">autoreload</a> 功能来让你忽略这个问题。个人来说我没怎么用过这个功能，IPython&nbsp;没有默认开启它可能也是有些顾虑，请自己评估看看。</p>
+<p>另外你应该已经注意到，run 的效果基本上就是把你的代码拷贝进 IPython 里执行一遍。对于没有 <strong>main</strong> 的文件，你也可以 run，这样里面定义的函数和 class&nbsp;就会反映出你的更改。</p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/" target="_blank">https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/">威佐夫博弈：取石子游戏算法——挑战PythonTip</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/04/Python量化之数据处理——小数浮点精度问题解决/">Python量化之数据处理——小数浮点精度问题解决</a></li>
+        <li><a href="https://blog.pythonwood.com/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/">微信开发python+django两个月的成功经历，django是个好框架！</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/";
+        var disqus_title = "IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解";
+        var disqus_url = "https://blog.pythonwood.com/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-04-03T15:46:00+08:00"><i class="fa fa-calendar"></i> 2014年04月03日, 15:46</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="21 articles in this category">技术</a>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="8 articles with this tag">python</a>
+            <a href="/tag/jiao-cheng/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">教程</a>
+            <a href="/tag/an-zhuang/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">安装</a>
+            <a href="/tag/win7/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">win7</a>
+            <a href="/tag/ipython/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">ipython</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/" title="校园选课项目：一个名字叫jumper的chrome插件的诞生记"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.pythonwood.com/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/" title="腾讯2014实习面经——记一个非计算机学生的首次面试"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <!-- Baidu Analytics-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?485d19a1d6970625620ed76e6b7ccf4b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <!-- CNZZ Analytics-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!-- 谷歌网站翻译工具 -->
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>

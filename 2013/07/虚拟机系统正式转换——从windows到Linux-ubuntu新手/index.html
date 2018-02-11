@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  虚拟机系统正式转换——从windows到Linux-ubuntu新手
+ | 人生苦短，我用Python</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="记录大二下学期转换ubuntu10.04的一些系统折腾 版本选择：<a class="headerlink" href="#_1" title="Permanent…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/" rel="bookmark" title="Permalink to 虚拟机系统正式转换——从windows到Linux-ubuntu新手">虚拟机系统正式转换——从windows到Linux-ubuntu新手</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>记录大二下学期转换ubuntu10.04的一些系统折腾</p>
+<h3 id="_1">版本选择：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>经多次实验，Ubuntu个人认为长期支持（<span class="caps">LTS</span>）版才值得装。</strong></p>
+</li>
+<li>
+<p>VMware9中测试：Ubuntu10.04开机内存170M，Ubuntu12.04开机内存340M。</p>
+</li>
+<li>
+<p>个人感觉Ubuntu12.04像win7华丽消耗大，Ubuntu10.04像XP，对程序员实在。</p>
+</li>
+<li>
+<p>Ubuntu12.04的桌面切换真麻烦。</p>
+</li>
+</ol>
+<p>我最后选择了VMware9+Ubuntu10.04。</p>
+<h3 id="linux-ubuntuvmware">安装Linux-Ubuntu（VMware平台支持下）：<a class="headerlink" href="#linux-ubuntuvmware" title="Permanent link">&para;</a></h3>
+<h4 id="_2">双系统形式：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>wubi安装：不用分区，直接在某原分区建立文件来代表Ubuntu，应该是虚拟化技术。安全快捷，易卸载。</p>
+<p>光盘安装：win7原来有4分区，安装Ubuntu后E盘少了7G，无其它变化，推测装在了E盘。</p>
+<h4 id="_3">单系统：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>安装后占3.6G左右，其中用于虚拟内存交换的空间2G，系统文件/bin/*等只占1G多。</p>
+<h5 id="_4">安装过程的技巧：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>安装过程所增加的用户只是桌面用户，非超级用户。安装后用sudo root&nbsp;passwd修改root密码。</p>
+<p>计算机名和用户名最好3到6个字符就好了。</p>
+<p>Ubuntu安装过程下载中文语言包时最好跳过，太慢了，装好后自己设置一个快的源，然后下载。</p>
+<h3 id="_5">常用软件安装：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>极点五笔，个人比较钟意。</p>
+<p>Adobe Flash&nbsp;为了网页（若安装gecko_mediaplayer，则不用）。</p>
+<p><strong>Mplayer&nbsp;相传宇宙最强播放器（然后最好gecko_mediaplayer，SMPlayer一起装）。</strong></p>
+<p>wine 用于运行Windows程序。
+aMule&nbsp;电骡（官方中译），可选，个人测试不好。</p>
+<p>build-essential&nbsp;程序依赖库。</p>
+<p>g++,nasm,emacs,open-ssh,vnc……</p>
+<p><strong>gvim</strong></p>
+<p>就我而言，我更喜欢gvim，即使用了3个月emacs了，但是还是义无反顾地转成vim党了。</p>
+<p>gvim是编辑器之神，emacs是神一样的编辑器。前句强调gvim始终是一个编辑器，后句说明emacs可以做远超编辑器的事。</p>
+<h3 id="-">使用－习惯：<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<p>Ubuntu12.04开机都会打开终端（Terminal）,在第二桌面。比较喜欢linux的多虚拟桌面功能。</p>
+<p>firefox总是在第三桌面打开，影音在第四桌面。</p>
+<p>将常打开的程序放在面板上。</p>
+<h3 id="_6">终端：<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>输入密码不以星号表示，无显示，惯了就好。桌面窗口环境则由星号表示。</p>
+<p>最常用的键：Tab；方向上；Ctrl+C；&nbsp;补全，重复历史，强制终止。</p>
+<p>最常用命令：ls；cat；history&nbsp;；                              </p>
+<p>最好用的符号：|；&lt;；&gt;；  </p>
+<p>Ctrl＋A/D/L/R：&nbsp;到行首/行尾/清屏/查找命令历史</p>
+<h3 id="win7linux">Win7/Linux字符编码问题：<a class="headerlink" href="#win7linux" title="Permanent link">&para;</a></h3>
+<h4 id="win7linux_1">Win7/Linux编码差异：<a class="headerlink" href="#win7linux_1" title="Permanent link">&para;</a></h4>
+<p>win7的多字符实现：<span class="caps">GBK</span>，2字节；Unicode：unicode16，2字节。Linux的多字符实现：utf8，1-6字节；Unicode：unicode32，4字节。</p>
+<h3 id="_7">换行符问题：<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>win7换行＝\r\n 而Linux换行＝\n；所以Linux文本在win7下用记事本打开都是一行的。转换很简单用fromdos / todos&nbsp;命令就行。</p>
+<p>win7下保存的文本文件复制到Linux下后，中文变成乱码。</p>
+<p>＝＝＝〉win7的字符是GBK，Linux的字符是UTF8，utf8在win7可以正常显示，所以建议用iconv命令转成UTF8，而不是将Linux默认的编码变成GBK来适应。</p>
+<p>win7下保存的文本文件到Linux下后，双击提示运行。</p>
+<p>＝＝＝〉方法：chmod a-x <filename>；或者先在win7打包成zip文件，再复制，再解压，就可以彻底解决。这是个目前最好的通用方法。</p>
+<h3 id="_8">感受<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>至今已经输入2000个命令。不知不觉习惯中。</p>
+<div class="highlight"><pre><span></span>* | more # 分屏显示
+
+iconv -f gbk -t utf8 sample_config.txt | fromdos &gt; ../release/sample_config
+
+cat -n ~/.bash_history | todos &gt; _bash_history2013-07-10.txt
+</pre></div>
+
+
+<p><span class="caps">JNU</span> 2013-07-10 16:41:51&nbsp;今天考完《Linux/Unix使用》。</p>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/" target="_blank">https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.pythonwood.com/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
+        <li><a href="https://blog.pythonwood.com/2017/12/我的Linux下的图像软件使用记录/">我的Linux下的图像软件使用记录</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/";
+        var disqus_title = "虚拟机系统正式转换——从windows到Linux-ubuntu新手";
+        var disqus_url = "https://blog.pythonwood.com/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-07-10T16:29:00+08:00"><i class="fa fa-calendar"></i> 2013年07月10日, 16:29</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="21 articles in this category">技术</a>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Linux</a>
+            <a href="/tag/da-xue/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">大学</a>
+            <a href="/tag/xi-tong/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">系统</a>
+            <a href="/tag/ubuntu/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">ubuntu</a>
+            <a href="/tag/windows/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">windows</a>
+            <a href="/tag/da-er/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">大二</a>
+            <a href="/tag/bi-ji-ben/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">笔记本</a>
+            <a href="/tag/lts/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">LTS</a>
+            <a href="/tag/1004/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">10.04</a>
+            <a href="/tag/vmware/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">vmware</a>
+            <a href="/tag/zhuan-huan/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">转换</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/虚拟机系统正式转换——从windows到Linux-ubuntu新手.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.pythonwood.com/2013/07/笔迹之始/" title="笔迹之始"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.pythonwood.com/2013/07/大二C++课程期末作业——一个小工程项目总结/" title="大二C++课程期末作业——一个小工程项目总结"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2017 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <!-- Baidu Analytics-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?485d19a1d6970625620ed76e6b7ccf4b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <!-- CNZZ Analytics-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    <!-- 谷歌网站翻译工具 -->
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+
+  </body>
+</html>
