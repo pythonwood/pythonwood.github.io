@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 环境搭建</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/huan-jing-da-jian/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2017-12-05T13:46:00+08:00</updated><entry><title>树莓派初始化环境搭建的一些事</title><link href="https://pythonwood.github.io/2017/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" rel="alternate"></link><published>2017-12-05T13:46:00+08:00</published><updated>2017-12-05T13:46:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-05:/2017/12/树莓派初始化环境搭建的一些事/</id><summary type="html">&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 环境搭建</title><link href="https://blog.pythonwood.com/" rel="alternate"></link><link href="https://blog.pythonwood.com/tag/huan-jing-da-jian/feed/atom/index.html" rel="self"></link><id>https://blog.pythonwood.com/</id><updated>2017-12-05T13:46:00+08:00</updated><entry><title>树莓派初始化环境搭建的一些事</title><link href="https://blog.pythonwood.com/2017/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" rel="alternate"></link><published>2017-12-05T13:46:00+08:00</published><updated>2017-12-05T13:46:00+08:00</updated><author><name>pythonwood</name></author><id>tag:blog.pythonwood.com,2017-12-05:/2017/12/树莓派初始化环境搭建的一些事/</id><summary type="html">&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
 &lt;h3 id="_1"&gt;一、奔着遥控式家庭影音的购买方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;可以了。我没买SD卡，将旧的class10的16G的SD利用上(class10意思是写入速度约10MB/s)。&lt;/p&gt;
 &lt;ol&gt;
@@ -23,7 +23,7 @@
 &lt;p&gt;&lt;strong&gt;我认为不用买的：&lt;/strong&gt;&amp;nbsp;小屏幕（退货了），温度感应，五向摇杆，蜂鸣器，触摸感应器等。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://pythonwood.github.io/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://blog.pythonwood.com/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
 &lt;h3 id="raspbian"&gt;二、树莓派安装官方的raspbian系统并初始化&lt;a class="headerlink" href="#raspbian" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="_2"&gt;基础部分教程：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;包括修改Pi密码,修改国内源,显示中文，设置时区为Asia/Shanghai，安装开源中文字体&lt;strong&gt;文泉驿&lt;/strong&gt;，安装fcitx谷歌拼音，开启ssh服务，设置wifi连接密码&lt;/p&gt;
@@ -68,7 +68,7 @@
 &lt;h3 id="_4"&gt;三、重要提醒：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;经验证，我安装一大堆东西后，SD卡使用才4G，其中几百兆是音乐，&amp;nbsp;所以8G卡也是够用的。&lt;/p&gt;
 &lt;p&gt;熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
-&lt;a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/"&gt;树莓派SD卡Linux系统盘复制，10分钟克隆新机&lt;/a&gt;&lt;/p&gt;
+&lt;a href="https://blog.pythonwood.com/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/"&gt;树莓派SD卡Linux系统盘复制，10分钟克隆新机&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="_5"&gt;四、参考&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
