@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>  不能小看的nc——实践TCP协议第四层的软件（传输层）
- | 人生苦短，我用Python</title>
+ | 人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</title>
 
     <meta name="author" content="Pythonwood"/>
     <meta name="description" content="nc命令全名为netcat，顾名思义就是通过TCP或UDP从网络读写数据。 很多事情不一定非得抓包，nc也能发挥巨大作用。 1、传输文件<a class="headerlink"…"/>
@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
-    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/jquery.mglass.css"/>
-    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/pygment-solarized-dark.css"/>
-    <link rel="stylesheet" href="https://blog.pythonwood.com/theme/css/style.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/style.css"/>
 
     <!-- Fonts -->
     <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
@@ -27,16 +27,16 @@
       <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
 
 
-    <link rel="icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://blog.pythonwood.com/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
 
     <!-- Feeds -->
-      <link href="https://blog.pythonwood.com/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
-      <link href="https://blog.pythonwood.com/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
-      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
-      <link href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+      <link href="https://pythonwood.github.io/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://pythonwood.github.io/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://pythonwood.github.io/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
     <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
-    <link rel="canonical" href="https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/"/>
+    <link rel="canonical" href="https://pythonwood.github.io/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/"/>
 
 
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -63,13 +63,13 @@
     <div class="container">
 
       <div class="page-header">
-          <a href="https://blog.pythonwood.com" class="avatar-container pull-left">
+          <a href="https://pythonwood.github.io" class="avatar-container pull-left">
             <div class="avatar  animate ">
               <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
                 <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
             </div>
           </a>
-        <h1><a href="https://blog.pythonwood.com">Linux迷+Python粉</a> <small>人生苦短，我用Python</small></h1>
+        <h1><a href="https://pythonwood.github.io">Linux迷+Python粉</a> <small>人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</small></h1>
       </div>
 
       <nav class="navbar navbar-default">
@@ -82,7 +82,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://blog.pythonwood.com" title="人生苦短，我用Python">Linux迷+Python粉</a>
+          <a class="navbar-brand" href="https://pythonwood.github.io" title="人生苦短，我用Python(这里只是blog.pythonwood.com的备份)">Linux迷+Python粉</a>
         </div>
 
         <!-- Menus and search forms -->
@@ -110,7 +110,7 @@
           </ul>
 
 
-            <form class="navbar-form navbar-right" role="search" action="https://blog.pythonwood.com/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+            <form class="navbar-form navbar-right" role="search" action="https://pythonwood.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);">
               <div class="form-group">
                 <div class="input-group">
                   <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
@@ -135,7 +135,7 @@
       <div class="row">
         <div class=" col-md-9  ">
   <h1>
-    <a href="https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/" rel="bookmark" title="Permalink to 不能小看的nc——实践TCP协议第四层的软件（传输层）">不能小看的nc——实践TCP协议第四层的软件（传输层）</a>
+    <a href="https://pythonwood.github.io/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/" rel="bookmark" title="Permalink to 不能小看的nc——实践TCP协议第四层的软件（传输层）">不能小看的nc——实践TCP协议第四层的软件（传输层）</a>
   </h1>
         </div>
       </div>
@@ -211,14 +211,14 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
 <div class="highlight"><pre><span></span>echo -e &quot;GET / HTTP/1.0\r\n&quot; | nc uc.cn 80
 </pre></div>
     <br/><br/> <p style="color: grey;"><b>
-      原文出自<a href="https://blog.pythonwood.com" rel="author">Pythonwood</a>发表的<a href="https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/" target="_blank">https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/</a>
+      原文出自<a href="https://pythonwood.github.io" rel="author">Pythonwood</a>发表的<a href="https://pythonwood.github.io/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/" target="_blank">https://pythonwood.github.io/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/</a>
     </b></p> <br/><br/>
   </div>
 
     <h3>扩展阅读</h3>
     <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
     <ul>
-        <li><a href="https://blog.pythonwood.com/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/">ssh命令：隧道代理+本地端口转发+远程端口转发</a></li>
+        <li><a href="https://pythonwood.github.io/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/">ssh命令：隧道代理+本地端口转发+远程端口转发</a></li>
       </ul>
 
     <div class="comments">
@@ -227,7 +227,7 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
         var disqus_shortname = 'pythonwooodblog';
         var disqus_identifier = "2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/";
         var disqus_title = "不能小看的nc——实践TCP协议第四层的软件（传输层）";
-        var disqus_url = "https://blog.pythonwood.com/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/";
+        var disqus_url = "https://pythonwood.github.io/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/";
         (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
           dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
@@ -246,13 +246,13 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
 
       <p><address>
         <i class="fa fa-user"></i> By
-          <a href="https://blog.pythonwood.com/author/pythonwood.html" rel="author">pythonwood</a>
+          <a href="https://pythonwood.github.io/author/pythonwood.html" rel="author">pythonwood</a>
       </address></p>
 
     <hr/>
 
       <p>
-              <a href="https://blog.pythonwood.com/category/ji-zhu/" rel="tag"
+              <a href="https://pythonwood.github.io/category/ji-zhu/" rel="tag"
                   data-toggle="tooltip" class="label label-info"
                   title="21 articles in this category">技术</a>
             <a href="/tag/wang-luo/" data-toggle="tooltip"
@@ -277,12 +277,12 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
       <nav>
         <ul class="pager">
           <li class="previous ">
-            <a  href="https://blog.pythonwood.com/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/" title="【实习记】2014-09-26linux下恢复ntfs分区误删的文件"  rel="prev">
+            <a  href="https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/" title="【实习记】2014-09-26linux下恢复ntfs分区误删的文件"  rel="prev">
               <span aria-hidden="true">←</span> 前一篇
             </a>
           </li>
           <li class="next ">
-            <a  href="https://blog.pythonwood.com/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/" title="ssh命令：隧道代理+本地端口转发+远程端口转发"  rel="next">
+            <a  href="https://pythonwood.github.io/2016/02/ssh命令：隧道代理+本地端口转发+远程端口转发/" title="ssh命令：隧道代理+本地端口转发+远程端口转发"  rel="next">
               后一篇 <span aria-hidden="true">→</span>
             </a>
           </li>
@@ -305,6 +305,10 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
             <div class="col-md-2">
                 <h5>资料</h5>
                 <ul class="list-unstyled">
+                  <li>  <a href="https://blog.pythonwood.com">
+      <img src="https://icons.better-idea.org/icon?url=blog.pythonwood.com&size=16" width="16" height="16" class="icon" alt="blog.pythonwood.com icon"/>
+    原博客(要梯子maybe):
+  </a></li>
                   <li>  <a href="https://github.com/pythonwood">
       <i class="fa fa-github"></i>
     Github
@@ -332,9 +336,9 @@ echo -e &quot;INFO\r\n&quot; | nc ipS portREDIS   # 非交换式查看redis的�
           <div class="col-md-2">
             <h5>用以下方式浏览</h5>
             <ul class="list-unstyled">
-                <li><a href="https://blog.pythonwood.com/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
-                <li><a href="https://blog.pythonwood.com/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
-                <li><a href="https://blog.pythonwood.com/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+                <li><a href="https://pythonwood.github.io/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://pythonwood.github.io/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://pythonwood.github.io/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
             </ul>
           </div>
 
@@ -354,10 +358,10 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
           <div class="col-md-2">
               <h5>RSS订阅更新</h5>
               <ul class="list-unstyled">
-                  <li><small><a href="https://blog.pythonwood.com/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
-                  <li><small><a href="https://blog.pythonwood.com/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
-                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
-                  <li><small><a href="https://blog.pythonwood.com/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
               </ul>
           </div>
 
@@ -400,7 +404,11 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
     <!-- CNZZ Analytics-->
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
-    <script type="text/javascript" src="//js.users.51.la/19398575.js"></script>
+<img style='display:none;' alt="我要啦" src="//send.users.51.la/go2?id=19398575" />
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(101103883); }catch(e){}</script>
+<noscript><p><img style='display:none;' alt="Clicky" src="//in.getclicky.com/101103883ns.gif" /></p></noscript>
 
 <script src="//static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init(101103883); }catch(e){}</script>
@@ -417,8 +425,8 @@ function googleTranslateElementInit() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
-    <script src="https://blog.pythonwood.com/theme/js/jquery.mglass.js"></script>
-    <script src="https://blog.pythonwood.com/theme/js/application.js"></script>
+    <script src="https://pythonwood.github.io/theme/js/jquery.mglass.js"></script>
+    <script src="https://pythonwood.github.io/theme/js/application.js"></script>
 
   </body>
 </html>
