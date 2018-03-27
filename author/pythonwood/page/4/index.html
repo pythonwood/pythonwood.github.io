@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>  【实习记】2014-09-26linux下恢复ntfs分区误删的文件
+    <title>  pythonwood的随笔
  | 人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="忧伤的背景<a class="headerlink" href="#_1" title="Permanent…"/>
+    <meta name="description" content="Linux迷+Python粉 人生苦短，我用Python(这里只是blog.pythonwood.com的备份)"/>
   
 
     <!-- Bootstrap -->
@@ -33,10 +33,6 @@
     <!-- Feeds -->
       <link href="https://pythonwood.github.io/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
       <link href="https://pythonwood.github.io/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
-      <link href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
-      <link href="https://pythonwood.github.io/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
-    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
-    <link rel="canonical" href="https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/"/>
 
 
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -133,9 +129,9 @@
 
 
       <div class="row">
-        <div class=" col-md-9  ">
+        <div class=" col-md-12  ">
   <h1>
-    <a href="https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/" rel="bookmark" title="Permalink to 【实习记】2014-09-26linux下恢复ntfs分区误删的文件">【实习记】2014-09-26linux下恢复ntfs分区误删的文件</a>
+    <a href="https://pythonwood.github.io/author/pythonwood/" rel="bookmark" title="Permalink to pythonwood's articles">pythonwood 的随笔</a>
   </h1>
         </div>
       </div>
@@ -143,143 +139,129 @@
       <div class="row">
 
 
-        <div class=" col-md-9 " id="content" role="main">
-  
+        <div class=" col-md-12 " id="content" role="main">
 
-  <div>
-    <h3 id="_1">忧伤的背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>情景，ubuntu下把NTFS格式的盘中的“实习记”文件夹彻底删除了，追毁莫及，粗心觉不是一件好的事情。</p>
-<p>linux下回复ntfs盘下的文件不能用ext3grep，而使用debugfs命令实在很原始。</p>
-<p>万幸所有记录文件的文件名都是：【实习记】2014-0<em>*</em>*.txt</p>
-<p>最后使用ntfsundelete + chown + chmod + sed&nbsp;完美恢复刚才删除是所以TXT文件。</p>
-<h4 id="0">0、<a class="headerlink" href="#0" title="Permanent link">&para;</a></h4>
-<p>sudo umount&nbsp;该ntfs盘</p>
-<h4 id="1">1、<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span>sudo apt-get install ntfs-3g
-</pre></div>
+    <h2>随笔列表</h2>
 
+    <article>
+      <header>
+        <h2><a href="https://pythonwood.github.io/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/" rel="bookmark" title="Permalink to 笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></h2>
+      </header>
+      <div><h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>自学计算机技术，越到后面，越依赖ubuntu，以致于很多时候都是一开机就打开虚拟机上的ubuntu10.04，Linux已经变得越来越重要了。</p>
+<h3 id="_2">操作<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>2014-04-17，ubuntu14.04(trusty)，长期支持版(<span class="caps">LTS</span>=long term support)，还记得那天也是我腾讯实行的2面。我知道等到时机了，果断装双系统 …</p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
+        <h2><a href="https://pythonwood.github.io/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/" rel="bookmark" title="Permalink to 微信开发python+django两个月的成功经历，django是个好框架！">微信开发python+django两个月的成功经历，django是个好框架！</a></h2>
+      </header>
+      <div><h3 id="_1">时间：大三<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。</p>
+<p>下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。</p>
+<p>选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。</p>
+<p>亮点1：自带后台管理</p>
+<p>亮点2：后台权限管理</p>
+<p>亮点3：微信回复规则设置去代码化，图形界面。</p>
+<p>亮点4：一平台多网店 …</p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
+        <h2><a href="https://pythonwood.github.io/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/" rel="bookmark" title="Permalink to 腾讯2014实习面经——记一个非计算机学生的首次面试">腾讯2014实习面经——记一个非计算机学生的首次面试</a></h2>
+      </header>
+      <div><p>地点：华南理工大学大学城校区，为广州考点。</p>
+<p>流程：网申3.X + 笔试4.12 + 一面4.15 + 二面4.17 + 三面4.19 +&nbsp;签约4.25</p>
+<h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>腾讯实习招聘笔试到拿到offer（软件工程师-研发反向），历时两星期 …</p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
+        <h2><a href="https://pythonwood.github.io/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/" rel="bookmark" title="Permalink to IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解">IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解</a></h2>
+      </header>
+      <div><h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>学习python，官方版本其实足够了。但是如果追求更好的开发体验，耐得住不厌其烦地折腾。那么我可以负责任的告诉你：IPython是我认为的唯一显著好于原版python的工具。</p>
+<p>整理了《Python 二三事》：<a href="http://pre-sence.com/archives/python-intro">http://pre-sence.com/archives/python-intro</a>   《Python 四五事》：<a href="http://pre-sence.com/archives/python-misc">http://pre-sence.com …</a></p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
+        <h2><a href="https://pythonwood.github.io/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/" rel="bookmark" title="Permalink to 校园选课项目：一个名字叫jumper的chrome插件的诞生记">校园选课项目：一个名字叫jumper的chrome插件的诞生记</a></h2>
+      </header>
+      <div><p>选课是个问题，为了选课，便有了以下的故事。</p>
+<h3 id="_1">选课需求与背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>最开始，萌生想法于2013年7月。</p>
+<p>接着网上了解了chrome的结构知识，却发现例子是假的。</p>
+<p>幸好有之前师兄的一个同功能插件开源，但代码写得很乱，我喜欢逻辑清楚，结构优雅的代码。终于决定重写一个。</p>
+<p>继续学习chrome,jQuery知识，遇到问题主要找百度谷歌，发现谷歌搜索比百度强多！而且，本博3个月了都还没被百度收录到！</p>
+<p>关键时间是从2013年9月2日到9月6日 …</p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
 
-<p>直接安装ntfsundelete是不行的，它被包含于ntfs-3g中，也包含于ntfsprogs(源中已弃用此包)</p>
-<h4 id="2">2、<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span>sudo ntfsundelete /dev/sda3 -f -t 3m | grep 实习记 | awk &#39;{print $1}&#39; &gt; ntfsundelete.txt
-</pre></div>
+  <nav>
+    <ul class="pagination">
+        <li>
+        <a href="https://pythonwood.github.io/author/pythonwood/page/3/"
+              aria-label="Previous" rel="prev">
+            <span aria-hidden="true">&larr;</span>
+          </a>
+        </li>
 
+<li class="">
+            <a href="https://pythonwood.github.io/author/pythonwood/"
+              rel="
+ first ">
+              1
+            </a>
+          </li>
+<li class="">
+            <a href="https://pythonwood.github.io/author/pythonwood/page/2/"
+              rel="
+">
+              2
+            </a>
+          </li>
+<li class="">
+            <a href="https://pythonwood.github.io/author/pythonwood/page/3/"
+              rel="
+ prev ">
+              3
+            </a>
+          </li>
+<li class="active">
+            <a href="https://pythonwood.github.io/author/pythonwood/page/4/"
+              rel="
+">
+              4
+                <span class="sr-only">(current)</span>
+            </a>
+          </li>
+<li class="">
+            <a href="https://pythonwood.github.io/author/pythonwood/page/5/"
+              rel="
+ last  next ">
+              5
+            </a>
+          </li>
 
-<p>获取所有要恢复的文件的inode值，然后使用vi编辑使inode组成&rdquo;881,2341,234,&hellip;&rdquo;文本。</p>
-<p>3m表示3个月以内生成并删除的，而不3个月内删除的意思。</p>
-<h4 id="3">3、<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span>sudo ntfsundelete /dev/sda3 -d /home/wilson/tmp/ -u -i 881,2341,234,....
-</pre></div>
-
-
-<p>恢复inode为881,2341,234等的文件。</p>
-<h4 id="5">5、<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span>cd /home/wilson/tmp
-chown wilson:wilson *
-chmod a+r *
-for fn in *.txt; do sed -i &#39;s/\x00//g&#39; $fn; done;
-</pre></div>
-
-
-<p>恢复后文件属主为root，权限为600,&nbsp;需修复。</p>
-<p>恢复后的文件一般末尾有多余的\x00，使用sed也可以替换，一开始没想到。</p>
-<h4 id="6">6、<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span>#done, enjoy it!
-</pre></div>
-
-
-<p>到恢复文件的位置去吧</p>
-<h3 id="_2">参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>［教学］在Ubuntu中恢复NTFS分区中被ubuntu误删除的文件（windows软件无法恢复的ubuntu中能恢复！
-<a href="http://forum.ubuntu.org.cn/viewtopic.php?t=158497">http://forum.ubuntu.org.cn/viewtopic.php?t=158497</a></p>
-<p>Linux下恢复ntfs格式的盘上的误删文件
-<a href="http://nyc1991.blog.51cto.com/6424159/1216592">http://nyc1991.blog.51cto.com/6424159/1216592</a></p>
-<p>Linux文件误删除恢复操作
-<a href="http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html">http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html</a></p>
-    <br/><br/> <p style="color: grey;"><b>
-      原文出自<a href="https://pythonwood.github.io" rel="author">Pythonwood</a>发表的<a href="https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/" target="_blank">https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/</a>
-    </b></p> <br/><br/>
-  </div>
-
-    <h3>扩展阅读</h3>
-    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
-    <ul>
-        <li><a href="https://pythonwood.github.io/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/">【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（<span class="caps">LCS</span>）问题——阿里校招题</a></li>
-        <li><a href="https://pythonwood.github.io/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/">腾讯2014实习面经——记一个非计算机学生的首次面试</a></li>
-        <li><a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
-      </ul>
-
-    <div class="comments">
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-        var disqus_shortname = 'pythonwooodblog';
-        var disqus_identifier = "2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/";
-        var disqus_title = "【实习记】2014-09-26linux下恢复ntfs分区误删的文件";
-        var disqus_url = "https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/";
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
-    </div>
+        <li>
+          <a href="https://pythonwood.github.io/author/pythonwood/page/5/"
+              aria-label="Next" rel="next">
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+    </ul>
+  </nav>
 
         </div>
 
-          <div class="col-md-3">
-  <div class="well">
-
-    <p><abbr title="2014-09-26T15:07:00+08:00"><i class="fa fa-calendar"></i> 2014年09月26日, 15:07</abbr></p>
-
-      <p><address>
-        <i class="fa fa-user"></i> By
-          <a href="https://pythonwood.github.io/author/pythonwood/" rel="author">pythonwood</a>
-      </address></p>
-
-    <hr/>
-
-      <p>
-              <a href="https://pythonwood.github.io/category/ji-zhu/" rel="tag"
-                  data-toggle="tooltip" class="label label-info"
-                  title="21 articles in this category">技术</a>
-            <a href="/tag/linux/" data-toggle="tooltip"
-      class="label label-default"
-      title="5 articles with this tag">Linux</a>
-            <a href="/tag/shi-xi/" data-toggle="tooltip"
-      class="label label-default"
-      title="3 articles with this tag">实习</a>
-            <a href="/tag/ntfs/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">ntfs</a>
-            <a href="/tag/wen-jian-hui-fu/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">文件恢复</a>
-      </p>
-      <hr/>
-
-      <p>修正错误</p>
-      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/【实习记】2014-09-26linux下恢复ntfs分区误删的文件.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
-      <hr/>
-
-      <nav>
-        <ul class="pager">
-          <li class="previous ">
-            <a  href="https://pythonwood.github.io/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/" title="【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题"  rel="prev">
-              <span aria-hidden="true">←</span> 前一篇
-            </a>
-          </li>
-          <li class="next ">
-            <a  href="https://pythonwood.github.io/2015/12/不能小看的nc——实践TCP协议第四层的软件（传输层）/" title="不能小看的nc——实践TCP协议第四层的软件（传输层）"  rel="next">
-              后一篇 <span aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-  </div>
-            
-          </div>
 
       </div>
 
@@ -348,8 +330,6 @@ Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
               <ul class="list-unstyled">
                   <li><small><a href="https://pythonwood.github.io/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
                   <li><small><a href="https://pythonwood.github.io/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
-                  <li><small><a href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
-                  <li><small><a href="https://pythonwood.github.io/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
               </ul>
           </div>
 
