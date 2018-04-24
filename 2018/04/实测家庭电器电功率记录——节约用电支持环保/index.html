@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  实测家庭电器电功率记录——节约用电支持环保
+ | 人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="家用电器经常待机，手机插头不拔，长期旅行不清空冰箱不关总闸，我一直认为浪费电但没有具体量化的认知。最近下决心花36元来记录电器的耗电功率排行。具体就是买了个可以显示耗电快慢的<a…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://pythonwood.github.io/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://pythonwood.github.io/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://pythonwood.github.io/category/sheng-huo/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 生活 - Atom Feed"/>
+      <link href="https://pythonwood.github.io/category/sheng-huo/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 生活 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://pythonwood.github.io/2018/04/实测家庭电器电功率记录——节约用电支持环保/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://pythonwood.github.io" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://pythonwood.github.io">Linux迷+Python粉</a> <small>人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://pythonwood.github.io" title="人生苦短，我用Python(这里只是blog.pythonwood.com的备份)">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://pythonwood.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://pythonwood.github.io/2018/04/实测家庭电器电功率记录——节约用电支持环保/" rel="bookmark" title="Permalink to 实测家庭电器电功率记录——节约用电支持环保">实测家庭电器电功率记录——节约用电支持环保</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>家用电器经常待机，手机插头不拔，长期旅行不清空冰箱不关总闸，我一直认为浪费电但没有具体量化的认知。最近下决心花36元来记录电器的耗电功率排行。具体就是买了个可以显示耗电快慢的<a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DNYboi0mHsGQcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67rTJ9qRSwRX4jGYPrSmetxGs9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA5IdTsHekIOqQxPkL4fipmEcVFeZKQgm4n%2BucW%2B%2Fygb8cSpj5qSCmbA%3D&amp;pvid=10_120.239.178.83_3183_1524209142036" title="家用电功率计量插座">家用电功率计量插座</a>，然后花了些时间测量数据并记录下来。随用随测出结果，十分好用。</p>
+<h3 id="_1">实测过程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><img alt="电功率插座显示插头纯消耗功率是0.5W" src="https://pythonwood.github.io/uploads/2018/电功率插座显示插头纯消耗功率是0.5W.jpg" title="电功率插座显示插头纯消耗功率是0.5W"></p>
+<p>插座本身很小，测试过程非常方便。插上就实时显示电功率，按上下可切换显示电压，频率，时间，功率因素等。</p>
+<p>孔位不多没有关系，可加一个排插测出总电功率就好。</p>
+<p>但很可惜，最想测试的电热水器因为插孔为非普标的，所以没能测试。</p>
+<h3 id="_2">电器功耗实测记录表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>常用电器元件</th>
+<th>耗电功率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>树莓派</td>
+<td>4.5W (开机过程8W)</td>
+</tr>
+<tr>
+<td>笔记本电脑</td>
+<td>10W  (开机过程20W)</td>
+</tr>
+<tr>
+<td>手机充电器</td>
+<td>0W   (充电时2W)</td>
+</tr>
+<tr>
+<td>排插</td>
+<td>0.5W</td>
+</tr>
+<tr>
+<td>低音音箱</td>
+<td>15W</td>
+</tr>
+<tr>
+<td>hp打印机</td>
+<td>1W   (A4打印时10W)</td>
+</tr>
+<tr>
+<td>广电机顶盒</td>
+<td>7W</td>
+</tr>
+<tr>
+<td>tplink路由</td>
+<td>2.4W</td>
+</tr>
+<tr>
+<td>上网猫</td>
+<td>3W</td>
+</tr>
+<tr>
+<td>oye路由</td>
+<td>1.5W</td>
+</tr>
+<tr>
+<td>电风扇待机</td>
+<td>0W</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">电功率综述<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>插座本身通电下就要浪费0.5W。（和预测相反）</li>
+<li>手机充电器一直插着是0W，以后再不怕浪费电了。（和预测相反）</li>
+<li>猜测刷了openwrt的路由可能比很多厂商路由省电。比起功能复杂的路由，我更偏向选择功耗低的。</li>
+<li>猫、机顶盒确实是耗电大户，电费隐形杀手。（符合预测）</li>
+<li>笔记本电脑功耗甚至比台式电脑的单个组成部分音箱还低，所以买电脑选择笔记本重要原因之一是省电。按台式机60W估算一年下来，省下的电费是很可观的。</li>
+</ol>
+<h3 id="_4">附上原始笔记<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="家用电器功率记录原始笔记" src="https://pythonwood.github.io/uploads/2018/家用电器功率记录原始笔记.jpg" title="家用电器功率记录原始笔记"></p>
+<h3 id="_5">总结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>最近物联网、智能家居很火，有很多商家向消费者推销产品只重功能不重功耗。典型例子就是路由器做了很多不应该做的事情，路由器功能越丰富，就越费电。另外一个例子是智能插座，插座变成微型电脑，连接wifi以便于手机远程开断插头电源。本身这个idea就比较有争议，而且耗电大增，我不看好其发展。现在提倡环保，资源越来越紧张，希望在选购商品时，为环境多考虑一分。能节约用电的地方尽量节约。</p>
+<h3 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://pythonwood.github.io" rel="author">Pythonwood</a>发表的<a href="https://pythonwood.github.io/2018/04/实测家庭电器电功率记录——节约用电支持环保/" target="_blank">https://pythonwood.github.io/2018/04/实测家庭电器电功率记录——节约用电支持环保/</a>
+    </b></p> <br/><br/>
+  </div>
+
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2018/04/实测家庭电器电功率记录——节约用电支持环保/";
+        var disqus_title = "实测家庭电器电功率记录——节约用电支持环保";
+        var disqus_url = "https://pythonwood.github.io/2018/04/实测家庭电器电功率记录——节约用电支持环保/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-04-20T15:16:00+08:00"><i class="fa fa-calendar"></i> 2018年04月20日, 15:16</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://pythonwood.github.io/author/pythonwood/" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://pythonwood.github.io/category/sheng-huo/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="7 articles in this category">生活</a>
+            <a href="/tag/jie-yue/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">节约</a>
+            <a href="/tag/huan-bao/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">环保</a>
+            <a href="/tag/dian-qi/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">电器</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/实测家庭电器电功率记录——节约用电支持环保.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://pythonwood.github.io/2017/12/个案分析：20800元的微信小程序抢注骗局揭秘/" title="个案分析：20800元的微信小程序抢注骗局揭秘"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next  disabled ">
+            <a  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://blog.pythonwood.com">
+      <img src="https://icons.better-idea.org/icon?url=blog.pythonwood.com&size=16" width="16" height="16" class="icon" alt="blog.pythonwood.com icon"/>
+    原博客(要梯子maybe):
+  </a></li>
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
+      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
+    LinkedIn
+  </a></li>
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://pythonwood.github.io/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://pythonwood.github.io/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://pythonwood.github.io/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2018 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://pythonwood.github.io/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/category/sheng-huo/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 生活 (Atom)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/category/sheng-huo/feed/index.html"><i class="fa fa-rss"></i> 分类: 生活 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <!-- Baidu Analytics-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?485d19a1d6970625620ed76e6b7ccf4b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <!-- CNZZ Analytics-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<img style='display:none;' alt="我要啦" src="//send.users.51.la/go2?id=19398575" />
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(101103883); }catch(e){}</script>
+<noscript><p><img style='display:none;' alt="Clicky" src="//in.getclicky.com/101103883ns.gif" /></p></noscript>
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(101103883); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101103883ns.gif" /></p></noscript>
+
+    <!-- 谷歌网站翻译工具 -->
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://pythonwood.github.io/theme/js/jquery.mglass.js"></script>
+    <script src="https://pythonwood.github.io/theme/js/application.js"></script>
+
+  </body>
+</html>
