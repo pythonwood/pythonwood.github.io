@@ -141,6 +141,25 @@
 
     <article>
       <header>
+        <h2><a href="https://pythonwood.github.io/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/" rel="bookmark" title="Permalink to 【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题">【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（<span class="caps">LCS</span>）问题——阿里校招题</a></h2>
+      </header>
+      <div><!--
+昨天的问题
+方案一：寻找hash函数，可行性极低。
+方案二：载入内存，维护成一个守护进程的服务。难度比较大。
+方案三：使用前5位来索引，由前3位增至前5位唯一性，理论上是分拆记录扩大100倍，但可以就地利用mysql，最易行。
+方案四：使用方案三，但增加一个表以减少冗余，但代价新开一个表，并且每次查询都select join两个表。
+-->
+
+<h3 id="_1">最长公共子串问题分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&rdquo;bab&rdquo;和&rdquo;caba&rdquo;(当然我们现在一眼就可以看出来最长公共子串是&rdquo;ba&rdquo;或&rdquo;ab&rdquo;)</p>
+<p>b　　a&nbsp;b</p>
+<p>c　　0　　0&nbsp;0 …</p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
         <h2><a href="https://pythonwood.github.io/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/" rel="bookmark" title="Permalink to 笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></h2>
       </header>
       <div><h3 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
@@ -186,20 +205,6 @@
       <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/"><strong>➟ 阅读全文</strong></a></div>
     </article>
     <hr/>
-    <article>
-      <header>
-        <h2><a href="https://pythonwood.github.io/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/" rel="bookmark" title="Permalink to 校园选课项目：一个名字叫jumper的chrome插件的诞生记">校园选课项目：一个名字叫jumper的chrome插件的诞生记</a></h2>
-      </header>
-      <div><p>选课是个问题，为了选课，便有了以下的故事。</p>
-<h3 id="_1">选课需求与背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>最开始，萌生想法于2013年7月。</p>
-<p>接着网上了解了chrome的结构知识，却发现例子是假的。</p>
-<p>幸好有之前师兄的一个同功能插件开源，但代码写得很乱，我喜欢逻辑清楚，结构优雅的代码。终于决定重写一个。</p>
-<p>继续学习chrome,jQuery知识，遇到问题主要找百度谷歌，发现谷歌搜索比百度强多！而且，本博3个月了都还没被百度收录到！</p>
-<p>关键时间是从2013年9月2日到9月6日 …</p></div>
-      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/"><strong>➟ 阅读全文</strong></a></div>
-    </article>
-    <hr/>
 
   <nav>
     <ul class="pagination">
@@ -242,8 +247,15 @@
 <li class="">
             <a href="https://pythonwood.github.io/page/5/"
               rel="
- last  next ">
+ next ">
               5
+            </a>
+          </li>
+<li class="">
+            <a href="https://pythonwood.github.io/page/6/"
+              rel="
+ last ">
+              6
             </a>
           </li>
 
@@ -310,7 +322,7 @@
 
           <div class="col-md-2 text-muted">
             <h5>Copyright信息</h5>
-            <p>© Copyright 2013-2017 Pythonwood.</p>
+            <p>© Copyright 2013-2018 Pythonwood.</p>
               <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
 href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
