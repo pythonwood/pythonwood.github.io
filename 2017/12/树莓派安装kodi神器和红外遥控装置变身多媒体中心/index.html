@@ -9,7 +9,7 @@
  | 人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</title>
 
     <meta name="author" content="Pythonwood"/>
-    <meta name="description" content="总述<a class="headerlink" href="#_1" title="Permanent…"/>
+    <meta name="description" content="总述¶ 在大学里通过<span…"/>
   
 
     <!-- Bootstrap -->
@@ -148,7 +148,7 @@
 
   <div>
     <h3 id="_1">总述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>在大学里通过IPV6看过IPTV，最近一两年直播非常火，电视盒子也火了一把。于是想用kodi看直播电视。</p>
+<p>在大学里通过<span class="caps">IPV6</span>看过<span class="caps">IPTV</span>，最近一两年直播非常火，电视盒子也火了一把。于是想用kodi看直播电视。</p>
 <p>kodi的低耗，无噪音，便宜的优点我觉得很适合做家庭多媒体服务中心。</p>
 <p>第二次用树莓派安装kodi，没有上一次那么迷茫了。把一些有价值的东西记录下来。</p>
 <p><img alt="遥控树莓派kodi.gif" src="https://pythonwood.github.io/uploads/2017/遥控树莓派kodi.gif" title="遥控树莓派kodi"></p>
@@ -157,11 +157,11 @@
 </pre></div>
 
 
-<p>并不是raspbian安装kodi后就能看直播/电视了。如果没有安装kodi-pvr-iptvsimple，kodi侧栏的电视功能无响应，直播/TV的相关插件也会有问题。我花了不少时间才找到了原因。</p>
-<p>如果出现kodi的插件里没有&rdquo;PVR客户端&rdquo;选项可设置，或者搜索不到PVR <span class="caps">IPTV</span> Simple&nbsp;Client相关插件，或者设置时出现错误提示信息Error，通过安装kodi-pvr-iptvsimple可解决。</p>
+<p>并不是raspbian安装kodi后就能看直播/电视了。如果没有安装kodi-pvr-iptvsimple，kodi侧栏的电视功能无响应，直播/<span class="caps">TV</span>的相关插件也会有问题。我花了不少时间才找到了原因。</p>
+<p>如果出现kodi的插件里没有&rdquo;<span class="caps">PVR</span>客户端&rdquo;选项可设置，或者搜索不到<span class="caps">PVR</span> <span class="caps">IPTV</span> Simple&nbsp;Client相关插件，或者设置时出现错误提示信息Error，通过安装kodi-pvr-iptvsimple可解决。</p>
 <h3 id="kodi">二、设置kodi在无需桌面环境下随机自动运行<a class="headerlink" href="#kodi" title="Permanent link">&para;</a></h3>
-<p>kodi可以通过非GUI的命令行启动，无需先启动桌面环境，非常省资源。</p>
-<p>我做过实测树莓派3启动到命令行只需50MB内存，启动kodi播放则再增加100MB内存。总共只需150MB。如果启动桌面环境，桌面环境单独占用70MB内存。</p>
+<p>kodi可以通过非<span class="caps">GUI</span>的命令行启动，无需先启动桌面环境，非常省资源。</p>
+<p>我做过实测树莓派3启动到命令行只需<span class="caps">50MB</span>内存，启动kodi播放则再增加<span class="caps">100MB</span>内存。总共只需<span class="caps">150MB</span>。如果启动桌面环境，桌面环境单独占用<span class="caps">70MB</span>内存。</p>
 <p>先用<code>sudo raspi-config</code>命令设置boot选项，启动后自动登录到命令行模式（auto boot to&nbsp;cli）。</p>
 <p>然后在pi用户的.bashrc命令中追加一行</p>
 <div class="highlight"><pre><span></span>( cd /tmp; ps -ef | grep -v grep | grep kodi || DISPLAY=:0.0 nohup kodi ) 2&gt;&amp;1 &gt;/dev/null &amp;
@@ -213,7 +213,7 @@
 <h3 id="kodi_3">四、接下来自由发挥，对kodi自行研究，安装各种插件。<a class="headerlink" href="#kodi_3" title="Permanent link">&para;</a></h3>
 <p>按照插件库然后从插件库安装插件，或者直接按照目标插件的zip包。</p>
 <p><img alt="树莓派插件库列表截图" src="https://pythonwood.github.io/uploads/2017/树莓派插件库列表截图.jpg" title="树莓派插件库列表截图"></p>
-<p>搜集m3u8直播列表，灌给PVR IPTV客户端使用。也可以使用<a href="http://blog.sina.com.cn/s/blog_4ae08cc00102wz42.html" title="用Kodi观看网络直播电视：新插件IPTV Tool "><span class="caps">IPTV</span> Tool</a>插件来托管PVR&nbsp;IPTV客户端</p>
+<p>搜集m3u8直播列表，灌给<span class="caps">PVR</span> <span class="caps">IPTV</span>客户端使用。也可以使用<a href="http://blog.sina.com.cn/s/blog_4ae08cc00102wz42.html" title="用Kodi观看网络直播电视：新插件IPTV Tool "><span class="caps">IPTV</span> Tool</a>插件来托管<span class="caps">PVR</span> <span class="caps">IPTV</span>客户端</p>
 <h3 id="m3u8url">五、直播m3u8列表的url存活测试<a class="headerlink" href="#m3u8url" title="Permanent link">&para;</a></h3>
 <h4 id="_2">导入播放器中手动测试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>smplayer或者vlc都能打开m3u8文件进行网络播放。所以也能来测试是否存活。只是方法简单直接容易累。</p>
@@ -222,17 +222,17 @@
 <p>（todo&hellip;）</p>
 <h3 id="_4">提醒<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
-<a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机</a></p>
+<a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派<span class="caps">SD</span>卡Linux系统盘复制，10分钟克隆新机</a></p>
 <h3 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Kodi 开源多媒体播放器 - 神器 <a href="http://www.cnblogs.com/XieSir/articles/6287387.html">http://www.cnblogs.com/XieSir/articles/6287387.html</a></p>
+<p>Kodi 开源多媒体播放器 - 神器&nbsp;http://www.cnblogs.com/XieSir/articles/6287387.html</p>
 </li>
 <li>
-<p>6款树莓派kodi插件推荐 <a href="https://www.htpcbeginner.com/raspberry-pi-kodi-addons/">https://www.htpcbeginner.com/raspberry-pi-kodi-addons/</a></p>
+<p>6款树莓派kodi插件推荐&nbsp;https://www.htpcbeginner.com/raspberry-pi-kodi-addons/</p>
 </li>
 <li>
-<p>移动网络电视和IPTV的区别在哪里？ <a href="http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html">http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html</a></p>
+<p>移动网络电视和<span class="caps">IPTV</span>的区别在哪里？&nbsp;http://www.shafa.com/articles/zJmvNRrYFs6uzjhH.html</p>
 </li>
 </ol>
     <br/><br/> <p style="color: grey;"><b>
@@ -243,9 +243,9 @@
     <h3>扩展阅读</h3>
     <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
     <ul>
-        <li><a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
         <li><a href="https://pythonwood.github.io/2014/04/校园选课项目：一个名字叫jumper的chrome插件的诞生记/">校园选课项目：一个名字叫jumper的chrome插件的诞生记</a></li>
         <li><a href="https://pythonwood.github.io/2017/12/树莓派初始化环境搭建的一些事/">树莓派初始化环境搭建的一些事</a></li>
+        <li><a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/">树莓派<span class="caps">SD</span>卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</a></li>
       </ul>
 
     <div class="comments">
@@ -288,9 +288,6 @@
             <a href="/tag/cha-jian/" data-toggle="tooltip"
       class="label label-default"
       title="2 articles with this tag">插件</a>
-            <a href="/tag/yao-kong/" data-toggle="tooltip"
-      class="label label-default"
-      title="1 article with this tag">遥控</a>
             <a href="/tag/iptv/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">IPTV</a>
@@ -300,6 +297,9 @@
             <a href="/tag/wang-luo-dian-shi/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">网络电视</a>
+            <a href="/tag/yao-kong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">遥控</a>
             <a href="/tag/kodi/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">kodi</a>

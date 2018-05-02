@@ -1,10 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 技术</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2017-12-17T23:00:00+08:00</updated><entry><title>RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip</title><link href="https://pythonwood.github.io/2017/12/RSA%E5%8E%9F%E7%90%86%EF%BC%9A%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A5%A5%E6%95%B0%E5%86%85%E5%AE%B9%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E2%80%94%E2%80%94%E6%8C%91%E6%88%98PythonTip/" rel="alternate"></link><published>2017-12-17T23:00:00+08:00</published><updated>2017-12-17T23:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-17:/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;RSA密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 技术</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-04-27T19:00:00+08:00</updated><entry><title>XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</title><link href="https://pythonwood.github.io/2018/04/XUbuntu18.04%EF%BC%88Bionic%E6%B2%B3%E7%8B%B8%EF%BC%89%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%EF%BC%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E8%AE%B0%E5%BD%95/" rel="alternate"></link><published>2018-04-27T19:00:00+08:00</published><updated>2018-04-27T19:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-27:/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/</id><summary type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
+&lt;p&gt;多年使用linux经验已经使得这个过程驾轻就熟，闲庭信步:)。为了不忘记，将有沉淀价值的部分，简要记录一下。&lt;/p&gt;
+&lt;h2 id="linuxubuntu"&gt;偶然得知Linux，成为Ubuntu多年用户&lt;a class="headerlink" href="#linuxubuntu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="ubuntults"&gt;建议：只使用Ubuntu的&lt;span class="caps"&gt;LTS&lt;/span&gt;版本（长期维护 …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
+&lt;p&gt;多年使用linux经验已经使得这个过程驾轻就熟，闲庭信步:)。为了不忘记，将有沉淀价值的部分，简要记录一下。&lt;/p&gt;
+&lt;h2 id="linuxubuntu"&gt;偶然得知Linux，成为Ubuntu多年用户&lt;a class="headerlink" href="#linuxubuntu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="ubuntults"&gt;建议：只使用Ubuntu的&lt;span class="caps"&gt;LTS&lt;/span&gt;版本（长期维护）&lt;a class="headerlink" href="#ubuntults" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我的Ubuntu升级之路是10.04 -&amp;gt; 14.04 -&amp;gt; 18.0，中间的&lt;span class="caps"&gt;LTS&lt;/span&gt;版本12.04和16.04因在升级后不满意而没用，回滚恢复降版本。如果升级前没有备份，就没法恢复。系统升级前备份旧系统的准备很重要，让你可以安心折腾走得更远。这次也是花了很长时间全备份的。如果失败需要恢复系统可参考&lt;a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/" title="树莓派SD卡Linux系统盘复制，10分钟克隆新机"&gt;关于linux系统备份与恢复的随笔&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="xubuntu1804bionic"&gt;期待已久的XUbuntu18.04（Bionic河狸）正式发布&lt;a class="headerlink" href="#xubuntu1804bionic" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;新系统意味着更好的驱动，更好的软件版本，比如ubuntu14.04驱动&lt;span class="caps"&gt;RTL8723BE&lt;/span&gt;这种网卡会偶尔掉线。不幸，我的一台笔记本就是&lt;span class="caps"&gt;RTL8723BE&lt;/span&gt;网卡的。显然大版本升级 14.04 -&amp;gt; 18.04 能巧妙地不折腾而解决很多旧问题（再比如http2支持）。因此，我是带着期待在等待Ubuntu18.04发布的，同时这次升级也没有退路（14.04太老了）。幸好，升级还算满意。已经用上了最新Ubuntu了，并且速度还可以，在换&lt;span class="caps"&gt;SSD&lt;/span&gt;盘后的酷睿I3老机上运行顺畅。&lt;/p&gt;
+&lt;h4 id="ubuntu-1804-xubutnu"&gt;Ubuntu 18.04 桌面截图(XUbutnu)&lt;a class="headerlink" href="#ubuntu-1804-xubutnu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="XUbutnu18.04桌面截图" src="https://pythonwood.github.io/uploads/2018/2018-04-27XUbutnu18.04桌面截图.jpg" title="XUbutnu18.04桌面截图"&gt;&lt;/p&gt;
+&lt;h2 id="ubutnu1804-xfce"&gt;Ubutnu18.04安装升级过程 （Xfce版本）&lt;a class="headerlink" href="#ubutnu1804-xfce" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="10-ubutnuxubuntu"&gt;1.0 选择并下载Ubutnu版本(XUbuntu)&lt;a class="headerlink" href="#10-ubutnuxubuntu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;旧系统是配搭Xfce桌面的&lt;a href="https://pythonwood.github.io/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/" title="xubuntu14.04截图纪念"&gt;XUbuntu14.04&lt;/a&gt;，Xfce同时也是Linus本人选择&lt;a href="https://linux.cn/article-202-1.html" title="Linus Torvalds 弃 GNOME 3 用 Xfce"&gt;Linus Torvalds 弃 &lt;span class="caps"&gt;GNOME&lt;/span&gt; 3 用 Xfce&lt;/a&gt;。XUbuntu里面的好软件有很多，比如文件管理器Thunar，截图软件xfce4-screenshooter，网速提示器xfce4-netload-plugin，&lt;span class="caps"&gt;CPU&lt;/span&gt;内存提示器xfce4-systemload-plugin等等。同时Ubuntu18的Xfce比原版&lt;span class="caps"&gt;ISO&lt;/span&gt;文件轻量很多。
+&lt;img alt="Ubuntu18的Xfce比原版ISO文件轻量很多" src="https://pythonwood.github.io/uploads/2018/2018-04-27Ubuntu18的Xfce比原版ISO文件轻量很多.jpg"&gt;&lt;/p&gt;
+&lt;h3 id="20"&gt;2.0 升级前先备份&lt;a class="headerlink" href="#20" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="21-deb"&gt;2.1 备份已安装过的deb包名称列表&lt;a class="headerlink" href="#21-deb" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="nt"&gt;zcat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;history&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;log&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;gz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nt"&gt;grep&lt;/span&gt; &lt;span class="nt"&gt;Commandline&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;;&lt;/span&gt;  &lt;span class="nt"&gt;zcat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;history&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;log&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;gz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nt"&gt;grep&lt;/span&gt; &lt;span class="nt"&gt;Commandline&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="nt"&gt;deb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="22-pythonrubyperl"&gt;2.2 备份已安装过的python包名称列表（无则忽略，ruby，perl等备份操作同理）&lt;a class="headerlink" href="#22-pythonrubyperl" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;( pip2 list ; pip3 list ) &amp;gt; ~/pip.list.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="23-etcvar-rootetcvar"&gt;2.3 /etc,/var一些关键目录备份, root权限执行（/etc是配置文件仓库，/var包含各用户的定时任务)&lt;a class="headerlink" href="#23-etcvar-rootetcvar" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /; sudo tar czf ~/etc.tar.gz etc var/spool/cron/crontabs
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="24"&gt;2.4 繁重但强烈建议的全盘备份&lt;a class="headerlink" href="#24" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rsync同步到安全盘备份 或 tar打包放到安全目录下 或 dd复制分区为文件保存到安全目录下。
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="30"&gt;3.0 分区、格式化、安装&lt;a class="headerlink" href="#30" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="31-ubuntu1804"&gt;3.1 方式一：从新硬盘或空白分区安装ubuntu18.04&lt;a class="headerlink" href="#31-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;linux分区不是越多越好的，推荐 / + /home 模式， 实用而不折腾，&amp;nbsp;一个分区代表系统，一个分区代表用户数据空间。这样的好处就是为后续升级带来方便。&lt;/p&gt;
+&lt;p&gt;根 / 分区给15G已经完全足够，绰绰有余了。&amp;nbsp;把剩余空间都给/home，因为/分区使用量不会明显增加，/home分区却会成倍的指线增加。&lt;/p&gt;
+&lt;p&gt;window与linux并存的分区，msdos方式只能4主分区，刚好用尽：
+&lt;img alt="Ubuntu安装推荐分区" src="https://pythonwood.github.io/uploads/2018/2018-04-27Ubuntu安装推荐分区.jpg" title="Ubuntu安装推荐分区"&gt;&lt;/p&gt;
+&lt;h4 id="32-linux"&gt;3.2 方式二：从旧linux系统升级&lt;a class="headerlink" href="#32-linux" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;告诫：不要尝试apt-get dist-upgrade&amp;nbsp;一般结局都是不能自动处理错误而中止升级，旧系统可能因此寿终正寝，只留下无辜的你傻傻等待。这和不要尝试用系统升级方法装windows是一样的。&lt;/p&gt;
+&lt;p&gt;参考升级方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;之前已有linux分区是 / + /home 模式，先把 &amp;ldquo;/&amp;rdquo; 所在分区格式化，然后将整个ubuntu18.04安装 &amp;ldquo;/&amp;rdquo;&amp;nbsp;所在区。&lt;/li&gt;
+&lt;li&gt;系统安装后重启进入ubuntu18.04系统，原 &amp;ldquo;/home&amp;rdquo; 分区不会挂载。&amp;nbsp;总过程已经完成一半了。&lt;/li&gt;
+&lt;li&gt;再挂载并将原 &amp;ldquo;/home&amp;rdquo; 分区清理瘦身一下，删除家目录中.thumbnails,&amp;nbsp;.cache这些可能冲突或不大重要的用户数据。&lt;/li&gt;
+&lt;li&gt;将新系统的/home目录内容复制到原 &amp;ldquo;/home&amp;rdquo;&amp;nbsp;所在分区里面。&lt;/li&gt;
+&lt;li&gt;修改/etc/fstab，增加1行让系统重启后挂载原 &amp;ldquo;/home&amp;rdquo;&amp;nbsp;盘。确认无误后重启就完成全部过程。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样的好处是家目录中的图片、视频、工作文件、工作目录等用户资料依然在那里，变了的只是系统部分，优雅完成升级。&lt;/p&gt;
+&lt;h3 id="40-ubuntu1804"&gt;4.0 安装Ubuntu18.04系统之后的优化&lt;a class="headerlink" href="#40-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="41-ubuntu1804"&gt;4.1 Ubuntu18.04修改源&lt;a class="headerlink" href="#41-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;原来的url是cn.archive.ubuntu.com， 速度下载包时有&lt;span class="caps"&gt;3MB&lt;/span&gt;以上。其实不换也是可以的。&lt;/p&gt;
+&lt;p&gt;如果要换， 以阿里举例， 修改/etc/apt/sources.list文件内容即可（修改前备份），&amp;nbsp;改其他第三方的同理该域名即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt; &lt;span class="kp"&gt;restricted&lt;/span&gt;
+
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic-updates&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt; &lt;span class="kp"&gt;restricted&lt;/span&gt;
+
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic&lt;/span&gt; &lt;span class="kp"&gt;universe&lt;/span&gt;
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic-updates&lt;/span&gt; &lt;span class="kp"&gt;universe&lt;/span&gt;
+
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic&lt;/span&gt; &lt;span class="kp"&gt;multiverse&lt;/span&gt;
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic-updates&lt;/span&gt; &lt;span class="kp"&gt;multiverse&lt;/span&gt;
+
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu/&lt;/span&gt; &lt;span class="kp"&gt;bionic-backports&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt; &lt;span class="kp"&gt;restricted&lt;/span&gt; &lt;span class="kp"&gt;universe&lt;/span&gt; &lt;span class="kp"&gt;multiverse&lt;/span&gt;
+
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu&lt;/span&gt; &lt;span class="kp"&gt;bionic-security&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt; &lt;span class="kp"&gt;restricted&lt;/span&gt;
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu&lt;/span&gt; &lt;span class="kp"&gt;bionic-security&lt;/span&gt; &lt;span class="kp"&gt;universe&lt;/span&gt;
+&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://mirrors.aliyun.com/ubuntu&lt;/span&gt; &lt;span class="kp"&gt;bionic-security&lt;/span&gt; &lt;span class="kp"&gt;multiverse&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="42-ubuntu1804"&gt;4.2 Ubuntu18.04调整用户界面、桌面工具栏、安装字体、重新安装历史包等&lt;a class="headerlink" href="#42-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="421-xp"&gt;4.2.1 调整桌面工具栏到下面，下重上轻的风格看起来比较稳重。也是xp时代传下的习惯。&lt;a class="headerlink" href="#421-xp" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="xubutnu1804ubuntubionic-beaver"&gt;&lt;strong&gt;XUbutnu18.04截图(Ubuntu)，这个版本别名&amp;rdquo;Bionic Beaver&amp;rdquo;仿生河狸&lt;/strong&gt;&lt;a class="headerlink" href="#xubutnu1804ubuntubionic-beaver" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;img alt="XUbutnu18.04程序截图" src="https://pythonwood.github.io/uploads/2018/2018-04-27XUbutnu18.04程序截图.jpg" title="XUbutnu18.04程序截图"&gt;&lt;/p&gt;
+&lt;h4 id="422-cpu"&gt;4.2.2 在桌面地板面板工具栏上，添加自定义显示比如网速，&lt;span class="caps"&gt;CPU&lt;/span&gt;，内存等。&lt;a class="headerlink" href="#422-cpu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;添加网速提示器xfce4-netload-plugin，&lt;span class="caps"&gt;CPU&lt;/span&gt;内存提示器xfce4-systemload-plugin后的工具栏随时可获知负载网速这些计算机情况，用户体验比windows更赞！
+&lt;img alt="XUbuntu已设置显示网速和CPU内存负载的工具栏" src="https://pythonwood.github.io/uploads/2018/2018-04-27XUbuntu已设置显示网速和CPU内存负载的工具栏.jpg" title="XUbuntu已设置显示网速和CPU内存负载的工具栏"&gt;&lt;/p&gt;
+&lt;h4 id="423"&gt;4.2.3 安装谷歌拼音，文泉驿字体，调整系统字体大小等&lt;a class="headerlink" href="#423" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Ubuntu18.04默认安装fcitx-sunpinyin也好用，用起来和googlepinyin差不多。所以……我还是选大款的好了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install fcitx-googlepinyin fonts-wqy*
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="424"&gt;4.2.4 安装以前安装过的软件&lt;a class="headerlink" href="#424" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;之前记录过旧系统安装的软件，现在按需安装回来。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install gedit gthumb tmux vim-gtk3 python-pip python3-pip ipython ipython3 iotop iftop sysstat nload iptraf virtualbox virtualbox-ext-pack gparted testdisk fcitx-googlepinyin smplayer vlc gpaint xpaint pinta pelican python-bs4 axel aria2 unzip apt-file gimp remmina retext
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="43-qqctrlaltalinuxxfce-screenshooterqq"&gt;4.3 实现&lt;span class="caps"&gt;QQ&lt;/span&gt;截图功能，快捷键Ctrl+Alt+A框选截屏。(linux下用xfce-screenshooter变身&lt;span class="caps"&gt;QQ&lt;/span&gt;截图神器)&lt;a class="headerlink" href="#43-qqctrlaltalinuxxfce-screenshooterqq" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;不需安装额外软件xfce-screenshooter是XUbuntu自带的，只需操作如下步骤： 打开设置-&amp;gt; 键盘 -&amp;gt; 应用程序快捷键 -&amp;gt; 添加。 然后命令框输入xfce4-screenshooter&amp;nbsp;&amp;ndash;region确认，再按住Ctrl+Alt+A，确认添加即可。&lt;/p&gt;
+&lt;p&gt;xfce4-screenshooter这软件很赞，不需安装&lt;span class="caps"&gt;QQ&lt;/span&gt;就能有很好的截图体验。某些时候，linux用户体验可以比windows好，需要使用者本身已经对linux比较上手。
+&lt;img alt="在Linux下设置QQ截图功能" src="https://pythonwood.github.io/uploads/2018/2018-04-27在Linux下设置QQ截图功能.jpg" title="在Linux下设置QQ截图功能"&gt;&lt;/p&gt;
+&lt;h3 id="50-ubuntu1804"&gt;5.0 安装Ubuntu18.04系统之后的问题解决&lt;a class="headerlink" href="#50-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="51-ubuntu1804shadowsocks"&gt;5.1 Ubuntu18.04启动shadowsocks报错解决&lt;a class="headerlink" href="#51-ubuntu1804shadowsocks" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;原因：openssl升级到1.1.0以上版本，导致shadowsocks启动报undefined symbol:&amp;nbsp;EVP_CIPHER_CTX_cleanup错误&lt;/p&gt;
+&lt;p&gt;解决：&amp;nbsp;将py文件中所有的EVP_CIPHER_CTX_cleanup改为EVP_CIPHER_CTX_reset&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /usr/local/lib/python2.7/dist-packages/shadowsocks/crypto/openssl.py  # 按实际路径改
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="52-ubuntu1804wpserror-while-loading-shared-libraries-libpng12so0"&gt;5.2 Ubuntu18.04安装wps（解决报错error while loading shared libraries: libpng12.so.0)&lt;a class="headerlink" href="#52-ubuntu1804wpserror-while-loading-shared-libraries-libpng12so0" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;第一步下载wps-office_10.1.0.5672~a21_amd64.deb, libpng12-0_1.2.54-1ubuntu1_amd64.deb,&amp;nbsp;wps_symbol_fonts.zip（window字体非必须）文件备用。&lt;/p&gt;
+&lt;p&gt;第二步运行命令安装：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb libpng12-0_1.2.54-1ubuntu1_amd64.deb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="60-ubuntu1804"&gt;6.0 安装Ubuntu18.04总结提升&lt;a class="headerlink" href="#60-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;升级过程比较有把握，遇到的问题都是典型缺so文件这些小问题，通过谷歌搜索就能解决。&lt;/p&gt;
+&lt;p&gt;某些时候，linux用户体验可以比windows好，需要使用者本身已经对linux比较上手。&lt;/p&gt;</content><category term="Ubuntu"></category><category term="18.04"></category><category term="linux"></category><category term="系统"></category><category term="安装"></category></entry><entry><title>RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip</title><link href="https://pythonwood.github.io/2017/12/RSA%E5%8E%9F%E7%90%86%EF%BC%9A%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A5%A5%E6%95%B0%E5%86%85%E5%AE%B9%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E2%80%94%E2%80%94%E6%8C%91%E6%88%98PythonTip/" rel="alternate"></link><published>2017-12-17T23:00:00+08:00</published><updated>2017-12-17T23:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-17:/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;&lt;span class="caps"&gt;RSA&lt;/span&gt;密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
 &lt;h3 id="_1"&gt;描述:&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在RSA密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
-其中，x,a,n皆为正整数 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;RSA密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
+&lt;p&gt;在&lt;span class="caps"&gt;RSA&lt;/span&gt;密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
+其中 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;&lt;span class="caps"&gt;RSA&lt;/span&gt;密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
 &lt;h3 id="_1"&gt;描述:&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在RSA密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
+&lt;p&gt;在&lt;span class="caps"&gt;RSA&lt;/span&gt;密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
 其中，x,a,n皆为正整数。现在给你a和n的值(1 &amp;lt; a,n &amp;lt; 140000000)，请你求出最小的满足方程的正整数解x（保证有解）.
 如：a = 1001, n =&amp;nbsp;3837，则输出23。&lt;/p&gt;
 &lt;h3 id="_2"&gt;分析：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
@@ -104,10 +220,10 @@
 
 &lt;p&gt;小学初中就知道数论，数论真有魅力，非常漂亮。&lt;/p&gt;
 &lt;h3 id="_8"&gt;参考&lt;a class="headerlink" href="#_8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;数论——欧几里得算法 &lt;a href="https://xuanwo.org/2015/03/11/number-theory-gcd/"&gt;https://xuanwo.org/2015/03/11/number-theory-gcd/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;欧几里德与扩展欧几里德算法 &lt;a href="http://www.cnblogs.com/frog112111/archive/2012/08/19/2646012.html"&gt;http://www.cnblogs.com/frog112111/archive/2012/08/19/2646012.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;欧几里得算法（辗转相除法） &lt;a href="https://my.oschina.net/u/1780798/blog/646739"&gt;https://my.oschina.net/u/1780798/blog/646739&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://zhidao.baidu.com/question/406531667.html?qbl=relate_question_3"&gt;https://zhidao.baidu.com/question/406531667.html?qbl=relate_question_3&lt;/a&gt;&lt;/p&gt;</content><category term="python"></category><category term="算法"></category><category term="pythontip"></category><category term="奥数"></category><category term="数论"></category><category term="欧几里得"></category></entry><entry><title>威佐夫博弈：取石子游戏算法——挑战PythonTip</title><link href="https://pythonwood.github.io/2017/12/%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88%EF%BC%9A%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E6%8C%91%E6%88%98PythonTip/" rel="alternate"></link><published>2017-12-16T16:30:00+08:00</published><updated>2017-12-16T16:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-16:/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="取石子游戏"&gt;取石子游戏&lt;/a&gt;，如今积累工作经验之后从新挑战，成功了。把过程记录分享下。&lt;/p&gt;
+&lt;p&gt;数论——欧几里得算法&amp;nbsp;https://xuanwo.org/2015/03/11/number-theory-gcd/&lt;/p&gt;
+&lt;p&gt;欧几里德与扩展欧几里德算法&amp;nbsp;http://www.cnblogs.com/frog112111/archive/2012/08/19/2646012.html&lt;/p&gt;
+&lt;p&gt;欧几里得算法（辗转相除法）&amp;nbsp;https://my.oschina.net/u/1780798/blog/646739&lt;/p&gt;
+&lt;p&gt;https://zhidao.baidu.com/question/406531667.html?qbl=relate_question_3&lt;/p&gt;</content><category term="python"></category><category term="算法"></category><category term="pythontip"></category><category term="奥数"></category><category term="数论"></category><category term="欧几里得"></category></entry><entry><title>威佐夫博弈：取石子游戏算法——挑战PythonTip</title><link href="https://pythonwood.github.io/2017/12/%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88%EF%BC%9A%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E6%8C%91%E6%88%98PythonTip/" rel="alternate"></link><published>2017-12-16T16:30:00+08:00</published><updated>2017-12-16T16:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-16:/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="取石子游戏"&gt;取石子游戏&lt;/a&gt;，如今积累工作经验之后从新挑战，成功了。把过程记录分享下。&lt;/p&gt;
 &lt;h3 id="_1"&gt;描述:&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;有两堆石子，数量任意，可以不同。游戏开始由两个人轮流取石子。游戏规定，每次有两种不同的取法，
 一是可以在任意的一堆中取走任意多的石子；二是可以在两堆中同时取走相同数量的石子。最后把石子全部取完者为胜者。
@@ -162,7 +278,7 @@ print &amp;quot;Loose&amp;quot; if (a,b) in m else &amp;quot;Win&amp;quot;
 &lt;p&gt;生活在当代社会，我们要记住很多密码，银行卡，qq，人人，微博，邮箱等等。小P经过一番思索之后，发明了下面这种生成密码方法：给定两个正整数a和b …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt;提供了一个不错的学习算法平台，大学毕业前挑战进入了前几名&lt;a href="http://www.pythontip.com/coding/userAcList/624" title="pythonwood解题数量"&gt;pythonwood解题数量&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;当时有些未攻克的题目，比如密码生成题目，如今积累工作经验之后从新挑战，成功了。把过程记录分享下。&lt;/p&gt;
 &lt;h3 id="_1"&gt;描述:&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;生活在当代社会，我们要记住很多密码，银行卡，qq，人人，微博，邮箱等等。小P经过一番思索之后，发明了下面这种生成密码方法：给定两个正整数a和b, 利用a / b我们会得到一个长度无限的小数(若a / b不是无限小数，比如&amp;frac12;=0.5,我们认为0.5是0.5000000&amp;hellip;，同样将其看做无限长的小数），小P将该小数点后第x位到第y位的数字当做密码，这样，无论密码有多长，小P只要记住a,b,x,y四个数字就可以了，牢记密码再也不是那么困难的事情了。现在告诉你a,b,x,y（0 &amp;lt; a,b &amp;lt;= 20132013, 0 &amp;lt; x &amp;lt;= y &amp;lt; 100000000000),请你输出密码。例如：a = 1, b = 2, x = 1, y = 4, 则 a / b = 0.5000000&amp;hellip;,&amp;nbsp;输出小数点后第1到4位数字，即5000&lt;/p&gt;
+&lt;p&gt;生活在当代社会，我们要记住很多密码，银行卡，qq，人人，微博，邮箱等等。小P经过一番思索之后，发明了下面这种生成密码方法：给定两个正整数a和b, 利用a / b我们会得到一个长度无限的小数(若a / b不是无限小数，比如1/2=0.5,我们认为0.5是0.5000000&amp;hellip;，同样将其看做无限长的小数），小P将该小数点后第x位到第y位的数字当做密码，这样，无论密码有多长，小P只要记住a,b,x,y四个数字就可以了，牢记密码再也不是那么困难的事情了。现在告诉你a,b,x,y（0 &amp;lt; a,b &amp;lt;= 20132013, 0 &amp;lt; x &amp;lt;= y &amp;lt; 100000000000),请你输出密码。例如：a = 1, b = 2, x = 1, y = 4, 则 a / b = 0.5000000&amp;hellip;,&amp;nbsp;输出小数点后第1到4位数字，即5000&lt;/p&gt;
 &lt;h3 id="_2"&gt;分析：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;计算机浮点计算有精度问题，所以直接除法得结果的思路不通。这次我想到小学的列竖式除法算法本身是可以解无穷除法的。于是，这道题就是把我们小学早已学过的算法，用代码表示出来。 &lt;/p&gt;
 &lt;p&gt;下面包含几个算法，&amp;nbsp;都比较简介，比较pythonic（在网上看到是算法代码普遍臃肿）。只有最后的循环记录法是在规定时间内通过的。&lt;/p&gt;
@@ -338,74 +454,4 @@ print &amp;quot;Loose&amp;quot; if (a,b) in m else &amp;quot;Win&amp;quot;
 &lt;h4 id="pelicanplumgeowner"&gt;纪念一下，这是第二次开源贡献，为pelican的plumge主题修改被owner接受。&lt;a class="headerlink" href="#pelicanplumgeowner" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="第二次开源贡献，为pelican的plumge主题修改被owner接受" src="https://pythonwood.github.io/uploads/2017/第二次开源贡献，为pelican的plumge主题修改被owner接受.png" title="第二次开源贡献，为pelican的plumge主题修改被owner接受"&gt;&lt;/p&gt;
 &lt;h4 id="201647twisted-intro-cn"&gt;第一次是2016年4月7日对开源书籍的&lt;a href="https://github.com/likebeta/twisted-intro-cn"&gt;twisted-intro-cn&lt;/a&gt;的贡献&lt;a href="https://github.com/likebeta/twisted-intro-cn/commit/93f959edf227769cab4f812038f01bef5cdb8ac1"&gt;修改鸭子模式介绍&lt;/a&gt;&lt;a class="headerlink" href="#201647twisted-intro-cn" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img alt="第一次开源贡献，修改鸭子模式介绍" src="https://pythonwood.github.io/uploads/2017/第一次开源贡献，修改鸭子模式介绍.png" title="第一次开源贡献，修改鸭子模式介绍"&gt;&lt;/p&gt;</content><category term="pelican"></category><category term="plumage"></category><category term="贡献"></category><category term="github"></category></entry><entry><title>树莓派SD卡Linux系统盘复制，10分钟克隆新机，raspbain备份恢复</title><link href="https://pythonwood.github.io/2017/11/%E6%A0%91%E8%8E%93%E6%B4%BESD%E5%8D%A1Linux%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%A4%8D%E5%88%B6%EF%BC%8C10%E5%88%86%E9%92%9F%E5%85%8B%E9%9A%86%E6%96%B0%E6%9C%BA/" rel="alternate"></link><published>2017-11-30T15:02:00+08:00</published><updated>2017-12-05T10:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-11-30:/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/</id><summary type="html">&lt;p&gt;有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。&lt;/p&gt;
-&lt;h3 id="_1"&gt;学通树莓派系统克隆，兼备安装、备份与恢复能力。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://pythonwood.github.io/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
-&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;有旧和新树莓派二个，发现SD卡的raspbian系统可在不同树莓派之间通用，挺好。&lt;/p&gt;
-&lt;h3 id="_1"&gt;学通树莓派系统克隆，兼备安装、备份与恢复能力。&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在家里，用了一周时间，将新买的树莓派3，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;HDMI转VGA带供电&lt;/a&gt;(性价比推荐)，旧显示屏，旧音箱。组成家庭媒体中心。手机使用bubbleupnp投屏和推送音乐播放，听音乐的享受更舒服了，显示屏再大些就更好。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://pythonwood.github.io/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
-&lt;p&gt;在工作室，还有一个树莓派和支持HDMI输出的投影仪。如果能复制现有树莓派的系统SD卡，将省事不少。（重复的事应少做）&lt;/p&gt;
-&lt;h3 id="_2"&gt;开始折腾尝试&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;借助我的个人电脑是ubutnu，可以看见树莓派分区情况，第二个分区14G采用了3G，很多空间是多余的。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="gparted看树莓派分区" src="https://pythonwood.github.io/uploads/2017/gparted看树莓派分区.jpg" title="gparted看树莓派分区"&gt;&lt;/p&gt;
-&lt;p&gt;用了1天的不断努力尝试终于才成功，囧。&lt;/p&gt;
-&lt;h3 id="1ddddrescue"&gt;失败1:使用DD或ddrescue&lt;a class="headerlink" href="#1ddddrescue" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;不幸的是我是从14.6G卡克隆到14.4G卡，使用dd失败是注定的。使用dd的必要条件是目标卡要更大。&lt;/p&gt;
-&lt;h3 id="2linuxssdetc"&gt;失败2:源自笔记本linux系统迁移SSD的经验——分区一样，复制文件，改etc配置法。&lt;a class="headerlink" href="#2linuxssdetc" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;linux磁盘迁移，只需分区格式化，复制文件，修改etc下的fstab和udev目录的网卡信息，chroot+grub安装。就能完成。&lt;/p&gt;
-&lt;p&gt;然而实践得知，不适用树莓派迁移。启动时卡在&amp;rdquo;smsc95xx 1-1.1:1.0: eth0: register &amp;lsquo;smsc95xx&amp;rsquo;&amp;nbsp;&amp;hellip;&amp;rdquo;之后。无法启动。&lt;/p&gt;
-&lt;p&gt;比较发现，复制时，不会有dev/by-partuuid/目录，而本身树莓派是有这个目录的。&lt;/p&gt;
-&lt;h3 id="ddrawresize2fsqemu-imgdiskdd"&gt;成功:dd读取为raw镜像盘、resize2fs缩容分区、qemu-img缩容disk、dd写入成功启动树莓派&lt;a class="headerlink" href="#ddrawresize2fsqemu-imgdiskdd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h4 id="ddrawsd"&gt;先dd读取物理盘为raw格式镜像盘。这样就可以方法搞，最坏情况也不影响已有的系统sd卡内容。&lt;a class="headerlink" href="#ddrawsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo dd if=/dev/sdb of=/home/16G.img bs=128K
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4 id="loopgparted"&gt;挂载loop设备以便于gparted能操作&lt;a class="headerlink" href="#loopgparted" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo losetup /dev/loop0 /home/16G.img
-$sudo partprobe /dev/loop0  # 运行后才会出现分区/dev/loop0p1,/dev/loop0p2
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4 id="14g6gblock6g"&gt;第二分区从14G缩容到6G（实际是把分散的Block数据集中到前6G位置。非真正改变分区大小）&lt;a class="headerlink" href="#14g6gblock6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo e2fsck -f /dev/loop0p2
-$sudo resize2fs /dev/loop0p2 6G
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4 id="gparted-fdisk-6g"&gt;GParted / Fdisk 更改第二分区为6G&lt;a class="headerlink" href="#gparted-fdisk-6g" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;GParted&amp;nbsp;/dev/loop0打开，然后选择第二分区右击，选择&amp;rdquo;更改/移动大小&amp;rdquo;。设置。&lt;/p&gt;
-&lt;h4 id="loop"&gt;卸载恢复loop设备:&lt;a class="headerlink" href="#loop" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo partprobe -d /dev/loop0
-$sudo losetup -d /dev/loop0
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4 id="raw"&gt;raw虚拟磁盘缩容&lt;a class="headerlink" href="#raw" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$sudo qemu-img resize /home/16G.img -8G
-
-$qemu-img info /home/16G.img
-image: xxx.img
-file format: raw
-virtual size: 5.9G (6380060672 bytes)
-disk size: 5.9G
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4 id="ddsd"&gt;使用DD写入新SD卡，启动成功。&lt;a class="headerlink" href="#ddsd" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;可选：写入sd后可以用resize2fs扩容分区完全用上SD卡空间，参考上面缩容。&lt;/p&gt;
-&lt;h3 id="_3"&gt;总结提升&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;linux下安装树莓派系统到SD卡，使用dd刻录后还有剩余空间，用resize2fs可让最后分区来占满。&lt;/li&gt;
-&lt;li&gt;使用dd来备份整个硬盘太慢，可以用resize2fs将数据块移动到前面，parted缩小分区，然后刻录硬盘前面有数据部分即可。这样备份文件就不会臃肿。&lt;/li&gt;
-&lt;li&gt;备份镜像恢复时，过程类似初次安装系统。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id="_4"&gt;参考&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;把一块硬盘上的 Linux 系统整个复制到新硬盘上的方法.  &lt;a href="https://www.v2ex.com/t/183310"&gt;https://www.v2ex.com/t/183310&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;openstack文档 &lt;a href="http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd"&gt;http://docs.ocselected.org/openstack-manuals/kilo/image-guide/content/ch_modifying_images.html#losetup-kpartx-nbd&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;使用qemu-img改变镜像文件大小  &lt;a href="http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html"&gt;http://niusmallnan.com/_build/html/_templates/knowladge/resize_raw_file.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;笔记本硬盘更换记（使用LVM进行在线数据迁移） &lt;a href="http://cathay4t.blogspot.hk/2009/05/lvm.html"&gt;http://cathay4t.blogspot.hk/2009/05/lvm.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;新电脑+旧系统：教你在不同机器间转移Linux  &lt;a href="http://www.geekfan.net/1860/"&gt;http://www.geekfan.net/1860/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;usb-creator-gtk 方法和&amp;nbsp;clonezilla方法没有深入研究。&lt;/p&gt;</content><category term="树莓派"></category><category term="raspbain"></category><category term="linux"></category><category term="克隆"></category><category term="系统"></category><category term="备份"></category><category term="恢复"></category><category term="resize2fs"></category><category term="qemu-img"></category><category term="losetup"></category><category term="dd"></category><category term="智能家庭"></category></entry></feed>
+&lt;p&gt;&lt;img alt="第一次开源贡献，修改鸭子模式介绍" src="https://pythonwood.github.io/uploads/2017/第一次开源贡献，修改鸭子模式介绍.png" title="第一次开源贡献，修改鸭子模式介绍"&gt;&lt;/p&gt;</content><category term="pelican"></category><category term="plumage"></category><category term="贡献"></category><category term="github"></category></entry></feed>

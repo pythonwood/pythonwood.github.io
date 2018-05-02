@@ -157,18 +157,18 @@
 
 <h3 id="_1">最长公共子串问题分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&rdquo;bab&rdquo;和&rdquo;caba&rdquo;(当然我们现在一眼就可以看出来最长公共子串是&rdquo;ba&rdquo;或&rdquo;ab&rdquo;)</p>
-<p>b　　a&nbsp;b</p>
-<p>c　　0　　0&nbsp;0</p>
-<p>a　　0　　1&nbsp;0</p>
-<p>b　　1　　0&nbsp;1</p>
-<p>a　　0　　1&nbsp;0</p>
+<p>b　　a　　b</p>
+<p>c　　0　　0　　0</p>
+<p>a　　0　　1　　0</p>
+<p>b　　1　　0　　1</p>
+<p>a　　0　　1　　0</p>
 <p>我们看矩阵的斜对角线最长的那个就能找出最长公共子串。</p>
 <p>不过在二维矩阵上找最长的由1组成的斜对角线也是件麻烦费时的事，下面改进：当要在矩阵是填1时让它等于其左上角元素加1。</p>
-<p>b　　a&nbsp;b</p>
-<p>c　　0　　0&nbsp;0</p>
-<p>a　　0　　1&nbsp;0</p>
-<p>b　　1　　0&nbsp;2</p>
-<p>a　　0　　2&nbsp;0</p>
+<p>b　　a　　b</p>
+<p>c　　0　　0　　0</p>
+<p>a　　0　　1　　0</p>
+<p>b　　1　　0　　2</p>
+<p>a　　0　　2　　0</p>
 <p>这样矩阵中的最大元素就是&nbsp;最长公共子串的长度。</p>
 <p>在构造这个二维矩阵的过程中由于得出矩阵的某一行后其上一行就没用了，所以实际上在程序中可以用一维数组来代替这个矩阵。</p>
 <h3 id="_2">代码实践<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -226,12 +226,9 @@
 <p>比较喜欢这种锻炼。</p>
 <h3 id="_3">参考<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>研究了&nbsp;求最长公共子串问题，顺便研究了字符串匹配</p>
-<p>字符串匹配的Boyer-Moore算法
-<a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html</a></p>
-<p>字符串匹配的KMP算法
-<a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a></p>
-<p>动态规划算法之：最长公共子序列 <span class="amp">&amp;</span> 最长公共子串（<span class="caps">LCS</span>）
-<a href="http://my.oschina.net/leejun2005/blog/117167">http://my.oschina.net/leejun2005/blog/117167</a></p>
+<p>字符串匹配的Boyer-Moore算法&nbsp;http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html</p>
+<p>字符串匹配的<span class="caps">KMP</span>算法&nbsp;http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</p>
+<p>动态规划算法之：最长公共子序列 <span class="amp">&amp;</span> 最长公共子串（<span class="caps">LCS</span>）&nbsp;http://my.oschina.net/leejun2005/blog/117167</p>
     <br/><br/> <p style="color: grey;"><b>
       原文出自<a href="https://pythonwood.github.io" rel="author">Pythonwood</a>发表的<a href="https://pythonwood.github.io/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/" target="_blank">https://pythonwood.github.io/2014/08/【实习记】2014-08-29算法学习Boyer-Moore和最长公共子串（LCS）问题——阿里校招题/</a>
     </b></p> <br/><br/>
@@ -242,7 +239,7 @@
     <ul>
         <li><a href="https://pythonwood.github.io/2014/04/腾讯2014实习面经——记一个非计算机学生的首次面试/">腾讯2014实习面经——记一个非计算机学生的首次面试</a></li>
         <li><a href="https://pythonwood.github.io/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/">威佐夫博弈：取石子游戏算法——挑战PythonTip</a></li>
-        <li><a href="https://pythonwood.github.io/2014/02/寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法/">寒假挑战PythonTip（一人一python）总结——算法是程序的灵魂，程序员的心法</a></li>
+        <li><a href="https://pythonwood.github.io/2014/09/【实习记】2014-09-26linux下恢复ntfs分区误删的文件/">【实习记】2014-09-26linux下恢复ntfs分区误删的文件</a></li>
       </ul>
 
     <div class="comments">
@@ -278,25 +275,25 @@
       <p>
               <a href="https://pythonwood.github.io/category/ji-zhu/" rel="tag"
                   data-toggle="tooltip" class="label label-info"
-                  title="21 articles in this category">技术</a>
+                  title="22 articles in this category">技术</a>
             <a href="/tag/suan-fa/" data-toggle="tooltip"
       class="label label-default"
       title="5 articles with this tag">算法</a>
             <a href="/tag/shi-xi/" data-toggle="tooltip"
       class="label label-default"
       title="3 articles with this tag">实习</a>
-            <a href="/tag/dong-tai-gui-hua/" data-toggle="tooltip"
-      class="label label-default"
-      title="2 articles with this tag">动态规划</a>
             <a href="/tag/xiao-zhao/" data-toggle="tooltip"
       class="label label-default"
       title="2 articles with this tag">校招</a>
-            <a href="/tag/zui-chang-gong-gong/" data-toggle="tooltip"
+            <a href="/tag/dong-tai-gui-hua/" data-toggle="tooltip"
       class="label label-default"
-      title="1 article with this tag">最长公共</a>
+      title="2 articles with this tag">动态规划</a>
             <a href="/tag/zi-fu-chuan/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">字符串</a>
+            <a href="/tag/zui-chang-gong-gong/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">最长公共</a>
             <a href="/tag/a-li/" data-toggle="tooltip"
       class="label label-default"
       title="1 article with this tag">阿里</a>

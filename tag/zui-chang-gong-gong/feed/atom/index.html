@@ -9,8 +9,8 @@
 
 &lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
-&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
-&lt;p&gt;c　　0　　0&amp;nbsp;0 …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;p&gt;b　　a　　b&lt;/p&gt;
+&lt;p&gt;c　　0　　0　　0 …&lt;/p&gt;</summary><content type="html">&lt;!--
 昨天的问题
 方案一：寻找hash函数，可行性极低。
 方案二：载入内存，维护成一个守护进程的服务。难度比较大。
@@ -20,18 +20,18 @@
 
 &lt;h3 id="_1"&gt;最长公共子串问题分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;其实这是一个序贯决策问题，可以用动态规划来求解。我们采用一个二维矩阵来记录中间的结果。这个二维矩阵怎么构造呢？直接举个例子吧：&amp;rdquo;bab&amp;rdquo;和&amp;rdquo;caba&amp;rdquo;(当然我们现在一眼就可以看出来最长公共子串是&amp;rdquo;ba&amp;rdquo;或&amp;rdquo;ab&amp;rdquo;)&lt;/p&gt;
-&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
-&lt;p&gt;c　　0　　0&amp;nbsp;0&lt;/p&gt;
-&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
-&lt;p&gt;b　　1　　0&amp;nbsp;1&lt;/p&gt;
-&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;b　　a　　b&lt;/p&gt;
+&lt;p&gt;c　　0　　0　　0&lt;/p&gt;
+&lt;p&gt;a　　0　　1　　0&lt;/p&gt;
+&lt;p&gt;b　　1　　0　　1&lt;/p&gt;
+&lt;p&gt;a　　0　　1　　0&lt;/p&gt;
 &lt;p&gt;我们看矩阵的斜对角线最长的那个就能找出最长公共子串。&lt;/p&gt;
 &lt;p&gt;不过在二维矩阵上找最长的由1组成的斜对角线也是件麻烦费时的事，下面改进：当要在矩阵是填1时让它等于其左上角元素加1。&lt;/p&gt;
-&lt;p&gt;b　　a&amp;nbsp;b&lt;/p&gt;
-&lt;p&gt;c　　0　　0&amp;nbsp;0&lt;/p&gt;
-&lt;p&gt;a　　0　　1&amp;nbsp;0&lt;/p&gt;
-&lt;p&gt;b　　1　　0&amp;nbsp;2&lt;/p&gt;
-&lt;p&gt;a　　0　　2&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;b　　a　　b&lt;/p&gt;
+&lt;p&gt;c　　0　　0　　0&lt;/p&gt;
+&lt;p&gt;a　　0　　1　　0&lt;/p&gt;
+&lt;p&gt;b　　1　　0　　2&lt;/p&gt;
+&lt;p&gt;a　　0　　2　　0&lt;/p&gt;
 &lt;p&gt;这样矩阵中的最大元素就是&amp;nbsp;最长公共子串的长度。&lt;/p&gt;
 &lt;p&gt;在构造这个二维矩阵的过程中由于得出矩阵的某一行后其上一行就没用了，所以实际上在程序中可以用一维数组来代替这个矩阵。&lt;/p&gt;
 &lt;h3 id="_2"&gt;代码实践&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
@@ -89,9 +89,6 @@
 &lt;p&gt;比较喜欢这种锻炼。&lt;/p&gt;
 &lt;h3 id="_3"&gt;参考&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;研究了&amp;nbsp;求最长公共子串问题，顺便研究了字符串匹配&lt;/p&gt;
-&lt;p&gt;字符串匹配的Boyer-Moore算法
-&lt;a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html"&gt;http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;字符串匹配的KMP算法
-&lt;a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html"&gt;http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;动态规划算法之：最长公共子序列 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 最长公共子串（&lt;span class="caps"&gt;LCS&lt;/span&gt;）
-&lt;a href="http://my.oschina.net/leejun2005/blog/117167"&gt;http://my.oschina.net/leejun2005/blog/117167&lt;/a&gt;&lt;/p&gt;</content><category term="阿里"></category><category term="校招"></category><category term="实习"></category><category term="算法"></category><category term="最长公共"></category><category term="子串"></category><category term="字符串"></category><category term="动态规划"></category></entry></feed>
+&lt;p&gt;字符串匹配的Boyer-Moore算法&amp;nbsp;http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html&lt;/p&gt;
+&lt;p&gt;字符串匹配的&lt;span class="caps"&gt;KMP&lt;/span&gt;算法&amp;nbsp;http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html&lt;/p&gt;
+&lt;p&gt;动态规划算法之：最长公共子序列 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 最长公共子串（&lt;span class="caps"&gt;LCS&lt;/span&gt;）&amp;nbsp;http://my.oschina.net/leejun2005/blog/117167&lt;/p&gt;</content><category term="阿里"></category><category term="校招"></category><category term="实习"></category><category term="算法"></category><category term="最长公共"></category><category term="子串"></category><category term="字符串"></category><category term="动态规划"></category></entry></feed>
