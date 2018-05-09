@@ -177,24 +177,21 @@
 
 
 <h4 id="24">2.4 繁重但强烈建议的全盘备份<a class="headerlink" href="#24" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span>rsync同步到安全盘备份 或 tar打包放到安全目录下 或 dd复制分区为文件保存到安全目录下。
-</pre></div>
-
-
+<p>备份方法多种：rsync同步到安全盘备份 或 tar打包放到安全目录下 或&nbsp;dd复制分区为文件保存到安全目录下。</p>
 <h3 id="30">3.0 分区、格式化、安装<a class="headerlink" href="#30" title="Permanent link">&para;</a></h3>
 <h4 id="31-ubuntu1804">3.1 方式一：从新硬盘或空白分区安装ubuntu18.04<a class="headerlink" href="#31-ubuntu1804" title="Permanent link">&para;</a></h4>
 <p>linux分区不是越多越好的，推荐 / + /home 模式， 实用而不折腾，&nbsp;一个分区代表系统，一个分区代表用户数据空间。这样的好处就是为后续升级带来方便。</p>
-<p>根 / 分区给15G已经完全足够，绰绰有余了。&nbsp;把剩余空间都给/home，因为/分区使用量不会明显增加，/home分区却会成倍的指线增加。</p>
-<p>window与linux并存的分区，msdos方式只能4主分区，刚好用尽：
+<p>根 / 分区给15G已经完全足够，绰绰有余了。&nbsp;把剩余空间都给/home，因为/分区使用量不会明显增加，/home分区放的东西却会成倍的增加。</p>
+<p>多年之后我目前用的分区方式，window与linux双系统共存的分区方式。msdos方式只能4主分区，刚好用完：
 <img alt="Ubuntu安装推荐分区" src="https://pythonwood.github.io/uploads/2018/2018-04-27Ubuntu安装推荐分区.jpg" title="Ubuntu安装推荐分区"></p>
 <h4 id="32-linux">3.2 方式二：从旧linux系统升级<a class="headerlink" href="#32-linux" title="Permanent link">&para;</a></h4>
-<p>告诫：不要尝试apt-get dist-upgrade&nbsp;一般结局都是不能自动处理错误而中止升级，旧系统可能因此寿终正寝，只留下无辜的你傻傻等待。这和不要尝试用系统升级方法装windows是一样的。</p>
+<p>告诫：不要尝试从命令<code>sudo apt-get dist-upgrade</code>升级，结局一般都是不能自动处理错误而中止升级，系统可能因此寿终正寝，只留下无辜的你。这和不要尝试用系统升级方法装windows是一样的。</p>
 <p>参考升级方法：</p>
 <ol>
 <li>之前已有linux分区是 / + /home 模式，先把 &ldquo;/&rdquo; 所在分区格式化，然后将整个ubuntu18.04安装 &ldquo;/&rdquo;&nbsp;所在区。</li>
 <li>系统安装后重启进入ubuntu18.04系统，原 &ldquo;/home&rdquo; 分区不会挂载。&nbsp;总过程已经完成一半了。</li>
 <li>再挂载并将原 &ldquo;/home&rdquo; 分区清理瘦身一下，删除家目录中.thumbnails,&nbsp;.cache这些可能冲突或不大重要的用户数据。</li>
-<li>将新系统的/home目录内容复制到原 &ldquo;/home&rdquo;&nbsp;所在分区里面。</li>
+<li>将新/home目录内容rsync同步到旧 &ldquo;/home&rdquo;&nbsp;分区所在目录里。</li>
 <li>修改/etc/fstab，增加1行让系统重启后挂载原 &ldquo;/home&rdquo;&nbsp;盘。确认无误后重启就完成全部过程。</li>
 </ol>
 <p>这样的好处是家目录中的图片、视频、工作文件、工作目录等用户资料依然在那里，变了的只是系统部分，优雅完成升级。</p>
@@ -235,7 +232,7 @@
 
 <h4 id="424">4.2.4 安装以前安装过的软件<a class="headerlink" href="#424" title="Permanent link">&para;</a></h4>
 <p>之前记录过旧系统安装的软件，现在按需安装回来。</p>
-<div class="highlight"><pre><span></span>apt-get install gedit gthumb tmux vim-gtk3 python-pip python3-pip ipython ipython3 iotop iftop sysstat nload iptraf virtualbox virtualbox-ext-pack gparted testdisk fcitx-googlepinyin smplayer vlc gpaint xpaint pinta pelican python-bs4 axel aria2 unzip apt-file gimp remmina retext
+<div class="highlight"><pre><span></span>apt-get install gedit gthumb tmux vim-gtk3 python-pip python3-pip ipython ipython3 iotop iftop sysstat nload iptraf virtualbox virtualbox-ext-pack gparted testdisk fcitx-googlepinyin smplayer vlc gpaint xpaint pinta pelican python-bs4 axel aria2 unzip apt-file gimp remmina retext potool curl geoip-bin phantomjs lynx vim-tiny  gnome-disk-utility sqlite3 python-mysqldb python-pymysql kazam  pitivi gsound-tools flowblade mp3splt-gtk mp3wrap mtp-tools  adb cmake
 </pre></div>
 
 
@@ -258,6 +255,9 @@
 </pre></div>
 
 
+<h4 id="53-panel">5.3 底部面板panel出现重复的网络图标解决<a class="headerlink" href="#53-panel" title="Permanent link">&para;</a></h4>
+<p><img alt="panel面板重复出现network图标" src="https://pythonwood.github.io/uploads/2018/2018-05-09面板显示重复网络图标.png" title="panel面板重复出现network图标"></p>
+<p>解决：设置 - 会话与启动 - 程序自启动 - 取消勾选network项。 注销，再登录，重新勾选，注销，再登录。&nbsp;图标恢复只有一个。</p>
 <h3 id="60-ubuntu1804">6.0 安装Ubuntu18.04总结提升<a class="headerlink" href="#60-ubuntu1804" title="Permanent link">&para;</a></h3>
 <p>升级过程比较有把握，遇到的问题都是典型缺so文件这些小问题，通过谷歌搜索就能解决。</p>
 <p>某些时候，linux用户体验可以比windows好，需要使用者本身已经对linux比较上手。</p>
@@ -269,8 +269,8 @@
     <h3>扩展阅读</h3>
     <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
     <ul>
-        <li><a href="https://pythonwood.github.io/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/">虚拟机系统正式转换——从windows到Linux-ubuntu新手</a></li>
         <li><a href="https://pythonwood.github.io/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/">笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</a></li>
+        <li><a href="https://pythonwood.github.io/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/">虚拟机系统正式转换——从windows到Linux-ubuntu新手</a></li>
         <li><a href="https://pythonwood.github.io/2017/12/我的Linux下的图像软件使用记录/">我的Linux下的图像软件使用记录</a></li>
       </ul>
 
@@ -378,10 +378,6 @@
             <div class="col-md-2">
                 <h5>简历</h5>
                 <ul class="list-unstyled">
-                  <li>  <a href="https://www.linkedin.com/in/%E4%BC%9F%E9%A1%BA-%E5%90%B4-769066125/">
-      <img src="https://icons.better-idea.org/icon?url=www.linkedin.com&size=16" width="16" height="16" class="icon" alt="www.linkedin.com icon"/>
-    LinkedIn
-  </a></li>
                   <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
       <i class="fa fa-file-text"></i>
     PDF简历

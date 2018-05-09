@@ -32,24 +32,21 @@
 
 
 &lt;h4 id="24"&gt;2.4 繁重但强烈建议的全盘备份&lt;a class="headerlink" href="#24" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rsync同步到安全盘备份 或 tar打包放到安全目录下 或 dd复制分区为文件保存到安全目录下。
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;备份方法多种：rsync同步到安全盘备份 或 tar打包放到安全目录下 或&amp;nbsp;dd复制分区为文件保存到安全目录下。&lt;/p&gt;
 &lt;h3 id="30"&gt;3.0 分区、格式化、安装&lt;a class="headerlink" href="#30" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="31-ubuntu1804"&gt;3.1 方式一：从新硬盘或空白分区安装ubuntu18.04&lt;a class="headerlink" href="#31-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;linux分区不是越多越好的，推荐 / + /home 模式， 实用而不折腾，&amp;nbsp;一个分区代表系统，一个分区代表用户数据空间。这样的好处就是为后续升级带来方便。&lt;/p&gt;
-&lt;p&gt;根 / 分区给15G已经完全足够，绰绰有余了。&amp;nbsp;把剩余空间都给/home，因为/分区使用量不会明显增加，/home分区却会成倍的指线增加。&lt;/p&gt;
-&lt;p&gt;window与linux并存的分区，msdos方式只能4主分区，刚好用尽：
+&lt;p&gt;根 / 分区给15G已经完全足够，绰绰有余了。&amp;nbsp;把剩余空间都给/home，因为/分区使用量不会明显增加，/home分区放的东西却会成倍的增加。&lt;/p&gt;
+&lt;p&gt;多年之后我目前用的分区方式，window与linux双系统共存的分区方式。msdos方式只能4主分区，刚好用完：
 &lt;img alt="Ubuntu安装推荐分区" src="https://pythonwood.github.io/uploads/2018/2018-04-27Ubuntu安装推荐分区.jpg" title="Ubuntu安装推荐分区"&gt;&lt;/p&gt;
 &lt;h4 id="32-linux"&gt;3.2 方式二：从旧linux系统升级&lt;a class="headerlink" href="#32-linux" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;告诫：不要尝试apt-get dist-upgrade&amp;nbsp;一般结局都是不能自动处理错误而中止升级，旧系统可能因此寿终正寝，只留下无辜的你傻傻等待。这和不要尝试用系统升级方法装windows是一样的。&lt;/p&gt;
+&lt;p&gt;告诫：不要尝试从命令&lt;code&gt;sudo apt-get dist-upgrade&lt;/code&gt;升级，结局一般都是不能自动处理错误而中止升级，系统可能因此寿终正寝，只留下无辜的你。这和不要尝试用系统升级方法装windows是一样的。&lt;/p&gt;
 &lt;p&gt;参考升级方法：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;之前已有linux分区是 / + /home 模式，先把 &amp;ldquo;/&amp;rdquo; 所在分区格式化，然后将整个ubuntu18.04安装 &amp;ldquo;/&amp;rdquo;&amp;nbsp;所在区。&lt;/li&gt;
 &lt;li&gt;系统安装后重启进入ubuntu18.04系统，原 &amp;ldquo;/home&amp;rdquo; 分区不会挂载。&amp;nbsp;总过程已经完成一半了。&lt;/li&gt;
 &lt;li&gt;再挂载并将原 &amp;ldquo;/home&amp;rdquo; 分区清理瘦身一下，删除家目录中.thumbnails,&amp;nbsp;.cache这些可能冲突或不大重要的用户数据。&lt;/li&gt;
-&lt;li&gt;将新系统的/home目录内容复制到原 &amp;ldquo;/home&amp;rdquo;&amp;nbsp;所在分区里面。&lt;/li&gt;
+&lt;li&gt;将新/home目录内容rsync同步到旧 &amp;ldquo;/home&amp;rdquo;&amp;nbsp;分区所在目录里。&lt;/li&gt;
 &lt;li&gt;修改/etc/fstab，增加1行让系统重启后挂载原 &amp;ldquo;/home&amp;rdquo;&amp;nbsp;盘。确认无误后重启就完成全部过程。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;这样的好处是家目录中的图片、视频、工作文件、工作目录等用户资料依然在那里，变了的只是系统部分，优雅完成升级。&lt;/p&gt;
@@ -90,7 +87,7 @@
 
 &lt;h4 id="424"&gt;4.2.4 安装以前安装过的软件&lt;a class="headerlink" href="#424" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;之前记录过旧系统安装的软件，现在按需安装回来。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install gedit gthumb tmux vim-gtk3 python-pip python3-pip ipython ipython3 iotop iftop sysstat nload iptraf virtualbox virtualbox-ext-pack gparted testdisk fcitx-googlepinyin smplayer vlc gpaint xpaint pinta pelican python-bs4 axel aria2 unzip apt-file gimp remmina retext
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install gedit gthumb tmux vim-gtk3 python-pip python3-pip ipython ipython3 iotop iftop sysstat nload iptraf virtualbox virtualbox-ext-pack gparted testdisk fcitx-googlepinyin smplayer vlc gpaint xpaint pinta pelican python-bs4 axel aria2 unzip apt-file gimp remmina retext potool curl geoip-bin phantomjs lynx vim-tiny  gnome-disk-utility sqlite3 python-mysqldb python-pymysql kazam  pitivi gsound-tools flowblade mp3splt-gtk mp3wrap mtp-tools  adb cmake
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -113,6 +110,9 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;h4 id="53-panel"&gt;5.3 底部面板panel出现重复的网络图标解决&lt;a class="headerlink" href="#53-panel" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="panel面板重复出现network图标" src="https://pythonwood.github.io/uploads/2018/2018-05-09面板显示重复网络图标.png" title="panel面板重复出现network图标"&gt;&lt;/p&gt;
+&lt;p&gt;解决：设置 - 会话与启动 - 程序自启动 - 取消勾选network项。 注销，再登录，重新勾选，注销，再登录。&amp;nbsp;图标恢复只有一个。&lt;/p&gt;
 &lt;h3 id="60-ubuntu1804"&gt;6.0 安装Ubuntu18.04总结提升&lt;a class="headerlink" href="#60-ubuntu1804" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;升级过程比较有把握，遇到的问题都是典型缺so文件这些小问题，通过谷歌搜索就能解决。&lt;/p&gt;
 &lt;p&gt;某些时候，linux用户体验可以比windows好，需要使用者本身已经对linux比较上手。&lt;/p&gt;</content><category term="Ubuntu"></category><category term="18.04"></category><category term="linux"></category><category term="系统"></category><category term="安装"></category></entry><entry><title>IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解</title><link href="https://pythonwood.github.io/2014/04/IPython%EF%BC%8C%E8%AE%A9Python%E6%98%BE%E5%BE%97%E5%8F%8B%E5%A5%BD%E5%8D%81%E5%80%8D%E7%9A%84%E5%A4%96%E5%A5%97%E2%80%94%E2%80%94windowsXP%E3%80%81Win7%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" rel="alternate"></link><published>2014-04-03T15:46:00+08:00</published><updated>2017-11-27T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2014-04-03:/2014/04/IPython，让Python显得友好十倍的外套——windowsXP、Win7安装详解/</id><summary type="html">&lt;h3 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
