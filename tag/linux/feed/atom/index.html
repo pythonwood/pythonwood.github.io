@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - linux</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/linux/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-04-27T19:00:00+08:00</updated><entry><title>XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</title><link href="https://pythonwood.github.io/2018/04/XUbuntu18.04%EF%BC%88Bionic%E6%B2%B3%E7%8B%B8%EF%BC%89%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%EF%BC%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E8%AE%B0%E5%BD%95/" rel="alternate"></link><published>2018-04-27T19:00:00+08:00</published><updated>2018-04-27T19:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-27:/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/</id><summary type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - linux</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/linux/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-11-07T15:30:00+08:00</updated><entry><title>神奇的环境bug导致python3中出现udc开头字符串</title><link href="https://pythonwood.github.io/2018/11/%E7%A5%9E%E5%A5%87%E7%9A%84%E7%8E%AF%E5%A2%83bug%E5%AF%BC%E8%87%B4python3%E4%B8%AD%E5%87%BA%E7%8E%B0udc%E5%BC%80%E5%A4%B4%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="alternate"></link><published>2018-11-07T15:30:00+08:00</published><updated>2018-11-07T15:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-11-07:/2018/11/神奇的环境bug导致python3中出现udc开头字符串/</id><summary type="html">&lt;h2 id="langzh_cnutf-8langen_usutf-8"&gt;注意：&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8不可混淆！&lt;a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8有区别&lt;/strong&gt; ，&amp;nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="langzh_cnutf-8langen_usutf-8"&gt;注意：&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8不可混淆！&lt;a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8有区别&lt;/strong&gt; ，&amp;nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3，因环境不一致也能导致编码问题！&lt;/p&gt;
+&lt;h2 id="_1"&gt;当时环境与功能：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;vps系统是ubutnu 14.04, 相关软件python3.4, selenium3+, chrome66, chromedriver。使用crontab启动shell， shell中启动python脚本，&amp;nbsp;脚本中selenium启动chrome，……&lt;/p&gt;
+&lt;h2 id="bug"&gt;出bug的运行流程：&lt;a class="headerlink" href="#bug" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;crontab中的a.sh启动   &lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8 bash&amp;nbsp;a.sh&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;a.sh末尾调用&amp;rdquo;b中文名.py&amp;rdquo;，&amp;nbsp;带中文参数&amp;rdquo;《xxx》&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;b中文.py 中print(参数1) 会异常显示字符串编码问题&amp;rsquo;ascii&amp;rsquo; codec can&amp;rsquo;t encode&amp;nbsp;characters&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_2"&gt;调试发现:&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;print repr(中文参数1)， 会打印\udc&amp;nbsp;开头的而非\x开头的utf8型编码。&lt;/li&gt;
+&lt;li&gt;比如&amp;rdquo;《&amp;rdquo; 正常编码是 &lt;strong&gt;&amp;lsquo;\xe3\x80\x8a&amp;rsquo;， 此处确是打印了&amp;rsquo;\udce3\udc80\udc8a&amp;rsquo;&lt;/strong&gt;&amp;nbsp;。&lt;/li&gt;
+&lt;li&gt;改变逻辑，直接ssh到vps并执行 &lt;strong&gt;b中文.py 《xxx》&lt;/strong&gt;&amp;nbsp;没有问题！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_3"&gt;问题定位:&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;个人本机ubuntu系统测试不会出现bug，vps才出现，所以应该是shell环境或者是python环境问题。&lt;/li&gt;
+&lt;li&gt;打印执行a.sh的shell环境，对比发现本机有&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8和&lt;span class="caps"&gt;LANGUAGE&lt;/span&gt;=zh_CN:zh，vps仅有&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8。&lt;/li&gt;
+&lt;li&gt;把crontab中强加的环境变量&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8去掉，此时a.sh的环境变量为&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8，&amp;nbsp;vps恢复正常。（2小时排查出结果了！）&lt;/li&gt;
+&lt;li&gt;总结： 之前觉得&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8没什么不同，从此改观。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_4"&gt;问题解决：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;去掉&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8，之后执行过程中会自动变成默认&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8&lt;/p&gt;
+&lt;h2 id="_5"&gt;原因探究：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;待定&lt;/p&gt;
+&lt;h2 id="python-reprudc-print"&gt;python repr输出udc开头字符串， print(参数)导致异常&lt;a class="headerlink" href="#python-reprudc-print" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;#39;/home/maskuser/path/to/ts/\udce3\udc80\udc8a\udce9\udc80\udc97.....mp4&amp;#39;
+
+Traceback (most recent call last):
+  File &amp;quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&amp;quot;, line 73, in &amp;lt;module&amp;gt;
+    video_upload_testsite(*sys.argv[1:])
+  File &amp;quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&amp;quot;, line 29, in video_upload_testsite
+    print (videopath)
+UnicodeEncodeError: &amp;#39;ascii&amp;#39; codec can&amp;#39;t encode characters in position 27-50: ordinal not in range(128)
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Ubuntu"></category><category term="linux"></category><category term="LANG"></category><category term="环境变量"></category><category term="python"></category></entry><entry><title>XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</title><link href="https://pythonwood.github.io/2018/04/XUbuntu18.04%EF%BC%88Bionic%E6%B2%B3%E7%8B%B8%EF%BC%89%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%EF%BC%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E8%AE%B0%E5%BD%95/" rel="alternate"></link><published>2018-04-27T19:00:00+08:00</published><updated>2018-04-27T19:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-27:/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/</id><summary type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
 &lt;p&gt;多年使用linux经验已经使得这个过程驾轻就熟，闲庭信步:)。为了不忘记，将有沉淀价值的部分，简要记录一下。&lt;/p&gt;
 &lt;h2 id="linuxubuntu"&gt;偶然得知Linux，成为Ubuntu多年用户&lt;a class="headerlink" href="#linuxubuntu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="ubuntults"&gt;建议：只使用Ubuntu的&lt;span class="caps"&gt;LTS&lt;/span&gt;版本（长期维护 …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
@@ -261,36 +298,4 @@ for fn in *.txt; do sed -i &amp;#39;s/\x00//g&amp;#39; $fn; done;
 &lt;h3 id="_2"&gt;参考&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;［教学］在Ubuntu中恢复&lt;span class="caps"&gt;NTFS&lt;/span&gt;分区中被ubuntu误删除的文件（windows软件无法恢复的ubuntu中能恢复！&amp;nbsp;http://forum.ubuntu.org.cn/viewtopic.php?t=158497&lt;/p&gt;
 &lt;p&gt;Linux下恢复ntfs格式的盘上的误删文件&amp;nbsp;http://nyc1991.blog.51cto.com/6424159/1216592&lt;/p&gt;
-&lt;p&gt;Linux文件误删除恢复操作&amp;nbsp;http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html&lt;/p&gt;</content><category term="实习"></category><category term="linux"></category><category term="ntfs"></category><category term="文件恢复"></category></entry><entry><title>笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑</title><link href="https://pythonwood.github.io/2014/07/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%B3%BB%E7%BB%9F%E8%BD%AC%E6%8D%A2Linux%E4%B8%80%E4%B8%AA%E5%8D%8A%E6%9C%88%E2%80%94%E2%80%94xubuntu14.04%E6%88%AA%E5%9B%BE%E7%BA%AA%E5%BF%B5%E9%87%8C%E7%A8%8B%E7%A2%91/" rel="alternate"></link><published>2014-07-05T23:30:00+08:00</published><updated>2017-11-30T22:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2014-07-05:/2014/07/笔记本系统转换Linux一个半月——xubuntu14.04截图纪念里程碑/</id><summary type="html">&lt;h3 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;自学计算机技术，越到后面，越依赖ubuntu，以致于很多时候都是一开机就打开虚拟机上的ubuntu10.04，Linux已经变得越来越重要了。&lt;/p&gt;
-&lt;h3 id="_2"&gt;操作&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;2014-04-17，ubuntu14.04(trusty)，长期支持版(&lt;span class="caps"&gt;LTS&lt;/span&gt;=long term support)，还记得那天也是我腾讯实行的2面。我知道等到时机了，果断装双系统 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;前言&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;自学计算机技术，越到后面，越依赖ubuntu，以致于很多时候都是一开机就打开虚拟机上的ubuntu10.04，Linux已经变得越来越重要了。&lt;/p&gt;
-&lt;h3 id="_2"&gt;操作&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;2014-04-17，ubuntu14.04(trusty)，长期支持版(&lt;span class="caps"&gt;LTS&lt;/span&gt;=long term support)，还记得那天也是我腾讯实行的2面。我知道等到时机了，果断装双系统！&amp;nbsp;开始&lt;/p&gt;
-&lt;p&gt;用实验室那台ubuntu13.10直接升级，用了几个钟换来开机后一大堆的错误弹框，累觉不爱，说明直接升级是不行的，在此谨记！&lt;/p&gt;
-&lt;p&gt;很不喜欢ubuntu后面自己的桌面。拿实验室的继续重装ubuntu-gnome版，还能接受，但却有些太求炫不求实的感觉。&lt;/p&gt;
-&lt;p&gt;萌生转kubuntu，feroda, mint,&amp;nbsp;centos等的想法，差点转了mint，唯一觉得debin-&amp;gt;ubuntu-&amp;gt;mint这样子的飘着很难让人放心，比如你相信一个人99%，但很难相信他的孙辈。&lt;/p&gt;
-&lt;p&gt;搜索良久，纠结良久，看到开源新闻消息说Linus受不了gnome3的卖炫而投向xfce阵型。我便也跟风转xubuntu，转完后大喜，因为超过我理想期望很多。&lt;/p&gt;
-&lt;h3 id="xubuntu1404"&gt;xubuntu14.04优点&lt;a class="headerlink" href="#xubuntu1404" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;一、Olivier&amp;nbsp;Fourdan开发，一个运行在各类Unix下的轻量级桌面环境。&lt;/p&gt;
-&lt;p&gt;二、仿win风格的界面，对双系统的人很好&lt;/p&gt;
-&lt;p&gt;三、超省资源，开机后htop显示198M已用内存&lt;/p&gt;
-&lt;p&gt;四、32Linux内核系统识别了4G的3.97G，win7只识别2.95G，让我惊喜&lt;/p&gt;
-&lt;h3 id="xubuntu1404_1"&gt;xubuntu14.04截图&lt;a class="headerlink" href="#xubuntu1404_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;改成windows风格桌面很容易&lt;/p&gt;
-&lt;p&gt;&lt;img alt="xubuntu14.04截图" src="https://pythonwood.github.io/uploads/2014/xubuntu14.04截图.jpg"&gt;&lt;/p&gt;
-&lt;!--
-文件管理器风格也是windows化的
-
-
-
-terminal，python爬虫输出信息
---&gt;
-
-&lt;p&gt;更多截图http://www.douban.com/photos/album/132398060/&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu1" src="https://img1.doubanio.com/view/photo/m/public/p2185668349.jpg"&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img alt="tu2" src="https://img3.doubanio.com/view/photo/m/public/p2185668275.jpg"&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img alt="tu3" src="https://img3.doubanio.com/view/photo/m/public/p2185668295.jpg"&gt;&lt;/p&gt;</content><category term="系统"></category><category term="windows"></category><category term="linux"></category><category term="ubuntu"></category><category term="大学"></category></entry></feed>
+&lt;p&gt;Linux文件误删除恢复操作&amp;nbsp;http://jingyan.baidu.com/article/2f9b480d6c2bcd41cb6cc223.html&lt;/p&gt;</content><category term="实习"></category><category term="linux"></category><category term="ntfs"></category><category term="文件恢复"></category></entry></feed>

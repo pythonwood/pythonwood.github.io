@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/style.css"/>
 
     <!-- Fonts -->
-    <link href='//fonts.loli.net/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-    <link href='//fonts.loli.net/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
-    <link href='//fonts.loli.net/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
-      <link href='//fonts.loli.net/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
 
 
     <link rel="icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
@@ -141,6 +141,27 @@
 
     <article>
       <header>
+        <h2><a href="https://pythonwood.github.io/2018/11/网络检测ping脚本——搬瓦工CN2机房PING测试/" rel="bookmark" title="Permalink to 网络检测ping脚本——搬瓦工CN2机房PING测试">网络检测ping脚本——搬瓦工<span class="caps">CN2</span>机房<span class="caps">PING</span>测试</a></h2>
+      </header>
+      <div><h2 id="vps">项目起源：搬瓦工vps快过期<a class="headerlink" href="#vps" title="Permanent link">&para;</a></h2>
+<p>为决定是否upgrade到cn2机房，需要先验证<span class="caps">CN2</span>机房网络是不是更好。一直没有一个适合自己的ping工具，自己写一个。</p>
+<h3 id="openwrt5ping">部署在openwrt路由，定时任务每5分钟启动ping一次<a class="headerlink" href="#openwrt5ping" title="Permanent link">&para;</a></h3>
+<p>脚本兼容新旧版本ping（输出内容不同），使用sh标准达到最大linux兼容。已兼容openwrt。</p>
+<div class="highlight"><pre><span></span>*/5 * * * * /path/to/20181119_host_ping.sh 23 …</pre></div></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2018/11/网络检测ping脚本——搬瓦工CN2机房PING测试/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
+        <h2><a href="https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/" rel="bookmark" title="Permalink to 神奇的环境bug导致python3中出现udc开头字符串">神奇的环境bug导致python3中出现udc开头字符串</a></h2>
+      </header>
+      <div><h2 id="langzh_cnutf-8langen_usutf-8">注意：<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8与<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8不可混淆！<a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link">&para;</a></h2>
+<p><strong><span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8与<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8有区别</strong> ，&nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3 …</p></div>
+      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/"><strong>➟ 阅读全文</strong></a></div>
+    </article>
+    <hr/>
+    <article>
+      <header>
         <h2><a href="https://pythonwood.github.io/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/" rel="bookmark" title="Permalink to XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录">XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</a></h2>
       </header>
       <div><p>Ubuntu&nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。</p>
@@ -173,29 +194,6 @@
 <li>
 <p>半年后，四川一家野技公司加了店主微信，表示他的小程序名字非常唯一，价值高，有家天津科技公司愿意买，然后故意任由店主出价。最后谈到150万转让费。期间制造各种问题拖延时间，店主也认为升值快 …</p></li></ol></div>
       <div><a class="btn btn-primary" href="https://pythonwood.github.io/2017/12/个案分析：20800元的微信小程序抢注骗局揭秘/"><strong>➟ 阅读全文</strong></a></div>
-    </article>
-    <hr/>
-    <article>
-      <header>
-        <h2><a href="https://pythonwood.github.io/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/" rel="bookmark" title="Permalink to RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip"><span class="caps">RSA</span>原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip</a></h2>
-      </header>
-      <div><p><a href="http://www.pythontip.com" title="PythonTip">PythonTip</a> 里未攻克的题目，如<a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"><span class="caps">RSA</span>密码方程</a>，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。</p>
-<h3 id="_1">描述:<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>在<span class="caps">RSA</span>密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
-其中 …</p></div>
-      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/"><strong>➟ 阅读全文</strong></a></div>
-    </article>
-    <hr/>
-    <article>
-      <header>
-        <h2><a href="https://pythonwood.github.io/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/" rel="bookmark" title="Permalink to 威佐夫博弈：取石子游戏算法——挑战PythonTip">威佐夫博弈：取石子游戏算法——挑战PythonTip</a></h2>
-      </header>
-      <div><p><a href="http://www.pythontip.com" title="PythonTip">PythonTip</a> 里未攻克的题目，如<a href="http://www.pythontip.com/coding/code_oj_case/46" title="取石子游戏">取石子游戏</a>，如今积累工作经验之后从新挑战，成功了。把过程记录分享下。</p>
-<h3 id="_1">描述:<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>有两堆石子，数量任意，可以不同。游戏开始由两个人轮流取石子。游戏规定，每次有两种不同的取法，
-一是可以在任意的一堆中取走任意多的石子；二是可以在两堆中同时取走相同数量的石子。最后把石子全部取完者为胜者。
-现在给出初始的两堆石子的数目a和b，如果轮到你先取，假设双方都采取最好的策略 …</p></div>
-      <div><a class="btn btn-primary" href="https://pythonwood.github.io/2017/12/威佐夫博弈：取石子游戏算法——挑战PythonTip/"><strong>➟ 阅读全文</strong></a></div>
     </article>
     <hr/>
 

@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - Ubuntu</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/ubuntu/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-04-27T19:00:00+08:00</updated><entry><title>XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</title><link href="https://pythonwood.github.io/2018/04/XUbuntu18.04%EF%BC%88Bionic%E6%B2%B3%E7%8B%B8%EF%BC%89%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%EF%BC%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E8%AE%B0%E5%BD%95/" rel="alternate"></link><published>2018-04-27T19:00:00+08:00</published><updated>2018-04-27T19:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-27:/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/</id><summary type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - Ubuntu</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/ubuntu/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-11-07T15:30:00+08:00</updated><entry><title>神奇的环境bug导致python3中出现udc开头字符串</title><link href="https://pythonwood.github.io/2018/11/%E7%A5%9E%E5%A5%87%E7%9A%84%E7%8E%AF%E5%A2%83bug%E5%AF%BC%E8%87%B4python3%E4%B8%AD%E5%87%BA%E7%8E%B0udc%E5%BC%80%E5%A4%B4%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="alternate"></link><published>2018-11-07T15:30:00+08:00</published><updated>2018-11-07T15:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-11-07:/2018/11/神奇的环境bug导致python3中出现udc开头字符串/</id><summary type="html">&lt;h2 id="langzh_cnutf-8langen_usutf-8"&gt;注意：&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8不可混淆！&lt;a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8有区别&lt;/strong&gt; ，&amp;nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="langzh_cnutf-8langen_usutf-8"&gt;注意：&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8不可混淆！&lt;a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8有区别&lt;/strong&gt; ，&amp;nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3，因环境不一致也能导致编码问题！&lt;/p&gt;
+&lt;h2 id="_1"&gt;当时环境与功能：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;vps系统是ubutnu 14.04, 相关软件python3.4, selenium3+, chrome66, chromedriver。使用crontab启动shell， shell中启动python脚本，&amp;nbsp;脚本中selenium启动chrome，……&lt;/p&gt;
+&lt;h2 id="bug"&gt;出bug的运行流程：&lt;a class="headerlink" href="#bug" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;crontab中的a.sh启动   &lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8 bash&amp;nbsp;a.sh&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;a.sh末尾调用&amp;rdquo;b中文名.py&amp;rdquo;，&amp;nbsp;带中文参数&amp;rdquo;《xxx》&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;b中文.py 中print(参数1) 会异常显示字符串编码问题&amp;rsquo;ascii&amp;rsquo; codec can&amp;rsquo;t encode&amp;nbsp;characters&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_2"&gt;调试发现:&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;print repr(中文参数1)， 会打印\udc&amp;nbsp;开头的而非\x开头的utf8型编码。&lt;/li&gt;
+&lt;li&gt;比如&amp;rdquo;《&amp;rdquo; 正常编码是 &lt;strong&gt;&amp;lsquo;\xe3\x80\x8a&amp;rsquo;， 此处确是打印了&amp;rsquo;\udce3\udc80\udc8a&amp;rsquo;&lt;/strong&gt;&amp;nbsp;。&lt;/li&gt;
+&lt;li&gt;改变逻辑，直接ssh到vps并执行 &lt;strong&gt;b中文.py 《xxx》&lt;/strong&gt;&amp;nbsp;没有问题！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_3"&gt;问题定位:&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;个人本机ubuntu系统测试不会出现bug，vps才出现，所以应该是shell环境或者是python环境问题。&lt;/li&gt;
+&lt;li&gt;打印执行a.sh的shell环境，对比发现本机有&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8和&lt;span class="caps"&gt;LANGUAGE&lt;/span&gt;=zh_CN:zh，vps仅有&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8。&lt;/li&gt;
+&lt;li&gt;把crontab中强加的环境变量&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8去掉，此时a.sh的环境变量为&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8，&amp;nbsp;vps恢复正常。（2小时排查出结果了！）&lt;/li&gt;
+&lt;li&gt;总结： 之前觉得&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8没什么不同，从此改观。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_4"&gt;问题解决：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;去掉&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8，之后执行过程中会自动变成默认&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8&lt;/p&gt;
+&lt;h2 id="_5"&gt;原因探究：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;待定&lt;/p&gt;
+&lt;h2 id="python-reprudc-print"&gt;python repr输出udc开头字符串， print(参数)导致异常&lt;a class="headerlink" href="#python-reprudc-print" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;#39;/home/maskuser/path/to/ts/\udce3\udc80\udc8a\udce9\udc80\udc97.....mp4&amp;#39;
+
+Traceback (most recent call last):
+  File &amp;quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&amp;quot;, line 73, in &amp;lt;module&amp;gt;
+    video_upload_testsite(*sys.argv[1:])
+  File &amp;quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&amp;quot;, line 29, in video_upload_testsite
+    print (videopath)
+UnicodeEncodeError: &amp;#39;ascii&amp;#39; codec can&amp;#39;t encode characters in position 27-50: ordinal not in range(128)
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Ubuntu"></category><category term="linux"></category><category term="LANG"></category><category term="环境变量"></category><category term="python"></category></entry><entry><title>XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</title><link href="https://pythonwood.github.io/2018/04/XUbuntu18.04%EF%BC%88Bionic%E6%B2%B3%E7%8B%B8%EF%BC%89%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%EF%BC%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E8%AE%B0%E5%BD%95/" rel="alternate"></link><published>2018-04-27T19:00:00+08:00</published><updated>2018-04-27T19:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-27:/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/</id><summary type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;
 &lt;p&gt;多年使用linux经验已经使得这个过程驾轻就熟，闲庭信步:)。为了不忘记，将有沉淀价值的部分，简要记录一下。&lt;/p&gt;
 &lt;h2 id="linuxubuntu"&gt;偶然得知Linux，成为Ubuntu多年用户&lt;a class="headerlink" href="#linuxubuntu" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="ubuntults"&gt;建议：只使用Ubuntu的&lt;span class="caps"&gt;LTS&lt;/span&gt;版本（长期维护 …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Ubuntu&amp;nbsp;18.04发布时间是（美国）4月26号，彼时的中国已经是27号，就是今天。我花了一天时间折腾升级旧Ubuntu系统到刚发布的最新版。&lt;/p&gt;

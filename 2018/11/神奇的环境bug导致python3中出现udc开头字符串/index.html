@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  神奇的环境bug导致python3中出现udc开头字符串
+ | 人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</title>
+
+    <meta name="author" content="Pythonwood"/>
+    <meta name="description" content="注意：LANG=zh_CN.UTF-8与<span…"/>
+  
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://pythonwood.github.io/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+      <link href='https://fonts.lug.ustc.edu.cn/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://pythonwood.github.io/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://pythonwood.github.io/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - Atom Feed"/>
+      <link href="https://pythonwood.github.io/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 获取更新 - RSS Feed"/>
+      <link href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html" type="application/atom+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - Atom Feed"/>
+      <link href="https://pythonwood.github.io/category/ji-zhu/feed/index.html" type="application/rss+xml" rel="alternate" title="Linux迷+Python粉 - 分类: 技术 - RSS Feed"/>
+    <!--https://blog.kmonsoor.com/pelican-how-to-make-seo-friendly/-->
+    <link rel="canonical" href="https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/"/>
+
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109845932-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-109845932-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3784870097299714",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="https://pythonwood.github.io" class="avatar-container pull-left">
+            <div class="avatar  animate ">
+              <div class="side"><img alt="site thumbnail" src="/uploads/2017/profile-photo-thumbnail.jpg" class="img-responsive"/></div>
+                <div class="side back"><p class="text-center">人生苦短，我用Python</p></div>
+            </div>
+          </a>
+        <h1><a href="https://pythonwood.github.io">Linux迷+Python粉</a> <small>人生苦短，我用Python(这里只是blog.pythonwood.com的备份)</small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://pythonwood.github.io" title="人生苦短，我用Python(这里只是blog.pythonwood.com的备份)">Linux迷+Python粉</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/">首页</a>
+              </li>
+<li >
+                <a href="/category/ji-zhu/">技术</a>
+              </li>
+<li >
+                <a href="/category/sheng-huo/">生活</a>
+              </li>
+<li >
+                <a href="/video/">视频</a>
+              </li>
+<li >
+                <a href="/code/">代码</a>
+              </li>
+<li >
+                <a href="/about/">关于</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://pythonwood.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="站内搜索" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/" rel="bookmark" title="Permalink to 神奇的环境bug导致python3中出现udc开头字符串">神奇的环境bug导致python3中出现udc开头字符串</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <h2 id="langzh_cnutf-8langen_usutf-8">注意：<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8与<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8不可混淆！<a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link">&para;</a></h2>
+<p><strong><span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8与<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8有区别</strong> ，&nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3，因环境不一致也能导致编码问题！</p>
+<h2 id="_1">当时环境与功能：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>vps系统是ubutnu 14.04, 相关软件python3.4, selenium3+, chrome66, chromedriver。使用crontab启动shell， shell中启动python脚本，&nbsp;脚本中selenium启动chrome，……</p>
+<h2 id="bug">出bug的运行流程：<a class="headerlink" href="#bug" title="Permanent link">&para;</a></h2>
+<ol>
+<li>crontab中的a.sh启动   <strong><span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8 bash&nbsp;a.sh</strong></li>
+<li>a.sh末尾调用&rdquo;b中文名.py&rdquo;，&nbsp;带中文参数&rdquo;《xxx》&rdquo;</li>
+<li>b中文.py 中print(参数1) 会异常显示字符串编码问题&rsquo;ascii&rsquo; codec can&rsquo;t encode&nbsp;characters</li>
+</ol>
+<h2 id="_2">调试发现:<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>print repr(中文参数1)， 会打印\udc&nbsp;开头的而非\x开头的utf8型编码。</li>
+<li>比如&rdquo;《&rdquo; 正常编码是 <strong>&lsquo;\xe3\x80\x8a&rsquo;， 此处确是打印了&rsquo;\udce3\udc80\udc8a&rsquo;</strong>&nbsp;。</li>
+<li>改变逻辑，直接ssh到vps并执行 <strong>b中文.py 《xxx》</strong>&nbsp;没有问题！</li>
+</ol>
+<h2 id="_3">问题定位:<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>个人本机ubuntu系统测试不会出现bug，vps才出现，所以应该是shell环境或者是python环境问题。</li>
+<li>打印执行a.sh的shell环境，对比发现本机有<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8和<span class="caps">LANGUAGE</span>=zh_CN:zh，vps仅有<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8。</li>
+<li>把crontab中强加的环境变量<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8去掉，此时a.sh的环境变量为<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8，&nbsp;vps恢复正常。（2小时排查出结果了！）</li>
+<li>总结： 之前觉得<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8与<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8没什么不同，从此改观。</li>
+</ol>
+<h2 id="_4">问题解决：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>去掉<span class="caps">LANG</span>=zh_CN.<span class="caps">UTF</span>-8，之后执行过程中会自动变成默认<span class="caps">LANG</span>=en_US.<span class="caps">UTF</span>-8</p>
+<h2 id="_5">原因探究：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>待定</p>
+<h2 id="python-reprudc-print">python repr输出udc开头字符串， print(参数)导致异常<a class="headerlink" href="#python-reprudc-print" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span>&#39;/home/maskuser/path/to/ts/\udce3\udc80\udc8a\udce9\udc80\udc97.....mp4&#39;
+
+Traceback (most recent call last):
+  File &quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&quot;, line 73, in &lt;module&gt;
+    video_upload_testsite(*sys.argv[1:])
+  File &quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&quot;, line 29, in video_upload_testsite
+    print (videopath)
+UnicodeEncodeError: &#39;ascii&#39; codec can&#39;t encode characters in position 27-50: ordinal not in range(128)
+</pre></div>
+    <br/><br/> <p style="color: grey;"><b>
+      原文出自<a href="https://pythonwood.github.io" rel="author">Pythonwood</a>发表的<a href="https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/" target="_blank">https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/</a>
+    </b></p> <br/><br/>
+  </div>
+
+    <h3>扩展阅读</h3>
+    <!-- TODO: Use fancier related layout, as in https://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://pythonwood.github.io/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/">XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录</a></li>
+        <li><a href="https://pythonwood.github.io/2013/07/虚拟机系统正式转换——从windows到Linux-ubuntu新手/">虚拟机系统正式转换——从windows到Linux-ubuntu新手</a></li>
+        <li><a href="https://pythonwood.github.io/2017/12/我的Linux下的图像软件使用记录/">我的Linux下的图像软件使用记录</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'pythonwooodblog';
+        var disqus_identifier = "2018/11/神奇的环境bug导致python3中出现udc开头字符串/";
+        var disqus_title = "神奇的环境bug导致python3中出现udc开头字符串";
+        var disqus_url = "https://pythonwood.github.io/2018/11/神奇的环境bug导致python3中出现udc开头字符串/";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-11-07T15:30:00+08:00"><i class="fa fa-calendar"></i> 2018年11月07日, 15:30</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://pythonwood.github.io/author/pythonwood/" rel="author">pythonwood</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="https://pythonwood.github.io/category/ji-zhu/" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="23 articles in this category">技术</a>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">python</a>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="7 articles with this tag">linux</a>
+            <a href="/tag/ubuntu/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Ubuntu</a>
+            <a href="/tag/huan-jing-bian-liang/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">环境变量</a>
+            <a href="/tag/lang/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">LANG</a>
+      </p>
+      <hr/>
+
+      <p>修正错误</p>
+      <a class="btn btn-info btn-block" href="https://github.com/pythonwood/pythonwoodblog/edit/master/content/posts/神奇的环境bug导致python3中出现udc开头字符串.md"><i class="fa fa-random fa-white fa-fw"></i> 到GitHub上编辑</a>
+      <hr/>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://pythonwood.github.io/2018/04/XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录/" title="XUbuntu18.04（Bionic河狸）正式发布，系统安装升级记录"  rel="prev">
+              <span aria-hidden="true">←</span> 前一篇
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://pythonwood.github.io/2018/11/网络检测ping脚本——搬瓦工CN2机房PING测试/" title="网络检测ping脚本——搬瓦工CN2机房PING测试"  rel="next">
+              后一篇 <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>资料</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://blog.pythonwood.com">
+      <img src="https://icons.better-idea.org/icon?url=blog.pythonwood.com&size=16" width="16" height="16" class="icon" alt="blog.pythonwood.com icon"/>
+    原博客(要梯子maybe):
+  </a></li>
+                  <li>  <a href="https://github.com/pythonwood">
+      <i class="fa fa-github"></i>
+    Github
+  </a></li>
+                  <li>  <a href="http://www.cnblogs.com/weishun">
+      <img src="https://icons.better-idea.org/icon?url=www.cnblogs.com&size=16" width="16" height="16" class="icon" alt="www.cnblogs.com icon"/>
+    旧博客
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>简历</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://docs.google.com/document/export?format=pdf&amp;id=1XaJgwRAhxHDuBSD-JqE--####8WKGx0uTasa6IOU4IFBeKg">
+      <i class="fa fa-file-text"></i>
+    PDF简历
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>用以下方式浏览</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://pythonwood.github.io/categories/index.html"><i class="fa fa-tags"></i> 分类</a></li>
+                <li><a href="https://pythonwood.github.io/archives/index.html"><i class="fa fa-calendar"></i> 日期</a></li>
+                <li><a href="https://pythonwood.github.io/tags/index.html"><i class="fa fa-tag"></i> 标签</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright信息</h5>
+            <p>© Copyright 2013-2018 Pythonwood.</p>
+              <p>如未特别说明，本网站的内容使用如下协议<a rel='license'
+href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license</a>.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>免责声明</h5>
+              <p>本网站所表达的所有观点均为我个人的观点，并不代表我以前，现任和未来雇主或其任何关联机构，合作伙伴或客户的意见。</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>RSS订阅更新</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://pythonwood.github.io/feed/atom/index.html"><i class="fa fa-rss"></i> 获取更新 (Atom)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/feed/index.html"><i class="fa fa-rss"></i> 获取更新 (RSS)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/category/ji-zhu/feed/atom/index.html"><i class="fa fa-rss"></i> 分类: 技术 (Atom)</a></small></li>
+                  <li><small><a href="https://pythonwood.github.io/category/ji-zhu/feed/index.html"><i class="fa fa-rss"></i> 分类: 技术 (RSS)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> 回到顶部</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          博客使用<a href="https://getpelican.com">Pelican</a>驱动<br/>
+          感谢<a href="https://kevin.deldycke.com">Kevin Deldycke</a>原创<a href="https://github.com/kdeldycke/plumage"> Plumage</a> 主题
+        </div>
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-109845932-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+    <!-- Baidu Analytics-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ea829b73ae40fbce7fb99486ab90916d";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <!-- CNZZ Analytics-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1270496461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1270496461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<img style='display:none;' alt="我要啦" src="//send.users.51.la/go2?id=19398575" />
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(101103883); }catch(e){}</script>
+<noscript><p><img style='display:none;' alt="Clicky" src="//in.getclicky.com/101103883ns.gif" /></p></noscript>
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(101103883); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101103883ns.gif" /></p></noscript>
+
+    <!-- 谷歌网站翻译工具 -->
+    <!--
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-109845932-1'}, 'google_translate_element');
+}
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://pythonwood.github.io/theme/js/jquery.mglass.js"></script>
+    <script src="https://pythonwood.github.io/theme/js/application.js"></script>
+
+  </body>
+</html>

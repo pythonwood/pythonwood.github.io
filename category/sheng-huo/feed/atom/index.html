@@ -1,5 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 生活</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/category/sheng-huo/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-04-20T15:16:00+08:00</updated><entry><title>实测家庭电器电功率记录——节约用电支持环保</title><link href="https://pythonwood.github.io/2018/04/%E5%AE%9E%E6%B5%8B%E5%AE%B6%E5%BA%AD%E7%94%B5%E5%99%A8%E7%94%B5%E5%8A%9F%E7%8E%87%E8%AE%B0%E5%BD%95%E2%80%94%E2%80%94%E8%8A%82%E7%BA%A6%E7%94%A8%E7%94%B5%E6%94%AF%E6%8C%81%E7%8E%AF%E4%BF%9D/" rel="alternate"></link><published>2018-04-20T15:16:00+08:00</published><updated>2018-04-20T15:16:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-20:/2018/04/实测家庭电器电功率记录——节约用电支持环保/</id><summary type="html">&lt;p&gt;家用电器经常待机，手机插头不拔，长期旅行不清空冰箱不关总闸，我一直认为浪费电但没有具体量化的认知。最近下决心花36元来记录电器的耗电功率排行。具体就是买了个可以显示耗电快慢的&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DNYboi0mHsGQcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67rTJ9qRSwRX4jGYPrSmetxGs9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA5IdTsHekIOqQxPkL4fipmEcVFeZKQgm4n%2BucW%2B%2Fygb8cSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.83_3183_1524209142036" title="家用电功率计量插座"&gt;家用电功率计量插座&lt;/a&gt;，然后花了些时间测量数据并记录下来。随用随测出结果，十分好用。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - 生活</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/category/sheng-huo/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-11-25T20:00:00+08:00</updated><entry><title>网络检测ping脚本——搬瓦工CN2机房PING测试</title><link href="https://pythonwood.github.io/2018/11/%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8Bping%E8%84%9A%E6%9C%AC%E2%80%94%E2%80%94%E6%90%AC%E7%93%A6%E5%B7%A5CN2%E6%9C%BA%E6%88%BFPING%E6%B5%8B%E8%AF%95/" rel="alternate"></link><published>2018-11-25T20:00:00+08:00</published><updated>2018-11-25T20:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-11-25:/2018/11/网络检测ping脚本——搬瓦工CN2机房PING测试/</id><summary type="html">&lt;h2 id="vps"&gt;项目起源：搬瓦工vps快过期&lt;a class="headerlink" href="#vps" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;为决定是否upgrade到cn2机房，需要先验证&lt;span class="caps"&gt;CN2&lt;/span&gt;机房网络是不是更好。一直没有一个适合自己的ping工具，自己写一个。&lt;/p&gt;
+&lt;h3 id="openwrt5ping"&gt;部署在openwrt路由，定时任务每5分钟启动ping一次&lt;a class="headerlink" href="#openwrt5ping" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;脚本兼容新旧版本ping（输出内容不同），使用sh标准达到最大linux兼容。已兼容openwrt。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*/5 * * * * /path/to/20181119_host_ping.sh 23 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2 id="vps"&gt;项目起源：搬瓦工vps快过期&lt;a class="headerlink" href="#vps" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;为决定是否upgrade到cn2机房，需要先验证&lt;span class="caps"&gt;CN2&lt;/span&gt;机房网络是不是更好。一直没有一个适合自己的ping工具，自己写一个。&lt;/p&gt;
+&lt;h3 id="openwrt5ping"&gt;部署在openwrt路由，定时任务每5分钟启动ping一次&lt;a class="headerlink" href="#openwrt5ping" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;脚本兼容新旧版本ping（输出内容不同），使用sh标准达到最大linux兼容。已兼容openwrt。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*/5 * * * * /path/to/20181119_host_ping.sh 23.252.103.101 50 90 2 10  &amp;gt;&amp;gt;/tmp/ping.DC3.txt 2&amp;gt;/dev/null
+*/5 * * * * /path/to/20181119_host_ping.sh 65.49.131.102  50 90 2 10  &amp;gt;&amp;gt;/tmp/ping.DC9.txt 2&amp;gt;/dev/null
+*/5 * * * * /path/to/20181119_host_ping.sh myvps  50 90 2 10  &amp;gt;&amp;gt;/tmp/ping.myvps.txt 2&amp;gt;/dev/null
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="host"&gt;最终版本的脚本，单host版&lt;a class="headerlink" href="#host" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="_1"&gt;脚本使用与输出字段意义&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./20181119_host_ping.sh
+请参考文档使用：
+./20181119_host_ping.sh &amp;lt;host&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="m"&gt;163&lt;/span&gt;.com&amp;gt; &amp;lt;pkgcn&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&amp;gt; &amp;lt;maxtime&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&amp;gt; &amp;lt;lost_step&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt; &amp;lt;rt_step&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&amp;gt;
+
+./20181119_host_ping.sh &lt;span class="m"&gt;163&lt;/span&gt;.com &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;测10次ping，不超过30s，丢包率每字符表示1%，延迟每字符表示5ms&lt;span class="o"&gt;)&lt;/span&gt;
+时间                出包 入包 丢包 min  avg  max &lt;span class="p"&gt;|&lt;/span&gt;图形化丢包率，最长25字符 &lt;span class="p"&gt;|&lt;/span&gt;图形化延迟avg，最多50字符
+&lt;span class="m"&gt;2018&lt;/span&gt;-11-20_10:08:55    &lt;span class="m"&gt;3&lt;/span&gt;   &lt;span class="m"&gt;3&lt;/span&gt;   &lt;span class="m"&gt;2&lt;/span&gt;%  &lt;span class="m"&gt;166&lt;/span&gt;  &lt;span class="m"&gt;167&lt;/span&gt;  &lt;span class="m"&gt;169&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;xx                       &lt;span class="p"&gt;|&lt;/span&gt;****************
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="_2"&gt;比较结果&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;搬瓦工&lt;span class="caps"&gt;CN2&lt;/span&gt; &lt;span class="caps"&gt;GIA&lt;/span&gt;质量非常稳定，土豪随意；对于移动用户访问，&lt;span class="caps"&gt;CN2&lt;/span&gt;比一般机房提升不大。&lt;/p&gt;
+&lt;p&gt;一天之中2-10点网络最好，晚上6点至凌晨1点最差&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;root@Gargoyle:/tmp# tail ping.DC9.txt ping.DC3.txt ping.myvps.com.txt   -n 50
+==&amp;gt; ping.DC9.txt &amp;lt;==
+2018-11-25_16:00:01  50  50   0%  163  166  170 |                          |****************
+2018-11-25_16:05:01  51  50   1%  163  177  301 |                          |*****************
+2018-11-25_16:10:01  50  50   0%  162  166  170 |                          |****************
+2018-11-25_16:15:01  50  50   0%  164  166  171 |                          |****************
+2018-11-25_16:20:01  50  50   0%  164  166  169 |                          |****************
+2018-11-25_16:25:01  50  50   0%  162  166  171 |                          |****************
+2018-11-25_16:30:02  50  50   0%  164  166  171 |                          |****************
+2018-11-25_16:35:01  50  50   0%  163  167  174 |                          |****************
+2018-11-25_16:40:02  50  50   0%  164  167  172 |                          |****************
+2018-11-25_16:45:01  50  50   0%  164  168  173 |                          |****************
+2018-11-25_16:50:01  50  50   0%  163  166  171 |                          |****************
+2018-11-25_16:55:01  50  50   0%  163  166  170 |                          |****************
+2018-11-25_17:00:01  51  50   1%  163  166  174 |                          |****************
+2018-11-25_17:05:01  50  50   0%  164  167  178 |                          |****************
+2018-11-25_17:10:01  50  50   0%  163  166  171 |                          |****************
+2018-11-25_17:15:01  50  50   0%  163  166  170 |                          |****************
+2018-11-25_17:20:01  50  50   0%  163  166  169 |                          |****************
+2018-11-25_17:25:01  50  50   0%  163  166  169 |                          |****************
+2018-11-25_17:30:01  50  50   0%  163  166  171 |                          |****************
+2018-11-25_17:35:01  50  50   0%  163  166  170 |                          |****************
+2018-11-25_17:40:01  50  50   0%  164  167  172 |                          |****************
+2018-11-25_17:45:01  50  50   0%  164  167  169 |                          |****************
+2018-11-25_17:50:01  50  50   0%  164  166  169 |                          |****************
+2018-11-25_17:55:01  50  50   0%  162  166  171 |                          |****************
+2018-11-25_18:00:01  50  50   0%  164  166  170 |                          |****************
+2018-11-25_18:05:01  50  50   0%  164  167  170 |                          |****************
+2018-11-25_18:10:01  50  50   0%  163  165  168 |                          |****************
+2018-11-25_18:15:01  50  50   0%  164  166  170 |                          |****************
+2018-11-25_18:20:01  50  50   0%  164  166  170 |                          |****************
+2018-11-25_18:25:01  50  50   0%  164  166  169 |                          |****************
+2018-11-25_18:30:01  50  50   0%  164  166  169 |                          |****************
+2018-11-25_18:35:01  50  50   0%  164  166  171 |                          |****************
+2018-11-25_18:40:01  50  50   0%  164  167  171 |                          |****************
+2018-11-25_18:45:01  50  50   0%  163  166  170 |                          |****************
+2018-11-25_18:50:01  50  50   0%  164  166  171 |                          |****************
+2018-11-25_18:55:01  50  50   0%  164  166  171 |                          |****************
+2018-11-25_19:00:01  50  50   0%  164  167  188 |                          |****************
+2018-11-25_19:05:01  50  50   0%  164  168  188 |                          |****************
+2018-11-25_19:10:01  50  50   0%  163  166  171 |                          |****************
+2018-11-25_19:15:01  50  50   0%  164  169  174 |                          |****************
+2018-11-25_19:20:01  50  50   0%  163  168  183 |                          |****************
+2018-11-25_19:25:01  50  50   0%  164  167  180 |                          |****************
+2018-11-25_19:30:01  50  50   0%  164  168  187 |                          |****************
+2018-11-25_19:35:01  50  50   0%  163  169  193 |                          |****************
+2018-11-25_19:40:01  50  50   0%  162  168  196 |                          |****************
+2018-11-25_19:45:01  50  50   0%  163  166  169 |                          |****************
+2018-11-25_19:50:01  50  50   0%  163  167  169 |                          |****************
+2018-11-25_19:55:01  50  50   0%  163  166  170 |                          |****************
+2018-11-25_20:00:01  50  50   0%  163  167  192 |                          |****************
+2018-11-25_20:05:01  50  50   0%  162  166  171 |                          |****************
+
+==&amp;gt; ping.DC3.txt &amp;lt;==
+2018-11-25_16:00:01  59  50  15%  234  283  333 |xxxxxxx                   |****************************
+2018-11-25_16:05:01  56  50  10%  174  241  318 |xxxxx                     |************************
+2018-11-25_16:10:01  52  50   3%  188  246  264 |x                         |************************
+2018-11-25_16:15:01  51  50   1%  179  229  255 |                          |**********************
+2018-11-25_16:20:02  50  50   0%  189  245  261 |                          |************************
+2018-11-25_16:25:01  51  50   1%  188  246  267 |                          |************************
+2018-11-25_16:30:02  52  50   3%  187  245  265 |x                         |************************
+2018-11-25_16:35:02  50  50   0%  212  249  262 |                          |************************
+2018-11-25_16:40:02  52  50   3%  181  249  264 |x                         |************************
+2018-11-25_16:45:01  53  50   5%  191  233  261 |xx                        |***********************
+2018-11-25_16:50:01  53  50   5%  188  249  263 |xx                        |************************
+2018-11-25_16:55:01  50  50   0%  174  241  263 |                          |************************
+2018-11-25_17:00:01  50  50   0%  208  248  263 |                          |************************
+2018-11-25_17:05:01  50  50   0%  204  242  262 |                          |************************
+2018-11-25_17:10:01  54  50   7%  188  216  252 |xxx                       |*********************
+2018-11-25_17:15:01  51  50   1%  218  252  263 |                          |*************************
+2018-11-25_17:20:01  51  50   1%  205  249  265 |                          |************************
+2018-11-25_17:25:01  51  50   1%  196  243  261 |                          |************************
+2018-11-25_17:30:01  52  50   3%  197  249  265 |x                         |************************
+2018-11-25_17:35:01  52  50   3%  224  249  262 |x                         |************************
+2018-11-25_17:40:01  54  50   7%  213  251  266 |xxx                       |*************************
+2018-11-25_17:45:01  50  50   0%  221  247  265 |                          |************************
+2018-11-25_17:50:01  52  50   3%  206  246  260 |x                         |************************
+2018-11-25_17:55:01  53  50   5%  180  241  265 |xx                        |************************
+2018-11-25_18:00:01  50  50   0%  207  243  262 |                          |************************
+2018-11-25_18:05:01  52  50   3%  198  243  263 |x                         |************************
+2018-11-25_18:10:01  52  50   3%  197  252  264 |x                         |*************************
+2018-11-25_18:15:01  51  50   1%  220  247  263 |                          |************************
+2018-11-25_18:20:01  51  50   1%  205  245  263 |                          |************************
+2018-11-25_18:25:01  50  50   0%  178  221  247 |                          |**********************
+2018-11-25_18:30:01  51  50   1%  178  237  262 |                          |***********************
+2018-11-25_18:35:01  51  50   1%  161  187  261 |                          |******************
+2018-11-25_18:40:01  51  50   1%  206  241  261 |                          |************************
+2018-11-25_18:45:01  51  50   1%  165  188  209 |                          |******************
+2018-11-25_18:50:01  50  50   0%  209  247  264 |                          |************************
+2018-11-25_18:55:01  50  50   0%  196  236  261 |                          |***********************
+2018-11-25_19:00:01  52  50   3%  167  200  222 |x                         |********************
+2018-11-25_19:05:01  52  50   3%  170  200  238 |x                         |********************
+2018-11-25_19:10:01  50  50   0%  225  248  263 |                          |************************
+2018-11-25_19:15:01  51  50   1%  204  246  263 |                          |************************
+2018-11-25_19:20:01  50  50   0%  226  248  263 |                          |************************
+2018-11-25_19:25:01  51  50   1%  204  249  264 |                          |************************
+2018-11-25_19:30:01  50  50   0%  212  253  265 |                          |*************************
+2018-11-25_19:35:01  52  50   3%  206  245  265 |x                         |************************
+2018-11-25_19:40:01  50  50   0%  206  241  286 |                          |************************
+2018-11-25_19:45:01  50  50   0%  180  236  262 |                          |***********************
+2018-11-25_19:50:01  50  50   0%  197  241  264 |                          |************************
+2018-11-25_19:55:01  51  50   1%  213  255  265 |                          |*************************
+2018-11-25_20:00:01  54  50   7%  204  254  264 |xxx                       |*************************
+2018-11-25_20:05:01  53  50   5%  216  250  265 |xx                        |*************************
+
+==&amp;gt; ping.myvps.txt &amp;lt;==
+2018-11-25_16:00:01  67  50  25%  240  285  338 |xxxxxxxxxxxx              |****************************
+2018-11-25_16:05:01  61  50  18%  183  247  325 |xxxxxxxxx                 |************************
+2018-11-25_16:10:01  51  50   1%  219  254  270 |                          |*************************
+2018-11-25_16:15:02  55  50   9%  182  236  262 |xxxx                      |***********************
+2018-11-25_16:20:01  51  50   1%  197  258  524 |                          |*************************
+2018-11-25_16:25:01  50  50   0%  193  276 1166 |                          |***************************
+2018-11-25_16:30:02  52  50   3%  191  250  269 |x                         |*************************
+2018-11-25_16:35:02  51  50   1%  231  256  270 |                          |*************************
+2018-11-25_16:40:02  50  50   0%  190  254  269 |                          |*************************
+2018-11-25_16:45:01  51  50   1%  194  239  266 |                          |***********************
+2018-11-25_16:50:01  50  50   0%  191  256  270 |                          |*************************
+2018-11-25_16:55:01  50  50   0%  179  247  266 |                          |************************
+2018-11-25_17:00:01  51  50   1%  220  254  269 |                          |*************************
+2018-11-25_17:05:01  50  50   0%  211  248  267 |                          |************************
+2018-11-25_17:10:01  51  50   1%  194  222  256 |                          |**********************
+2018-11-25_17:15:01  51  50   1%  213  258  271 |                          |*************************
+2018-11-25_17:20:01  52  50   3%  209  255  268 |x                         |*************************
+2018-11-25_17:25:01  50  50   0%  199  248  268 |                          |************************
+2018-11-25_17:30:01  50  50   0%  198  255  270 |                          |*************************
+2018-11-25_17:35:01  51  50   1%  231  255  270 |                          |*************************
+2018-11-25_17:40:01  52  50   3%  220  257  270 |x                         |*************************
+2018-11-25_17:45:01  51  50   1%  225  252  267 |                          |*************************
+2018-11-25_17:50:01  50  50   0%  208  251  268 |                          |*************************
+2018-11-25_17:55:01  51  50   1%  186  248  269 |                          |************************
+2018-11-25_18:00:01  51  50   1%  211  248  272 |                          |************************
+2018-11-25_18:05:01  52  50   3%  207  249  267 |x                         |************************
+2018-11-25_18:10:01  52  50   3%  199  258  269 |x                         |*************************
+2018-11-25_18:15:01  50  50   0%  223  252  269 |                          |*************************
+2018-11-25_18:20:01  50  50   0%  210  250  267 |                          |*************************
+2018-11-25_18:25:01  51  50   1%  184  227  254 |                          |**********************
+2018-11-25_18:30:01  50  50   0%  187  244  267 |                          |************************
+2018-11-25_18:35:01  51  50   1%  169  194  268 |                          |*******************
+2018-11-25_18:40:01  51  50   1%  212  247  266 |                          |************************
+2018-11-25_18:45:01  50  50   0%  170  193  213 |                          |*******************
+2018-11-25_18:50:01  51  50   1%  216  252  269 |                          |*************************
+2018-11-25_18:55:01  50  50   0%  201  242  267 |                          |************************
+2018-11-25_19:00:01  50  50   0%  170  206  227 |                          |********************
+2018-11-25_19:05:01  51  50   1%  175  208  261 |                          |********************
+2018-11-25_19:10:01  50  50   0%  230  253  267 |                          |*************************
+2018-11-25_19:15:01  53  50   5%  210  253  268 |xx                        |*************************
+2018-11-25_19:20:01  50  50   0%  230  254  267 |                          |*************************
+2018-11-25_19:25:01  50  50   0%  211  254  268 |                          |*************************
+2018-11-25_19:30:01  50  50   0%  221  259  269 |                          |*************************
+2018-11-25_19:35:01  51  50   1%  213  252  269 |                          |*************************
+2018-11-25_19:40:01  50  50   0%  220  248  268 |                          |************************
+2018-11-25_19:45:01  50  50   0%  187  241  267 |                          |************************
+2018-11-25_19:50:01  50  50   0%  202  247  270 |                          |************************
+2018-11-25_19:55:01  52  50   3%  216  261  268 |x                         |**************************
+2018-11-25_20:00:01  51  50   1%  212  258  269 |                          |*************************
+2018-11-25_20:05:01  52  50   3%  228  257  270 |x                         |*************************
+&lt;/pre&gt;&lt;/div&gt;</content><category term="网络"></category><category term="ping"></category><category term="脚本"></category><category term="搬瓦工"></category></entry><entry><title>实测家庭电器电功率记录——节约用电支持环保</title><link href="https://pythonwood.github.io/2018/04/%E5%AE%9E%E6%B5%8B%E5%AE%B6%E5%BA%AD%E7%94%B5%E5%99%A8%E7%94%B5%E5%8A%9F%E7%8E%87%E8%AE%B0%E5%BD%95%E2%80%94%E2%80%94%E8%8A%82%E7%BA%A6%E7%94%A8%E7%94%B5%E6%94%AF%E6%8C%81%E7%8E%AF%E4%BF%9D/" rel="alternate"></link><published>2018-04-20T15:16:00+08:00</published><updated>2018-04-20T15:16:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-04-20:/2018/04/实测家庭电器电功率记录——节约用电支持环保/</id><summary type="html">&lt;p&gt;家用电器经常待机，手机插头不拔，长期旅行不清空冰箱不关总闸，我一直认为浪费电但没有具体量化的认知。最近下决心花36元来记录电器的耗电功率排行。具体就是买了个可以显示耗电快慢的&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DNYboi0mHsGQcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67rTJ9qRSwRX4jGYPrSmetxGs9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA5IdTsHekIOqQxPkL4fipmEcVFeZKQgm4n%2BucW%2B%2Fygb8cSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.83_3183_1524209142036" title="家用电功率计量插座"&gt;家用电功率计量插座&lt;/a&gt;，然后花了些时间测量数据并记录下来。随用随测出结果，十分好用。&lt;/p&gt;
 &lt;h3 id="_1"&gt;实测过程&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="电功率插座显示插头纯消耗功率是0.5W" src="https://pythonwood.github.io/uploads/2018/电功率插座显示插头纯消耗功率是0.5W.jpg" title="电功率插座显示插头纯消耗功率是0.5W"&gt;&lt;/p&gt;
 &lt;p&gt;插座本身很小，测试过程非常方便。插上就实时显示电功率，按上下可切换显示电压，频率，时间，功率因素等。&lt;/p&gt;
@@ -229,72 +414,4 @@
 &lt;p&gt;觅知网，千图网，包图网下载限制相对小，素材比较多。千库网虽然素材多，但对免费下载限制很强，同一个局域网的不同用户的总免费下载份额只有1个。&lt;/p&gt;
 &lt;h3 id="_3"&gt;参考资料&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;超赞的 Linux 软件: https://alim0x.gitbooks.io/awesome-linux-software-zh_cn/content/#图形
-15个最好的Linux照片/图像编辑器我发现在2015年:&amp;nbsp;https://www.howtoing.com/best-image-photo-editors-for-linux&lt;/p&gt;</content><category term="Linux"></category><category term="图像"></category><category term="软件"></category><category term="ubuntu"></category></entry><entry><title>树莓派初始化环境搭建的一些事</title><link href="https://pythonwood.github.io/2017/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" rel="alternate"></link><published>2017-12-05T13:46:00+08:00</published><updated>2017-12-05T13:46:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-05:/2017/12/树莓派初始化环境搭建的一些事/</id><summary type="html">&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
-&lt;h3 id="_1"&gt;一、奔着遥控式家庭影音的购买方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;可以了。我没买&lt;span class="caps"&gt;SD&lt;/span&gt;卡，将旧的class10的16G的&lt;span class="caps"&gt;SD …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;第二波研究树莓派功能了，上次主要是当作linux系统来研究，这次当作只能设备来研究。是奔着遥控式家庭影音的方案来研究的，树莓派的基础环境非常重要，所以从新理一理，记录下来。&lt;/p&gt;
-&lt;h3 id="_1"&gt;一、奔着遥控式家庭影音的购买方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;经比较，树莓派在京东是挺贵的，鉴于是标准化带电子产品，去天猫买&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;可以了。我没买&lt;span class="caps"&gt;SD&lt;/span&gt;卡，将旧的class10的16G的&lt;span class="caps"&gt;SD&lt;/span&gt;利用上(class10意思是写入速度约&lt;span class="caps"&gt;10MB&lt;/span&gt;/s)。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;我购买并用上的：&lt;/strong&gt; 
-&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DjB5CtrQXlAccQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67rCnyOxJms%2BVtTN3K9waqqis9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTBN3oW5I7sw9oXcuyoAGSVzy%2Flc8YI1OgQvABqsOAyUlBEellxPfI1OiZ%2BQMlGz6FQ%3D%3D&amp;amp;pvid=10_120.239.178.0_533_1512539397311" title="公牛usb插座天猫链接"&gt;公牛usb魔方插座&lt;/a&gt;，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3Di1ZaWZT35VIcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67pR2%2B%2F9Hp9mCHGUKWrwhgPms9V29auOuBOBgn3DwXo5fTavSczFePlBPv%2F0P2woSTIiNFfNqYeZfZqRIxUL2qmOWt8ptzziuV9VDE9N5gf5%2FRemoLTADB2DGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_551_1512529291425" title="树莓派天猫链接"&gt;树莓派&lt;/a&gt;，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DyO9jlKzcxlwcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67jeJ0D4P3i%2B8UOZr0mLjuses9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA%2F6gPESVKznnDfaTZ11r%2FGF6awgoXsc5TKo%2FiSVAKeldcSpj5qSCmbA%3D&amp;amp;pvid=10_120.239.178.6_72377_1512026724825" title="华趸hdmi转vga线带音频带供电"&gt;&lt;span class="caps"&gt;HDMI&lt;/span&gt;转&lt;span class="caps"&gt;VGA&lt;/span&gt;带供电&lt;/a&gt;，带开关按钮线的电源，杜邦线。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;不用购买就用上的配件：&lt;/strong&gt;
-红外接收仪(从坏的遥控玩具拆下可用)，旧电视遥控器一个，老&lt;span class="caps"&gt;VGA&lt;/span&gt;显示屏，旧音箱。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;我购买而还没用的可选配件：&lt;/strong&gt;
-七彩&lt;span class="caps"&gt;RGB&lt;/span&gt;的&lt;span class="caps"&gt;LED&lt;/span&gt;元件，面包板，&lt;a href="https://s.click.taobao.com/t?e=m%3D2%26s%3DfV%2BZ61WfxfkcQipKwQzePOeEDrYVVa64K7Vc7tFgwiHjf2vlNIV67lKP%2BmjvssA7r8hK%2FDw%2Bbm2s9V29auOuBOBgn3DwXo5fs9cRaxJdiKw3LnkA3bZiA0KFaRH2Tl0r%2BlUnyCWbT92Wt8ptzziuVx4DebA4okkCqN5EGMnCL1bGJe8N%2FwNpGw%3D%3D&amp;amp;pvid=10_120.239.178.0_378_1512536718652" title="HDMI转DVI天猫链接"&gt;&lt;span class="caps"&gt;HDMI&lt;/span&gt;转&lt;span class="caps"&gt;DVI&lt;/span&gt;&lt;/a&gt;，光敏电阻。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;我认为不用买的：&lt;/strong&gt;&amp;nbsp;小屏幕（退货了），温度感应，五向摇杆，蜂鸣器，触摸感应器等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img alt="房间树莓派媒体中心" src="https://pythonwood.github.io/uploads/2017/房间树莓派媒体中心.jpg" title="房间树莓派媒体中心"&gt;&lt;/p&gt;
-&lt;h3 id="raspbian"&gt;二、树莓派安装官方的raspbian系统并初始化&lt;a class="headerlink" href="#raspbian" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;h4 id="_2"&gt;基础部分教程：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;包括修改Pi密码,修改国内源,显示中文，设置时区为Asia/Shanghai，安装开源中文字体&lt;strong&gt;文泉驿&lt;/strong&gt;，安装fcitx谷歌拼音，开启ssh服务，设置wifi连接密码&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;树莓派上手配置&lt;/strong&gt;&amp;nbsp;https://yaogangli.gitbooks.io/raspberry-pi-learning/content/Raspbian.html&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;新手入门树莓派必做的四件事&lt;/strong&gt;&amp;nbsp;http://blog.csdn.net/A_lPha/article/details/53116767&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;How to setup multiple WiFi networks?&lt;/strong&gt;&amp;nbsp;https://raspberrypi.stackexchange.com/questions/11631/how-to-setup-multiple-wifi-networks/11674&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;ssh服务配置&lt;/strong&gt;&amp;nbsp;https://www.raspberrypi.org/documentation/remote-access/ssh/&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id="_3"&gt;优化部分教程：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;包括添加u盘自动挂载功能，&lt;span class="caps"&gt;VNC&lt;/span&gt;服务，优化无网络下树莓派开机时间等&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;树莓派&lt;span class="caps"&gt;USB&lt;/span&gt;存储设备自动挂载&lt;/strong&gt;&amp;nbsp;http://www.jianshu.com/p/188828d9777a&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;How to change timeout in systemctl&lt;/strong&gt;&amp;nbsp;https://unix.stackexchange.com/questions/186162/how-to-change-timeout-in-systemctl&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;安装&lt;span class="caps"&gt;VNC&lt;/span&gt;服务(tightvncserver)&lt;/strong&gt;&amp;nbsp;https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-14-04&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;配置与学习树莓派config.txt配置文件&lt;/strong&gt;&amp;nbsp;https://www.zybuluo.com/SiberiaBear/note/328982&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id="_4"&gt;三、重要提醒：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;经验证，我安装一大堆东西后，&lt;span class="caps"&gt;SD&lt;/span&gt;卡使用才4G，其中几百兆是音乐，&amp;nbsp;所以8G卡也是够用的。&lt;/p&gt;
-&lt;p&gt;熟悉Linux环境的话，完成一台树莓派环境配置之后，可随时备份，其它树莓派克隆环境就可以了。具体方法参考另一篇随笔。 
-&lt;a href="https://pythonwood.github.io/2017/11/树莓派SD卡Linux系统盘复制，10分钟克隆新机/"&gt;树莓派&lt;span class="caps"&gt;SD&lt;/span&gt;卡Linux系统盘复制，10分钟克隆新机&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="_5"&gt;四、参考&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;开始 Raspberry Pi 项目前需要知道的 10 件事&amp;nbsp;https://www.digikey.com.cn/zh/articles/techzone/2017/feb/10-things-to-know-before-starting-a-raspberry-pi-project&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;树莓派启动那些事&amp;nbsp;http://elmagnificogi.github.io/tags/#RaspberryPi&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</content><category term="树莓派"></category><category term="初始化"></category><category term="系统"></category><category term="环境搭建"></category></entry></feed>
+15个最好的Linux照片/图像编辑器我发现在2015年:&amp;nbsp;https://www.howtoing.com/best-image-photo-editors-for-linux&lt;/p&gt;</content><category term="Linux"></category><category term="图像"></category><category term="软件"></category><category term="ubuntu"></category></entry></feed>

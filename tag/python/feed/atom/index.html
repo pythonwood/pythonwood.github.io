@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - python</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/python/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2017-12-17T23:00:00+08:00</updated><entry><title>RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip</title><link href="https://pythonwood.github.io/2017/12/RSA%E5%8E%9F%E7%90%86%EF%BC%9A%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A5%A5%E6%95%B0%E5%86%85%E5%AE%B9%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E2%80%94%E2%80%94%E6%8C%91%E6%88%98PythonTip/" rel="alternate"></link><published>2017-12-17T23:00:00+08:00</published><updated>2017-12-17T23:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-17:/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;&lt;span class="caps"&gt;RSA&lt;/span&gt;密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - python</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/python/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-11-07T15:30:00+08:00</updated><entry><title>神奇的环境bug导致python3中出现udc开头字符串</title><link href="https://pythonwood.github.io/2018/11/%E7%A5%9E%E5%A5%87%E7%9A%84%E7%8E%AF%E5%A2%83bug%E5%AF%BC%E8%87%B4python3%E4%B8%AD%E5%87%BA%E7%8E%B0udc%E5%BC%80%E5%A4%B4%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="alternate"></link><published>2018-11-07T15:30:00+08:00</published><updated>2018-11-07T15:30:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-11-07:/2018/11/神奇的环境bug导致python3中出现udc开头字符串/</id><summary type="html">&lt;h2 id="langzh_cnutf-8langen_usutf-8"&gt;注意：&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8不可混淆！&lt;a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8有区别&lt;/strong&gt; ，&amp;nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="langzh_cnutf-8langen_usutf-8"&gt;注意：&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8不可混淆！&lt;a class="headerlink" href="#langzh_cnutf-8langen_usutf-8" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8有区别&lt;/strong&gt; ，&amp;nbsp;所以不可混淆！想之前在python2时代吃过坑，没想到到了统一unicode的python3，因环境不一致也能导致编码问题！&lt;/p&gt;
+&lt;h2 id="_1"&gt;当时环境与功能：&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;vps系统是ubutnu 14.04, 相关软件python3.4, selenium3+, chrome66, chromedriver。使用crontab启动shell， shell中启动python脚本，&amp;nbsp;脚本中selenium启动chrome，……&lt;/p&gt;
+&lt;h2 id="bug"&gt;出bug的运行流程：&lt;a class="headerlink" href="#bug" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;crontab中的a.sh启动   &lt;strong&gt;&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8 bash&amp;nbsp;a.sh&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;a.sh末尾调用&amp;rdquo;b中文名.py&amp;rdquo;，&amp;nbsp;带中文参数&amp;rdquo;《xxx》&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;b中文.py 中print(参数1) 会异常显示字符串编码问题&amp;rsquo;ascii&amp;rsquo; codec can&amp;rsquo;t encode&amp;nbsp;characters&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_2"&gt;调试发现:&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;print repr(中文参数1)， 会打印\udc&amp;nbsp;开头的而非\x开头的utf8型编码。&lt;/li&gt;
+&lt;li&gt;比如&amp;rdquo;《&amp;rdquo; 正常编码是 &lt;strong&gt;&amp;lsquo;\xe3\x80\x8a&amp;rsquo;， 此处确是打印了&amp;rsquo;\udce3\udc80\udc8a&amp;rsquo;&lt;/strong&gt;&amp;nbsp;。&lt;/li&gt;
+&lt;li&gt;改变逻辑，直接ssh到vps并执行 &lt;strong&gt;b中文.py 《xxx》&lt;/strong&gt;&amp;nbsp;没有问题！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_3"&gt;问题定位:&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;个人本机ubuntu系统测试不会出现bug，vps才出现，所以应该是shell环境或者是python环境问题。&lt;/li&gt;
+&lt;li&gt;打印执行a.sh的shell环境，对比发现本机有&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8和&lt;span class="caps"&gt;LANGUAGE&lt;/span&gt;=zh_CN:zh，vps仅有&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8。&lt;/li&gt;
+&lt;li&gt;把crontab中强加的环境变量&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8去掉，此时a.sh的环境变量为&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8，&amp;nbsp;vps恢复正常。（2小时排查出结果了！）&lt;/li&gt;
+&lt;li&gt;总结： 之前觉得&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8与&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8没什么不同，从此改观。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="_4"&gt;问题解决：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;去掉&lt;span class="caps"&gt;LANG&lt;/span&gt;=zh_CN.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8，之后执行过程中会自动变成默认&lt;span class="caps"&gt;LANG&lt;/span&gt;=en_US.&lt;span class="caps"&gt;UTF&lt;/span&gt;-8&lt;/p&gt;
+&lt;h2 id="_5"&gt;原因探究：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;待定&lt;/p&gt;
+&lt;h2 id="python-reprudc-print"&gt;python repr输出udc开头字符串， print(参数)导致异常&lt;a class="headerlink" href="#python-reprudc-print" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;#39;/home/maskuser/path/to/ts/\udce3\udc80\udc8a\udce9\udc80\udc97.....mp4&amp;#39;
+
+Traceback (most recent call last):
+  File &amp;quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&amp;quot;, line 73, in &amp;lt;module&amp;gt;
+    video_upload_testsite(*sys.argv[1:])
+  File &amp;quot;/home/maskuser/pathtodir/script/20181105\udce8\udca7\udc86\.....py&amp;quot;, line 29, in video_upload_testsite
+    print (videopath)
+UnicodeEncodeError: &amp;#39;ascii&amp;#39; codec can&amp;#39;t encode characters in position 27-50: ordinal not in range(128)
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Ubuntu"></category><category term="linux"></category><category term="LANG"></category><category term="环境变量"></category><category term="python"></category></entry><entry><title>RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip</title><link href="https://pythonwood.github.io/2017/12/RSA%E5%8E%9F%E7%90%86%EF%BC%9A%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A5%A5%E6%95%B0%E5%86%85%E5%AE%B9%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E2%80%94%E2%80%94%E6%8C%91%E6%88%98PythonTip/" rel="alternate"></link><published>2017-12-17T23:00:00+08:00</published><updated>2017-12-17T23:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2017-12-17:/2017/12/RSA原理：欧几里德算法与奥数内容辗转相除法——挑战PythonTip/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;&lt;span class="caps"&gt;RSA&lt;/span&gt;密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
 &lt;h3 id="_1"&gt;描述:&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;在&lt;span class="caps"&gt;RSA&lt;/span&gt;密码体系中,欧几里得算法是加密或解密运算的重要组成部分。它的基本运算过程就是解 (x*a) % n = 1 这种方程。
 其中 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.pythontip.com" title="PythonTip"&gt;PythonTip&lt;/a&gt; 里未攻克的题目，如&lt;a href="http://www.pythontip.com/coding/code_oj_case/46" title="RSA密码方程"&gt;&lt;span class="caps"&gt;RSA&lt;/span&gt;密码方程&lt;/a&gt;，如今积累工作经验之后从新挑战，仍然失败未成功了。把过程记录分享下。&lt;/p&gt;
@@ -363,82 +400,4 @@ Out[2]: 79.03
 &lt;p&gt;谈谈关于Python里面小数点精度控制的问题&amp;nbsp;http://www.cnblogs.com/herbert/p/3402245.html&lt;/p&gt;
 &lt;p&gt;Python 为什么不解决四舍五入(round)的“bug”？&amp;nbsp;https://www.zhihu.com/question/20128906&lt;/p&gt;
 &lt;p&gt;python:0.1 + 0.2 == 0.3:False&amp;nbsp;https://stackoverflow.com/questions/588004/is-floating-point-math-broken&lt;/p&gt;
-&lt;p&gt;round() in Python doesn&amp;rsquo;t seem to be rounding properly&amp;nbsp;https://stackoverflow.com/questions/56820/round-in-python-doesnt-seem-to-be-rounding-properly&lt;/p&gt;</content><category term="python"></category><category term="金融"></category><category term="量化"></category><category term="数据处理"></category><category term="精度问题"></category></entry><entry><title>微信开发python+django两个月的成功经历，django是个好框架！</title><link href="https://pythonwood.github.io/2014/06/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91python+django%E4%B8%A4%E4%B8%AA%E6%9C%88%E7%9A%84%E6%88%90%E5%8A%9F%E7%BB%8F%E5%8E%86%EF%BC%8Cdjango%E6%98%AF%E4%B8%AA%E5%A5%BD%E6%A1%86%E6%9E%B6%EF%BC%81/" rel="alternate"></link><published>2014-06-28T20:12:00+08:00</published><updated>2014-06-28T20:12:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2014-06-28:/2014/06/微信开发python+django两个月的成功经历，django是个好框架！/</id><summary type="html">&lt;h3 id="_1"&gt;时间：大三&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。&lt;/p&gt;
-&lt;p&gt;下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。&lt;/p&gt;
-&lt;p&gt;选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。&lt;/p&gt;
-&lt;p&gt;亮点1：自带后台管理&lt;/p&gt;
-&lt;p&gt;亮点2：后台权限管理&lt;/p&gt;
-&lt;p&gt;亮点3：微信回复规则设置去代码化，图形界面。&lt;/p&gt;
-&lt;p&gt;亮点4：一平台多网店 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;时间：大三&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;上学期没有用微信内置浏览器而纯对话开发，坑了自己好一下。&lt;/p&gt;
-&lt;p&gt;下学期选错bottle框架，以为轻量好，谁知开发中什么都自己来很痛苦。&lt;/p&gt;
-&lt;p&gt;选对了框架django，终于在大三最后的个把月里写出了里程碑式的现在这个微信端，自己都感动到，作为我大三一年web开发的终结吧。&lt;/p&gt;
-&lt;p&gt;亮点1：自带后台管理&lt;/p&gt;
-&lt;p&gt;亮点2：后台权限管理&lt;/p&gt;
-&lt;p&gt;亮点3：微信回复规则设置去代码化，图形界面。&lt;/p&gt;
-&lt;p&gt;亮点4：一平台多网店&lt;/p&gt;
-&lt;p&gt;亮点5：图片自动缩略成200*300px大小（使用了七牛空间）&lt;/p&gt;
-&lt;p&gt;亮点6：gzip压缩，网络流量为原来33%左右。&lt;span class="caps"&gt;SAE&lt;/span&gt;中Gzip压缩设置&lt;/p&gt;
-&lt;p&gt;亮点7：保存接受的所以文本消息，记录永存！&lt;/p&gt;
-&lt;p&gt;亮点8：购买者可查看历史订单，购买总额等。&lt;/p&gt;
-&lt;p&gt;亮点9：后台可查看用户下单总额，最近下单时间等等。&lt;/p&gt;
-&lt;p&gt;亮点10：商店信息，商品信息均在后台直接修改。&lt;/p&gt;
-&lt;p&gt;亮点11：平台创始人可强制商店下线。&lt;/p&gt;
-&lt;p&gt;技巧：微信规则不匹配时不能回复吗？不是，规则包含空字符总能匹配任意文本，请看下面的微信规则截图。&lt;/p&gt;
-&lt;h3 id="_2"&gt;后台&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;选择botlle框架，自己写sql，便学边用，很痛苦的换了20天作出来了微信&lt;a href="http://2.aozhouwine.sinaapp.com/buy.html?openid=abcdefgabcdefgabcdefgabcdefg" title="顾客演示入口地址"&gt;第一版&lt;/a&gt;。这版其实很简陋，但其给我的经验很重要。演示地址：&lt;a href="http://2.aozhouwine.sinaapp.com/buy.html?openid=abcdefgabcdefgabcdefgabcdefg" title="顾客演示入口地址"&gt;点击入口&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;抛弃bottle，选择django，后来证明我的选择是对的，虽然学习坡度比较大，但是其框架本身带来的效率和效益却是学习框架本身的好几倍。我喜欢它的自带后台管理，和后台权限管理，更喜欢它的&lt;span class="caps"&gt;ORM&lt;/span&gt;，省去很多sql的事情，比如sql语句编写，sql防注问题，sql迁移方便等等。这次用上了这三大功能，另外还巧用django的模板渲染实现微信回复功能，但这不是django特有。&lt;/p&gt;
-&lt;p&gt;微信已经实现了多店功能。这也是当初我为什么坚定选择django，因为django的一project多app的架构刚好契合这个一平台多店铺的想法。后来我学scrapy框架，发现也是一project多app，方便不少。同时说明一project多app是先进的，是趋势之一。&lt;/p&gt;
-&lt;h3 id="_3"&gt;前台&lt;a class="headerlink" href="#_3" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我比较喜欢后端的开发，前端的我就修改已有好的前端代码，参考了微信公众号“果然美”，“微果大爱”，“华农果满堂”，“微盟”，“乐外卖”等前端设计。技术上使用html5+css3。&lt;/p&gt;
-&lt;p&gt;现在平台上有果色天香和澳洲红酒两个店铺&lt;/p&gt;
-&lt;p&gt;&lt;img alt="平台上有果色天香和澳洲红酒两个店铺1.png" height="50%" src="https://pythonwood.github.io/static/img/平台上有果色天香和澳洲红酒两个店铺1.png" title="1" width="30%"&gt;
-&lt;img alt="平台上有果色天香和澳洲红酒两个店铺2.jpg" height="50%" src="https://pythonwood.github.io/static/img/平台上有果色天香和澳洲红酒两个店铺2.jpg" title="2" width="30%"&gt;
-&lt;img alt="平台上有果色天香和澳洲红酒两个店铺3.jpg" height="50%" src="https://pythonwood.github.io/static/img/平台上有果色天香和澳洲红酒两个店铺3.jpg" title="3" width="30%"&gt;&lt;/p&gt;
-&lt;h3 id="_4"&gt;代码统计&lt;a class="headerlink" href="#_4" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;使用linux&amp;nbsp;shell统计 &lt;/p&gt;
-&lt;p&gt;合理版 cat $(find . -name &amp;ldquo;&lt;em&gt;.py&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.yaml&amp;rdquo; -or -name &amp;ldquo;*.rst&amp;rdquo; -or -name &amp;ldquo;sell_detail.html&amp;rdquo;) | wc | sed &amp;ldquo;1i static:\nlines | words |&amp;nbsp;bytes&amp;rdquo;   &lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" src="https://pythonwood.github.io/static/img/代码统计1.png" title="1"&gt;&lt;/p&gt;
-&lt;p&gt;纯净版 cat $(find . -path &amp;ldquo;./guosetianxiang&amp;rdquo; -prune -or -name &amp;ldquo;&lt;em&gt;.py&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.yaml&amp;rdquo; -or -name &amp;ldquo;*.rst&amp;rdquo; -or -name &amp;ldquo;sell_detail.html&amp;rdquo;) | wc | sed &amp;ldquo;1i static:\nlines | words |&amp;nbsp;bytes&amp;rdquo;  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" src="https://pythonwood.github.io/static/img/代码统计2.png" title="2"&gt;&lt;/p&gt;
-&lt;p&gt;完全版 cat $(find . -name &amp;ldquo;&lt;em&gt;.py&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.yaml&amp;rdquo; -or -name &amp;ldquo;&lt;em&gt;.rst&amp;rdquo; -or -name &amp;ldquo;&lt;/em&gt;.html&amp;rdquo;) | wc | sed &amp;ldquo;1i static:\nlines | words |&amp;nbsp;bytes&amp;rdquo; &lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" src="https://pythonwood.github.io/static/img/代码统计3.png" title="3"&gt;&lt;/p&gt;
-&lt;h3 id="_5"&gt;前端展示：感谢前人成果！&lt;a class="headerlink" href="#_5" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/前端展示1.png" title="1" width="40%"&gt;
-&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/前端展示2.png" title="2" width="40%"&gt;&lt;/p&gt;
-&lt;h3 id="_6"&gt;=============================后台是亮点=============================&lt;a class="headerlink" href="#_6" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;后台首页&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/后台首页.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;微信回复规则，使用模板渲染自定义变量！&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/微信回复规则，使用模板渲染自定义变量.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;功能代码：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/功能代码.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;微信用户&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/微信用户.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;p&gt;订单截图&lt;/p&gt;
-&lt;p&gt;&lt;img alt="tu" height="50%" src="https://pythonwood.github.io/static/img/订单截图.png" title="1" width="90%"&gt;&lt;/p&gt;
-&lt;h3 id="django"&gt;看到这里，你是否也认为django是个好框架呢？&lt;a class="headerlink" href="#django" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在新浪云上运行得还好，不算慢，请那些嫌弃django臃肿庞大，速度慢的人，不要再误导他人，这就好像那些说python慢的人一样，我至今没有实践证明出过慢在哪。&lt;/p&gt;
-&lt;p&gt;django是python作者本身都很喜欢的框架，又是那么多商用网站的框架，经得其考验。&lt;/p&gt;
-&lt;p&gt;如果可以，当然希望你可以作出一个比django更好的框架，可是至少现在还不大可能。python的django和ruby的rails都得经过时间的考验。我相信 django&amp;nbsp;是经得住考验的，正如我相信python一样。&lt;/p&gt;
-&lt;h3 id="_7"&gt;附上 增加微店步骤（澳洲红酒为例）&lt;a class="headerlink" href="#_7" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;复制guosetianxiang 改名&amp;nbsp;aozhouwine&lt;/p&gt;
-&lt;p&gt;修改setting.py 安装app&amp;nbsp;&amp;lsquo;aozhouwine&amp;rsquo;&lt;/p&gt;
-&lt;p&gt;访问/syncdb-online完成数据库同步&lt;/p&gt;
-&lt;p&gt;根app的url.py&amp;nbsp;加入两行:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;aozhouwine&lt;/span&gt;
-
-&lt;span class="o"&gt;...&lt;/span&gt;
-
-&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^aozhouwine/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;aozhouwine.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;admin管理，weixinshop应用商店表中增加一条，并增加账户给商店所有者A，然后授权。&lt;/p&gt;
-&lt;p&gt;A在自己的应用商店信息表中增加一条记录，(token在此设置)。&lt;/p&gt;
-&lt;p&gt;微信开发者url: /aozhouwine/weixin/&amp;nbsp;token为之前设置的。&lt;/p&gt;
-&lt;p&gt;访问/aozhouwine/sync_shopinfo完成商店同步。&lt;/p&gt;
-&lt;p&gt;A增加消息，回复规则表中的记录。&lt;/p&gt;
-&lt;p&gt;A上架商品。&lt;/p&gt;
-&lt;p&gt;依然涉及少量代码操作，以及有一点繁琐。&lt;/p&gt;</content><category term="微信"></category><category term="开发"></category><category term="python"></category><category term="django"></category><category term="公众号"></category></entry></feed>
+&lt;p&gt;round() in Python doesn&amp;rsquo;t seem to be rounding properly&amp;nbsp;https://stackoverflow.com/questions/56820/round-in-python-doesnt-seem-to-be-rounding-properly&lt;/p&gt;</content><category term="python"></category><category term="金融"></category><category term="量化"></category><category term="数据处理"></category><category term="精度问题"></category></entry></feed>
