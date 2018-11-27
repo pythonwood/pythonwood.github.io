@@ -147,7 +147,8 @@
 <p>为决定是否upgrade到cn2机房，需要先验证<span class="caps">CN2</span>机房网络是不是更好。一直没有一个适合自己的ping工具，自己写一个。</p>
 <h3 id="openwrt5ping">部署在openwrt路由，定时任务每5分钟启动ping一次<a class="headerlink" href="#openwrt5ping" title="Permanent link">&para;</a></h3>
 <p>脚本兼容新旧版本ping（输出内容不同），使用sh标准达到最大linux兼容。已兼容openwrt。</p>
-<div class="highlight"><pre><span></span>*/5 * * * * /path/to/20181119_host_ping.sh 23 …</pre></div></div>
+<div class="highlight"><pre><span></span># ping 50次，不超过90s，丢包率每字符表示2%，延迟每字符表示10ms
+*/5 …</pre></div></div>
       <div><a class="btn btn-primary" href="https://pythonwood.github.io/2018/11/网络检测ping脚本——搬瓦工CN2机房PING测试/"><strong>➟ 阅读全文</strong></a></div>
     </article>
     <hr/>
