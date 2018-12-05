@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://pythonwood.github.io/</loc>
-<lastmod>2018-11-27T17:21:10-00:00</lastmod>
+<lastmod>2018-12-05T15:44:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://pythonwood.github.io/code/index.html</loc>
-<lastmod>2018-11-27T17:21:10-00:00</lastmod>
+<lastmod>2018-12-05T15:44:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://pythonwood.github.io/video/index.html</loc>
-<lastmod>2018-11-27T17:21:10-00:00</lastmod>
+<lastmod>2018-12-05T15:44:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://pythonwood.github.io/about/</loc>
 <lastmod>2017-11-22T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://pythonwood.github.io/2018/12/Linux释放磁盘空间——系统日志systemd-journal清理/</loc>
+<lastmod>2018-12-05T15:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -264,14 +271,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://pythonwood.github.io/category/ji-zhu/</loc>
-<lastmod>2018-11-07T15:30:00+08:06</lastmod>
+<lastmod>2018-12-05T15:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://pythonwood.github.io/category/sheng-huo/</loc>
-<lastmod>2018-11-27T16:00:00+08:06</lastmod>
+<lastmod>2018-04-20T15:16:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -319,8 +326,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://pythonwood.github.io/tag/suan-fa/</loc>
-<lastmod>2017-12-17T23:00:00+08:06</lastmod>
+<loc>https://pythonwood.github.io/tag/systemd/</loc>
+<lastmod>2018-12-05T15:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -424,6 +431,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://pythonwood.github.io/tag/ci-pan-qing-li/</loc>
+<lastmod>2018-12-05T15:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://pythonwood.github.io/tag/shu-mei-pai/</loc>
 <lastmod>2017-12-13T22:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -515,8 +529,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://pythonwood.github.io/tag/journal/</loc>
+<lastmod>2018-12-05T15:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://pythonwood.github.io/tag/javascript/</loc>
 <lastmod>2017-11-27T22:12:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://pythonwood.github.io/tag/suan-fa/</loc>
+<lastmod>2017-12-17T23:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -677,7 +705,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://pythonwood.github.io/tag/linux/</loc>
-<lastmod>2018-11-07T15:30:00+08:06</lastmod>
+<lastmod>2018-12-05T15:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1062,7 +1090,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://pythonwood.github.io/author/pythonwood/</loc>
-<lastmod>2018-11-27T16:00:00+08:06</lastmod>
+<lastmod>2018-12-05T15:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

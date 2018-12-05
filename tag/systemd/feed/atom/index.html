@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux迷+Python粉 - systemd</title><link href="https://pythonwood.github.io/" rel="alternate"></link><link href="https://pythonwood.github.io/tag/systemd/feed/atom/index.html" rel="self"></link><id>https://pythonwood.github.io/</id><updated>2018-12-05T15:00:00+08:00</updated><entry><title>Linux释放磁盘空间——系统日志systemd-journal清理</title><link href="https://pythonwood.github.io/2018/12/Linux%E9%87%8A%E6%94%BE%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97systemd-journal%E6%B8%85%E7%90%86/" rel="alternate"></link><published>2018-12-05T15:00:00+08:00</published><updated>2018-12-05T15:00:00+08:00</updated><author><name>pythonwood</name></author><id>tag:pythonwood.github.io,2018-12-05:/2018/12/Linux释放磁盘空间——系统日志systemd-journal清理/</id><summary type="html">&lt;h2 id="varlogjournal"&gt;/var/log/journal 目录占用空间很大&lt;a class="headerlink" href="#varlogjournal" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;原因systemd系统通过systemd-journald.service记录日志.&amp;nbsp;默认以二进制写入/var/log/journal/目录中的日志文件，系统安装久了发现磁盘空间逐渐变小。&lt;/p&gt;
+&lt;p&gt;ubuntu18.04，&amp;nbsp;centos7等新系统都使用新型系统systemd，就可能需要清理。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ du -sh /var/log …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2 id="varlogjournal"&gt;/var/log/journal 目录占用空间很大&lt;a class="headerlink" href="#varlogjournal" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;原因systemd系统通过systemd-journald.service记录日志.&amp;nbsp;默认以二进制写入/var/log/journal/目录中的日志文件，系统安装久了发现磁盘空间逐渐变小。&lt;/p&gt;
+&lt;p&gt;ubuntu18.04，&amp;nbsp;centos7等新系统都使用新型系统systemd，就可能需要清理。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ du -sh /var/log/journal/
+&lt;span class="m"&gt;2&lt;/span&gt;.2G /var/log/journal/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="_1"&gt;手动命令行清理 单次生效 可临时救急&lt;a class="headerlink" href="#_1" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;删除数天以前旧日志&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# journalctl --vacuum-time=7d
+Vacuuming done, freed 2.1G of archived journals from /var/log/journal/1095e22a7289463f9f4fdd6d10e3da34.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;删除到只保留100M日志量的状态&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# journalctl --vacuum-size=100M
+Vacuuming done, freed 2.0G of archived journals from /var/log/journal/1095e22a7289463f9f4fdd6d10e3da34.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="systemd-journaldservice"&gt;配置systemd-journald.service 永久生效&lt;a class="headerlink" href="#systemd-journaldservice" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;systemd-journald 的配置文件为 /etc/systemd/journald.conf&amp;nbsp;中，将SystemMaxUse=这行去掉注释，修改为SystemMaxUse=1G，将日志总量限制在1G内。&lt;/p&gt;
+&lt;p&gt;预计下次启动生效，但我测试暂没有效果，不知原因。&lt;/p&gt;
+&lt;h2 id="_2"&gt;参考&lt;a class="headerlink" href="#_2" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;clear up systemd-journal&amp;nbsp;https://ma.ttias.be/clear-systemd-journal/&lt;/p&gt;
+&lt;p&gt;使用journalctl查看systemd日志&amp;nbsp;https://lujun9972.github.io/blog/2018/08/08/使用journalctl查看systemd日志/&lt;/p&gt;</content><category term="linux"></category><category term="systemd"></category><category term="journal"></category><category term="磁盘清理"></category></entry></feed>
